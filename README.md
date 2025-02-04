@@ -1,6 +1,6 @@
 # ProjetMobile
 
-Teams
+##Teams
 - GA :
   - Fei JIAN
   - Clara BROUSSOT
