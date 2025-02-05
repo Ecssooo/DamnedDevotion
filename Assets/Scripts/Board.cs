@@ -71,13 +71,13 @@ public class Board : MonoBehaviour
     /// Setup card on board
     /// </summary>
     /// <param name="level">Level to setup</param>
-    // void SetLevel(Level level)
-    // {
-    //     foreach (var card in level.CardsList)
-    //     {
-    //         SetSlots(card);
-    //     }
-    // }
+    void SetLevel(Level level)
+    {
+        foreach (var card in level.CardsList)
+        {
+            SetSlots(card);
+        }
+    }
     
     /// <summary>
     ///  Check if position is in board

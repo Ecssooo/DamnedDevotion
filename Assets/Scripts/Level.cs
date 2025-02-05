@@ -4,14 +4,14 @@ using UnityEngine;
 public class Level
 {
     public int level;
-    public List<Vector2> cardPositions;
+    public List<Card> CardsList;
     public int maxActionCount;
     public int maxScore;
     public List<GameObject> effects;
 
     public Level()
     {
-        cardPositions = new List<Vector2>();
+        CardsList = new List<Card>();
         effects = new List<GameObject>();
     }
 }
