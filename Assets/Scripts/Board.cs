@@ -6,18 +6,17 @@ public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
 
-    private Cards[,] _board = new Cards[3,3];
+    private Card[,] _board = new Card[3,3];
     private Transform[,] _slotsTab = new Transform[3, 3];
+
+    public GameObject card;
 
     private void Start()
     {
-        Cards cards1 = new Cards("One", new Vector2Int(0, 0));
-        List<Cards> cardsList = new List<Cards>();
-        cardsList.Add(cards1);
-        Level level1 = new Level(cardsList);
-        
-        SetLevel(level1);
+        InitSlotTab();
+        SetSlots(card.GetComponent<Card>());
     }
+
 
     /// <summary>
     /// Transform slot list into 2D array
@@ -58,12 +57,12 @@ public class Board : MonoBehaviour
     /// Not implemented yet : Instantiate Cards to slot in world
     /// </summary>
     /// <param name="card">Cards type, Can be null</param>
-    void SetSlots(Cards card = null)
+    void SetSlots(Card card = null)
     {
-        if (PositionInBounds(card.position))
+        if (PositionInBounds(card.PositionOnBoard))
         {
-            _board[card.position.x, card.position.y] = card;
-            // if(card != null) Instantiate(card., _slotsTab[position.x, position.y]);
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            if(card != null) Instantiate(card.gameObject, _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y]);
         }
     }
 
@@ -72,13 +71,13 @@ public class Board : MonoBehaviour
     /// Setup card on board
     /// </summary>
     /// <param name="level">Level to setup</param>
-    void SetLevel(Level level)
-    {
-        foreach (var card in level.CardsList)
-        {
-            SetSlots(card);
-        }
-    }
+    // void SetLevel(Level level)
+    // {
+    //     foreach (var card in level.CardsList)
+    //     {
+    //         SetSlots(card);
+    //     }
+    // }
     
     /// <summary>
     ///  Check if position is in board
