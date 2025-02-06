@@ -15,6 +15,7 @@ public class Human : Card
     public void OnDie()
     {
         // add _value to GameManager
+        Debug.Log("Human died");
         _value = 0;
     }
 }
