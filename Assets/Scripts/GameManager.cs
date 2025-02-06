@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Reset()
+    public void Reset()
     {
         Level level = new Level();
         actionCount = level.maxActionCount;
