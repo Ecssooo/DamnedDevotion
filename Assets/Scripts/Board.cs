@@ -6,22 +6,13 @@ public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
 
-    private Card[,] _board = new Card[3,3];
-    private Transform[,] _slotsTab = new Transform[3, 3];
-
-    public GameObject card;
-
-    private void Start()
-    {
-        InitSlotTab();
-        SetSlots(card.GetComponent<Card>());
-    }
-
-
+    private Card[,] _board = new Card[4,3];
+    private Transform[,] _slotsTab = new Transform[4, 3];
+    
     /// <summary>
     /// Transform slot list into 2D array
     /// </summary>
-    void InitSlotTab()
+    public void InitSlotTab()
     {
         int index = 0;
 
@@ -38,8 +29,9 @@ public class Board : MonoBehaviour
     /// <summary>
     /// Clear board
     /// </summary>
-    void ResetBoard()
+    public void ResetBoard()
     {
+        InitSlotTab();
         if (_board == null) return;
         
         for (int i = 0; i < _board.GetLength(0); i++)
@@ -47,6 +39,7 @@ public class Board : MonoBehaviour
             for (int j = 0; j < _board.GetLength(1); j++)
             {
                 _board[i,j] = null;
+                if(_slotsTab[i,j].childCount > 0) DestroyImmediate(_slotsTab[i, j].GetChild(0).gameObject);
             }
         }
     }
@@ -54,15 +47,18 @@ public class Board : MonoBehaviour
     
     /// <summary>
     /// Add a Card to a slot in board
-    /// Not implemented yet : Instantiate Cards to slot in world
     /// </summary>
     /// <param name="card">Cards type, Can be null</param>
-    void SetSlots(Card card = null)
+    public void SetSlots(Card card)
     {
+        InitSlotTab();
+
+        if (card == null) return;
         if (PositionInBounds(card.PositionOnBoard))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
-            if(card != null) Instantiate(card.gameObject, _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y]);
+            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            card.transform.localPosition = new Vector3(0,0,0);
         }
     }
 
@@ -71,11 +67,18 @@ public class Board : MonoBehaviour
     /// Setup card on board
     /// </summary>
     /// <param name="level">Level to setup</param>
-    void SetLevel(Level level)
+    public void SetLevel(Level level)
     {
-        foreach (var card in level.CardsList)
+        InitSlotTab();
+        for (int i = 0; i < level.CardsList.Count; i++)
         {
-            SetSlots(card);
+            if (level.CardsList[i] != null)
+            {
+                var GO = Instantiate(level.CardsList[i], this.transform);
+                var card = GO.GetComponent<Card>();
+                card.PositionOnBoard = level.positionCardsList[i];
+                SetSlots(card);
+            }
         }
     }
     
@@ -86,9 +89,9 @@ public class Board : MonoBehaviour
     /// <returns>Is in board</returns>
     bool PositionInBounds(Vector2Int position)
     {
-        return position.x < _board.GetLength(1) && 
+        return position.x < _board.GetLength(0) && 
                position.x >= 0 && 
-               position.y < _board.GetLength(0) && 
+               position.y < _board.GetLength(1) && 
                position.y >= 0;
     }
 

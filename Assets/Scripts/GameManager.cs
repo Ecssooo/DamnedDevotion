@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -29,21 +30,21 @@ public class GameManager : MonoBehaviour
 
     private void UpdateLevelCountText()
     {
-        Level level = new Level();
+        // Level level = new Level(new List<Card>());
         if (Win==true)
         {
-            level.level++;
+            //level.level++;
         }
         if (levelCountText != null)
         {
-            levelCountText.text = "Level: " + level.level;
+            // levelCountText.text = "Level: " + level.level;
         }
     }
 
     private void Reset()
     {
-        Level level = new Level();
-        actionCount = level.maxActionCount;
-        mogscore = level.maxScore;
+        // Level level = new Level(new List<Card>());
+        // actionCount = level.maxActionCount;
+        // mogscore = level.maxScore;
     }
 }
