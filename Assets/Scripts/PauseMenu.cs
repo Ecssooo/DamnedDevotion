@@ -7,5 +7,9 @@ public class PauseMenu : MonoBehaviour
     public void TogglePauseMenu()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
+        AudioManager.Instance.musicSource.Stop();
+        AudioManager.Instance.PlaySFX("Test");
+        this.gameObject.SetActive(false);
     }
+
 }
