@@ -1,6 +1,6 @@
 using UnityEngine;
 
-    public class Knight : Card
+    public class SwordedKnight : Card
 {
     public enum AttackDirection
     {
@@ -10,6 +10,11 @@ using UnityEngine;
         RIGHT
     }
 
+    [SerializeField] int _value;
+    public int Value
+    {
+        get { return _value; }
+    }
     [SerializeField] private AttackDirection _attackDir;
     private Vector3 _attackDirection;
 
