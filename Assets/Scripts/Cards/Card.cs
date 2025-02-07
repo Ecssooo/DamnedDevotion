@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    private Vector2Int _positionOnBoard;
+    [SerializeField] private Vector2Int _positionOnBoard;
     public Vector2Int PositionOnBoard
     {
         get { return _positionOnBoard; }
