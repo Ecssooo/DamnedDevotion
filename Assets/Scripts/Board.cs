@@ -6,8 +6,8 @@ public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
 
-    private Card[,] _board = new Card[4,3];
-    private Transform[,] _slotsTab = new Transform[4, 3];
+    public Card[,] _board = new Card[4,3];
+    public Transform[,] _slotsTab = new Transform[4, 3];
     
     /// <summary>
     /// Transform slot list into 2D array
