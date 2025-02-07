@@ -72,18 +72,18 @@ public class LevelMaker : EditorWindow
         //Setup
         board = EditorGUILayout.ObjectField("Board", board, typeof(Board), true) as Board;
         _levelDatabase = EditorGUILayout.ObjectField("Level Database", _levelDatabase, typeof(LevelDatabase), true) as LevelDatabase;
-        EditorGUILayout.Space();
         //Level info
+        EditorGUILayout.Space();
+        GUILayout.Label("Settings",EditorStyles.boldLabel);
+        EditorGUILayout.Space();
+        
         levelId = EditorGUILayout.IntField("Id", levelId);
         maxAction = EditorGUILayout.IntField("maxAction", maxAction);
         maxScore = EditorGUILayout.IntField("maxScore", maxScore);
 
-        EditorGUILayout.Space(20);
-        //Slots for Card
-        // for (int i = 0; i < slots.Count; i++)
-        // {
-        //     slots[i] = EditorGUILayout.ObjectField($"Slot {i + 1}", slots[i], typeof(GameObject), false) as GameObject;
-        // }
+        EditorGUILayout.Space();
+        GUILayout.Label("Prefabs",EditorStyles.boldLabel);
+        EditorGUILayout.Space();
         
         humanPrefab = EditorGUILayout.ObjectField("Human", humanPrefab, typeof(GameObject), false) as GameObject;
         knightSwordPrefab = EditorGUILayout.ObjectField("Knight Sword", knightSwordPrefab, typeof(GameObject), false) as GameObject;
@@ -92,32 +92,20 @@ public class LevelMaker : EditorWindow
         miniMonsterPrefab = EditorGUILayout.ObjectField("Mini Monster", miniMonsterPrefab, typeof(GameObject), false) as GameObject;
         cauldronPrefab = EditorGUILayout.ObjectField("Cauldron", cauldronPrefab, typeof(GameObject), false) as GameObject;
         
-        EditorGUILayout.Space(20);
-        
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 0; i < 3; i++)
+        EditorGUILayout.Space();
+        GUILayout.Label("Board",EditorStyles.boldLabel);
+        EditorGUILayout.Space();
+        int index = 0;
+        for (int i = 1; i <= 4; i++)
         {
-            ops[i] = (OPTIONS)EditorGUILayout.EnumPopup(ops[i]);
+            EditorGUILayout.BeginHorizontal();
+            for (int j = 0; j < 3; j++)
+            {
+                ops[index] = (OPTIONS)EditorGUILayout.EnumPopup(ops[index]);
+                index++;
+            }
+            EditorGUILayout.EndHorizontal();
         }
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 3; i < 6; i++)
-        {
-            ops[i] = (OPTIONS)EditorGUILayout.EnumPopup(ops[i]);
-        }
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 6; i < 9; i++)
-        {
-            ops[i] = (OPTIONS)EditorGUILayout.EnumPopup(ops[i]);
-        }
-        EditorGUILayout.EndHorizontal();
-        EditorGUILayout.BeginHorizontal();
-        for (int i = 9; i < 12; i++)
-        {
-            ops[i] = (OPTIONS)EditorGUILayout.EnumPopup(ops[i]);
-        }
-        EditorGUILayout.EndHorizontal();
         
         EditorGUILayout.Space(20);
         //Buttons
