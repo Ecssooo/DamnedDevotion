@@ -38,13 +38,14 @@ using UnityEngine;
         this.GetComponent<BoxCollider2D>().enabled = false;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, _attackDirection);
         this.GetComponent<BoxCollider2D>().enabled = true;
-        Debug.DrawRay(transform.position, _attackDirection * 3, Color.black, 1f);
+        Debug.DrawRay(transform.position, _attackDirection * 1.5f, Color.black, 1f);
         Debug.Log(hit.collider);
         if (hit.collider != null && hit.collider.CompareTag("Human"))
         {
             Human human = hit.collider.GetComponent<Human>();
             if (human != null)
             {
+                Destroy(hit.collider.gameObject);
                 human.OnDie();
             }
         }
