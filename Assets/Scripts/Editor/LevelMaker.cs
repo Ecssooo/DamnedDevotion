@@ -10,7 +10,7 @@ public class LevelMaker : EditorWindow
     private Board board;
     private LevelDatabase _levelDatabase;
     
-    private int levelId = 0;
+    private int levelId;
     private int maxScore = 0;
     private int maxAction = 0;
 
@@ -76,7 +76,6 @@ public class LevelMaker : EditorWindow
         EditorGUILayout.Space();
         GUILayout.Label("Settings",EditorStyles.boldLabel);
         EditorGUILayout.Space();
-        
         levelId = EditorGUILayout.IntField("Id", levelId);
         maxAction = EditorGUILayout.IntField("maxAction", maxAction);
         maxScore = EditorGUILayout.IntField("maxScore", maxScore);
@@ -138,66 +137,36 @@ public class LevelMaker : EditorWindow
     {
         board.InitSlotTab();
         int index = 0;
-        // foreach (var card in slots)
-        // {
-        //     index++;
-        //     if (card == null) continue;
-        //     var GO = Instantiate(card, board.transform);
-        //     var cardGO = GO.GetComponent<Card>();
-        //     cardGO.PositionOnBoard = positionSlot[index];
-        //     board.SetSlots(cardGO);
-        // }
-
         foreach (var op in ops)
         {
             switch (op)
             {
-                case(OPTIONS.HUMAN):
-                    var GO = Instantiate(humanPrefab, board.transform);
-                    var cardGO = GO.GetComponent<Card>();
-                    cardGO.PositionOnBoard = positionSlot[index];
-                    board.SetSlots(cardGO);
-                    break;
-                case(OPTIONS.KNIGHTSWORD):
-                    var GO1 = Instantiate(knightSwordPrefab, board.transform);
-                    var cardGO1 = GO1.GetComponent<Card>();
-                    cardGO1.PositionOnBoard = positionSlot[index];
-                    board.SetSlots(cardGO1);
-                    break;
-                case(OPTIONS.KNIGHTSHIELD):
-                    var GO3 = Instantiate(knightShieldPrefab, board.transform);
-                    var cardGO3 = GO3.GetComponent<Card>();
-                    cardGO3.PositionOnBoard = positionSlot[index];
-                    board.SetSlots(cardGO3);
-                    break;
-                case(OPTIONS.MONSTER):
-                    var GO2 = Instantiate(monsterPrefab, board.transform);
-                    var cardGO2 = GO2.GetComponent<Card>();
-                    cardGO2.PositionOnBoard = positionSlot[index];
-                    board.SetSlots(cardGO2);
-                    break;
-                case(OPTIONS.MINIMONSTER):
-                    var GO4 = Instantiate(monsterPrefab, board.transform);
-                    var cardGO4 = GO4.GetComponent<Card>();
-                    cardGO4.PositionOnBoard = positionSlot[index];
-                    board.SetSlots(cardGO4);
-                    break;
-                case(OPTIONS.CAULDRON):
-                    var GO5 = Instantiate(cauldronPrefab, board.transform);
-                    var cardGO5 = GO5.GetComponent<Card>();
-                    cardGO5.PositionOnBoard = positionSlot[index];
-                    board.SetSlots(cardGO5);
-                    break;
+                case(OPTIONS.HUMAN): SpawnPrefab(humanPrefab, index); break;
+                case(OPTIONS.KNIGHTSWORD): SpawnPrefab(knightSwordPrefab, index); break;
+                case(OPTIONS.KNIGHTSHIELD): SpawnPrefab(knightShieldPrefab, index); break;
+                case(OPTIONS.MONSTER): SpawnPrefab(monsterPrefab, index); break;
+                case(OPTIONS.MINIMONSTER): SpawnPrefab(miniMonsterPrefab, index); break;
+                case(OPTIONS.CAULDRON): SpawnPrefab(cauldronPrefab, index); break;
             }
             index++;
         }
     }
 
+    void SpawnPrefab(GameObject prefab, int index)
+    {
+        var GO = Instantiate(prefab, board.transform);
+        var cardGO = GO.GetComponent<Card>();
+        cardGO.PositionOnBoard = positionSlot[index];
+        board.SetSlots(cardGO);
+    }
+    
     /// <summary>
     /// Save a new level in level database
     /// </summary>
     void SaveLevel()
     {
+        levelId = _levelDatabase.levelList.Count;
+
         List<Vector2Int> allPosition = new List<Vector2Int>(){ 
             new (-1,-1),new (-1,-1),new (-1,-1),
             new (-1,-1),new (-1,-1),new (-1,-1),
