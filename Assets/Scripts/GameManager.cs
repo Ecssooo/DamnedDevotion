@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelDatabase _levelDatabase;
     public LevelDatabase LevelDatabase {get => _levelDatabase; }
 
+    [SerializeField] private ListAction _listAction;
+    public ListAction ListActions { get => _listAction; }
+
     private static GameManager _instance;
 
     public static GameManager Instance { get => _instance; }
