@@ -95,6 +95,9 @@ public class LevelMaker : EditorWindow
         GUILayout.Label("Board",EditorStyles.boldLabel);
         EditorGUILayout.Space();
         int index = 0;
+        
+        
+        
         for (int i = 1; i <= 4; i++)
         {
             EditorGUILayout.BeginHorizontal();
@@ -105,6 +108,9 @@ public class LevelMaker : EditorWindow
             }
             EditorGUILayout.EndHorizontal();
         }
+        
+        
+        
         
         EditorGUILayout.Space(20);
         //Buttons
