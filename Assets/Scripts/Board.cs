@@ -241,13 +241,4 @@ public class Board : MonoBehaviour
         }
         return position;
     }
-    
-    
-    private void Start()
-    {
-        InitSlotTab();
-        SetLevel(GameManager.Instance.LevelDatabase.levelList[1]);
-        //MoveCard(_board[0, 0], new(0,1));
-        SwitchCard(_board[0,0], _board[0,1]);
-    }
 }
