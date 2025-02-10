@@ -2,6 +2,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction
+{
+    Right,
+    Left,
+    Top,
+    Down
+}
+
+
 public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
@@ -126,5 +135,110 @@ public class Board : MonoBehaviour
         
         return direction;
     }
+
+
+    /// <summary>
+    /// Get card in slot close
+    /// </summary>
+    /// <param name="position">Initial position</param>
+    /// <param name="direction">Direction</param>
+    /// <returns></returns>
+    public Card GetCardClose(Vector2Int position, Direction direction)
+    {
+        Card card = null;
+        switch (direction)
+        {
+            case(Direction.Right):
+                if (PositionInBounds(position + Vector2Int.right))
+                {
+                    card = _board[position.x + Vector2Int.right.x, position.y + Vector2Int.right.y];
+                }
+                break;
+            case(Direction.Left):
+                if (PositionInBounds(position + Vector2Int.left))
+                {
+                    card = _board[position.x + Vector2Int.left.x, position.y + Vector2Int.left.y];
+                }
+                break;
+            case(Direction.Top):
+                if (PositionInBounds(position + Vector2Int.up))
+                {
+                    card = _board[position.x + Vector2Int.up.x, position.y + Vector2Int.up.y];
+                }
+                break;
+            case(Direction.Down):
+                if (PositionInBounds(position + Vector2Int.down))
+                {
+                    card = _board[position.x + Vector2Int.down.x, position.y + Vector2Int.down.y];
+                }
+                break;
+        }
+
+        return card;
+    }
+
+    /// <summary>
+    ///  Check if slot is empty
+    /// </summary>
+    /// <param name="newPos"></param>
+    /// <returns></returns>
+    public bool SlotEmpty(Vector2Int newPos)
+    {
+        return _board[newPos.x, newPos.y] == null;
+    }
     
+    /// <summary>
+    ///  Move card to slots
+    /// </summary>
+    /// <param name="card"></param>
+    /// <param name="newPos"></param>
+    public void MoveCard(Card card, Vector2Int newPos)
+    {
+        if (PositionInBounds(newPos) && SlotEmpty(newPos))
+        {
+            card.PositionOnBoard = newPos;
+            SetSlots(card);
+        }
+    }
+
+    /// <summary>
+    /// Switch card position
+    /// </summary>
+    /// <param name="c1">First card</param>
+    /// <param name="c2">Second card</param>
+    public void SwitchCard(Card c1, Card c2)
+    {
+        if (c1 == null || c2 == null) return;
+        Vector2Int temp = c1.PositionOnBoard;
+        c1.PositionOnBoard = c2.PositionOnBoard;
+        c2.PositionOnBoard = temp;
+        SetSlots(c1);
+        SetSlots(c2);
+    }
+    
+    /// <summary>
+    ///  Get position
+    /// </summary>
+    /// <param name="position">Initial position</param>
+    /// <param name="direction">Direction position you want</param>
+    /// <returns></returns>
+    public Vector2Int GetPositionNextTo(Vector2Int position, Direction direction)
+    {
+        switch (direction)
+        {
+            case(Direction.Right):
+                if (PositionInBounds(position + Vector2Int.right)) { return position + Vector2Int.right; }
+                break;
+            case(Direction.Left):
+                if (PositionInBounds(position + Vector2Int.left)) { return position + Vector2Int.left; }
+                break;
+            case(Direction.Top):
+                if (PositionInBounds(position + Vector2Int.up)) { return position + Vector2Int.up; }
+                break;
+            case(Direction.Down):
+                if (PositionInBounds(position + Vector2Int.down)) { return position + Vector2Int.down; }
+                break;
+        }
+        return position;
+    }
 }
