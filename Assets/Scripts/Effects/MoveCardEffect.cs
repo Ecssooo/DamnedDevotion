@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class MoveCardEffect : MonoBehaviour
+public class MoveCardEffect : Effect
 {
     private Vector2 _firstMousePos;
     private Vector2 _lastMousePos;
@@ -37,5 +37,10 @@ public class MoveCardEffect : MonoBehaviour
         this._collider2D.enabled = true;
 
         Debug.Log(_moveCardDir);
+    }
+
+    public override void DoEffect()
+    {
+        
     }
 }

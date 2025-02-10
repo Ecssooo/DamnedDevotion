@@ -21,6 +21,12 @@ public class Effect : MonoBehaviour
         }
     }
 
+    public virtual void DoEffect()
+    {
+        
+    }
+    
+    
     #region Drag and Drop
 
     private void OnMouseDrag()
