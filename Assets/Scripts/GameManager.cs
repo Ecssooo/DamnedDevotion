@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Board _board;
+    public Board Board { get => _board; }
+
+    [SerializeField] private LevelDatabase _levelDatabase;
+    public LevelDatabase LevelDatabase {get => _levelDatabase; }
 
     private static GameManager _instance;
 
