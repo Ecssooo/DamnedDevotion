@@ -20,32 +20,36 @@ using UnityEngine;
 
     public void Attack()
     {
+        RaycastHit2D hit2d = new RaycastHit2D(); // Initialize hit2d
         switch (_attackDir)
         {
             case AttackDirection.UP:
                 _attackDirection = Vector3.up;
+                hit2d = Physics2D.Raycast(
+                    new Vector3(transform.position.x, transform.position.y + transform.localScale.y / 2, transform.position.z), 
+                    _attackDirection);
                 break;
             case AttackDirection.DOWN:
                 _attackDirection = Vector3.down;
+                hit2d = Physics2D.Raycast(transform.position, _attackDirection);
                 break;
             case AttackDirection.LEFT:
                 _attackDirection = Vector3.left;
+                hit2d = Physics2D.Raycast(transform.position, _attackDirection);
                 break;
             case AttackDirection.RIGHT:
                 _attackDirection = Vector3.right;
+                hit2d = Physics2D.Raycast(transform.position, _attackDirection);
                 break;
         }
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, _attackDirection);
-        this.GetComponent<BoxCollider2D>().enabled = true;
         Debug.DrawRay(transform.position, _attackDirection * 1.5f, Color.black, 1f);
-        Debug.Log(hit.collider);
-        if (hit.collider != null && hit.collider.CompareTag("Human"))
+        Debug.Log(hit2d.collider);
+        if (hit2d.collider != null && hit2d.collider.CompareTag("Human"))
         {
-            Human human = hit.collider.GetComponent<Human>();
+            Human human = hit2d.collider.GetComponent<Human>();
             if (human != null)
             {
-                Destroy(hit.collider.gameObject);
+                Destroy(hit2d.collider.gameObject);
                 human.OnDie();
             }
         }

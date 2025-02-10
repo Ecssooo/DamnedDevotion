@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionOnBoard: {x: 0, y: 0}
+  MoveCardEffect: {fileID: 0}
   _value: 2
   _attackDir: 0
 --- !u!61 &8767448346797023056
