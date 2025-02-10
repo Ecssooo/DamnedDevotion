@@ -2353,7 +2353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86d9144b62fe27b4690b0c5ccbe18e66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 1528173834}
 --- !u!212 &1333660993
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2654,7 +2653,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1528173835}
   - component: {fileID: 1528173834}
-  - component: {fileID: 1528173833}
   m_Layer: 0
   m_Name: Boards
   m_TagString: Untagged
@@ -2662,19 +2660,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1528173833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528173832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158b66ff77a735f4a9e3de43d5a2c413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levelList: []
 --- !u!114 &1528173834
 MonoBehaviour:
   m_ObjectHideFlags: 0
