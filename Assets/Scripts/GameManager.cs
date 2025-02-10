@@ -7,44 +7,64 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI levelCountText;
-    [SerializeField] private TextMeshProUGUI ActionCountText;
 
-    private int actionCount;
+    [SerializeField] private Board _board;
 
-    private int mogscore;
+    private static GameManager _instance;
 
-    private Vector2 cardposition;
+    public static GameManager Instance { get => _instance; }
 
-    private bool Win = false;
-
-    void Start()
+    public void Awake()
     {
-        UpdateLevelCountText();
-    }
-
-    void Update()
-    {
-
-    }
-
-    private void UpdateLevelCountText()
-    {
-        // Level level = new Level(new List<Card>());
-        if (Win==true)
+        if (!_instance)
         {
-            //level.level++;
+            _instance = this;
         }
-        if (levelCountText != null)
+        else
         {
-            // levelCountText.text = "Level: " + level.level;
+            Destroy(gameObject);
         }
     }
 
-    private void Reset()
-    {
-        // Level level = new Level(new List<Card>());
-        // actionCount = level.maxActionCount;
-        // mogscore = level.maxScore;
-    }
+
+    // [SerializeField] private TextMeshProUGUI levelCountText;
+    // [SerializeField] private TextMeshProUGUI ActionCountText;
+    //
+    // private int actionCount;
+    //
+    // private int mogscore;
+    //
+    // private Vector2 cardposition;
+    //
+    // private bool Win = false;
+    //
+    // void Start()
+    // {
+    //     UpdateLevelCountText();
+    // }
+    //
+    // void Update()
+    // {
+    //
+    // }
+    //
+    // private void UpdateLevelCountText()
+    // {
+    //     // Level level = new Level(new List<Card>());
+    //     if (Win==true)
+    //     {
+    //         //level.level++;
+    //     }
+    //     if (levelCountText != null)
+    //     {
+    //         // levelCountText.text = "Level: " + level.level;
+    //     }
+    // }
+    //
+    // private void Reset()
+    // {
+    //     // Level level = new Level(new List<Card>());
+    //     // actionCount = level.maxActionCount;
+    //     // mogscore = level.maxScore;
+    // }
 }
