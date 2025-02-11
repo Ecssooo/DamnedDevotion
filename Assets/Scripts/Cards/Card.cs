@@ -10,18 +10,12 @@ public class Card : MonoBehaviour
         set { _positionOnBoard = value; }
     }
 
-
-    void Start()
-    {
-        PositionOnBoard = new Vector2Int((int)transform.position.x, (int)transform.position.y);
-    }
-
     protected virtual void OnMouseDown()
     {
-        if (EffectList.MoveCard)
-        {
-            // Afficher Flèches
-            StartCoroutine(MoveCardEffect._moveCardCoroutine());
-        }
+        //if (EffectList.MoveCard)
+        //{
+        //    // Afficher Flèches
+        //    StartCoroutine(MoveCardEffect._moveCardCoroutine());
+        //}
     }
 }
