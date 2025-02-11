@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class EffectActions : MonoBehaviour
 {
-    #region Action
     private static EffectActions _instance;
 
     public static EffectActions Instance { get => _instance; }
 
+    private Vector2 _firstMousePos;
+    private Vector2 _lastMousePos;
+    private Direction _moveCardDir;
+    protected Collider2D _collider2D;
     public void Awake()
     {
         if (!_instance)
@@ -20,6 +23,10 @@ public class EffectActions : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        _collider2D = GetComponent<Collider2D>();
+    }
 
 
     private IEnumerator GetActionCoroutine(Collider2D effectClicked, System.Action<Action> callback)
@@ -36,9 +43,7 @@ public class EffectActions : MonoBehaviour
         action._effect = effect;
 
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>() ?? throw new System.Exception("No card found");
-        #region experimental
-
+        Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>();
         _firstMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
         _lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -58,17 +63,12 @@ public class EffectActions : MonoBehaviour
                 _moveCardDir = Direction.Down;
                 break;
         }
-        //this._collider2D.enabled = false;
-        ////RaycastHit2D hit = Physics2D.Raycast(transform.position, _moveCardDir);
-        //this._collider2D.enabled = true;
+
 
         Debug.Log(_moveCardDir);
         action._direction = _moveCardDir;
 
-        #endregion
-
-
-        action._card = card;
+        if (card != null) action._card = card;
         callback?.Invoke(action);
     }
     public void StartGetActionCoroutine(Collider2D effectClicked, System.Action<Action> callback)
@@ -78,17 +78,27 @@ public class EffectActions : MonoBehaviour
             Debug.Log(action._effect);
             Debug.Log(action._card);
             Debug.Log(action._direction);
+            DoEffect(action);
+            EffectList.Effects = Effects.None;
         }));
     }
-    #endregion
 
-    private Vector2 _firstMousePos;
-    private Vector2 _lastMousePos;
-    private Direction _moveCardDir;
-    protected Collider2D _collider2D;
-
-    private void Start()
+    public void DoEffect(Action action)
     {
-        _collider2D = GetComponent<Collider2D>();
+        switch (action._effect)
+        {
+            case Effects.Move:
+
+                Debug.Log(action._card.PositionOnBoard);
+                Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
+                Debug.Log(newPos);
+
+                Debug.Log("newPos is free");
+                GameManager.Instance.Board.MoveCard(action._card, newPos);
+
+                break;
+            case Effects.Swap:
+                break;
+        }
     }
 }

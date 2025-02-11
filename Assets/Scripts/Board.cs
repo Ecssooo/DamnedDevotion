@@ -227,16 +227,17 @@ public class Board : MonoBehaviour
         switch (direction)
         {
             case(Direction.Right):
-                if (PositionInBounds(position + Vector2Int.right)) { return position + Vector2Int.right; }
-                break;
-            case(Direction.Left):
-                if (PositionInBounds(position + Vector2Int.left)) { return position + Vector2Int.left; }
-                break;
-            case(Direction.Top):
+                //if (PositionInBounds(position + Vector2Int.right)) { return position + Vector2Int.right; }
                 if (PositionInBounds(position + Vector2Int.up)) { return position + Vector2Int.up; }
                 break;
-            case(Direction.Down):
+            case(Direction.Left):
                 if (PositionInBounds(position + Vector2Int.down)) { return position + Vector2Int.down; }
+                break;
+            case(Direction.Top):
+                if (PositionInBounds(position + Vector2Int.left)) { return position + Vector2Int.left; }
+                break;
+            case(Direction.Down):
+                if (PositionInBounds(position + Vector2Int.right)) { return position + Vector2Int.right; }
                 break;
         }
         return position;

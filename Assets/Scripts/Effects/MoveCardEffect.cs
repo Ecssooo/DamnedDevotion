@@ -5,7 +5,7 @@ public enum Effects
 {
     Move,
     Swap,
-
+    None
 }
 
 public class MoveCardEffect : Effect
