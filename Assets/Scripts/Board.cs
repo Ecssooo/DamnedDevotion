@@ -114,6 +114,7 @@ public class Board : MonoBehaviour
     /// Null if not</returns>
     Vector2Int[] DirectionAvailable(Vector2Int position)
     {
+        InitSlotTab();
         Vector2Int[] direction = new Vector2Int[4]; 
         
         if (PositionInBounds(position + Vector2Int.right))
@@ -145,6 +146,7 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public Card GetCardClose(Vector2Int position, Direction direction)
     {
+        InitSlotTab();
         Card card = null;
         switch (direction)
         {
@@ -184,6 +186,7 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public bool SlotEmpty(Vector2Int newPos)
     {
+        InitSlotTab();
         return _board[newPos.x, newPos.y] == null;
     }
     
@@ -194,6 +197,7 @@ public class Board : MonoBehaviour
     /// <param name="newPos"></param>
     public void MoveCard(Card card, Vector2Int newPos)
     {
+        InitSlotTab();
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
             card.PositionOnBoard = newPos;
@@ -224,6 +228,7 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public Vector2Int GetPositionNextTo(Vector2Int position, Direction direction)
     {
+        InitSlotTab();
         switch (direction)
         {
             case(Direction.Right):
