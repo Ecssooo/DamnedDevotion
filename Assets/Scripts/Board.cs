@@ -213,17 +213,12 @@ public class Board : MonoBehaviour
     public void SwitchCard(Card c1, Card c2)
     {
         if (c1 == null || c2 == null) return;
-
-        Debug.Log($"Switching cards: {c1.name} and {c2.name}");
-
         Vector2Int temp = c1.PositionOnBoard;
         c1.PositionOnBoard = c2.PositionOnBoard;
         c2.PositionOnBoard = temp;
 
         SetSlots(c1);
         SetSlots(c2);
-
-        Debug.Log($"Switched positions: {c1.PositionOnBoard} and {c2.PositionOnBoard}");
     }
     
     /// <summary>

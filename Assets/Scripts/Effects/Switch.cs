@@ -5,20 +5,16 @@ public class Switch : MonoBehaviour
     private static Card _firstCard;
     private static Card _secondCard;
 
-    private void OnMouseUp()
+    private void OnMouseDown()
     {
-        Vector2 mousePosition = GetMousePosition();
-        Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
-        if (hitCollider != null)
+        if (enabled)
         {
-            Card clickedCard = hitCollider.GetComponentInParent<Card>();
-            if (clickedCard != null)
+            Vector2 mousePosition = GetMousePosition();
+            Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
+            if (hitCollider != null)
             {
-                if (name == "Cauldron(Clone)")
-                {
-                    return;
-                }
-                else
+                Card clickedCard = hitCollider.GetComponentInParent<Card>();
+                if (clickedCard != null)
                 {
                     if (_firstCard == null)
                     {
