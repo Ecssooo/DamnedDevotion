@@ -43,7 +43,6 @@ using UnityEngine;
                 break;
         }
         Debug.DrawRay(transform.position, _attackDirection * 1.5f, Color.black, 1f);
-        Debug.Log(hit2d.collider);
         if (hit2d.collider != null && hit2d.collider.CompareTag("Human"))
         {
             Human human = hit2d.collider.GetComponent<Human>();

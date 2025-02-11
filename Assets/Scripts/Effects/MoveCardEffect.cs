@@ -1,6 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+public enum Effects
+{
+    Move,
+    Swap,
+
+}
+
 public class MoveCardEffect : Effect
 {
     private Vector2 _firstMousePos;
@@ -38,6 +45,36 @@ public class MoveCardEffect : Effect
 
         Debug.Log(_moveCardDir);
     }
+
+    // 1 coroutine  -> when click on effect (get Enum ActionType)
+
+    public IEnumerator GetActionCoroutine(Collider2D effectClicked, System.Action<Action> callback)
+    {
+        Action action = new Action();
+        if (effectClicked == null)
+        {
+            yield break;
+        }
+
+        Effects effect = effectClicked.gameObject.GetComponent<Effect>().Effet;
+        
+        action._effect = effect;
+
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+
+        Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>() ?? throw new System.Exception("No card found");
+
+        action._card = card;
+        Debug.Log(card);
+        callback?.Invoke(action);
+    }
+
+
+
+    // wait until click on card (get Card CardType)
+    // Return Effect + Card
+    // if works
+    // Add direction detection and movement (use GameManager Methods)
 
     public override void DoEffect()
     {

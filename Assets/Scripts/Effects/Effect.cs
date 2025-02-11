@@ -4,6 +4,8 @@ public class Effect : MonoBehaviour
 {
     protected CircleCollider2D _circleCollider2D;
     private Vector3 _lastMousePos;
+    [SerializeField] protected Effects _effect;
+    public Effects Effet { get => _effect; }
 
     private bool _isDragging = false;
     private bool _hasDragged = false;
@@ -17,7 +19,7 @@ public class Effect : MonoBehaviour
     {
         if (!_isDragging && _hasDragged)
         {
-            transform.position = Vector3.Lerp(transform.position, _lastMousePos, .25f);
+            //transform.position = Vector3.Lerp(transform.position, _lastMousePos, .25f);
         }
     }
 
@@ -25,14 +27,27 @@ public class Effect : MonoBehaviour
     {
         
     }
-    
-    
+    private void OnMouseDown()
+    {
+        switch (_effect)
+        {
+            case Effects.Move:
+                EffectList.MoveCard = true;
+                EffectList.Effects = Effects.Move;
+                break;
+            case Effects.Swap:
+                EffectList.SwapCard = true;
+                EffectList.Effects = Effects.Swap;
+                break;
+        }
+    }
+
     #region Drag and Drop
 
     private void OnMouseDrag()
     {
         _isDragging = true;
-        transform.position = Vector3.Lerp(transform.position, GetMousePos(), .25f);
+        //transform.position = Vector3.Lerp(transform.position, GetMousePos(), .25f);
         _lastMousePos = GetMousePos();
         _hasDragged = true;
     }

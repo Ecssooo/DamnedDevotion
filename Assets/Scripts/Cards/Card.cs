@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -21,7 +22,15 @@ public class Card : MonoBehaviour
         if (EffectList.MoveCard)
         {
             // Afficher Flèches
-            StartCoroutine(MoveCardEffect._moveCardCoroutine());
+            Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            //StartCoroutine(MoveCardEffect.GetActionCoroutine(effectClicked, (action) =>
+            //{
+            //    Debug.Log(action._effect);
+            //    Debug.Log(action._card);
+            //    //GameManager.Instance.ListActions.ListActions.Add(action);
+            //    //Debug.Log(GameManager.Instance.ListActions.ListActions);
+            //}));
+            EffectActions.Instance.StartGetActionCoroutine(effectClicked, (action) => { });
         }
     }
 }
