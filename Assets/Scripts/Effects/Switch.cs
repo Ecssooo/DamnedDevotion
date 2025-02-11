@@ -14,17 +14,24 @@ public class Switch : MonoBehaviour
             Card clickedCard = hitCollider.GetComponentInParent<Card>();
             if (clickedCard != null)
             {
-                if (_firstCard == null)
+                if (name == "Cauldron(Clone)")
                 {
-                    _firstCard = clickedCard;
+                    return;
                 }
-                else if (_secondCard == null)
+                else
                 {
-                    _secondCard = clickedCard;
-                    GameManager.Instance.Board.SwitchCard(_firstCard, _secondCard);
-                    Debug.Log("Switched");
-                    _firstCard = null;
-                    _secondCard = null;
+                    if (_firstCard == null)
+                    {
+                        _firstCard = clickedCard;
+                    }
+                    else if (_secondCard == null)
+                    {
+                        _secondCard = clickedCard;
+                        GameManager.Instance.Board.SwitchCard(_firstCard, _secondCard);
+                        Debug.Log("Switched");
+                        _firstCard = null;
+                        _secondCard = null;
+                    }
                 }
             }
         }
