@@ -221,6 +221,7 @@ public class Board : MonoBehaviour
         Vector2Int temp = c1.PositionOnBoard;
         c1.PositionOnBoard = c2.PositionOnBoard;
         c2.PositionOnBoard = temp;
+
         SetSlots(c1);
         SetSlots(c2);
     }

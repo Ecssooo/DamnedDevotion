@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public Board Board { get => _board; }
 
     [SerializeField] private LevelDatabase _levelDatabase;
-    public LevelDatabase LevelDatabase {get => _levelDatabase; }
+    public LevelDatabase LevelDatabase { get => _levelDatabase; }
 
     [SerializeField] private ListAction _listAction;
     public ListAction ListActions { get => _listAction; }
