@@ -1,43 +1,38 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-    public class SwordedKnight : Card
+public class SwordedKnight : Card
 {
-    public enum AttackDirection
-    {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-    }
 
     [SerializeField] int _value;
     public int Value
     {
         get { return _value; }
     }
-    [SerializeField] private AttackDirection _attackDir;
+    // [FormerlySerializedAs("_attackDir")] [SerializeField] private Direction dir;
+    // public Direction Dir { get => dir; set => dir = value; }
     private Vector3 _attackDirection;
 
     public void Attack()
     {
         RaycastHit2D hit2d = new RaycastHit2D(); // Initialize hit2d
-        switch (_attackDir)
+        switch (Direction)
         {
-            case AttackDirection.UP:
+            case Direction.UP:
                 _attackDirection = Vector3.up;
                 hit2d = Physics2D.Raycast(
                     new Vector3(transform.position.x, transform.position.y + transform.localScale.y / 2, transform.position.z), 
                     _attackDirection);
                 break;
-            case AttackDirection.DOWN:
+            case Direction.DOWN:
                 _attackDirection = Vector3.down;
                 hit2d = Physics2D.Raycast(transform.position, _attackDirection);
                 break;
-            case AttackDirection.LEFT:
+            case Direction.LEFT:
                 _attackDirection = Vector3.left;
                 hit2d = Physics2D.Raycast(transform.position, _attackDirection);
                 break;
-            case AttackDirection.RIGHT:
+            case Direction.RIGHT:
                 _attackDirection = Vector3.right;
                 hit2d = Physics2D.Raycast(transform.position, _attackDirection);
                 break;
