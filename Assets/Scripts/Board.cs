@@ -88,6 +88,7 @@ public class Board : MonoBehaviour
     public void SetLevel(Level level)
     {
         InitSlotTab();
+        ResetBoard();
         foreach (var card in level.CardsList)
         {
             SetSlots(card);
@@ -154,27 +155,27 @@ public class Board : MonoBehaviour
         switch (direction)
         {
             case(Direction.RIGHT):
-                if (PositionInBounds(position + Vector2Int.right))
+                if (PositionInBounds(position + new Vector2Int(0, 1)))
                 {
-                    card = _board[position.x + Vector2Int.right.x, position.y + Vector2Int.right.y];
+                    card = _board[position.x + 0, position.y + 1];
                 }
                 break;
             case(Direction.LEFT):
-                if (PositionInBounds(position + Vector2Int.left))
+                if (PositionInBounds(position + new Vector2Int (0, -1)))
                 {
-                    card = _board[position.x + Vector2Int.left.x, position.y + Vector2Int.left.y];
+                    card = _board[position.x, position.y - 1];
                 }
                 break;
             case(Direction.UP):
-                if (PositionInBounds(position + Vector2Int.up))
+                if (PositionInBounds(position + new Vector2Int (-1, 0)))
                 {
-                    card = _board[position.x + Vector2Int.up.x, position.y + Vector2Int.up.y];
+                    card = _board[position.x - 1, position.y ];
                 }
                 break;
             case(Direction.DOWN):
-                if (PositionInBounds(position + Vector2Int.down))
+                if (PositionInBounds(position + new Vector2Int (1, 0)))
                 {
-                    card = _board[position.x + Vector2Int.down.x, position.y + Vector2Int.down.y];
+                    card = _board[position.x + 1, position.y ];
                 }
                 break;
         }
@@ -236,18 +237,23 @@ public class Board : MonoBehaviour
         switch (direction)
         {
             case(Direction.RIGHT):
-                if (PositionInBounds(position + Vector2Int.right)) { return position + new Vector2Int(0,1); }
+                if (PositionInBounds(position + new Vector2Int(0, 1))) { return position + new Vector2Int(0,1); }
                 break;
             case(Direction.LEFT):
-                if (PositionInBounds(position + Vector2Int.left)) { return position + new Vector2Int(0,-1); }
+                if (PositionInBounds(position + new Vector2Int(0, -1))) { return position + new Vector2Int(0,-1); }
                 break;
             case(Direction.UP):
-                if (PositionInBounds(position + Vector2Int.up)) { return position +new Vector2Int(-1,0); }
+                if (PositionInBounds(position + new Vector2Int(-1, 0))) { return position +new Vector2Int(-1,0); }
                 break;
             case(Direction.DOWN):
-                if (PositionInBounds(position + Vector2Int.down)) { return position + new Vector2Int(1,0); }
+                if (PositionInBounds(position + new Vector2Int(1, 0))) { return position + new Vector2Int(1,0); }
                 break;
         }
         return position;
+    }
+
+    private void Start()
+    {
+        SetLevel(_levelDatabase.levelList[2]);
     }
 }

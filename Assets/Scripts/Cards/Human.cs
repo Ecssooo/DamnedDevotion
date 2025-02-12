@@ -12,10 +12,10 @@ public class Human : Card
         // find GameManager
     }
 
-    public void OnDie()
-    {
-        // add _value to GameManager
-        Debug.Log("Human died");
-        _value = 0;
-    }
+    //public void OnDie()
+    //{
+    //    // add _value to GameManager
+    //    Debug.Log("Human died");
+    //    _value = 0;
+    //}
 }

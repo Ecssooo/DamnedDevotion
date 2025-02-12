@@ -125,6 +125,7 @@ public class LevelMaker : EditorWindow
     /// </summary>
     void ApplyLevel()
     {
+        board.ResetBoard();
         board.InitSlotTab();
         int index = 0;
         foreach (var perso in persos)

@@ -33,6 +33,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        EffectList.Effects = Effects.None;
+        EffectList.MoveCard = false;
+        EffectList.SwapCard = false;
+
+    }
+
 
     // [SerializeField] private TextMeshProUGUI levelCountText;
     // [SerializeField] private TextMeshProUGUI ActionCountText;

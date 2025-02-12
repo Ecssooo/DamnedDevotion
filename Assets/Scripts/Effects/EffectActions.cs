@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectActions : MonoBehaviour
@@ -11,6 +12,16 @@ public class EffectActions : MonoBehaviour
     private Vector2 _lastMousePos;
     private Direction _moveCardDir;
     protected Collider2D _collider2D;
+
+
+    public struct UndoWrapper
+    {
+        public System.Action<bool, int> act;
+        public int value;
+    }
+
+    public List<UndoWrapper> _acts = new();
+    
     public void Awake()
     {
         if (!_instance)
@@ -26,8 +37,44 @@ public class EffectActions : MonoBehaviour
     private void Start()
     {
         _collider2D = GetComponent<Collider2D>();
+
+        UndoWrapper uw = new()
+        {
+            act = (bool b, int i) => PlayerAction(true, i),
+            value = 1
+        };
+        _acts.Add(uw);
     }
 
+    public void OnUndo()
+    {
+        _acts[^1].act.Invoke(true, _acts[^1].value);
+        _acts.Remove(_acts[^1]);
+    }
+
+    public void PlayerAction(bool isUndo, int value)
+    {
+
+        if(isUndo) {
+            Debug.Log("Undo");
+            RemoveToken(value);
+        }
+        else
+        {
+            Debug.Log("Add");
+            AddToken(0);
+        }
+    }
+
+    private void AddToken(int idToken)
+    {
+        
+    }
+    
+    private void RemoveToken(int idToken)
+    {
+
+    }
 
     private IEnumerator GetActionCoroutine(Collider2D effectClicked, System.Action<Action> callback)
     {
@@ -62,7 +109,8 @@ public class EffectActions : MonoBehaviour
                 _moveCardDir = Direction.DOWN;
                 break;
         }
-
+        
+        Debug.Log(_moveCardDir);
         action._direction = _moveCardDir;
 
         if (card != null) action._card = card;
@@ -85,7 +133,7 @@ public class EffectActions : MonoBehaviour
                 if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster")) return;
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
 
-                Debug.Log("newPos is free");
+                Debug.Log("newPos is : " + newPos);
                 GameManager.Instance.Board.MoveCard(action._card, newPos);
 
                 break;
