@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Board : MonoBehaviour
 {
@@ -249,5 +250,20 @@ public class Board : MonoBehaviour
                 break;
         }
         return position;
+    }
+
+    public void ClearSlot(Card card)
+    {
+        if(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].childCount > 0) DestroyImmediate(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].GetChild(0).gameObject);
+        _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
+    }
+    
+    public void ClearSlot(Vector2Int position)
+    {
+        if (PositionInBounds(position))
+        {
+            if(_slotsTab[position.x, position.y].childCount > 0) DestroyImmediate(_slotsTab[position.x, position.y].GetChild(0).gameObject);
+            _board[position.x, position.y] = null;
+        }
     }
 }
