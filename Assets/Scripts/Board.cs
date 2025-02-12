@@ -41,15 +41,6 @@ public class Board : MonoBehaviour
             if (card == null) return;
             ClearSlot(card);
         }
-        
-        // for (int i = 0; i < _board.GetLength(0); i++)
-        // {
-        //     for (int j = 0; j < _board.GetLength(1); j++)
-        //     {
-        //         _board[i,j] = null;
-        //         if(_slotsTab[i,j].childCount > 0) DestroyImmediate(_slotsTab[i, j].GetChild(0).gameObject);
-        //     }
-        // }
     }
 
     
