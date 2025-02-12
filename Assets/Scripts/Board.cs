@@ -203,6 +203,7 @@ public class Board : MonoBehaviour
         InitSlotTab();
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
             SetSlots(card);
         }
