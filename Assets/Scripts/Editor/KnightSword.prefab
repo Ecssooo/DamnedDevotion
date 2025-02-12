@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1371991578835781069}
   - component: {fileID: 7330542236511719761}
-  - component: {fileID: 240046275366504090}
+  - component: {fileID: 131379025887166817}
   m_Layer: 0
   m_Name: KnightSword
   m_TagString: Untagged
@@ -88,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &240046275366504090
+--- !u!114 &131379025887166817
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,8 +97,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8533776778481682274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bc0867ff3ecc8f4ab48088736e8705a, type: 3}
+  m_Script: {fileID: 11500000, guid: 89b6d221ac395d94594de0075c4248ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionOnBoard: {x: 0, y: 1}
+  _positionOnBoard: {x: 0, y: 0}
   MoveCardEffect: {fileID: 0}
+  _value: 0
+  _attackDir: 0
