@@ -8,7 +8,7 @@ public class Card : MonoBehaviour
     public CardType CardType
     {
         get { return _cardType; }
-    }
+    }   
 
     [Tooltip("None if anything other than KnightSword")]
     [SerializeField] private Direction _direction;
@@ -30,13 +30,42 @@ public class Card : MonoBehaviour
         get { return _positionOnBoard; }
         set { _positionOnBoard = value; }
     }
-     protected virtual void OnMouseDown() { 
-        DoAction();
-        // Afficher Flèches
+     private  void OnMouseDown() {
+
+        switch(GameManager.Instance.Effect)
+        {
+            case Effects.None:
+                break;
+            case Effects.Move:
+                Action moveAction = EffectActions.Instance.CreateAction(this);
+                EffectActions.Instance.DoEffect(moveAction);
+                break;
+            case Effects.Switch:
+                Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>();
+                if (card == null) return;
+                if (EffectActions.Instance._swapFirstCard == null)
+                {
+                    EffectActions.Instance._swapFirstCard = card;
+                }
+                else
+                {
+                    EffectActions.Instance._swapSecondCard = card;
+                }
+                Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
+                EffectActions.Instance.DoEffect(switchAction);
+                break;
+        }
+
+        //Action action = EffectActions.Instance.CreateAction(this);
+        //EffectActions.Instance.DoEffect(action);  
+
+        //DoEndOfTurnActions();
+
         Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        EffectActions.Instance.StartGetActionCoroutine(effectClicked, (action) => { });
+        //EffectActions.Instance.StartGetActionCoroutine(effectClicked, (action) => { });
+        
     }
-    private void DoAction() // To use at end of turn to make Knights attack
+    private void DoEndOfTurnActions() // To use at end of turn to make Knights attack
     {
         switch(CardType)
         {

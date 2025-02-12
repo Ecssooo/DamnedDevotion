@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ListAction _listAction;
     public ListAction ListActions { get => _listAction; }
 
+    [SerializeField] private Effects _effect;
+    public Effects Effect
+    {
+        get => _effect;
+        set => _effect = value;
+    }
+
     private static GameManager _instance;
 
     public static GameManager Instance { get => _instance; }
