@@ -7,6 +7,8 @@ TagManager:
   - Human
   - SwordedKnight
   - Cauldron
+  - Monster
+  - ShieldedKnight
   layers:
   - Default
   - TransparentFX
