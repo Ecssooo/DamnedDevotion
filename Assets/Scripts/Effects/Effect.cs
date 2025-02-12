@@ -32,6 +32,12 @@ public class Effect : MonoBehaviour
         switch (_effect)
         {
             case Effects.Move:
+                //if (EffectList.MoveCard)
+                //{
+                //    EffectList.MoveCard = false;
+                //    EffectList.Effects = Effects.None;
+                //    return;
+                //}
                 EffectList.MoveCard = true;
                 EffectList.Effects = Effects.Move;
                 break;

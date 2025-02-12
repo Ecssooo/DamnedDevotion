@@ -36,7 +36,6 @@ public class EffectActions : MonoBehaviour
         {
             yield break;
         }
-        Debug.Log(effectClicked);
 
         Effects effect = EffectList.Effects;
 
@@ -51,21 +50,19 @@ public class EffectActions : MonoBehaviour
         switch (angle)
         {
             case float a when a >= -45 && a < 45:
-                _moveCardDir = Direction.Right;
+                _moveCardDir = Direction.RIGHT;
                 break;
             case float a when a >= 45 && a < 135:
-                _moveCardDir = Direction.Top;
+                _moveCardDir = Direction.UP;
                 break;
             case float a when a >= 135 || a < -135:
-                _moveCardDir = Direction.Left;
+                _moveCardDir = Direction.LEFT;
                 break;
             case float a when a >= -135 && a < -45:
-                _moveCardDir = Direction.Down;
+                _moveCardDir = Direction.DOWN;
                 break;
         }
 
-
-        Debug.Log(_moveCardDir);
         action._direction = _moveCardDir;
 
         if (card != null) action._card = card;
@@ -75,9 +72,6 @@ public class EffectActions : MonoBehaviour
     {
         StartCoroutine(GetActionCoroutine(effectClicked, (action) =>
         {
-            Debug.Log(action._effect);
-            Debug.Log(action._card);
-            Debug.Log(action._direction);
             DoEffect(action);
             EffectList.Effects = Effects.None;
         }));
@@ -89,9 +83,7 @@ public class EffectActions : MonoBehaviour
         {
             case Effects.Move:
                 if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster")) return;
-                Debug.Log(action._card.PositionOnBoard);
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
-                Debug.Log(newPos);
 
                 Debug.Log("newPos is free");
                 GameManager.Instance.Board.MoveCard(action._card, newPos);

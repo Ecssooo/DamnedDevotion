@@ -19,11 +19,10 @@ public class Card : MonoBehaviour
     }
 
 
-    // protected virtual void OnMouseDown()
+     protected virtual void OnMouseDown() { 
 
         // Afficher Flèches
         Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         EffectActions.Instance.StartGetActionCoroutine(effectClicked, (action) => { });
-    //     }
-    // }
+       }
 }

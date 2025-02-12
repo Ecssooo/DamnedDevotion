@@ -9,6 +9,7 @@ TagManager:
   - Cauldron
   - Monster
   - ShieldedKnight
+  - MiniMonster
   layers:
   - Default
   - TransparentFX

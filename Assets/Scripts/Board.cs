@@ -236,7 +236,6 @@ public class Board : MonoBehaviour
         {
             case(Direction.RIGHT):
                 if (PositionInBounds(position + Vector2Int.right)) { return position + new Vector2Int(0,1); }
-                if (PositionInBounds(position + Vector2Int.up)) { return position + Vector2Int.up; }
                 break;
             case(Direction.LEFT):
                 if (PositionInBounds(position + Vector2Int.left)) { return position + new Vector2Int(0,-1); }
@@ -249,12 +248,5 @@ public class Board : MonoBehaviour
                 break;
         }
         return position;
-    }
-
-    private void Start()
-    {
-        SetLevel(_levelDatabase.levelList[0]);
-        MoveCard(_board[0,0], new(0,1));
-        SwitchCard(_board[1,1],_board[1,2]);
     }
 }
