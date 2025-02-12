@@ -10,17 +10,20 @@ public class Card : MonoBehaviour
         set { _positionOnBoard = value; }
     }
 
+    [SerializeField] private Direction _direction;
 
-    void Start()
+    public Direction Direction
     {
-        PositionOnBoard = new Vector2Int((int)transform.position.x, (int)transform.position.y);
+        get => _direction;
+        set => _direction = value;
     }
 
-    protected virtual void OnMouseDown()
-    {
+
+    // protected virtual void OnMouseDown()
 
         // Afficher Flèches
         Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         EffectActions.Instance.StartGetActionCoroutine(effectClicked, (action) => { });
-    }
+    //     }
+    // }
 }

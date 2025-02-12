@@ -12,4 +12,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 158b66ff77a735f4a9e3de43d5a2c413, type: 3}
   m_Name: Level Database
   m_EditorClassIdentifier: 
-  levelList: []
+  humanPrefab: {fileID: 8533776778481682274, guid: 7cf094f32fa88664e81280208e2b0e1b, type: 3}
+  knightSwordPrefab: {fileID: 8533776778481682274, guid: 5009ab8a26881ce4dbc449c2c98abdf7, type: 3}
+  knightShieldPrefab: {fileID: 8533776778481682274, guid: aa955106184c68a469c88c93f9b0bd27, type: 3}
+  monsterPrefab: {fileID: 8533776778481682274, guid: 3fadaa19ed21eba48a86ee52166562a5, type: 3}
+  miniMonsterPrefab: {fileID: 8533776778481682274, guid: 2a88f1318f72f114088a7ee1b3cbceeb, type: 3}
+  cauldronPrefab: {fileID: 8533776778481682274, guid: 40e9ece7d6dbc114799c0efabe5dde47, type: 3}
+  levelList:
+  - level: 0
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 0
+    maxScore: 0
+    effects: []

@@ -9,55 +9,35 @@ public class LevelMaker : EditorWindow
 {
     private Board board;
     private LevelDatabase _levelDatabase;
-    
+
     private int levelId;
     private int maxScore = 0;
     private int maxAction = 0;
 
     private int levelToLoad = 0;
-
-    private GameObject humanPrefab;
-    private GameObject knightSwordPrefab;
-    private GameObject knightShieldPrefab;
-    private GameObject monsterPrefab;
-    private GameObject miniMonsterPrefab;
-    private GameObject cauldronPrefab;
-
-    public enum OPTIONS
+    
+    public struct PersoWrapper
     {
-        NONE,
-        HUMAN,
-        KNIGHTSWORD,
-        KNIGHTSHIELD,
-        MONSTER,
-        MINIMONSTER,
-        CAULDRON,
+        public CardType type;
+        public Direction axis;
     }
-    
-    public List<OPTIONS> ops = new(12){ 
-        OPTIONS.NONE,OPTIONS.NONE, OPTIONS.NONE,
-        OPTIONS.NONE,OPTIONS.NONE,OPTIONS.NONE,
-        OPTIONS.NONE,OPTIONS.NONE,OPTIONS.NONE,
-        OPTIONS.NONE,OPTIONS.NONE,OPTIONS.NONE,
-    };
-    
-    private List<GameObject> slots = new List<GameObject>() { 
-        null, null, null,
-        null,null,null,
-        null,null,null,
-        null,null,null,
-    };
 
-    private List<Vector2Int> positionSlot = new List<Vector2Int>()
+    public PersoWrapper[] persos = new PersoWrapper[12];
+
+
+    private GameObject[] slots = new GameObject[12];
+
+    private Vector2Int[] positionSlot = new Vector2Int[12]
     {
-        new Vector2Int(0,0), new Vector2Int(0,1), new Vector2Int(0,2),
-        new Vector2Int(1,0), new Vector2Int(1,1), new Vector2Int(1,2),
-        new Vector2Int(2,0), new Vector2Int(2,1), new Vector2Int(2,2),
-        new Vector2Int(3,0), new Vector2Int(3,1), new Vector2Int(3,2),
+        new Vector2Int(0, 0), new Vector2Int(0, 1), new Vector2Int(0, 2),
+        new Vector2Int(1, 0), new Vector2Int(1, 1), new Vector2Int(1, 2),
+        new Vector2Int(2, 0), new Vector2Int(2, 1), new Vector2Int(2, 2),
+        new Vector2Int(3, 0), new Vector2Int(3, 1), new Vector2Int(3, 2),
     };
 
     private Vector2 scrollPos;
-    
+
+
     [MenuItem("Tools/LevelMaker")]
     public static void ShowWindow()
     {
@@ -71,57 +51,61 @@ public class LevelMaker : EditorWindow
 
         //Setup
         board = EditorGUILayout.ObjectField("Board", board, typeof(Board), true) as Board;
-        _levelDatabase = EditorGUILayout.ObjectField("Level Database", _levelDatabase, typeof(LevelDatabase), true) as LevelDatabase;
+        _levelDatabase =
+            EditorGUILayout.ObjectField("Level Database", _levelDatabase, typeof(LevelDatabase), true) as LevelDatabase;
         //Level info
         EditorGUILayout.Space();
-        GUILayout.Label("Settings",EditorStyles.boldLabel);
+        GUILayout.Label("Settings", EditorStyles.boldLabel);
         EditorGUILayout.Space();
         levelId = EditorGUILayout.IntField("Id", levelId);
         maxAction = EditorGUILayout.IntField("maxAction", maxAction);
         maxScore = EditorGUILayout.IntField("maxScore", maxScore);
 
         EditorGUILayout.Space();
-        GUILayout.Label("Prefabs",EditorStyles.boldLabel);
+        GUILayout.Label("Prefabs", EditorStyles.boldLabel);
+
         EditorGUILayout.Space();
-        
-        humanPrefab = EditorGUILayout.ObjectField("Human", humanPrefab, typeof(GameObject), false) as GameObject;
-        knightSwordPrefab = EditorGUILayout.ObjectField("Knight Sword", knightSwordPrefab, typeof(GameObject), false) as GameObject;
-        knightShieldPrefab = EditorGUILayout.ObjectField("Knight Shield",knightShieldPrefab, typeof(GameObject), false) as GameObject;
-        monsterPrefab = EditorGUILayout.ObjectField("Monster", monsterPrefab, typeof(GameObject), false) as GameObject;
-        miniMonsterPrefab = EditorGUILayout.ObjectField("Mini Monster", miniMonsterPrefab, typeof(GameObject), false) as GameObject;
-        cauldronPrefab = EditorGUILayout.ObjectField("Cauldron", cauldronPrefab, typeof(GameObject), false) as GameObject;
-        
+        GUILayout.Label("Board", EditorStyles.boldLabel);
         EditorGUILayout.Space();
-        GUILayout.Label("Board",EditorStyles.boldLabel);
-        EditorGUILayout.Space();
-        int index = 0;
-        
-        
-        
-        for (int i = 1; i <= 4; i++)
+
+        for (int i = 0; i < persos.Length; i++)
         {
-            EditorGUILayout.BeginHorizontal();
-            for (int j = 0; j < 3; j++)
+            var pw = persos[i];
+
+            if (i % 3 == 0)
+                EditorGUILayout.BeginHorizontal();
+
+            if (pw.type == CardType.KNIGHTSWORD)
             {
-                ops[index] = (OPTIONS)EditorGUILayout.EnumPopup(ops[index]);
-                index++;
+                EditorGUILayout.BeginHorizontal(GUILayout.Width((position.width / 3.1f)));
+                pw.type = (CardType)EditorGUILayout.EnumPopup(pw.type);
+                pw.axis = (Direction)EditorGUILayout.EnumPopup(pw.axis);
+
+                EditorGUILayout.EndHorizontal();
             }
-            EditorGUILayout.EndHorizontal();
+            else
+                pw.type = (CardType)EditorGUILayout.EnumPopup(pw.type, GUILayout.Width((position.width / 3.1f)));
+
+
+            if (i % 3 == 2)
+                EditorGUILayout.EndHorizontal();
+
+            persos[i] = pw;
         }
         
-        
-        
-        
+
         EditorGUILayout.Space(20);
         //Buttons
         if (GUILayout.Button("ApplyLevel"))
         {
             ApplyLevel();
         }
+
         if (GUILayout.Button("SaveLevel"))
         {
             SaveLevel();
         }
+
         levelToLoad = EditorGUILayout.IntField("levelToLoad", levelToLoad);
         if (GUILayout.Button("LoadLevel"))
         {
@@ -132,10 +116,10 @@ public class LevelMaker : EditorWindow
         {
             ResetBoard();
         }
-        
+
         EditorGUILayout.EndScrollView();
     }
-    
+
     /// <summary>
     /// Instantiate card in Scene
     /// </summary>
@@ -143,67 +127,46 @@ public class LevelMaker : EditorWindow
     {
         board.InitSlotTab();
         int index = 0;
-        foreach (var op in ops)
+        foreach (var perso in persos)
         {
-            switch (op)
-            {
-                case(OPTIONS.HUMAN): SpawnPrefab(humanPrefab, index); break;
-                case(OPTIONS.KNIGHTSWORD): SpawnPrefab(knightSwordPrefab, index); break;
-                case(OPTIONS.KNIGHTSHIELD): SpawnPrefab(knightShieldPrefab, index); break;
-                case(OPTIONS.MONSTER): SpawnPrefab(monsterPrefab, index); break;
-                case(OPTIONS.MINIMONSTER): SpawnPrefab(miniMonsterPrefab, index); break;
-                case(OPTIONS.CAULDRON): SpawnPrefab(cauldronPrefab, index); break;
-            }
+            SpawnPrefab(perso, index);
             index++;
         }
     }
 
-    void SpawnPrefab(GameObject prefab, int index)
+    void SpawnPrefab(PersoWrapper cardParams, int index)
     {
-        var GO = Instantiate(prefab, board.transform);
-        var cardGO = GO.GetComponent<Card>();
-        cardGO.PositionOnBoard = positionSlot[index];
-        board.SetSlots(cardGO);
+        CardParams card = new();
+        card.cardType = cardParams.type;
+        card.positionOnBoard = positionSlot[index];
+        card.direction = cardParams.axis;
+        board.SetSlots(card);
     }
-    
+
     /// <summary>
     /// Save a new level in level database
     /// </summary>
     void SaveLevel()
     {
         levelId = _levelDatabase.levelList.Count;
-
-        List<Vector2Int> allPosition = new List<Vector2Int>(){ 
-            new (-1,-1),new (-1,-1),new (-1,-1),
-            new (-1,-1),new (-1,-1),new (-1,-1),
-            new (-1,-1),new (-1,-1),new (-1,-1),
-            new (-1,-1),new (-1,-1),new (-1,-1),
-        };
-        List<GameObject> newCardList = new();
+        
+        List<CardParams> newCardList = new();
         int index = 0;
 
-        for (int i = 0; i < ops.Count; i++)
+        foreach (var pw in persos)
         {
-            switch (ops[i])
-            {
-                case(OPTIONS.HUMAN): slots[i] = humanPrefab; break;
-                case(OPTIONS.KNIGHTSWORD): slots[i] = knightSwordPrefab; break;
-                case(OPTIONS.KNIGHTSHIELD): slots[i] = knightShieldPrefab; break;
-                case(OPTIONS.MINIMONSTER): slots[i] = miniMonsterPrefab; break;
-                case(OPTIONS.MONSTER): slots[i] = monsterPrefab; break;
-                case(OPTIONS.CAULDRON): slots[i] = cauldronPrefab; break;
-                case(OPTIONS.NONE): slots[i] = null; break;
-            }
-        }
-        
-        foreach (var card in slots)
-        {
-            if (card != null) allPosition[index] = positionSlot[index];
-            newCardList.Add(card);
+            CardParams newCard = new CardParams();
+
+            newCard.cardType = pw.type;
+            newCard.direction = pw.axis;
+            newCard.positionOnBoard = positionSlot[index];
+
+            newCardList.Add(newCard);
             index++;
         }
-        
-        Level newLevel = new Level(levelId, newCardList, allPosition, maxAction, maxScore);
+
+
+        Level newLevel = new Level(levelId, newCardList, maxAction, maxScore);
         _levelDatabase.levelList.Add(newLevel);
     }
 

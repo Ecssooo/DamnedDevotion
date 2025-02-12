@@ -2,19 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    Right,
-    Left,
-    Top,
-    Down
-}
-
-
 public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
-
+    [SerializeField] private LevelDatabase _levelDatabase;
+    
     private Card[,] _board = new Card[4,3];
     private Transform[,] _slotsTab = new Transform[4, 3];
     
@@ -58,11 +50,28 @@ public class Board : MonoBehaviour
     /// Add a Card to a slot in board
     /// </summary>
     /// <param name="card">Cards type, Can be null</param>
-    public void SetSlots(Card card)
+    public void SetSlots(CardParams cardParams)
     {
         InitSlotTab();
-
+        
+        var prefab = _levelDatabase.GetPrefab(cardParams.cardType);
+        if (prefab == null) return;
+        
+        var GO = Instantiate(prefab, this.transform);
+        var card = GO.GetComponent<Card>();
         if (card == null) return;
+        card.PositionOnBoard = cardParams.positionOnBoard;
+        card.Direction = cardParams.direction;
+        if (PositionInBounds(card.PositionOnBoard))
+        {
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            card.transform.localPosition = new Vector3(0,0,0);
+        }
+    }
+
+    public void SetSlots(Card card)
+    {
         if (PositionInBounds(card.PositionOnBoard))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
@@ -79,15 +88,9 @@ public class Board : MonoBehaviour
     public void SetLevel(Level level)
     {
         InitSlotTab();
-        for (int i = 0; i < level.CardsList.Count; i++)
+        foreach (var card in level.CardsList)
         {
-            if (level.CardsList[i] != null)
-            {
-                var GO = Instantiate(level.CardsList[i], this.transform);
-                var card = GO.GetComponent<Card>();
-                card.PositionOnBoard = level.positionCardsList[i];
-                SetSlots(card);
-            }
+            SetSlots(card);
         }
     }
     
@@ -114,6 +117,7 @@ public class Board : MonoBehaviour
     /// Null if not</returns>
     Vector2Int[] DirectionAvailable(Vector2Int position)
     {
+        InitSlotTab();
         Vector2Int[] direction = new Vector2Int[4]; 
         
         if (PositionInBounds(position + Vector2Int.right))
@@ -145,28 +149,29 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public Card GetCardClose(Vector2Int position, Direction direction)
     {
+        InitSlotTab();
         Card card = null;
         switch (direction)
         {
-            case(Direction.Right):
+            case(Direction.RIGHT):
                 if (PositionInBounds(position + Vector2Int.right))
                 {
                     card = _board[position.x + Vector2Int.right.x, position.y + Vector2Int.right.y];
                 }
                 break;
-            case(Direction.Left):
+            case(Direction.LEFT):
                 if (PositionInBounds(position + Vector2Int.left))
                 {
                     card = _board[position.x + Vector2Int.left.x, position.y + Vector2Int.left.y];
                 }
                 break;
-            case(Direction.Top):
+            case(Direction.UP):
                 if (PositionInBounds(position + Vector2Int.up))
                 {
                     card = _board[position.x + Vector2Int.up.x, position.y + Vector2Int.up.y];
                 }
                 break;
-            case(Direction.Down):
+            case(Direction.DOWN):
                 if (PositionInBounds(position + Vector2Int.down))
                 {
                     card = _board[position.x + Vector2Int.down.x, position.y + Vector2Int.down.y];
@@ -184,6 +189,7 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public bool SlotEmpty(Vector2Int newPos)
     {
+        InitSlotTab();
         return _board[newPos.x, newPos.y] == null;
     }
     
@@ -194,6 +200,7 @@ public class Board : MonoBehaviour
     /// <param name="newPos"></param>
     public void MoveCard(Card card, Vector2Int newPos)
     {
+        InitSlotTab();
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
             card.PositionOnBoard = newPos;
@@ -224,22 +231,30 @@ public class Board : MonoBehaviour
     /// <returns></returns>
     public Vector2Int GetPositionNextTo(Vector2Int position, Direction direction)
     {
+        InitSlotTab();
         switch (direction)
         {
-            case(Direction.Right):
-                //if (PositionInBounds(position + Vector2Int.right)) { return position + Vector2Int.right; }
+            case(Direction.RIGHT):
+                if (PositionInBounds(position + Vector2Int.right)) { return position + new Vector2Int(0,1); }
                 if (PositionInBounds(position + Vector2Int.up)) { return position + Vector2Int.up; }
                 break;
-            case(Direction.Left):
-                if (PositionInBounds(position + Vector2Int.down)) { return position + Vector2Int.down; }
+            case(Direction.LEFT):
+                if (PositionInBounds(position + Vector2Int.left)) { return position + new Vector2Int(0,-1); }
                 break;
-            case(Direction.Top):
-                if (PositionInBounds(position + Vector2Int.left)) { return position + Vector2Int.left; }
+            case(Direction.UP):
+                if (PositionInBounds(position + Vector2Int.up)) { return position +new Vector2Int(-1,0); }
                 break;
-            case(Direction.Down):
-                if (PositionInBounds(position + Vector2Int.right)) { return position + Vector2Int.right; }
+            case(Direction.DOWN):
+                if (PositionInBounds(position + Vector2Int.down)) { return position + new Vector2Int(1,0); }
                 break;
         }
         return position;
+    }
+
+    private void Start()
+    {
+        SetLevel(_levelDatabase.levelList[0]);
+        MoveCard(_board[0,0], new(0,1));
+        SwitchCard(_board[1,1],_board[1,2]);
     }
 }
