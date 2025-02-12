@@ -216,10 +216,14 @@ public class Board : MonoBehaviour
     /// <param name="c2">Second card</param>
     public void SwitchCard(Card c1, Card c2)
     {
+        InitSlotTab();
+
         if (c1 == null || c2 == null) return;
         Vector2Int temp = c1.PositionOnBoard;
         c1.PositionOnBoard = c2.PositionOnBoard;
         c2.PositionOnBoard = temp;
+        _board[c1.PositionOnBoard.x, c1.PositionOnBoard.y] = null;
+        _board[c2.PositionOnBoard.x, c2.PositionOnBoard.y] = null;
 
         SetSlots(c1);
         SetSlots(c2);
@@ -250,12 +254,5 @@ public class Board : MonoBehaviour
                 break;
         }
         return position;
-    }
-
-    private void Start()
-    {
-        SetLevel(_levelDatabase.levelList[0]);
-        MoveCard(_board[0,0], new(0,1));
-        SwitchCard(_board[1,1],_board[1,2]);
     }
 }
