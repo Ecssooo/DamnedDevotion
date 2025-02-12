@@ -250,11 +250,4 @@ public class Board : MonoBehaviour
         }
         return position;
     }
-
-    private void Start()
-    {
-        SetLevel(_levelDatabase.levelList[0]);
-        MoveCard(_board[0,0], new(0,1));
-        SwitchCard(_board[1,1],_board[1,2]);
-    }
 }
