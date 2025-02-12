@@ -2,15 +2,28 @@ using UnityEngine;
 
 public class ActionCount : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private int action;
+
+    public int ActionPoints { get => action; }
+
+
+    public void InitActionPoint(int max)
     {
-        
+        action = max;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Decrement(int value)
     {
-        
+        action -= value;
+    }
+
+    public void Increment(int value)
+    {
+        action += value;
+    }
+
+    public bool ActionRemaining()
+    {
+        return action > 0;
     }
 }
