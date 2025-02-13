@@ -3,6 +3,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     #region Instance
+    [SerializeField] private Effects _effect;
+    public Effects Effect
+    {
+        get => _effect;
+        set => _effect = value;
+    }
+
     private static GameManager _instance;
 
     public static GameManager Instance { get => _instance; }
@@ -17,6 +24,14 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        EffectList.Effects = Effects.NONE;
+        EffectList.MoveCard = false;
+        EffectList.SwapCard = false;
+
     }
     #endregion
 

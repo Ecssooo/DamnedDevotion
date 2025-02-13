@@ -17,3 +17,10 @@ public enum CardType
     MINIMONSTER,
     CAULDRON,
 }
+
+public enum Effects
+{
+    NONE,
+    MOVE,
+    SWAP
+}
