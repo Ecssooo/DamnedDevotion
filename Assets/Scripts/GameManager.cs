@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    #region Instance
     [SerializeField] private Effects _effect;
     public Effects Effect
     {
         get => _effect;
         set => _effect = value;
     }
+    #region Instance
 
     private static GameManager _instance;
 
@@ -43,10 +43,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ListAction _listAction;
     public ListAction ListActions { get => _listAction; }
+
+    [SerializeField] private ActionCount _actionCount;
+    public ActionCount ActionCount { get => _actionCount; }
     
-
-
-
+    
     // [SerializeField] private TextMeshProUGUI levelCountText;
     // [SerializeField] private TextMeshProUGUI ActionCountText;
     //

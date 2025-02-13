@@ -1000,7 +1000,7 @@ Canvas:
   m_GameObject: {fileID: 564874961}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 675463950}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -2073,8 +2073,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc0867ff3ecc8f4ab48088736e8705a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionOnBoard: {x: 3, y: 1}
+  _cardType: 0
   _direction: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 3, y: 1}
 --- !u!212 &994875611
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2716,6 +2718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f14b19641d71bc4dbf0a314de2beeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _effect: 0
   _board: {fileID: 1528173834}
   _levelDatabase: {fileID: 11400000, guid: 0804e4c0a5f404e49a339bbe37bc8fac, type: 2}
   _listAction: {fileID: 0}
@@ -3066,8 +3069,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d611bd32a0ece284a9c2832264eeabb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionOnBoard: {x: 0, y: 1}
+  _cardType: 0
   _direction: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 0, y: 1}
   _value: 2
 --- !u!212 &1338094384
 SpriteRenderer:
@@ -3657,8 +3662,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc0867ff3ecc8f4ab48088736e8705a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _positionOnBoard: {x: 2, y: 2}
+  _cardType: 0
   _direction: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 2, y: 2}
 --- !u!212 &1718831844
 SpriteRenderer:
   m_ObjectHideFlags: 0

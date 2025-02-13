@@ -13,16 +13,19 @@ public class ActionCount : MonoBehaviour
     public void InitActionPoint(int max)
     {
         action = max;
+        DisplayActionPoint();
     }
 
     public void Decrement(int value)
     {
         action -= value;
+        DisplayActionPoint();
     }
 
     public void Increment(int value)
     {
         action += value;
+        DisplayActionPoint();
     }
 
     public bool ActionRemaining()
@@ -30,7 +33,7 @@ public class ActionCount : MonoBehaviour
         return action > 0;
     }
 
-    void displayActionPoint()
+    public void DisplayActionPoint()
     {
         actionPointText.text = "Action Point :" + action;
     }

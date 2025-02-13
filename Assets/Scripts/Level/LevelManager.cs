@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LevelManager : MonoBehaviour
 {
@@ -29,16 +30,16 @@ public class LevelManager : MonoBehaviour
     public void IncreaseLevel()
     {
         _currentLevel++;
-        if (_currentLevel > GameManager.Instance.LevelDatabase.levelList.Count)
-            _currentLevel = GameManager.Instance.LevelDatabase.levelList.Count;
+        if (_currentLevel > GameManager.Instance.LevelDatabase.levelList.Count - 1)
+            _currentLevel = GameManager.Instance.LevelDatabase.levelList.Count - 1;
         UpdateUI();
     }
 
     public void DecreaseLevel()
     { 
         _currentLevel--; 
-        if (_currentLevel <= 0)
-            _currentLevel = 1;
+        if (_currentLevel < 0)
+            _currentLevel = 0;
         UpdateUI();
     }
 
@@ -55,11 +56,13 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _canva;
     [SerializeField] private GameObject _board;
+    [SerializeField] private GameObject _defeatScreen;
+    [SerializeField] private GameObject _winScreen;
     [SerializeField] private TextMeshProUGUI TXT_number;
     [SerializeField] private GameObject _locker;
     void UpdateUI()
     {
-        TXT_number.text = (_currentLevel).ToString();
+        TXT_number.text = (_currentLevel+1).ToString();
         if (_currentLevel > SaveSystem.Load())
         {
             _locker.SetActive(true);
@@ -77,11 +80,30 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         _canva.SetActive(false);
-        GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel-1]);
+        GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]);
         _board.SetActive(true);
         GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
     }
+
+    public void LoadMenu()
+    {
+        _board.SetActive(false);
+        GameManager.Instance.Board.ResetBoard();
+        _defeatScreen.SetActive(false);
+        _winScreen.SetActive(false);
+        _canva.SetActive(true);
+    }
     
+    public void LoadDefeatMenu()
+    {
+        _defeatScreen.SetActive(true);
+    }
+    
+    public void LoadWinMenu()
+    {
+        _winScreen.SetActive(true);
+    }
+
     #endregion
 
     private void Start()
@@ -97,9 +119,11 @@ public class LevelManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            SaveSystem.Save(1);
+            SaveSystem.Save(0);
         }
         
         #endif
     }
+    
+
 }

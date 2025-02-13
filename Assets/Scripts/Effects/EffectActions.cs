@@ -29,21 +29,23 @@ public class EffectActions : MonoBehaviour
 
     public void DoEffect(Action action)
     {
-        Debug.Log(GameManager.Instance.Effect);
-        if (GameManager.Instance.Effect == Effects.NONE) return;
+        //Debug.Log(GameManager.Instance.Effect);
+        if (GameManager.Instance.Effect == Effects.NONE || GameStateManager.Instance.CurrentState.GetType() != GameStateManager.Instance.GameSetupState.GetType()) return;
 
         switch (action._effect)
         {
             case Effects.MOVE:
                 if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster")) return;
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
-                Debug.Log("newPos is : " + newPos);
+                //Debug.Log("newPos is : " + newPos);
                 GameManager.Instance.Board.MoveCard(action._card, newPos);
+                GameManager.Instance.ActionCount.Decrement(1);
                 break;
             case Effects.SWAP:
                 if (action._card2 == null) return;
                 GameManager.Instance.Board.SwitchCard(action._card, action._card2);
-                Debug.Log("Swapping Cards");
+                //Debug.Log("Swapping Cards");
+                GameManager.Instance.ActionCount.Decrement(1);
                 break;
         }
     }

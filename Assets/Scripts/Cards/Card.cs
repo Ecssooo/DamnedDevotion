@@ -17,6 +17,13 @@ public class Card : MonoBehaviour
         get => _direction;
         set => _direction = value;
     }
+    
+    [SerializeField] private Direction _attackDirection;
+    public Direction AttackDirection
+    {
+        get => _attackDirection;
+        set => _attackDirection = value;
+    }
 
     [SerializeField] private int _foodValue;
     public int FoodValue
@@ -51,12 +58,12 @@ public class Card : MonoBehaviour
                 if (EffectActions.Instance._swapFirstCard == null)
                 {
                     EffectActions.Instance._swapFirstCard = card;
-                    Debug.Log("First Swap card Selected");
+                    // Debug.Log("First Swap card Selected");
                 }
                 else
                 {
                     EffectActions.Instance._swapSecondCard = card;
-                    Debug.Log("Second Swap card Selected");
+                    // Debug.Log("Second Swap card Selected");
                     Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
                     EffectActions.Instance.DoEffect(switchAction);
                     EffectActions.Instance._swapFirstCard = null;
@@ -67,16 +74,19 @@ public class Card : MonoBehaviour
 
         Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
-    private void DoEndOfTurnActions() // To use at end of turn to make Knights attack
+    public void DoEndOfTurnActions() // To use at end of turn to make Knights attack
     {
         switch(CardType)
         {
             case CardType.HUMAN:
                 break;
             case CardType.KNIGHTSWORD:
-                Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._direction);
-                Debug.Log(target);
-                target.OnDie();
+                Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
+                // Debug.Log(target);
+                if(target != null)
+                    target.OnDie();
+                else
+                    Debug.Log("Target null");
                 break;
             case CardType.KNIGHTSHIELD:
                 break;
@@ -93,6 +103,7 @@ public class Card : MonoBehaviour
     {
         //Transfer food value to GameManager
         _foodValue = 0;
+        GameManager.Instance.Board.ClearSlot(this);
         Debug.Log("Mog Fed");
     }
 }

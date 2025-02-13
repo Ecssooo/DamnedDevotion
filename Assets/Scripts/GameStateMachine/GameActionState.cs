@@ -1,17 +1,18 @@
 using UnityEngine;
 
-
-public class GameLevelState : GameBaseState
+public class GameActionState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
-        LevelManager.Instance.InitLevel(SaveSystem.Load());
-        LevelManager.Instance.LoadMenu();
+        GameManager.Instance.Board.StartEndAction();
     }
 
     public override void UpdateState(GameStateManager manager)
     {
-        //
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            manager.SwitchState(manager.GameWinState);
+        }
     }
 
     public override void ExitState(GameStateManager manager)

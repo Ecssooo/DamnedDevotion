@@ -1,12 +1,10 @@
 using UnityEngine;
 
-
-public class GameLevelState : GameBaseState
+public class GameDefeatState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
-        LevelManager.Instance.InitLevel(SaveSystem.Load());
-        LevelManager.Instance.LoadMenu();
+        LevelManager.Instance.LoadDefeatMenu();
     }
 
     public override void UpdateState(GameStateManager manager)

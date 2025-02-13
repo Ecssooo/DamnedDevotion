@@ -101,15 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc0867ff3ecc8f4ab48088736e8705a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
-  _cardType: 0
+  _cardType: 6
   _direction: 0
+  _attackDirection: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 0, y: 0}
 --- !u!61 &5417546486267018806
-=======
-  _positionOnBoard: {x: 0, y: 1}
-  _direction: 0
---- !u!61 &8920955553714072250
->>>>>>> ProjetMobile/Theo
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
