@@ -34,24 +34,27 @@ public class Card : MonoBehaviour
 
         switch(GameManager.Instance.Effect)
         {
-            case Effects.None:
+            case Effects.NONE:
                 break;
-            case Effects.Move:
+            case Effects.MOVE:
                 Action moveAction = EffectActions.Instance.CreateAction(this);
                 EffectActions.Instance.DoEffect(moveAction);
                 break;
-            case Effects.Switch:
+            case Effects.SWAP:
                 Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>();
                 if (card == null) return;
                 if (EffectActions.Instance._swapFirstCard == null)
                 {
                     EffectActions.Instance._swapFirstCard = card;
+                    Debug.Log("First Swap card Selected");
                 }
                 else
                 {
                     EffectActions.Instance._swapSecondCard = card;
+                    Debug.Log("Second Swap card Selected");
                 }
                 Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
+                Debug.Log(switchAction);
                 EffectActions.Instance.DoEffect(switchAction);
                 break;
         }

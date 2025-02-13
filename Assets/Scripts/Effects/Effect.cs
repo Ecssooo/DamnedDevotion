@@ -39,19 +39,19 @@ public class Effect : MonoBehaviour
     {
         switch (_effect)
         {
-            case Effects.Move:
+            case Effects.MOVE:
                 if (EffectList.MoveCard)
                 {
                     EffectList.MoveCard = false;
-                    EffectList.Effects = Effects.None;
+                    EffectList.Effects = Effects.NONE;
                     return;
                 }
                 EffectList.MoveCard = true;
-                EffectList.Effects = Effects.Move;
+                EffectList.Effects = Effects.MOVE;
                 break;
-            case Effects.Swap:
+            case Effects.SWAP:
                 EffectList.SwapCard = true;
-                EffectList.Effects = Effects.Swap;
+                EffectList.Effects = Effects.SWAP;
                 break;
         }
     }

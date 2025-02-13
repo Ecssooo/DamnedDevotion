@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        EffectList.Effects = Effects.None;
+        EffectList.Effects = Effects.NONE;
         EffectList.MoveCard = false;
         EffectList.SwapCard = false;
 

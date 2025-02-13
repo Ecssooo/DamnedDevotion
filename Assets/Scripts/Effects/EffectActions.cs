@@ -10,20 +10,24 @@ public class EffectActions : MonoBehaviour
 
 
     public Card _swapFirstCard;
+    public Card _swapSecondCard;
 
     public void DoEffect(Action action)
     {
-        if (GameManager.Instance.Effect == Effects.None) return;
+        Debug.Log(GameManager.Instance.Effect);
+        if (GameManager.Instance.Effect == Effects.NONE) return;
 
         switch (action._effect)
         {
-            case Effects.Move:
+            case Effects.MOVE:
                 if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster")) return;
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
                 Debug.Log("newPos is : " + newPos);
                 GameManager.Instance.Board.MoveCard(action._card, newPos);
                 break;
-            case Effects.Swap:
+            case Effects.SWAP:
+                GameManager.Instance.Board.SwitchCard(action._card, action._card2);
+                Debug.Log("Swapping Cards");
                 break;
         }
     }

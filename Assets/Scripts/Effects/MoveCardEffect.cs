@@ -1,13 +1,6 @@
 using System.Collections;
 using UnityEngine;
 
-public enum Effects
-{
-    Move,
-    Swap,
-    None
-}
-
 public class MoveCardEffect : Effect
 {
     private Vector2 _firstMousePos;

@@ -255,6 +255,6 @@ public class Board : MonoBehaviour
 
     private void Start()
     {
-        SetLevel(_levelDatabase.levelList[2]);
+        SetLevel(_levelDatabase.levelList[1]);
     }
 }
