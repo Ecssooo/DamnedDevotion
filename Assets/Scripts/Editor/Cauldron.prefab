@@ -103,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 0
   _direction: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 0, y: 0}
 --- !u!61 &5417546486267018806
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -69,8 +69,5 @@ public class MoveCardEffect : Effect
     // if works
     // Add direction detection and movement (use GameManager Methods)
 
-    public override void DoEffect()
-    {
-        
-    }
+
 }
