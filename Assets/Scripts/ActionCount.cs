@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class ActionCount : MonoBehaviour
@@ -5,6 +6,8 @@ public class ActionCount : MonoBehaviour
     private int action;
 
     public int ActionPoints { get => action; }
+
+    public TextMeshProUGUI actionPointText;
 
 
     public void InitActionPoint(int max)
@@ -25,5 +28,10 @@ public class ActionCount : MonoBehaviour
     public bool ActionRemaining()
     {
         return action > 0;
+    }
+
+    void displayActionPoint()
+    {
+        actionPointText.text = "Action Point :" + action;
     }
 }
