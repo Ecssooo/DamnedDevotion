@@ -36,10 +36,12 @@ public class Board : MonoBehaviour
         InitSlotTab();
         if (_board == null) return;
 
-        foreach (var card in _board)
+        foreach (var card in _slots)
         {
-            if (card == null) return;
-            ClearSlot(card);
+            if (card.childCount > 0)
+            {
+                ClearSlot(card.GetComponentInChildren<Card>());
+            }
         }
     }
 

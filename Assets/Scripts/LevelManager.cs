@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
 
     public void IncreaseLevel()
     {
-        _currentLevel += 1;
+        _currentLevel++;
         if (_currentLevel > GameManager.Instance.LevelDatabase.levelList.Count)
             _currentLevel = GameManager.Instance.LevelDatabase.levelList.Count;
         UpdateUI();
@@ -36,15 +36,16 @@ public class LevelManager : MonoBehaviour
 
     public void DecreaseLevel()
     { 
-        _currentLevel -= 1; 
-        if (_currentLevel < 0)
-            _currentLevel = 0;
+        _currentLevel--; 
+        if (_currentLevel <= 0)
+            _currentLevel = 1;
         UpdateUI();
     }
 
     public void InitLevel(int value)
     {
-        if (value > 0) throw new ArgumentException("Level value is negative");
+        if (value > 0) SaveSystem.InitSave();
+        
         _currentLevel = value; 
         UpdateUI();
     }
@@ -54,8 +55,19 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _canva;
     [SerializeField] private TextMeshProUGUI TXT_number;
-
-    void UpdateUI() { TXT_number.text = _currentLevel.ToString(); }
+    [SerializeField] private GameObject _locker;
+    void UpdateUI()
+    {
+        TXT_number.text = (_currentLevel).ToString();
+        if (_currentLevel > SaveSystem.Load())
+        {
+            _locker.SetActive(true);
+        }
+        else
+        {
+            _locker.SetActive(false);
+        }
+    }
 
     #endregion
 
@@ -69,11 +81,24 @@ public class LevelManager : MonoBehaviour
         GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
     }
     
-    
     #endregion
 
     private void Start()
     {
         SaveSystem.InitSave();
+        InitLevel(SaveSystem.Load());
+        UpdateUI();
+    }
+
+    private void Update()
+    {
+        #if UNITY_EDITOR
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveSystem.Save(1);
+        }
+        
+        #endif
     }
 }

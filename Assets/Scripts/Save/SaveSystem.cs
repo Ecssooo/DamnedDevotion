@@ -5,9 +5,9 @@ public static class SaveSystem
 
     public static void InitSave()
     {
-        if (PlayerPrefs.GetInt("Level") == null)
+        if (PlayerPrefs.GetInt("Level") == 0)
         {
-            PlayerPrefs.SetInt("Level", 0);
+            PlayerPrefs.SetInt("Level", 1);
         }
     }
     
