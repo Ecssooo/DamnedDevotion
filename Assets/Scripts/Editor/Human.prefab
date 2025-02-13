@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionOnBoard: {x: 0, y: 0}
-  MoveCardEffect: {fileID: 0}
+  _direction: 0
   _value: 2
 --- !u!61 &862748258110624934
 BoxCollider2D:

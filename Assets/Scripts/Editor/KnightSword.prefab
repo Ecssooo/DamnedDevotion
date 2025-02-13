@@ -101,6 +101,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _positionOnBoard: {x: 0, y: 0}
-  MoveCardEffect: {fileID: 0}
+  _direction: 0
   _value: 0
-  _attackDir: 0

@@ -1,22 +1,8 @@
-using System;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField] private Board _board;
-    public Board Board { get => _board; }
-
-    [SerializeField] private LevelDatabase _levelDatabase;
-    public LevelDatabase LevelDatabase {get => _levelDatabase; }
-
-    [SerializeField] private ListAction _listAction;
-    public ListAction ListActions { get => _listAction; }
-
+    #region Instance
     private static GameManager _instance;
 
     public static GameManager Instance { get => _instance; }
@@ -32,6 +18,18 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    #endregion
+
+    [SerializeField] private Board _board;
+    public Board Board { get => _board; }
+
+    [SerializeField] private LevelDatabase _levelDatabase;
+    public LevelDatabase LevelDatabase {get => _levelDatabase; }
+
+    [SerializeField] private ListAction _listAction;
+    public ListAction ListActions { get => _listAction; }
+    
+
 
 
     // [SerializeField] private TextMeshProUGUI levelCountText;
