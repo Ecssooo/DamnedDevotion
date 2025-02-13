@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7330542236511719761}
   - component: {fileID: 240046275366504090}
   - component: {fileID: 4107526286889135403}
-  - component: {fileID: -6965458396587921803}
   m_Layer: 0
   m_Name: KnightShield
   m_TagString: ShieldedKnight
@@ -104,6 +103,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 0
   _direction: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 0, y: 0}
 --- !u!61 &4107526286889135403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,15 +151,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-6965458396587921803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8533776778481682274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86d9144b62fe27b4690b0c5ccbe18e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -5,7 +5,7 @@ public class Effect : MonoBehaviour
 
 
     [Header("Effect Selection")]
-    [SerializeField] protected Effects _effect;
+    [SerializeField] private Effects _effect;
     public Effects Effet { get => _effect; }
 
 
@@ -16,44 +16,40 @@ public class Effect : MonoBehaviour
     //private Vector3 _lastMousePos;
 
 
-
-    private void Start()
-    {
-        //_circleCollider2D = GetComponent<CircleCollider2D>();
-    }
-
-    private void FixedUpdate()
-    {
-        // Code Drag and Drop
-        //if (!_isDragging && _hasDragged)
-        //{
-        //    transform.position = Vector3.Lerp(transform.position, _lastMousePos, .25f);
-        //}
-    }
-
     public virtual void DoEffect()
     {
         
     }
     private void OnMouseDown()
     {
-        switch (_effect)
+        GameManager.Instance.Effect = this.Effet;
+        //if (GameManager.Instance.Effect != Effects.NONE) GameManager.Instance.Effect = Effects.NONE;
+        switch (GameManager.Instance.Effect)
         {
             case Effects.MOVE:
                 if (EffectList.MoveCard)
                 {
                     EffectList.MoveCard = false;
-                    EffectList.Effects = Effects.NONE;
+                    GameManager.Instance.Effect = Effects.NONE;
                     return;
                 }
                 EffectList.MoveCard = true;
-                EffectList.Effects = Effects.MOVE;
+                GameManager.Instance.Effect = Effects.MOVE;
                 break;
             case Effects.SWAP:
+                if (EffectList.SwapCard)
+                {
+                    EffectList.SwapCard = false;
+                    GameManager.Instance.Effect = Effects.NONE;
+                    return;
+                }
                 EffectList.SwapCard = true;
-                EffectList.Effects = Effects.SWAP;
+                GameManager.Instance.Effect = Effects.SWAP;
+                break;
+            case Effects.NONE:
                 break;
         }
+        Debug.Log(GameManager.Instance.Effect);
     }
 
     #region Drag and Drop

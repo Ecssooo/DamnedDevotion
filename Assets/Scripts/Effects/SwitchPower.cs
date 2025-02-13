@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class SwitchPower : MonoBehaviour
 {
-    private Switch[] switches;
+    private Card[] switches;
     private bool areSwitchesActive = false;
 
     void Start()
     {
-        switches = FindObjectsOfType<Switch>();
+        switches = FindObjectsOfType<Card>();
 
         foreach (var switchScript in switches)
         {

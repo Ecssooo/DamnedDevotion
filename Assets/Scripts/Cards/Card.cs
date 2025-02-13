@@ -30,15 +30,20 @@ public class Card : MonoBehaviour
         get { return _positionOnBoard; }
         set { _positionOnBoard = value; }
     }
-     private  void OnMouseDown() {
+    private void OnMouseDown()
+    {
 
-        switch(GameManager.Instance.Effect)
+        switch (GameManager.Instance.Effect)
         {
             case Effects.NONE:
                 break;
             case Effects.MOVE:
-                Action moveAction = EffectActions.Instance.CreateAction(this);
-                EffectActions.Instance.DoEffect(moveAction);
+                StartCoroutine(EffectActions.Instance._moveCardCoroutine((direction) =>
+                {
+                    this._direction = direction;
+                    Action moveAction = EffectActions.Instance.CreateAction(this);
+                    EffectActions.Instance.DoEffect(moveAction);
+                }));
                 break;
             case Effects.SWAP:
                 Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>();
@@ -52,21 +57,15 @@ public class Card : MonoBehaviour
                 {
                     EffectActions.Instance._swapSecondCard = card;
                     Debug.Log("Second Swap card Selected");
+                    Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
+                    EffectActions.Instance.DoEffect(switchAction);
+                    EffectActions.Instance._swapFirstCard = null;
+                    EffectActions.Instance._swapSecondCard = null;
                 }
-                Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
-                Debug.Log(switchAction);
-                EffectActions.Instance.DoEffect(switchAction);
                 break;
         }
 
-        //Action action = EffectActions.Instance.CreateAction(this);
-        //EffectActions.Instance.DoEffect(action);  
-
-        //DoEndOfTurnActions();
-
         Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        //EffectActions.Instance.StartGetActionCoroutine(effectClicked, (action) => { });
-        
     }
     private void DoEndOfTurnActions() // To use at end of turn to make Knights attack
     {

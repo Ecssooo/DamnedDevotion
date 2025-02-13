@@ -24,7 +24,6 @@ public class Switch : MonoBehaviour
                     {
                         _secondCard = clickedCard;
                         GameManager.Instance.Board.SwitchCard(_firstCard, _secondCard);
-                        Debug.Log("Switched");
                         _firstCard = null;
                         _secondCard = null;
                     }

@@ -8,6 +8,21 @@ public class EffectActions : MonoBehaviour
 
     public static EffectActions Instance { get => _instance; }
 
+    public void Awake()
+    {
+        if (!_instance)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private Vector2 _firstMousePos;
+    private Vector2 _lastMousePos;
+    private Direction _moveCardDir;
 
     public Card _swapFirstCard;
     public Card _swapSecondCard;
@@ -26,10 +41,36 @@ public class EffectActions : MonoBehaviour
                 GameManager.Instance.Board.MoveCard(action._card, newPos);
                 break;
             case Effects.SWAP:
+                if (action._card2 == null) return;
                 GameManager.Instance.Board.SwitchCard(action._card, action._card2);
                 Debug.Log("Swapping Cards");
                 break;
         }
+    }
+
+    public IEnumerator _moveCardCoroutine(System.Action<Direction> callback)
+    {
+        Direction _moveCardDir = Direction.NONE;
+        _firstMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        yield return new WaitUntil(() => Input.GetMouseButtonUp(0));
+        _lastMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float angle = Mathf.Atan2(_lastMousePos.y - _firstMousePos.y, _lastMousePos.x - _firstMousePos.x) * Mathf.Rad2Deg;
+        switch (angle)
+        {
+            case float a when a >= -45 && a < 45:
+                _moveCardDir = Direction.RIGHT;
+                break;
+            case float a when a >= 45 && a < 135:
+                _moveCardDir = Direction.UP;
+                break;
+            case float a when a >= 135 || a < -135:
+                _moveCardDir = Direction.LEFT;
+                break;
+            case float a when a >= -135 && a < -45:
+                _moveCardDir = Direction.DOWN;
+                break;
+        }
+        callback?.Invoke(_moveCardDir);
     }
 
     public Action CreateAction(Card card)
