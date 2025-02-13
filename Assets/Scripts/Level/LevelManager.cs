@@ -54,6 +54,7 @@ public class LevelManager : MonoBehaviour
     #region UI
 
     [SerializeField] private GameObject _canva;
+    [SerializeField] private GameObject _board;
     [SerializeField] private TextMeshProUGUI TXT_number;
     [SerializeField] private GameObject _locker;
     void UpdateUI()
@@ -77,7 +78,7 @@ public class LevelManager : MonoBehaviour
     {
         _canva.SetActive(false);
         GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel-1]);
-        GameManager.Instance.Board.gameObject.SetActive(true);
+        _board.SetActive(true);
         GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
     }
     
