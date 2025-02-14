@@ -14,6 +14,7 @@ public class Board : MonoBehaviour
     public Card[,] CardList => _board;
 
     private Transform[,] _slotsTab = new Transform[4, 3];
+    public Transform[,] SlotsTab => _slotsTab;
 
     /// <summary>
     /// Transform slot list into 2D array
@@ -317,5 +318,11 @@ public class Board : MonoBehaviour
     public void StartEndAction()
     {
         StartCoroutine(DoAllEndAction());
+    }
+
+
+    private void Start()
+    {
+        InitSlotTab();
     }
 }
