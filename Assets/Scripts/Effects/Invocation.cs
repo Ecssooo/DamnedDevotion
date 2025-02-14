@@ -18,11 +18,13 @@ public class Invocation : MonoBehaviour
         Vector2 mousePosition = GetMousePosition();
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
 
-        if (hitCollider == null) return;    
+        if (hitCollider == null) return;
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 3; j++) { 
-                if(board.SlotsTab[i, j] == hitCollider.transform)
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                if (board.SlotsTab[i, j] == hitCollider.transform)
                 {
                     Vector2Int boardPosition = new Vector2Int(i, j);
                     if (board.SlotEmpty(boardPosition))
