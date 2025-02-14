@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Effect : MonoBehaviour
@@ -8,18 +9,11 @@ public class Effect : MonoBehaviour
     [SerializeField] private Effects _effect;
     public Effects Effet { get => _effect; }
 
-
-    // Variables Drag and Drop
-    //protected CircleCollider2D _circleCollider2D;
-    //private bool _isDragging = false;
-    //private bool _hasDragged = false;
-    //private Vector3 _lastMousePos;
-
-
-    public virtual void DoEffect()
+    private void Start()
     {
-        
+        if (_effect == Effects.SWAP) this.AddComponent<SwitchPower>();
     }
+
     private void OnMouseDown()
     {
         GameManager.Instance.Effect = this.Effet;
@@ -27,24 +21,28 @@ public class Effect : MonoBehaviour
         switch (GameManager.Instance.Effect)
         {
             case Effects.MOVE:
-                if (EffectList.MoveCard)
+                if (!EffectList.MoveCard)
                 {
-                    EffectList.MoveCard = false;
-                    GameManager.Instance.Effect = Effects.NONE;
+                    EffectList.MoveCard = true;
+                    EffectList.SwapCard = false;
+                    GameManager.Instance.Effect = Effects.MOVE;
                     return;
                 }
-                EffectList.MoveCard = true;
-                GameManager.Instance.Effect = Effects.MOVE;
+                EffectList.MoveCard = false;
+                EffectList.SwapCard = false;
+                GameManager.Instance.Effect = Effects.NONE;
                 break;
             case Effects.SWAP:
-                if (EffectList.SwapCard)
+                if (!EffectList.SwapCard)
                 {
-                    EffectList.SwapCard = false;
-                    GameManager.Instance.Effect = Effects.NONE;
+                    EffectList.SwapCard = true;
+                    EffectList.MoveCard = false;
+                    GameManager.Instance.Effect = Effects.SWAP;
                     return;
                 }
-                EffectList.SwapCard = true;
-                GameManager.Instance.Effect = Effects.SWAP;
+                EffectList.SwapCard = false;
+                EffectList.MoveCard = false;
+                GameManager.Instance.Effect = Effects.NONE;
                 break;
             case Effects.NONE:
                 break;

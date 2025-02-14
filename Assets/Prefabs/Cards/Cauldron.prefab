@@ -103,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cardType: 6
   _direction: 0
-  _attackDirection: 0
   _foodValue: 0
   _positionOnBoard: {x: 0, y: 0}
 --- !u!61 &5417546486267018806
