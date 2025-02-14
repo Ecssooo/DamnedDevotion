@@ -29,9 +29,12 @@ public class EffectActions : MonoBehaviour
 
     public void DoEffect(Action action)
     {
-        //Debug.Log(GameManager.Instance.Effect);
-        if (GameManager.Instance.Effect == Effects.NONE || GameStateManager.Instance.CurrentState.GetType() != GameStateManager.Instance.GameSetupState.GetType()) return;
-
+        //Debug.Log("Instance effect : " + GameManager.Instance.Effect);
+        if (GameManager.Instance.Effect == Effects.NONE /*|| GameStateManager.Instance.CurrentState.GetType() != GameStateManager.Instance.GameSetupState.GetType()*/)
+        {
+            Debug.Log("GameStateError");
+            return;
+        }
         switch (action._effect)
         {
             case Effects.MOVE:
@@ -39,18 +42,18 @@ public class EffectActions : MonoBehaviour
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
                 //Debug.Log("newPos is : " + newPos);
                 GameManager.Instance.Board.MoveCard(action._card, newPos);
-                GameManager.Instance.ActionCount.Decrement(1);
+                //GameManager.Instance.ActionCount.Decrement(1);
                 break;
             case Effects.SWAP:
                 if (action._card2 == null) return;
                 GameManager.Instance.Board.SwitchCard(action._card, action._card2);
                 //Debug.Log("Swapping Cards");
-                GameManager.Instance.ActionCount.Decrement(1);
+                //GameManager.Instance.ActionCount.Decrement(1);
                 break;
         }
     }
 
-    public IEnumerator _moveCardCoroutine(System.Action<Direction> callback)
+    public IEnumerator MoveCardCoroutine(System.Action<Direction> callback)
     {
         Direction _moveCardDir = Direction.NONE;
         _firstMousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
