@@ -14,6 +14,16 @@ public class GameActionState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        //
+        GameManager instance = GameManager.Instance;
+        
+        if (instance.MonsterScore >= 
+            instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxScore)
+        {
+            manager.SwitchState(manager.GameWinState);
+        }
+        else
+        {
+            manager.SwitchState(manager.GameDefeatStateState);
+        }
     }
 }

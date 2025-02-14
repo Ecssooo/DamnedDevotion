@@ -101,9 +101,8 @@ public class Card : MonoBehaviour
 
     public void OnDie()
     {
-        //Transfer food value to GameManager
-        _foodValue = 0;
         GameManager.Instance.Board.ClearSlot(this);
+        GameManager.Instance.MonsterScore += _foodValue;
         Debug.Log("Mog Fed");
     }
 }

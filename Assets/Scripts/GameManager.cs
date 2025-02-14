@@ -46,8 +46,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ActionCount _actionCount;
     public ActionCount ActionCount { get => _actionCount; }
-    
-    
+
+    private int _monsterScore;
+    public int MonsterScore { get => _monsterScore; set => _monsterScore = value; }
+
+
     // [SerializeField] private TextMeshProUGUI levelCountText;
     // [SerializeField] private TextMeshProUGUI ActionCountText;
     //
