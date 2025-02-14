@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1371991578835781069}
   - component: {fileID: 7330542236511719761}
-  - component: {fileID: 4504625280509030551}
-  - component: {fileID: 3885682801600068350}
+  - component: {fileID: 240046275366504090}
+  - component: {fileID: 5417546486267018806}
   m_Layer: 0
-  m_Name: KnightSword
-  m_TagString: SwordedKnight
+  m_Name: Cauldron
+  m_TagString: Cauldron
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.25609756, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.34591186, g: 0.34591186, b: 0.34591186, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -89,7 +89,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4504625280509030551
+--- !u!114 &240046275366504090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,11 +101,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc0867ff3ecc8f4ab48088736e8705a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardType: 2
+  _cardType: 6
   _direction: 0
+  _attackDirection: 0
   _foodValue: 0
   _positionOnBoard: {x: 0, y: 0}
---- !u!61 &3885682801600068350
+--- !u!61 &5417546486267018806
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -21,31 +21,72 @@ MonoBehaviour:
   levelList:
   - level: 0
     CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
     - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 0
+    effects: []
+  - level: 1
+    CardsList:
+    - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 0}
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 1}
-    - cardType: 0
-      direction: 0
+    - cardType: 2
+      direction: 3
       positionOnBoard: {x: 0, y: 2}
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 1, y: 0}
     - cardType: 1
-      direction: 1
+      direction: 0
       positionOnBoard: {x: 1, y: 1}
     - cardType: 2
-      direction: 1
+      direction: 3
       positionOnBoard: {x: 1, y: 2}
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 2, y: 0}
-    - cardType: 0
-      direction: 0
+    - cardType: 2
+      direction: 1
       positionOnBoard: {x: 2, y: 1}
-    - cardType: 0
+    - cardType: 4
       direction: 0
       positionOnBoard: {x: 2, y: 2}
     - cardType: 0
@@ -54,9 +95,9 @@ MonoBehaviour:
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 3, y: 1}
-    - cardType: 0
+    - cardType: 1
       direction: 0
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 0
-    maxScore: 0
+    maxActionCount: 3
+    maxScore: 4
     effects: []

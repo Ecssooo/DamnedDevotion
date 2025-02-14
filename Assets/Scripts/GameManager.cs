@@ -1,28 +1,14 @@
-using System;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-
-    [SerializeField] private Board _board;
-    public Board Board { get => _board; }
-
-    [SerializeField] private LevelDatabase _levelDatabase;
-    public LevelDatabase LevelDatabase { get => _levelDatabase; }
-
-    [SerializeField] private ListAction _listAction;
-    public ListAction ListActions { get => _listAction; }
-
     [SerializeField] private Effects _effect;
     public Effects Effect
     {
         get => _effect;
         set => _effect = value;
     }
+    #region Instance
 
     private static GameManager _instance;
 
@@ -47,8 +33,21 @@ public class GameManager : MonoBehaviour
         EffectList.SwapCard = false;
 
     }
+    #endregion
 
+    [SerializeField] private Board _board;
+    public Board Board { get => _board; }
 
+    [SerializeField] private LevelDatabase _levelDatabase;
+    public LevelDatabase LevelDatabase {get => _levelDatabase; }
+
+    [SerializeField] private ListAction _listAction;
+    public ListAction ListActions { get => _listAction; }
+
+    [SerializeField] private ActionCount _actionCount;
+    public ActionCount ActionCount { get => _actionCount; }
+    
+    
     // [SerializeField] private TextMeshProUGUI levelCountText;
     // [SerializeField] private TextMeshProUGUI ActionCountText;
     //

@@ -147,7 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bc0867ff3ecc8f4ab48088736e8705a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardType: 0
+  _cardType: 1
   _direction: 0
+  _attackDirection: 0
   _foodValue: 2
   _positionOnBoard: {x: 0, y: 0}
