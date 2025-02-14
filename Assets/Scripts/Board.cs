@@ -311,6 +311,7 @@ public class Board : MonoBehaviour
         {
             if(card != null) card.DoEndOfTurnActions();
         }
+        GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameWinState);
     }
 
     public void StartEndAction()
