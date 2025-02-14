@@ -7,14 +7,20 @@ using UnityEngine.EventSystems;
 public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
+    [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
     [SerializeField] private LevelDatabase _levelDatabase;
-    
+    [SerializeField] private GameObject _effectParent;
     private Card[,] _board = new Card[4, 3];
 
     public Card[,] CardList => _board;
 
     private Transform[,] _slotsTab = new Transform[4, 3];
 
+    public Transform[,] SlotsTab => _slotsTab;
+
+
+    private GameObject[] _effectGO = new GameObject[3];
+    
     /// <summary>
     /// Transform slot list into 2D array
     /// </summary>
@@ -47,6 +53,8 @@ public class Board : MonoBehaviour
                 ClearSlot(card.GetComponentInChildren<Card>());
             }
         }
+        
+        ClearEffect();
     }
 
 
@@ -96,6 +104,35 @@ public class Board : MonoBehaviour
         foreach (var card in level.CardsList)
         {
             SetSlots(card);
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (level.effects[i])
+            {
+                SetEffect(i);
+            }
+        }
+    }
+
+    public void SetEffect(int index)
+    {
+        switch (index)
+        {
+            case(0): _effectGO[0] = Instantiate(_levelDatabase.moveEffectPrefab, _effectSlots[0]); break;
+            case(1): _effectGO[1] = Instantiate(_levelDatabase.switchEffectPrefab,_effectSlots[1]); break;
+            case(2): _effectGO[2] = Instantiate(_levelDatabase.invocationEffectPrefab, _effectSlots[2]); break;
+        }
+    }
+    
+    public void ClearEffect()
+    {
+        foreach (var go in _effectGO)
+        {
+            if (go != null)
+            {
+                DestroyImmediate(go);
+            }
         }
     }
 

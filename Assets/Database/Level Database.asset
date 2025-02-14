@@ -18,6 +18,9 @@ MonoBehaviour:
   monsterPrefab: {fileID: 8533776778481682274, guid: 6d894f43e23333f40ae772cb82ab4ecd, type: 3}
   miniMonsterPrefab: {fileID: 8533776778481682274, guid: 940e2c85e02cfed4c85bedb69cc8f63b, type: 3}
   cauldronPrefab: {fileID: 8533776778481682274, guid: b15cf18034d308a4da7e85a5a2a1146e, type: 3}
+  moveEffectPrefab: {fileID: 4160450261228661187, guid: 0aca2db9d56479e4b94cfeabaebfc7e4, type: 3}
+  switchEffectPrefab: {fileID: 3019628475793264510, guid: 55cf335972d127049b62f0194abf6014, type: 3}
+  invocationEffectPrefab: {fileID: 0}
   levelList:
   - level: 0
     CardsList:
@@ -59,7 +62,7 @@ MonoBehaviour:
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 5
     maxScore: 2
-    effects: []
+    effects: 010000
   - level: 1
     CardsList:
     - cardType: 0
@@ -100,4 +103,4 @@ MonoBehaviour:
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 3
     maxScore: 4
-    effects: []
+    effects: 010100

@@ -17,14 +17,14 @@ public class Level
     public List<CardParams> CardsList;
     public int maxActionCount;
     public int maxScore;
-    public List<GameObject> effects;
+    public bool[] effects;
 
-    public Level(int _levelindex,List<CardParams> cardsList, int _maxAction, int _maxScore)
+    public Level(int _levelindex,List<CardParams> cardsList, int _maxAction, int _maxScore, bool[] _effects)
     {
         level = _levelindex;
         CardsList = cardsList;
         maxActionCount = _maxAction;
         maxScore = _maxScore;
-        effects = new List<GameObject>();
+        effects = _effects;
     }
 }

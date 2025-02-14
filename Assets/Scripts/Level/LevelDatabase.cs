@@ -11,6 +11,10 @@ public class LevelDatabase : ScriptableObject
     public  GameObject miniMonsterPrefab;
     public  GameObject cauldronPrefab;
 
+    public GameObject moveEffectPrefab;
+    public GameObject switchEffectPrefab;
+    public GameObject invocationEffectPrefab;
+    
     
     public List<Level> levelList = new ();
 
