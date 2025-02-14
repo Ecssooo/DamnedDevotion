@@ -101,8 +101,11 @@ public class Card : MonoBehaviour
 
     public void OnDie()
     {
-        GameManager.Instance.Board.ClearSlot(this);
-        GameManager.Instance.MonsterScore += _foodValue;
-        Debug.Log("Mog Fed");
+        if (this._cardType == CardType.HUMAN)
+        {
+            GameManager.Instance.Board.ClearSlot(this);
+            GameManager.Instance.MonsterScore += _foodValue;
+            Debug.Log("Mog Fed");
+        }
     }
 }

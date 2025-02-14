@@ -63,6 +63,7 @@ public class GameStateManager : MonoBehaviour
 
     public void SwitchToMenu()
     {
+        _currentState.ExitState(this);
         SwitchState(_gameLevelState);
     }
     
