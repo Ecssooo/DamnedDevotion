@@ -16,7 +16,8 @@ public class GameWinState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        if (LevelManager.Instance.CurrentLevel < GameManager.Instance.LevelDatabase.levelList.Count - 1)
+        if (LevelManager.Instance.CurrentLevel < GameManager.Instance.LevelDatabase.levelList.Count - 1 &&
+            LevelManager.Instance.CurrentLevel + 1 > SaveSystem.Load())
         {
             SaveSystem.Save(LevelManager.Instance.CurrentLevel + 1);
         }
