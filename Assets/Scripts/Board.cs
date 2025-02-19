@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class Board : MonoBehaviour
@@ -139,6 +140,32 @@ public class Board : MonoBehaviour
             case(2): _effectGO[2] = Instantiate(_levelDatabase.invocationEffectPrefab, _effectSlots[2]); break;
         }
     }
+    
+    //Delete comment to activate in SetLevel();
+    public void SetKnightDirection()
+    {
+        foreach (var card in _board)
+        {
+            if (card.CardType == CardType.KNIGHTSWORD)
+            {
+                switch (card.AttackDirection)
+                {
+                    case(Direction.UP):
+                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up;
+                        break;
+                    case(Direction.RIGHT):
+                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right;
+                        break;
+                    case(Direction.DOWN):
+                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down;
+                        break;
+                    case(Direction.LEFT):
+                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left;
+                        break;
+                }
+            }
+        }
+    }
 
     /// <summary>
     /// Setup card on board
@@ -152,7 +179,7 @@ public class Board : MonoBehaviour
         {
             SetSlots(card);
         }
-
+        //SetKnightDirection();
         for (int i = 0; i < 3; i++)
         {
             if (level.effects[i])

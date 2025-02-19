@@ -14,7 +14,11 @@ public class LevelDatabase : ScriptableObject
     public GameObject moveEffectPrefab;
     public GameObject switchEffectPrefab;
     public GameObject invocationEffectPrefab;
-    
+
+    public Sprite KS_Up;
+    public Sprite KS_Right;
+    public Sprite KS_Down;
+    public Sprite KS_Left;
     
     public List<Level> levelList = new ();
 
