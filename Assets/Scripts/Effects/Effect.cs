@@ -9,6 +9,9 @@ public class Effect : MonoBehaviour
     [SerializeField] private Effects _effect;
     public Effects Effet { get => _effect; }
 
+    [Header("Effect Settings")]
+    [SerializeField] private float _effectDuration = 1f;
+
     private void Start()
     {
         if (_effect == Effects.SWAP) this.AddComponent<SwitchPower>();

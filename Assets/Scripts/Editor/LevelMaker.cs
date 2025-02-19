@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEditor;
 
@@ -37,7 +36,11 @@ public class LevelMaker : EditorWindow
 
     private Vector2 scrollPos;
 
-
+    private bool _moveEnabled;
+    private bool _switchEnabled;
+    private bool _invocEnabled;
+    
+    
     [MenuItem("Tools/LevelMaker")]
     public static void ShowWindow()
     {
@@ -92,8 +95,11 @@ public class LevelMaker : EditorWindow
 
             persos[i] = pw;
         }
-        
 
+        _moveEnabled = EditorGUILayout.Toggle("Move", _moveEnabled);
+        _switchEnabled = EditorGUILayout.Toggle("Switch", _switchEnabled);
+        _invocEnabled = EditorGUILayout.Toggle("Invocation", _invocEnabled);
+        
         EditorGUILayout.Space(20);
         //Buttons
         if (GUILayout.Button("ApplyLevel"))
@@ -166,8 +172,9 @@ public class LevelMaker : EditorWindow
             index++;
         }
 
-
-        Level newLevel = new Level(levelId, newCardList, maxAction, maxScore);
+        bool[] effect = new[] { _moveEnabled, _switchEnabled, _invocEnabled };
+        
+        Level newLevel = new Level(levelId, newCardList, maxAction, maxScore, effect);
         _levelDatabase.levelList.Add(newLevel);
     }
 

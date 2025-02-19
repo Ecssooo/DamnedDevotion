@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -5,6 +7,8 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     [SerializeField] CardType _cardType;
+
+
     public CardType CardType
     {
         get { return _cardType; }
@@ -37,6 +41,9 @@ public class Card : MonoBehaviour
         get { return _positionOnBoard; }
         set { _positionOnBoard = value; }
     }
+
+    [SerializeField] private TextMeshProUGUI _monsterScoreTXT;
+    
     private void OnMouseDown()
     {
 
@@ -45,11 +52,13 @@ public class Card : MonoBehaviour
             case Effects.NONE:
                 break;
             case Effects.MOVE:
-                StartCoroutine(EffectActions.Instance._moveCardCoroutine((direction) =>
+                StartCoroutine(EffectActions.Instance.MoveCardCoroutine((direction) =>
                 {
                     this._direction = direction;
                     Action moveAction = EffectActions.Instance.CreateAction(this);
-                    EffectActions.Instance.DoEffect(moveAction);
+                    ListAction.Instance.AddAction(moveAction);
+                    Debug.Log(ListAction.Instance.ListActions);
+                    //EffectActions.Instance.DoEffect(moveAction);
                 }));
                 break;
             case Effects.SWAP:
@@ -65,7 +74,11 @@ public class Card : MonoBehaviour
                     EffectActions.Instance._swapSecondCard = card;
                     // Debug.Log("Second Swap card Selected");
                     Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
-                    EffectActions.Instance.DoEffect(switchAction);
+
+                    ListAction.Instance.AddAction(switchAction);
+                    Debug.Log(ListAction.Instance.ListActions);
+
+                    //EffectActions.Instance.DoEffect(switchAction);
                     EffectActions.Instance._swapFirstCard = null;
                     EffectActions.Instance._swapSecondCard = null;
                 }
@@ -101,9 +114,23 @@ public class Card : MonoBehaviour
 
     public void OnDie()
     {
-        //Transfer food value to GameManager
-        _foodValue = 0;
-        GameManager.Instance.Board.ClearSlot(this);
-        Debug.Log("Mog Fed");
+        if (this._cardType == CardType.HUMAN)
+        {
+            GameManager.Instance.Board.ClearSlot(this);
+            GameManager.Instance.MonsterScore += _foodValue;
+            Debug.Log("Mog Fed");
+        }
+    }
+
+    public void ShowMonsterScore()
+    {
+        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + " / " +
+                                GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
+                                    .maxScore;
+    }
+
+    private void Update()
+    {
+        if(_cardType == CardType.MONSTER) ShowMonsterScore();
     }
 }
