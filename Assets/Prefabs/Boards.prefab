@@ -853,7 +853,9 @@ MonoBehaviour:
   - {fileID: 4408403547413556443}
   - {fileID: 529041512929623316}
   - {fileID: 4056197168528482348}
+  _effectSlots: []
   _levelDatabase: {fileID: 11400000, guid: 0804e4c0a5f404e49a339bbe37bc8fac, type: 2}
+  _effectParent: {fileID: 0}
 --- !u!114 &6046596356030798874
 MonoBehaviour:
   m_ObjectHideFlags: 0

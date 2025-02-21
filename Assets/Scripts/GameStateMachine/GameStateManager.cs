@@ -54,7 +54,7 @@ public class GameStateManager : MonoBehaviour
 
     public void SwitchState(GameBaseState state)
     {
-        _currentState.ExitState(this);
+        // _currentState.ExitState(this);
         _currentState = state;
         _currentState.EnterState(this);
     }
@@ -63,6 +63,7 @@ public class GameStateManager : MonoBehaviour
 
     public void SwitchToMenu()
     {
+        _currentState.ExitState(this);
         SwitchState(_gameLevelState);
     }
     

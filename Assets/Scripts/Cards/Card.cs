@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -39,6 +41,9 @@ public class Card : MonoBehaviour
         get { return _positionOnBoard; }
         set { _positionOnBoard = value; }
     }
+
+    [SerializeField] private TextMeshProUGUI _monsterScoreTXT;
+    
     private void OnMouseDown()
     {
 
@@ -109,9 +114,23 @@ public class Card : MonoBehaviour
 
     public void OnDie()
     {
-        //Transfer food value to GameManager
-        _foodValue = 0;
-        GameManager.Instance.Board.ClearSlot(this);
-        Debug.Log("Mog Fed");
+        if (this._cardType == CardType.HUMAN)
+        {
+            GameManager.Instance.Board.ClearSlot(this);
+            GameManager.Instance.MonsterScore += _foodValue;
+            Debug.Log("Mog Fed");
+        }
+    }
+
+    public void ShowMonsterScore()
+    {
+        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + " / " +
+                                GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
+                                    .maxScore;
+    }
+
+    private void Update()
+    {
+        if(_cardType == CardType.MONSTER) ShowMonsterScore();
     }
 }
