@@ -19,7 +19,7 @@ public class Board : MonoBehaviour
 
     //Get
     public Card[,] CardList => _board;
-    public Transform[,] SlotsTab => _slotsTab;
+    //public Transform[,] SlotsTab => _slotsTab;
     
     
     #region Clear
