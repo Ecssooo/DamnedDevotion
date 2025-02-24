@@ -305,3 +305,4 @@ MonoBehaviour:
   _foodValue: 0
   _positionOnBoard: {x: 0, y: 0}
   _monsterScoreTXT: {fileID: 0}
+  _actionSlots: []

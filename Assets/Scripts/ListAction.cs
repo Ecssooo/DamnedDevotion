@@ -102,7 +102,8 @@ public class ListAction : MonoBehaviour
         Debug.Log("last card action : " + _listActions[^1]._card);
         SlotToRemove = null;
 
-        _listActions.Remove(_listActions[^1]);
+        _listActions.RemoveAt(_listActions.Count - 1); // Remove le dernier index
+        //_listActions.Remove(_listActions[^1]);
         Debug.Log(_listActions.Count);
         GameManager.Instance.ActionCount.Increment(1);
     }
