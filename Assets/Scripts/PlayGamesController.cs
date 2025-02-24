@@ -20,6 +20,8 @@ public class PlayGamesController : MonoBehaviour
         });
     }
 
+
+    // Débloquer un achievement
     public void UnlockAchievement(string achievementID)
     {
         Social.ReportProgress(achievementID, 100.0f, success => {
