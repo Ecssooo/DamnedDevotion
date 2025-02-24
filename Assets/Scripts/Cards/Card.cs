@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -43,7 +44,15 @@ public class Card : MonoBehaviour
     }
 
     [SerializeField] private TextMeshProUGUI _monsterScoreTXT;
-    
+
+
+    [SerializeField] private List<Transform> _actionSlots = new List<Transform>();
+    public List<Transform> ActionSlots
+    {
+        get { return _actionSlots; }
+        set { _actionSlots = value; }
+    }
+
     private void OnMouseDown()
     {
 
@@ -57,8 +66,6 @@ public class Card : MonoBehaviour
                     this._direction = direction;
                     Action moveAction = EffectActions.Instance.CreateAction(this);
                     ListAction.Instance.AddAction(moveAction);
-                    Debug.Log(ListAction.Instance.ListActions);
-                    //EffectActions.Instance.DoEffect(moveAction);
                 }));
                 break;
             case Effects.SWAP:
@@ -67,16 +74,13 @@ public class Card : MonoBehaviour
                 if (EffectActions.Instance._swapFirstCard == null)
                 {
                     EffectActions.Instance._swapFirstCard = card;
-                    // Debug.Log("First Swap card Selected");
                 }
                 else
                 {
                     EffectActions.Instance._swapSecondCard = card;
-                    // Debug.Log("Second Swap card Selected");
                     Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
 
                     ListAction.Instance.AddAction(switchAction);
-                    Debug.Log(ListAction.Instance.ListActions);
 
                     //EffectActions.Instance.DoEffect(switchAction);
                     EffectActions.Instance._swapFirstCard = null;
@@ -95,11 +99,8 @@ public class Card : MonoBehaviour
                 break;
             case CardType.KNIGHTSWORD:
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
-                // Debug.Log(target);
                 if(target != null)
                     target.OnDie();
-                else
-                    Debug.Log("Target null");
                 break;
             case CardType.KNIGHTSHIELD:
                 break;
@@ -118,7 +119,6 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
-            Debug.Log("Mog Fed");
         }
     }
 
@@ -127,6 +127,11 @@ public class Card : MonoBehaviour
         _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + " / " +
                                 GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
                                     .maxScore;
+    }
+
+    public void AddAction(Action action)
+    {
+            
     }
 
     private void Update()
