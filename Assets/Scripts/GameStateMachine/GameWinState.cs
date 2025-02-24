@@ -5,6 +5,7 @@ public class GameWinState : GameBaseState
     public override void EnterState(GameStateManager manager)
     {
         LevelManager.Instance.LoadWinMenu();
+        GameManager.Instance.Board.ResetBoard();
         GameManager.Instance.MonsterScore = 0;
         GameManager.Instance.Effect = Effects.NONE;
     }
