@@ -304,3 +304,4 @@ MonoBehaviour:
   _attackDirection: 0
   _foodValue: 2
   _positionOnBoard: {x: 0, y: 0}
+  _monsterScoreTXT: {fileID: 0}

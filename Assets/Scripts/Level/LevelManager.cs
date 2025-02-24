@@ -80,6 +80,9 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         _canva.SetActive(false);
+        Debug.Log("Loading level : " + _currentLevel);
+        Debug.Log("Level Count : " + GameManager.Instance.LevelDatabase.levelList.Count);
+        Debug.Log("current level : " + GameManager.Instance.LevelDatabase.levelList[_currentLevel]);
         GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]);
         _board.SetActive(true);
         GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
