@@ -2916,6 +2916,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1230103611}
+  _canva: {fileID: 0}
+  _board: {fileID: 0}
+  _defeatScreen: {fileID: 0}
+  _winScreen: {fileID: 0}
 --- !u!1 &1171256458
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,6 +3080,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1221741572}
   - component: {fileID: 1221741571}
+  - component: {fileID: 1221741573}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3115,6 +3120,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221741573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221741570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15007a4c2685adf4c8945a0ff0e3d406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1230103611
 GameObject:
   m_ObjectHideFlags: 0
