@@ -61,4 +61,9 @@ public class ListAction : MonoBehaviour
         _listActions.Remove(_listActions[^1]);
         GameManager.Instance.ActionCount.Increment(1);
     }
+
+    public void ClearListAction()
+    {
+        _listActions.Clear();
+    }
 }
