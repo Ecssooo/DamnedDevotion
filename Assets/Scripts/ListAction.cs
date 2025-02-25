@@ -35,7 +35,7 @@ public class ListAction : MonoBehaviour
         set => _listActions = value;
     }
     
-    private IEnumerator StartListAction()
+    public IEnumerator StartListAction()
     {
         foreach (var action in _listActions)
         {

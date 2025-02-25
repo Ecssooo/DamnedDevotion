@@ -53,6 +53,9 @@ public class Card : MonoBehaviour
         set { _actionSlots = value; }
     }
 
+    [SerializeField] private Animator _animator;
+    public Animator Animator { get { return _animator; } }
+    
     private void OnMouseDown()
     {
 
@@ -77,6 +80,7 @@ public class Card : MonoBehaviour
                 }
                 else
                 {
+                    //if (EffectActions.Instance._swapFirstCard == card) return;
                     EffectActions.Instance._swapSecondCard = card;
                     Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
 

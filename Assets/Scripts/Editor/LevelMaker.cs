@@ -63,7 +63,7 @@ public class LevelMaker : EditorWindow
         levelId = EditorGUILayout.IntField("Id", levelId);
         maxAction = EditorGUILayout.IntField("maxAction", maxAction);
         maxScore = EditorGUILayout.IntField("maxScore", maxScore);
-
+ 
         EditorGUILayout.Space();
         GUILayout.Label("Prefabs", EditorStyles.boldLabel);
 
@@ -147,7 +147,7 @@ public class LevelMaker : EditorWindow
         card.cardType = cardParams.type;
         card.positionOnBoard = positionSlot[index];
         card.direction = cardParams.axis;
-        board.SetSlots(card);
+        board.EditorSetSlots(card);
     }
 
     /// <summary>
@@ -187,11 +187,11 @@ public class LevelMaker : EditorWindow
         ResetBoard();
         try
         {
-            board.SetLevel(_levelDatabase.levelList[levelToLoad]);
+            board.EditorSetLevel(_levelDatabase.levelList[levelToLoad]);
         }
         catch (ArgumentOutOfRangeException ex)
         {
-            Debug.LogWarning("Level doesn't exist");
+            Debug.LogWarning("Level doesn't exist" + ex);
         }
     }
 

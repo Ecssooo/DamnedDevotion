@@ -35,6 +35,7 @@ public class EffectActions : MonoBehaviour
             Debug.Log("GameStateError");
             return;
         }
+        if (action._card == null) return;
         switch (action._effect)
         {
             case Effects.MOVE:
@@ -46,9 +47,13 @@ public class EffectActions : MonoBehaviour
                 break;
             case Effects.SWAP:
                 if (action._card2 == null) return;
-                GameManager.Instance.Board.SwitchCard(action._card, action._card2);
+                StartCoroutine(GameManager.Instance.Board.SwitchCard(action._card, action._card2));
                 //Debug.Log("Swapping Cards");
                 //GameManager.Instance.ActionCount.Decrement(1);
+                break;
+            case Effects.INVOKE:
+                Invocation invocation = FindObjectOfType<Invocation>();
+                //invocation?.PlaceCardAtMousePosition();
                 break;
         }
     }
