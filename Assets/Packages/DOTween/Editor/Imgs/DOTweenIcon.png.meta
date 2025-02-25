@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 6c2a703c876fda5408df53aa9f456cb6
+guid: 1e00bcd8ef61c3642a5745334b03ad10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4991737910949092458
-    second: pv invocation_0
-  - first:
-      213: 5260885048159740636
-    second: pv invocation_1
+      213: -9137117592129561275
+    second: DOTweenIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pv invocation_0
+      name: DOTweenIcon_0
       rect:
         serializedVersion: 2
-        x: 688
-        y: 54
-        width: 170
-        height: 161
+        x: 1
+        y: 1
+        width: 91
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 693670e31d8c9bab0800000000000000
-      internalID: -4991737910949092458
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pv invocation_1
-      rect:
-        serializedVersion: 2
-        x: 857
-        y: 100
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd2a9b3f31b620940800000000000000
-      internalID: 5260885048159740636
+      spriteID: 54d1522e5ff623180800000000000000
+      internalID: -9137117592129561275
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -172,9 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pv invocation_0: -4991737910949092458
-      pv invocation_1: 5260885048159740636
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -4,7 +4,6 @@ public class GameSetupState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
-        GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]);
         GameManager.Instance.ActionCount.InitActionPoint(GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxActionCount);
         GameManager.Instance.ActionCount.DisplayActionPoint();
     }

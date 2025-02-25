@@ -40,7 +40,7 @@ public class ListAction : MonoBehaviour
         foreach (var action in _listActions)
         {
             EffectActions.Instance.DoEffect(action);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(1f);
         }
         GameManager.Instance.Board.StartEndAction();
         //yield return new WaitForSeconds(1);
