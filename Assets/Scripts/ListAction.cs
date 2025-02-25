@@ -53,7 +53,22 @@ public class ListAction : MonoBehaviour
 
     public void AddAction(Action action)
     {
-        if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster") || action._card.CompareTag("ShieldedKnight")) return;
+        // Conditions to prevent adding action due to card type
+
+        switch (action._effect)
+        {
+            case Effects.MOVE:
+                if (action._card.CompareTag("Cauldron") || 
+                    action._card.CompareTag("Monster") || 
+                    action._card.CompareTag("ShieldedKnight")) 
+                    return;
+                break;
+            case Effects.SWAP:
+                if (action._card.CompareTag("Cauldron") || 
+                    action._card2.CompareTag("Cauldron")) 
+                    return;
+                break;
+        }
 
         // Add action to Card 
 
