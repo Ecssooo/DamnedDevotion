@@ -53,7 +53,7 @@ public class ListAction : MonoBehaviour
 
     public void AddAction(Action action)
     {
-        _listActions.Add(action);
+        if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster") || action._card.CompareTag("ShieldedKnight")) return;
 
         // Add action to Card 
 
@@ -67,16 +67,33 @@ public class ListAction : MonoBehaviour
                         GameObject newMoveAction = Instantiate(_moveEffectPrefab, slot);
                         newMoveAction.transform.localScale = Vector3.one / 3;
                         newMoveAction.transform.localPosition = Vector3.zero;
+                        _listActions.Add(action);
                         HasAppliedEffect = true;
                         break;
                     case Effects.SWAP:
                         GameObject newSwapAction = Instantiate(_switchEffectPrefab, slot);
                         newSwapAction.transform.localScale = Vector3.one / 3;
                         newSwapAction.transform.localPosition = Vector3.zero;
+                        _listActions.Add(action);
                         HasAppliedEffect = true;
                         break;
                 }
 
+            }
+        }
+        if (action._card2 != null) {
+        Debug.Log("action card 2 : " + action._card2);
+
+        HasAppliedEffect = false;
+        foreach (var slot in action._card2.ActionSlots)
+            {
+                if (slot.childCount == 0 && !HasAppliedEffect)
+                {
+                    GameObject newSwapAction = Instantiate(_switchEffectPrefab, slot);
+                    newSwapAction.transform.localScale = Vector3.one / 3;
+                    newSwapAction.transform.localPosition = Vector3.zero;
+                    HasAppliedEffect = true;
+                }
             }
         }
 
@@ -89,6 +106,7 @@ public class ListAction : MonoBehaviour
     }
     public void RemoveLastAction()
     {
+        if (_listActions.Count == 0) return;
         //Remove icon from last action
         GameObject SlotToRemove = null;
         foreach (var LastSlot in _listActions[^1]._card.ActionSlots)
@@ -102,9 +120,7 @@ public class ListAction : MonoBehaviour
         Debug.Log("last card action : " + _listActions[^1]._card);
         SlotToRemove = null;
 
-        _listActions.RemoveAt(_listActions.Count - 1); // Remove le dernier index
-        //_listActions.Remove(_listActions[^1]);
-        Debug.Log(_listActions.Count);
+        _listActions.RemoveAt(_listActions.Count - 1);
         GameManager.Instance.ActionCount.Increment(1);
     }
 
