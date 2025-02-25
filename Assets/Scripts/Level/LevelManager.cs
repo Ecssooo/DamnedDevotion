@@ -80,13 +80,13 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         _canva.SetActive(false);
-        GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]);
+        _board.SetActive(true);
+        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
 
         EffectList.MoveCard = false;
         EffectList.SwapCard = false;
         GameManager.Instance.Effect = Effects.NONE;
 
-        _board.SetActive(true);
         ListAction.Instance.ListActions.Clear();
         GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
     }

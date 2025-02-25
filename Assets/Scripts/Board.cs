@@ -9,7 +9,10 @@ public class Board : MonoBehaviour
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
     [SerializeField] private LevelDatabase _levelDatabase;
-
+    
+    [Header("Distribution")]
+    [SerializeField] private Transform _handTransform;
+    [SerializeField] private float _distrubDuration;
     
     //Private field
     private GameObject[] _effectGO = new GameObject[3];
@@ -102,26 +105,34 @@ public class Board : MonoBehaviour
     /// Add a Card to a slot in board
     /// </summary>
     /// <param name="card">Cards type, Can be null</param>
-    public void SetSlots(CardParams cardParams)
+    public IEnumerator SetSlots(CardParams cardParams)
     {
         InitSlotTab();
 
         var prefab = _levelDatabase.GetPrefab(cardParams.cardType);
-        if (prefab == null) return;
+        if (prefab == null) yield break;
 
-        var GO = Instantiate(prefab, this.transform);
+        var GO = Instantiate(prefab, _handTransform);
         var card = GO.GetComponent<Card>();
-        if (card == null) return;
+        if (card == null) yield break;
         card.PositionOnBoard = cardParams.positionOnBoard;
         card.AttackDirection = cardParams.direction;
         if (PositionInBounds(card.PositionOnBoard))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, _distrubDuration);
+            yield return new WaitForSeconds( _distrubDuration);
             card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
 
+    public void StartSetLevel(Level level)
+    {
+        StartCoroutine(SetLevel(level));
+    }
+    
     public void SetSlots(Card card)
     {
         if (PositionInBounds(card.PositionOnBoard))
@@ -172,20 +183,25 @@ public class Board : MonoBehaviour
     /// Setup card on board
     /// </summary>
     /// <param name="level">Level to setup</param>
-    public void SetLevel(Level level)
+    public IEnumerator SetLevel(Level level)
     {
         InitSlotTab();
         ResetBoard();
-        foreach (var card in level.CardsList)
-        {
-            SetSlots(card);
-        }
         //SetKnightDirection();
         for (int i = 0; i < 3; i++)
         {
             if (level.effects[i])
             {
                 SetEffect(i);
+            }
+        }
+        
+        foreach (var card in level.CardsList)
+        {
+            if (card.cardType != CardType.NONE)
+            {
+                StartCoroutine(SetSlots(card));
+                yield return new WaitForSeconds( _distrubDuration - 0.1f);
             }
         }
     }
