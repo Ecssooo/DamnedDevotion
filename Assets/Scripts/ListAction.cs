@@ -68,6 +68,7 @@ public class ListAction : MonoBehaviour
                         newMoveAction.transform.localScale = Vector3.one / 3;
                         newMoveAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);
+                        GameManager.Instance.ActionCount.Decrement(1);
                         HasAppliedEffect = true;
                         break;
                     case Effects.SWAP:
@@ -75,6 +76,7 @@ public class ListAction : MonoBehaviour
                         newSwapAction.transform.localScale = Vector3.one / 3;
                         newSwapAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);
+                        GameManager.Instance.ActionCount.Decrement(1);
                         HasAppliedEffect = true;
                         break;
                 }
@@ -97,7 +99,7 @@ public class ListAction : MonoBehaviour
             }
         }
 
-        GameManager.Instance.ActionCount.Decrement(1);
+
         HasAppliedEffect = false;
         if (!GameManager.Instance.ActionCount.ActionRemaining())
         {
