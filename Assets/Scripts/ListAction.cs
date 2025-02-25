@@ -40,7 +40,7 @@ public class ListAction : MonoBehaviour
         foreach (var action in _listActions)
         {
             EffectActions.Instance.DoEffect(action);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(1f);
         }
         GameManager.Instance.Board.StartEndAction();
         //yield return new WaitForSeconds(1);
@@ -99,8 +99,6 @@ public class ListAction : MonoBehaviour
             }
         }
         if (action._card2 != null) {
-        Debug.Log("action card 2 : " + action._card2);
-
         HasAppliedEffect = false;
         foreach (var slot in action._card2.ActionSlots)
             {
@@ -126,6 +124,7 @@ public class ListAction : MonoBehaviour
         if (_listActions.Count == 0) return;
         //Remove icon from last action
         GameObject SlotToRemove = null;
+        GameObject SlotToRemove2 = null;
         foreach (var LastSlot in _listActions[^1]._card.ActionSlots)
         {
             if (LastSlot.childCount > 0)
@@ -133,9 +132,24 @@ public class ListAction : MonoBehaviour
                 SlotToRemove = LastSlot.GetChild(0).gameObject;
             }
         }
+
+        if (_listActions[^1]._card2 != null)
+        {
+            foreach (var LastSlot in _listActions[^1]._card2.ActionSlots)
+            {
+                if (LastSlot.childCount > 0)
+                {
+                    SlotToRemove2 = LastSlot.GetChild(0).gameObject;
+                }
+            }
+        }
+
+
+
         Destroy(SlotToRemove.gameObject);
-        Debug.Log("last card action : " + _listActions[^1]._card);
+        if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
         SlotToRemove = null;
+        SlotToRemove2 = null;
 
         _listActions.RemoveAt(_listActions.Count - 1);
         GameManager.Instance.ActionCount.Increment(1);
