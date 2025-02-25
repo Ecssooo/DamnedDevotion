@@ -14,10 +14,11 @@ public class Board : MonoBehaviour
     private GameObject[] _effectGO = new GameObject[3];
     private Card[,] _board = new Card[4, 3];
     private Transform[,] _slotsTab = new Transform[4, 3];
+    public Transform[,] SlotsTab => _slotsTab;
 
     //Get
     public Card[,] CardList => _board;
-    public Transform[,] SlotsTab => _slotsTab;
+    //public Transform[,] SlotsTab => _slotsTab;
     
     
     #region Clear
@@ -359,6 +360,12 @@ public class Board : MonoBehaviour
     public void StartEndAction()
     {
         StartCoroutine(DoAllEndAction());
+    }
+
+
+    private void Start()
+    {
+        InitSlotTab();
     }
     
     #endregion

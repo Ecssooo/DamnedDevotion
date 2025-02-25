@@ -50,7 +50,6 @@ public class Effect : MonoBehaviour
             case Effects.NONE:
                 break;
         }
-        Debug.Log(GameManager.Instance.Effect);
     }
 
     #region Drag and Drop
