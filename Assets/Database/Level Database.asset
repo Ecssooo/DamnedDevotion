@@ -148,4 +148,4 @@ MonoBehaviour:
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 3
     maxScore: 4
-    effects: 010000
+    effects: 010100
