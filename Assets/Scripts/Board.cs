@@ -8,7 +8,6 @@ public class Board : MonoBehaviour
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
     [SerializeField] private LevelDatabase _levelDatabase;
-    [SerializeField] private GameObject _effectParent;
 
     
     //Private field
