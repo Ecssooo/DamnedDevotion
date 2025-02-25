@@ -38,7 +38,7 @@ public class EffectActions : MonoBehaviour
         switch (action._effect)
         {
             case Effects.MOVE:
-                if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster")) return;
+                if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster") || action._card.CompareTag("ShieldedKnight")) return;
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
                 //Debug.Log("newPos is : " + newPos);
                 StartCoroutine(GameManager.Instance.Board.MoveCard(action._card, newPos));
