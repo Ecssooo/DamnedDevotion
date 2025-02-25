@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using DG.Tweening;
 
 public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
     [SerializeField] private LevelDatabase _levelDatabase;
-    [SerializeField] private GameObject _effectParent;
 
     
     //Private field
@@ -317,13 +317,16 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="card"></param>
     /// <param name="newPos"></param>
-    public void MoveCard(Card card, Vector2Int newPos)
+    public IEnumerator MoveCard(Card card, Vector2Int newPos)
     {
         InitSlotTab();
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
+            DOTween.Init();
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            yield return new WaitForSeconds(1);
             SetSlots(card);
         }
     }
