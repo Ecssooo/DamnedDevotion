@@ -12,11 +12,6 @@ public class Effect : MonoBehaviour
     [Header("Effect Settings")]
     [SerializeField] private float _effectDuration = 1f;
 
-    private void Start()
-    {
-        if (_effect == Effects.SWAP) this.AddComponent<SwitchPower>();
-    }
-
     private void OnMouseDown()
     {
         GameManager.Instance.Effect = this.Effet;
@@ -28,11 +23,13 @@ public class Effect : MonoBehaviour
                 {
                     EffectList.MoveCard = true;
                     EffectList.SwapCard = false;
+                    EffectList.InvokeCard = false;
                     GameManager.Instance.Effect = Effects.MOVE;
                     return;
                 }
                 EffectList.MoveCard = false;
                 EffectList.SwapCard = false;
+                EffectList.InvokeCard = false;
                 GameManager.Instance.Effect = Effects.NONE;
                 break;
             case Effects.SWAP:
@@ -40,11 +37,13 @@ public class Effect : MonoBehaviour
                 {
                     EffectList.SwapCard = true;
                     EffectList.MoveCard = false;
+                    EffectList.InvokeCard = false;
                     GameManager.Instance.Effect = Effects.SWAP;
                     return;
                 }
                 EffectList.SwapCard = false;
                 EffectList.MoveCard = false;
+                EffectList.InvokeCard = false;
                 GameManager.Instance.Effect = Effects.NONE;
                 break;
             case Effects.NONE:

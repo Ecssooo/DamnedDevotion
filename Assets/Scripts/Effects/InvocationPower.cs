@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InvocationPower : MonoBehaviour
 {
-    public MonoBehaviour scriptToActivate;
+    public Invocation scriptToActivate;
 
     void Start()
     {
@@ -10,6 +10,7 @@ public class InvocationPower : MonoBehaviour
         {
             scriptToActivate.enabled = false;
         }
+        scriptToActivate.Board = GameManager.Instance.Board;
     }
 
     void OnMouseDown()
@@ -18,5 +19,6 @@ public class InvocationPower : MonoBehaviour
         {
             scriptToActivate.enabled = !scriptToActivate.enabled;
         }
+        StartCoroutine(scriptToActivate.InvokeMiniMonster());
     }
 }

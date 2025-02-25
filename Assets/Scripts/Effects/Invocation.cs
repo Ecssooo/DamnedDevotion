@@ -1,19 +1,21 @@
+using System.Collections;
 using UnityEngine;
 
 public class Invocation : MonoBehaviour
 {
-    [SerializeField] private Card cardPrefab;
-    [SerializeField] private Board board;
+    [SerializeField] private Card miniMonsterPrefab;
+    private Board board;
+    public Board Board { get => board; set => board = value; }
 
-    void Update()
+
+    public IEnumerator InvokeMiniMonster()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PlaceCardAtMousePosition();
-        }
+        yield return new WaitForSeconds(.3f);
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        PlaceCardAtMousePosition();
     }
 
-    private void PlaceCardAtMousePosition()
+    public void PlaceCardAtMousePosition()
     {
         Vector2 mousePosition = GetMousePosition();
         Collider2D hitCollider = Physics2D.OverlapPoint(mousePosition);
@@ -29,9 +31,15 @@ public class Invocation : MonoBehaviour
                     Vector2Int boardPosition = new Vector2Int(i, j);
                     if (board.SlotEmpty(boardPosition))
                     {
-                        Card newCard = Instantiate(cardPrefab);
+                        Card newCard = Instantiate(miniMonsterPrefab);
                         newCard.PositionOnBoard = boardPosition;
                         board.SetSlots(newCard);
+                        GameManager.Instance.ActionCount.Decrement(1);
+                        this.GetComponent<Invocation>().enabled = false;
+                        if (!GameManager.Instance.ActionCount.ActionRemaining())
+                        {
+                            StartCoroutine(ListAction.Instance.StartListAction());
+                        }
                     }
                 }
             }
