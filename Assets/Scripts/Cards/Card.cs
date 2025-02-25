@@ -53,6 +53,9 @@ public class Card : MonoBehaviour
         set { _actionSlots = value; }
     }
 
+    [SerializeField] private Animator _animator;
+    public Animator Animator { get { return _animator; } }
+    
     private void OnMouseDown()
     {
 

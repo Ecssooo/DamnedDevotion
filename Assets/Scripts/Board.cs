@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using DG.Tweening;
 
@@ -120,7 +119,7 @@ public class Board : MonoBehaviour
         if (PositionInBounds(card.PositionOnBoard))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
-
+            if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, _distrubDuration);
             yield return new WaitForSeconds( _distrubDuration);
             card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
@@ -128,11 +127,6 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void StartSetLevel(Level level)
-    {
-        StartCoroutine(SetLevel(level));
-    }
-    
     public void SetSlots(Card card)
     {
         if (PositionInBounds(card.PositionOnBoard))
@@ -142,7 +136,28 @@ public class Board : MonoBehaviour
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
+    
+    public void EditorSetSlots(CardParams cardParams)
+    {
+        InitSlotTab();
 
+        var prefab = _levelDatabase.GetPrefab(cardParams.cardType);
+        if (prefab == null) return;
+
+        var GO = Instantiate(prefab, _handTransform);
+        var card = GO.GetComponent<Card>();
+        if (card == null) return;
+        card.PositionOnBoard = cardParams.positionOnBoard;
+        card.AttackDirection = cardParams.direction;
+        if (PositionInBounds(card.PositionOnBoard))
+        {
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
+            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            card.transform.localPosition = new Vector3(0, 0, 0);
+        }
+    }
+    
     public void SetEffect(int index)
     {
         switch (index)
@@ -154,28 +169,15 @@ public class Board : MonoBehaviour
     }
     
     //Delete comment to activate in SetLevel();
-    public void SetKnightDirection()
+    public void SetKnightDirection(Card card)
     {
-        foreach (var card in _board)
+        if (card == null) return;
+        switch (card.AttackDirection)
         {
-            if (card.CardType == CardType.KNIGHTSWORD)
-            {
-                switch (card.AttackDirection)
-                {
-                    case(Direction.UP):
-                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up;
-                        break;
-                    case(Direction.RIGHT):
-                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right;
-                        break;
-                    case(Direction.DOWN):
-                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down;
-                        break;
-                    case(Direction.LEFT):
-                        card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left;
-                        break;
-                }
-            }
+            case(Direction.UP): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up; break;
+            case(Direction.RIGHT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right; break;
+            case(Direction.DOWN): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down; break;
+            case(Direction.LEFT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left; break;
         }
     }
 
@@ -187,7 +189,6 @@ public class Board : MonoBehaviour
     {
         InitSlotTab();
         ResetBoard();
-        //SetKnightDirection();
         for (int i = 0; i < 3; i++)
         {
             if (level.effects[i])
@@ -202,6 +203,27 @@ public class Board : MonoBehaviour
             {
                 StartCoroutine(SetSlots(card));
                 yield return new WaitForSeconds( _distrubDuration - 0.1f);
+            }
+        }
+    }
+    
+    public void EditorSetLevel(Level level)
+    {
+        InitSlotTab();
+        ResetBoard();
+        for (int i = 0; i < 3; i++)
+        {
+            if (level.effects[i])
+            {
+                SetEffect(i);
+            }
+        }
+        
+        foreach (var card in level.CardsList)
+        {
+            if (card.cardType != CardType.NONE)
+            {
+                EditorSetSlots(card);
             }
         }
     }
@@ -352,17 +374,28 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="c1">First card</param>
     /// <param name="c2">Second card</param>
-    public void SwitchCard(Card c1, Card c2)
+    public IEnumerator SwitchCard(Card c1, Card c2)
     {
         InitSlotTab();
 
-        if (c1 == null || c2 == null) return;
+        if (c1 == null || c2 == null) yield break;
         Vector2Int temp = c1.PositionOnBoard;
         c1.PositionOnBoard = c2.PositionOnBoard;
         c2.PositionOnBoard = temp;
         _board[c1.PositionOnBoard.x, c1.PositionOnBoard.y] = null;
         _board[c2.PositionOnBoard.x, c2.PositionOnBoard.y] = null;
 
+        if (c1.Animator != null)
+        {
+            c1.Animator.SetTrigger("Swap");
+        }
+        if (c2.Animator != null)
+        {
+            c2.Animator.SetTrigger("Swap");
+        }
+
+        yield return new WaitForSeconds(1f);
+        
         SetSlots(c1);
         SetSlots(c2);
     }

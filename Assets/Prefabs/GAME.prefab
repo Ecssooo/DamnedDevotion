@@ -136,6 +136,7 @@ Transform:
   - {fileID: 8942961858405432606}
   - {fileID: 8201960527842330886}
   - {fileID: 7129684396146395760}
+  - {fileID: 5784450463931789214}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2514323627085947840
@@ -407,6 +408,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &7222111819455014972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5784450463931789214}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5784450463931789214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222111819455014972}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.04, y: -3.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2548094596911426848}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7265035042287453539
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +838,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9060774414879954686}
     - target: {fileID: 4842841947097704801, guid: 44a8d80ac6954e544a8b22f1b02ae37b, type: 3}
+      propertyPath: _handTransform
+      value: 
+      objectReference: {fileID: 5784450463931789214}
+    - target: {fileID: 4842841947097704801, guid: 44a8d80ac6954e544a8b22f1b02ae37b, type: 3}
+      propertyPath: _distrubDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842841947097704801, guid: 44a8d80ac6954e544a8b22f1b02ae37b, type: 3}
       propertyPath: _effectSlots.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -881,6 +921,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6046596356030798874, guid: 44a8d80ac6954e544a8b22f1b02ae37b, type: 3}
+      propertyPath: _moveEffectPrefab
+      value: 
+      objectReference: {fileID: 4160450261228661187, guid: 0aca2db9d56479e4b94cfeabaebfc7e4, type: 3}
+    - target: {fileID: 6046596356030798874, guid: 44a8d80ac6954e544a8b22f1b02ae37b, type: 3}
+      propertyPath: _switchEffectPrefab
+      value: 
+      objectReference: {fileID: 3019628475793264510, guid: 55cf335972d127049b62f0194abf6014, type: 3}
     - target: {fileID: 8925834600892908503, guid: 44a8d80ac6954e544a8b22f1b02ae37b, type: 3}
       propertyPath: m_Color.a
       value: 0.3019608

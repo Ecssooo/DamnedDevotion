@@ -46,7 +46,7 @@ public class EffectActions : MonoBehaviour
                 break;
             case Effects.SWAP:
                 if (action._card2 == null) return;
-                GameManager.Instance.Board.SwitchCard(action._card, action._card2);
+                StartCoroutine(GameManager.Instance.Board.SwitchCard(action._card, action._card2));
                 //Debug.Log("Swapping Cards");
                 //GameManager.Instance.ActionCount.Decrement(1);
                 break;
