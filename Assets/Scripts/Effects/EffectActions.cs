@@ -51,6 +51,10 @@ public class EffectActions : MonoBehaviour
                 //Debug.Log("Swapping Cards");
                 //GameManager.Instance.ActionCount.Decrement(1);
                 break;
+            case Effects.INVOKE:
+                Invocation invocation = FindObjectOfType<Invocation>();
+                //invocation?.PlaceCardAtMousePosition();
+                break;
         }
     }
 

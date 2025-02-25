@@ -20,7 +20,7 @@ MonoBehaviour:
   cauldronPrefab: {fileID: 8533776778481682274, guid: b15cf18034d308a4da7e85a5a2a1146e, type: 3}
   moveEffectPrefab: {fileID: 4160450261228661187, guid: 0aca2db9d56479e4b94cfeabaebfc7e4, type: 3}
   switchEffectPrefab: {fileID: 3019628475793264510, guid: 55cf335972d127049b62f0194abf6014, type: 3}
-  invocationEffectPrefab: {fileID: 0}
+  invocationEffectPrefab: {fileID: 4788566775805037204, guid: 719287549cdcff2449df3df2cc6aabd0, type: 3}
   KS_Up: {fileID: 0}
   KS_Right: {fileID: 0}
   KS_Down: {fileID: 0}
@@ -148,4 +148,4 @@ MonoBehaviour:
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 3
     maxScore: 4
-    effects: 010100
+    effects: 010101
