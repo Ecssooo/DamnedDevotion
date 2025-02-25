@@ -336,6 +336,9 @@ public class Board : MonoBehaviour
     public IEnumerator MoveCard(Card card, Vector2Int newPos)
     {
         InitSlotTab();
+
+        // If knight moving into Cauldron
+        Card cardOnTarget = _board[newPos.x, newPos.y];
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
@@ -344,6 +347,13 @@ public class Board : MonoBehaviour
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
             yield return new WaitForSeconds(1);
             SetSlots(card);
+        } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
+        {
+            card.PositionOnBoard = newPos;
+            DOTween.Init();
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            yield return new WaitForSeconds(1);
+            Destroy(card.gameObject);
         }
     }
 

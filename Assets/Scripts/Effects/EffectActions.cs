@@ -35,6 +35,7 @@ public class EffectActions : MonoBehaviour
             Debug.Log("GameStateError");
             return;
         }
+        if (action._card == null) return;
         switch (action._effect)
         {
             case Effects.MOVE:
