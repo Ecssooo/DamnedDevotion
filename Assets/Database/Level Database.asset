@@ -28,7 +28,7 @@ MonoBehaviour:
   levelList:
   - level: 0
     CardsList:
-    - cardType: 1
+    - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 0}
     - cardType: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 2}
-    - cardType: 0
+    - cardType: 1
       direction: 0
       positionOnBoard: {x: 1, y: 0}
     - cardType: 4
