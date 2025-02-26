@@ -53,6 +53,7 @@ public class ListAction : MonoBehaviour
 
     public void AddAction(Action action)
     {
+        if (!GameManager.Instance.ActionCount.ActionRemaining()) return;
         // Conditions to prevent adding action due to card type
 
         switch (action._effect)
