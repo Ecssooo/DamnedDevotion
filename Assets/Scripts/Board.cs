@@ -205,6 +205,7 @@ public class Board : MonoBehaviour
                 yield return new WaitForSeconds( _distrubDuration - 0.1f);
             }
         }
+        SetCollider();
     }
     
     public void EditorSetLevel(Level level)
@@ -224,6 +225,25 @@ public class Board : MonoBehaviour
             if (card.cardType != CardType.NONE)
             {
                 EditorSetSlots(card);
+            }
+        }
+        SetCollider();
+    }
+
+    public void SetCollider()
+    {
+        for (int i = 0; i < _slotsTab.GetLength(0); i++)
+        {
+            for (int j = 0; j < _slotsTab.GetLength(1); j++)
+            {
+                if (!SlotEmpty(new(i, j)))
+                {
+                    _slotsTab[i, j].GetComponent<BoxCollider2D>().enabled = false;
+                }
+                else
+                {
+                    _slotsTab[i, j].GetComponent<BoxCollider2D>().enabled = true;
+                }
             }
         }
     }
