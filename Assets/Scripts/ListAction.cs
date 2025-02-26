@@ -9,6 +9,8 @@ public class ListAction : MonoBehaviour
     [SerializeField] private GameObject _invocationEffectPrefab;
     private bool HasAppliedEffect = false;
 
+    [SerializeField] private GameObject undoButton;
+
     #region Instance
 
     private static ListAction _instance;
@@ -37,18 +39,15 @@ public class ListAction : MonoBehaviour
 
     public IEnumerator StartListAction()
     {
+        undoButton.SetActive(false);
         foreach (var action in _listActions)
         {
             EffectActions.Instance.DoEffect(action);
             yield return new WaitForSeconds(1f);
         }
         GameManager.Instance.Board.StartEndAction();
-        //yield return new WaitForSeconds(1);
-        //foreach (var card in _board)
-        //{
-        //    if (card != null) card.DoEndOfTurnActions();
-        //}
-        //GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameWinState);
+        yield return new WaitForSeconds(1);
+        undoButton.SetActive(true);
     }
 
     public void AddAction(Action action)
