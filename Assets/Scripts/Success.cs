@@ -1,11 +1,11 @@
-using UnityEngine;
+//using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQAQ");
-    }
+//public class NewMonoBehaviourScript : MonoBehaviour
+//{
+//    // Start is called once before the first execution of Update after the MonoBehaviour is created
+//    void Start()
+//    {
+//        PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQAQ");
+//    }
 
-}
+//}

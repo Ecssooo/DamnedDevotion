@@ -1,24 +1,35 @@
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 
 public class PlayGamesController : MonoBehaviour
 {
+    [SerializeField] private GameObject obj;
+    [SerializeField] private GameObject obj2;
+    [SerializeField] private TextMeshProUGUI text;
     void Start()
     {
-        PlayGamesPlatform.Activate(); // Active Google Play Games
-        Social.localUser.Authenticate(success => {
-            if (success)
-            {
-                Debug.Log("Connecte à Google Play Games");
-            }
-            else
-            {
-                Debug.Log("Echec de la connexion");
-            }
-        });
+
+        PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
     }
+
+    internal void ProcessAuthentication(SignInStatus status)
+    {
+        if (status == SignInStatus.Success)
+        {
+            text.text = "Connecte";
+            // Continue with Play Games Services
+        }
+        else
+        {
+            text.text = "Non connecte";
+            // Disable your integration with Play Games Services or show a login button
+            // to ask users to sign-in. Clicking it should call
+            //PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication).
+        }
+    }
+
 
     #region Instance
     private static PlayGamesController _instance;
@@ -37,19 +48,33 @@ public class PlayGamesController : MonoBehaviour
         }
     }
 
+    #endregion
+
     // Debloquer un achievement
     public void UnlockAchievement(string achievementID)
     {
-        Social.ReportProgress(achievementID, 100.0f, success => {
+        GameObject objet =Instantiate(obj);
+        objet.transform.position = new Vector3(0, 0, 0);
+        Social.ReportProgress(achievementID, 100.0f, success =>
+        {
             if (success)
             {
                 Debug.Log("Achievement debloque !");
+                GameObject objet = Instantiate(obj2);
+                objet.transform.position = new Vector3(0, 0, 0);
             }
             else
             {
+                GameObject objet = Instantiate(obj);
+                objet.transform.position = new Vector3(1, 0, 0);
                 Debug.Log("Echec du deblocage");
             }
         });
+    }
+
+    private void Connect()
+    {
+        PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
     }
 
     //exemple d'utilisation
@@ -59,6 +84,8 @@ public class PlayGamesController : MonoBehaviour
 
     //exemple pour voir les succes sur un bouton
 
-    //public void ShowAchievements() {
-    //Social.ShowAchievementsUI();
+    public void ShowAchievements()
+    {
+        Social.ShowAchievementsUI();
+    }
 }
