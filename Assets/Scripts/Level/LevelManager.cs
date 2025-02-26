@@ -126,6 +126,7 @@ public class LevelManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveSystem.Save(0);
+            Debug.Log("Saved");
         }
         
         #endif
