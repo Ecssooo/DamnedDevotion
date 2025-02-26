@@ -20,6 +20,22 @@ public class PlayGamesController : MonoBehaviour
         });
     }
 
+    #region Instance
+    private static PlayGamesController _instance;
+
+    public static PlayGamesController Instance { get => _instance; }
+
+    public void Awake()
+    {
+        if (!_instance)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Debloquer un achievement
     public void UnlockAchievement(string achievementID)
