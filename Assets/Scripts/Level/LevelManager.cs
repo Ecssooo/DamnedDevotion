@@ -122,13 +122,11 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         #if UNITY_EDITOR
-
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveSystem.Save(0);
             Debug.Log("Saved");
         }
-        
         #endif
     }
     
