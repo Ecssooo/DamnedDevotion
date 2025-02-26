@@ -157,13 +157,13 @@ MonoBehaviour:
     - cardType: 3
       direction: 0
       positionOnBoard: {x: 0, y: 1}
-    - cardType: 1
+    - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 2}
     - cardType: 2
       direction: 1
       positionOnBoard: {x: 1, y: 0}
-    - cardType: 0
+    - cardType: 1
       direction: 0
       positionOnBoard: {x: 1, y: 1}
     - cardType: 0
