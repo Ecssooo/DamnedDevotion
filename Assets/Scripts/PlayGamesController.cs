@@ -11,27 +11,27 @@ public class PlayGamesController : MonoBehaviour
         Social.localUser.Authenticate(success => {
             if (success)
             {
-                Debug.Log("Connecté à Google Play Games");
+                Debug.Log("Connecte à Google Play Games");
             }
             else
             {
-                Debug.Log("Échec de la connexion");
+                Debug.Log("Echec de la connexion");
             }
         });
     }
 
 
-    // Débloquer un achievement
+    // Debloquer un achievement
     public void UnlockAchievement(string achievementID)
     {
         Social.ReportProgress(achievementID, 100.0f, success => {
             if (success)
             {
-                Debug.Log("Achievement débloqué !");
+                Debug.Log("Achievement debloque !");
             }
             else
             {
-                Debug.Log("Échec du déblocage");
+                Debug.Log("Echec du deblocage");
             }
         });
     }
@@ -41,7 +41,7 @@ public class PlayGamesController : MonoBehaviour
     //UnlockAchievement("CgkIj9xxxxxxEAIQAQ"); // Remplace par l’ID de l’achievement
 
 
-    //exemple pour voir les succès sur un bouton
+    //exemple pour voir les succes sur un bouton
 
     //public void ShowAchievements() {
     //Social.ShowAchievementsUI();
