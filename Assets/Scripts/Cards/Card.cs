@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -5,6 +8,8 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     [SerializeField] CardType _cardType;
+
+
     public CardType CardType
     {
         get { return _cardType; }
@@ -37,6 +42,20 @@ public class Card : MonoBehaviour
         get { return _positionOnBoard; }
         set { _positionOnBoard = value; }
     }
+
+    [SerializeField] private TextMeshProUGUI _monsterScoreTXT;
+
+
+    [SerializeField] private List<Transform> _actionSlots = new List<Transform>();
+    public List<Transform> ActionSlots
+    {
+        get { return _actionSlots; }
+        set { _actionSlots = value; }
+    }
+
+    [SerializeField] private Animator _animator;
+    public Animator Animator { get { return _animator; } }
+    
     private void OnMouseDown()
     {
 
@@ -45,11 +64,11 @@ public class Card : MonoBehaviour
             case Effects.NONE:
                 break;
             case Effects.MOVE:
-                StartCoroutine(EffectActions.Instance._moveCardCoroutine((direction) =>
+                StartCoroutine(EffectActions.Instance.MoveCardCoroutine((direction) =>
                 {
                     this._direction = direction;
                     Action moveAction = EffectActions.Instance.CreateAction(this);
-                    EffectActions.Instance.DoEffect(moveAction);
+                    ListAction.Instance.AddAction(moveAction);
                 }));
                 break;
             case Effects.SWAP:
@@ -58,14 +77,16 @@ public class Card : MonoBehaviour
                 if (EffectActions.Instance._swapFirstCard == null)
                 {
                     EffectActions.Instance._swapFirstCard = card;
-                    // Debug.Log("First Swap card Selected");
                 }
                 else
                 {
+                    if (EffectActions.Instance._swapFirstCard == card) return;
                     EffectActions.Instance._swapSecondCard = card;
-                    // Debug.Log("Second Swap card Selected");
                     Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
-                    EffectActions.Instance.DoEffect(switchAction);
+
+                    ListAction.Instance.AddAction(switchAction);
+
+                    //EffectActions.Instance.DoEffect(switchAction);
                     EffectActions.Instance._swapFirstCard = null;
                     EffectActions.Instance._swapSecondCard = null;
                 }
@@ -82,11 +103,8 @@ public class Card : MonoBehaviour
                 break;
             case CardType.KNIGHTSWORD:
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
-                // Debug.Log(target);
                 if(target != null)
                     target.OnDie();
-                else
-                    Debug.Log("Target null");
                 break;
             case CardType.KNIGHTSHIELD:
                 break;
@@ -105,7 +123,23 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
-            Debug.Log("Mog Fed");
         }
+    }
+
+    public void ShowMonsterScore()
+    {
+        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + " / " +
+                                GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
+                                    .maxScore;
+    }
+
+    public void AddAction(Action action)
+    {
+            
+    }
+
+    private void Update()
+    {
+        if(_cardType == CardType.MONSTER) ShowMonsterScore();
     }
 }

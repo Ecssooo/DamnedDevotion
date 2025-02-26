@@ -4,7 +4,7 @@ public class GameActionState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
-        GameManager.Instance.Board.StartEndAction();
+        //GameManager.Instance.Board.StartEndAction();
     }
 
     public override void UpdateState(GameStateManager manager)

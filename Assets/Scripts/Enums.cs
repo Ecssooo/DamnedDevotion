@@ -22,5 +22,6 @@ public enum Effects
 {
     NONE,
     MOVE,
-    SWAP
+    SWAP,
+    INVOKE
 }

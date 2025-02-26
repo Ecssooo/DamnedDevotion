@@ -1,39 +1,58 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class Board : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
     [SerializeField] private LevelDatabase _levelDatabase;
-    [SerializeField] private GameObject _effectParent;
+    
+    [Header("Distribution")]
+    [SerializeField] private Transform _handTransform;
+    [SerializeField] private float _distrubDuration;
+    
+    //Private field
+    private GameObject[] _effectGO = new GameObject[3];
     private Card[,] _board = new Card[4, 3];
-
-    public Card[,] CardList => _board;
-
     private Transform[,] _slotsTab = new Transform[4, 3];
-
     public Transform[,] SlotsTab => _slotsTab;
 
-
-    private GameObject[] _effectGO = new GameObject[3];
+    //Get
+    public Card[,] CardList => _board;
+    //public Transform[,] SlotsTab => _slotsTab;
     
-    /// <summary>
-    /// Transform slot list into 2D array
-    /// </summary>
-    public void InitSlotTab()
+    
+    #region Clear
+    
+    
+    public void ClearSlot(Card card)
     {
-        int index = 0;
+        InitSlotTab();  
+        if (_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].childCount > 0)
+            DestroyImmediate(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].GetChild(0).gameObject);
+        _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
+    }
 
-        for (int i = 0; i < _slotsTab.GetLength(0); i++)
+    public void ClearSlot(Vector2Int position)
+    {
+        InitSlotTab();  
+        if (PositionInBounds(position))
         {
-            for (int j = 0; j < _slotsTab.GetLength(1); j++)
+            if (_slotsTab[position.x, position.y].childCount > 0)
+                DestroyImmediate(_slotsTab[position.x, position.y].GetChild(0).gameObject);
+            _board[position.x, position.y] = null;
+        }
+    }
+    
+    public void ClearEffect()
+    {
+        foreach (var go in _effectGO)
+        {
+            if (go != null)
             {
-                _slotsTab[i, j] = _slots[index];
-                index++;
+                DestroyImmediate(go);
             }
         }
     }
@@ -56,27 +75,53 @@ public class Board : MonoBehaviour
         
         ClearEffect();
     }
+    
+    
+    
+    #endregion
 
+    #region Set
+    
+    /// <summary>
+    /// Transform slot list into 2D array
+    /// </summary>
+    public void InitSlotTab()
+    {
+        int index = 0;
 
+        for (int i = 0; i < _slotsTab.GetLength(0); i++)
+        {
+            for (int j = 0; j < _slotsTab.GetLength(1); j++)
+            {
+                _slotsTab[i, j] = _slots[index];
+                index++;
+            }
+        }
+    }
+
+    
     /// <summary>
     /// Add a Card to a slot in board
     /// </summary>
     /// <param name="card">Cards type, Can be null</param>
-    public void SetSlots(CardParams cardParams)
+    public IEnumerator SetSlots(CardParams cardParams)
     {
         InitSlotTab();
 
         var prefab = _levelDatabase.GetPrefab(cardParams.cardType);
-        if (prefab == null) return;
+        if (prefab == null) yield break;
 
-        var GO = Instantiate(prefab, this.transform);
+        var GO = Instantiate(prefab, _handTransform);
         var card = GO.GetComponent<Card>();
-        if (card == null) return;
+        if (card == null) yield break;
         card.PositionOnBoard = cardParams.positionOnBoard;
         card.AttackDirection = cardParams.direction;
         if (PositionInBounds(card.PositionOnBoard))
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, _distrubDuration);
+            yield return new WaitForSeconds( _distrubDuration);
             card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
@@ -91,30 +136,28 @@ public class Board : MonoBehaviour
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
-
-
-    /// <summary>
-    /// Setup card on board
-    /// </summary>
-    /// <param name="level">Level to setup</param>
-    public void SetLevel(Level level)
+    
+    public void EditorSetSlots(CardParams cardParams)
     {
         InitSlotTab();
-        ResetBoard();
-        foreach (var card in level.CardsList)
-        {
-            SetSlots(card);
-        }
 
-        for (int i = 0; i < 3; i++)
+        var prefab = _levelDatabase.GetPrefab(cardParams.cardType);
+        if (prefab == null) return;
+
+        var GO = Instantiate(prefab, _handTransform);
+        var card = GO.GetComponent<Card>();
+        if (card == null) return;
+        card.PositionOnBoard = cardParams.positionOnBoard;
+        card.AttackDirection = cardParams.direction;
+        if (PositionInBounds(card.PositionOnBoard))
         {
-            if (level.effects[i])
-            {
-                SetEffect(i);
-            }
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
+            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
-
+    
     public void SetEffect(int index)
     {
         switch (index)
@@ -125,16 +168,88 @@ public class Board : MonoBehaviour
         }
     }
     
-    public void ClearEffect()
+    //Delete comment to activate in SetLevel();
+    public void SetKnightDirection(Card card)
     {
-        foreach (var go in _effectGO)
+        if (card == null) return;
+        switch (card.AttackDirection)
         {
-            if (go != null)
+            case(Direction.UP): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up; break;
+            case(Direction.RIGHT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right; break;
+            case(Direction.DOWN): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down; break;
+            case(Direction.LEFT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left; break;
+        }
+    }
+
+    /// <summary>
+    /// Setup card on board
+    /// </summary>
+    /// <param name="level">Level to setup</param>
+    public IEnumerator SetLevel(Level level)
+    {
+        InitSlotTab();
+        ResetBoard();
+        for (int i = 0; i < 3; i++)
+        {
+            if (level.effects[i])
             {
-                DestroyImmediate(go);
+                SetEffect(i);
+            }
+        }
+        
+        foreach (var card in level.CardsList)
+        {
+            if (card.cardType != CardType.NONE)
+            {
+                StartCoroutine(SetSlots(card));
+                yield return new WaitForSeconds( _distrubDuration - 0.1f);
+            }
+        }
+        SetCollider();
+    }
+    
+    public void EditorSetLevel(Level level)
+    {
+        InitSlotTab();
+        ResetBoard();
+        for (int i = 0; i < 3; i++)
+        {
+            if (level.effects[i])
+            {
+                SetEffect(i);
+            }
+        }
+        
+        foreach (var card in level.CardsList)
+        {
+            if (card.cardType != CardType.NONE)
+            {
+                EditorSetSlots(card);
+            }
+        }
+        SetCollider();
+    }
+
+    public void SetCollider()
+    {
+        for (int i = 0; i < _slotsTab.GetLength(0); i++)
+        {
+            for (int j = 0; j < _slotsTab.GetLength(1); j++)
+            {
+                if (!SlotEmpty(new(i, j)))
+                {
+                    _slotsTab[i, j].GetComponent<BoxCollider2D>().enabled = false;
+                }
+                else
+                {
+                    _slotsTab[i, j].GetComponent<BoxCollider2D>().enabled = true;
+                }
             }
         }
     }
+    #endregion
+    
+    #region Test
 
     /// <summary>
     ///  Check if position is in board
@@ -149,43 +264,7 @@ public class Board : MonoBehaviour
                position.y >= 0;
     }
 
-
-    /// <summary>
-    /// Check slot available next to
-    /// </summary>
-    /// <param name="position">Position to check</param>
-    /// <returns>Tab of all position available
-    /// Vector2Int if yes
-    /// Null if not</returns>
-    Vector2Int[] DirectionAvailable(Vector2Int position)
-    {
-        InitSlotTab();
-        Vector2Int[] direction = new Vector2Int[4];
-
-        if (PositionInBounds(position + Vector2Int.right))
-        {
-            direction[0] = Vector2Int.right;
-        }
-
-        if (PositionInBounds(position + Vector2Int.left))
-        {
-            direction[1] = Vector2Int.left;
-        }
-
-        if (PositionInBounds(position + Vector2Int.up))
-        {
-            direction[2] = Vector2Int.up;
-        }
-
-        if (PositionInBounds(position + Vector2Int.down))
-        {
-            direction[3] = Vector2Int.down;
-        }
-
-        return direction;
-    }
-
-
+    
     /// <summary>
     /// Get card in slot close
     /// </summary>
@@ -243,42 +322,6 @@ public class Board : MonoBehaviour
     }
 
     /// <summary>
-    ///  Move card to slots
-    /// </summary>
-    /// <param name="card"></param>
-    /// <param name="newPos"></param>
-    public void MoveCard(Card card, Vector2Int newPos)
-    {
-        InitSlotTab();
-        if (PositionInBounds(newPos) && SlotEmpty(newPos))
-        {
-            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
-            card.PositionOnBoard = newPos;
-            SetSlots(card);
-        }
-    }
-
-    /// <summary>
-    /// Switch card position
-    /// </summary>
-    /// <param name="c1">First card</param>
-    /// <param name="c2">Second card</param>
-    public void SwitchCard(Card c1, Card c2)
-    {
-        InitSlotTab();
-
-        if (c1 == null || c2 == null) return;
-        Vector2Int temp = c1.PositionOnBoard;
-        c1.PositionOnBoard = c2.PositionOnBoard;
-        c2.PositionOnBoard = temp;
-        _board[c1.PositionOnBoard.x, c1.PositionOnBoard.y] = null;
-        _board[c2.PositionOnBoard.x, c2.PositionOnBoard.y] = null;
-
-        SetSlots(c1);
-        SetSlots(c2);
-    }
-
-    /// <summary>
     ///  Get position
     /// </summary>
     /// <param name="position">Initial position</param>
@@ -322,25 +365,72 @@ public class Board : MonoBehaviour
         return position;
     }
 
-    public void ClearSlot(Card card)
-    {
-        InitSlotTab();  
-        if (_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].childCount > 0)
-            DestroyImmediate(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].GetChild(0).gameObject);
-        _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
-    }
 
-    public void ClearSlot(Vector2Int position)
+    
+    #endregion
+    
+    #region Action
+    /// <summary>
+    ///  Move card to slots
+    /// </summary>
+    /// <param name="card"></param>
+    /// <param name="newPos"></param>
+    public IEnumerator MoveCard(Card card, Vector2Int newPos)
     {
-        InitSlotTab();  
-        if (PositionInBounds(position))
+        InitSlotTab();
+
+        // If knight moving into Cauldron
+        Card cardOnTarget = _board[newPos.x, newPos.y];
+        if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
-            if (_slotsTab[position.x, position.y].childCount > 0)
-                DestroyImmediate(_slotsTab[position.x, position.y].GetChild(0).gameObject);
-            _board[position.x, position.y] = null;
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
+            card.PositionOnBoard = newPos;
+            DOTween.Init();
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            yield return new WaitForSeconds(1);
+            SetSlots(card);
+        } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
+        {
+            card.PositionOnBoard = newPos;
+            DOTween.Init();
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            yield return new WaitForSeconds(1);
+            GameManager.Instance.MonsterScore += card.FoodValue;
+            Destroy(card.gameObject);
         }
     }
-    
+
+    /// <summary>
+    /// Switch card position
+    /// </summary>
+    /// <param name="c1">First card</param>
+    /// <param name="c2">Second card</param>
+    public IEnumerator SwitchCard(Card c1, Card c2)
+    {
+        InitSlotTab();
+
+        if (c1 == null || c2 == null) yield break;
+        Vector2Int temp = c1.PositionOnBoard;
+        c1.PositionOnBoard = c2.PositionOnBoard;
+        c2.PositionOnBoard = temp;
+        _board[c1.PositionOnBoard.x, c1.PositionOnBoard.y] = null;
+        _board[c2.PositionOnBoard.x, c2.PositionOnBoard.y] = null;
+
+        if (c1.Animator != null)
+        {
+            c1.Animator.SetTrigger("Swap");
+        }
+        if (c2.Animator != null)
+        {
+            c2.Animator.SetTrigger("Swap");
+        }
+
+        yield return new WaitForSeconds(1f);
+        
+        SetSlots(c1);
+        SetSlots(c2);
+    }
+
     public IEnumerator DoAllEndAction()
     {
         yield return new WaitForSeconds(1);
@@ -355,4 +445,14 @@ public class Board : MonoBehaviour
     {
         StartCoroutine(DoAllEndAction());
     }
+
+
+    private void Start()
+    {
+        InitSlotTab();
+    }
+    
+    #endregion
+    
+    
 }
