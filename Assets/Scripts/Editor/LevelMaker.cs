@@ -193,6 +193,16 @@ public class LevelMaker : EditorWindow
         {
             Debug.LogWarning("Level doesn't exist" + ex);
         }
+        
+        int index = 0;
+        foreach (var card in _levelDatabase.levelList[levelToLoad].CardsList)
+        {
+            PersoWrapper newPW = new PersoWrapper();
+            newPW.type = card.cardType;
+            newPW.axis = card.direction;
+            persos[index] = newPW;
+            index++;
+        }
     }
 
     /// <summary>
@@ -201,5 +211,9 @@ public class LevelMaker : EditorWindow
     void ResetBoard()
     {
         board.ResetBoard();
+        for (int i = 0; i < persos.Length; i++)
+        {
+            persos[i].type = CardType.NONE;
+        }
     }
 }
