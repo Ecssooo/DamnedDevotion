@@ -283,25 +283,25 @@ MonoBehaviour:
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 2}
-    - cardType: 0
-      direction: 0
+    - cardType: 2
+      direction: 3
       positionOnBoard: {x: 1, y: 0}
     - cardType: 4
       direction: 3
       positionOnBoard: {x: 1, y: 1}
-    - cardType: 2
+    - cardType: 0
       direction: 2
       positionOnBoard: {x: 1, y: 2}
     - cardType: 2
-      direction: 3
-      positionOnBoard: {x: 2, y: 0}
-    - cardType: 1
       direction: 1
-      positionOnBoard: {x: 2, y: 1}
+      positionOnBoard: {x: 2, y: 0}
     - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
       direction: 4
       positionOnBoard: {x: 2, y: 2}
-    - cardType: 0
+    - cardType: 1
       direction: 0
       positionOnBoard: {x: 3, y: 0}
     - cardType: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
     - cardType: 6
       direction: 3
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 6
+    maxActionCount: 8
     maxScore: 3
     effects: 010000
   - level: 7
