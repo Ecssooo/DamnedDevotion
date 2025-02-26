@@ -35,6 +35,8 @@ public class Effect : MonoBehaviour
             case Effects.SWAP:
                 if (!EffectList.SwapCard)
                 {
+                    EffectActions.Instance._swapFirstCard = null;
+                    EffectActions.Instance._swapSecondCard = null;
                     EffectList.SwapCard = true;
                     EffectList.MoveCard = false;
                     EffectList.InvokeCard = false;

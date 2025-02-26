@@ -395,6 +395,7 @@ public class Board : MonoBehaviour
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
             yield return new WaitForSeconds(1);
+            GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         }
     }

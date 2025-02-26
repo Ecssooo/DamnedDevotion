@@ -397,7 +397,7 @@ MonoBehaviour:
   _cardType: 1
   _direction: 0
   _attackDirection: 0
-  _foodValue: 2
+  _foodValue: 1
   _positionOnBoard: {x: 0, y: 0}
   _monsterScoreTXT: {fileID: 0}
   _actionSlots:
