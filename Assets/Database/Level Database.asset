@@ -28,6 +28,88 @@ MonoBehaviour:
   levelList:
   - level: 0
     CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 1
+    maxScore: 1
+    effects: 010000
+  - level: 1
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 010000
+  - level: 2
+    CardsList:
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 0}
@@ -38,7 +120,7 @@ MonoBehaviour:
       direction: 0
       positionOnBoard: {x: 0, y: 2}
     - cardType: 3
-      direction: 0
+      direction: 4
       positionOnBoard: {x: 1, y: 0}
     - cardType: 0
       direction: 0
@@ -50,7 +132,7 @@ MonoBehaviour:
       direction: 0
       positionOnBoard: {x: 2, y: 0}
     - cardType: 3
-      direction: 0
+      direction: 1
       positionOnBoard: {x: 2, y: 1}
     - cardType: 2
       direction: 2
@@ -65,87 +147,1112 @@ MonoBehaviour:
       direction: 0
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 5
+    maxScore: 1
+    effects: 010000
+  - level: 3
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 1
+    effects: 010000
+  - level: 4
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 6
     maxScore: 2
     effects: 010000
-  - level: 1
+  - level: 5
     CardsList:
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 0}
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 0, y: 1}
-    - cardType: 2
-      direction: 3
-      positionOnBoard: {x: 0, y: 2}
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 1, y: 0}
-    - cardType: 1
-      direction: 0
-      positionOnBoard: {x: 1, y: 1}
-    - cardType: 2
-      direction: 3
-      positionOnBoard: {x: 1, y: 2}
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 2, y: 0}
-    - cardType: 2
-      direction: 1
-      positionOnBoard: {x: 2, y: 1}
     - cardType: 4
       direction: 0
-      positionOnBoard: {x: 2, y: 2}
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 3, y: 0}
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 3, y: 1}
-    - cardType: 1
-      direction: 0
-      positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 3
-    maxScore: 4
-    effects: 010100
-  - level: 2
-    CardsList:
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 0, y: 0}
-    - cardType: 2
-      direction: 1
       positionOnBoard: {x: 0, y: 1}
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 0, y: 2}
-    - cardType: 1
-      direction: 0
+    - cardType: 0
+      direction: 1
       positionOnBoard: {x: 1, y: 0}
     - cardType: 6
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
       direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 2
+    effects: 010000
+  - level: 6
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 6
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 6
+    maxScore: 3
+    effects: 010000
+  - level: 7
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 6
+    maxScore: 4
+    effects: 010000
+  - level: 8
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+  - level: 9
+    CardsList:
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 6
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+  - level: 10
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+  - level: 11
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+  - level: 12
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 8
+    maxScore: 3
+    effects: 010000
+  - level: 13
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 3
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 8
+    maxScore: 1
+    effects: 010000
+  - level: 14
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 3
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 6
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 9
+    maxScore: 3
+    effects: 010000
+  - level: 15
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 1
+    maxScore: 1
+    effects: 000100
+  - level: 16
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 1
+    effects: 000100
+  - level: 17
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 3
+    effects: 000100
+  - level: 18
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 4
       positionOnBoard: {x: 1, y: 1}
     - cardType: 2
       direction: 3
       positionOnBoard: {x: 1, y: 2}
     - cardType: 0
-      direction: 0
+      direction: 2
       positionOnBoard: {x: 2, y: 0}
-    - cardType: 0
-      direction: 0
+    - cardType: 2
+      direction: 1
       positionOnBoard: {x: 2, y: 1}
-    - cardType: 0
-      direction: 0
-      positionOnBoard: {x: 2, y: 2}
     - cardType: 4
-      direction: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
       positionOnBoard: {x: 3, y: 0}
     - cardType: 0
-      direction: 0
+      direction: 3
       positionOnBoard: {x: 3, y: 1}
-    - cardType: 0
-      direction: 0
+    - cardType: 1
+      direction: 2
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 3
-    maxScore: 4
+    maxScore: 2
+    effects: 010100
+  - level: 19
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 010100
+  - level: 20
+    CardsList:
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 3
+    effects: 010100
+  - level: 21
+    CardsList:
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 6
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 010100
+  - level: 22
+    CardsList:
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 3
+    effects: 010100
+  - level: 23
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 3
+    effects: 010100
+  - level: 24
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 2
+    maxScore: 1
+    effects: 000101
+  - level: 25
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 2
+    effects: 000101
+  - level: 26
+    CardsList:
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 3
+    effects: 000101
+  - level: 27
+    CardsList:
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 3
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 3
+    effects: 010101
+  - level: 28
+    CardsList:
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 2
+    effects: 010101
+  - level: 29
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 3
     effects: 010101
