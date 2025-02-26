@@ -66,7 +66,7 @@ public class PlayGamesController : MonoBehaviour
     {
         GameObject objet = Instantiate(obj);
         objet.transform.position = new Vector3(0, 0, 0);
-        Social.ReportProgress(achievementID, 100.0f, success =>
+        PlayGamesPlatform.Instance.ReportProgress(achievementID, 100.0f, success =>
         {
             if (success)
             {
@@ -74,7 +74,7 @@ public class PlayGamesController : MonoBehaviour
                 GameObject objet = Instantiate(obj2);
                 objet.transform.position = new Vector3(0, 0, 0);
             }
-            else
+            else 
             {
                 GameObject objet = Instantiate(obj);
                 objet.transform.position = new Vector3(1, 0, 0);
