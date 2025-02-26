@@ -34,7 +34,7 @@ public class ListAction : MonoBehaviour
         get => _listActions;
         set => _listActions = value;
     }
-    
+
     public IEnumerator StartListAction()
     {
         foreach (var action in _listActions)
@@ -58,14 +58,14 @@ public class ListAction : MonoBehaviour
         switch (action._effect)
         {
             case Effects.MOVE:
-                if (action._card.CompareTag("Cauldron") || 
-                    action._card.CompareTag("Monster") || 
-                    action._card.CompareTag("ShieldedKnight")) 
+                if (action._card.CompareTag("Cauldron") ||
+                    action._card.CompareTag("Monster") ||
+                    action._card.CompareTag("ShieldedKnight"))
                     return;
                 break;
             case Effects.SWAP:
-                if (action._card.CompareTag("Cauldron") || 
-                    action._card2.CompareTag("Cauldron")) 
+                if (action._card.CompareTag("Cauldron") ||
+                    action._card2.CompareTag("Cauldron"))
                     return;
                 break;
         }
@@ -80,6 +80,16 @@ public class ListAction : MonoBehaviour
                 {
                     case Effects.MOVE:
                         GameObject newMoveAction = Instantiate(_moveEffectPrefab, slot);
+                        var moveEffect = newMoveAction.GetComponent<Effect>();
+                        if (moveEffect != null)
+                        {
+                            moveEffect.enabled = false;
+                        }
+                        var moveCollider = newMoveAction.GetComponent<CircleCollider2D>();
+                        if (moveCollider != null)
+                        {
+                            moveCollider.enabled = false;
+                        }
                         newMoveAction.transform.localScale = Vector3.one / 3;
                         newMoveAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);
@@ -88,6 +98,21 @@ public class ListAction : MonoBehaviour
                         break;
                     case Effects.SWAP:
                         GameObject newSwapAction = Instantiate(_switchEffectPrefab, slot);
+                        var swapEffect = newSwapAction.GetComponent<Effect>();
+                        if (swapEffect != null)
+                        {
+                            swapEffect.enabled = false;
+                        }
+                        var swapCollider = newSwapAction.GetComponent<CircleCollider2D>();
+                        if (swapCollider != null)
+                        {
+                            swapCollider.enabled = false;
+                        }
+                        var switchPower = newSwapAction.GetComponent<SwitchPower>();
+                        if (switchPower != null)
+                        {
+                            switchPower.enabled = false;
+                        }
                         newSwapAction.transform.localScale = Vector3.one / 3;
                         newSwapAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);
@@ -98,9 +123,10 @@ public class ListAction : MonoBehaviour
 
             }
         }
-        if (action._card2 != null) {
-        HasAppliedEffect = false;
-        foreach (var slot in action._card2.ActionSlots)
+        if (action._card2 != null)
+        {
+            HasAppliedEffect = false;
+            foreach (var slot in action._card2.ActionSlots)
             {
                 if (slot.childCount == 0 && !HasAppliedEffect)
                 {
