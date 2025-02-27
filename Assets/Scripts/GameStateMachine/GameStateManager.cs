@@ -49,23 +49,45 @@ public class GameStateManager : MonoBehaviour
     private void Update()
     {
         _currentState.UpdateState(this);
-        // Debug.Log(_currentState.GetType());  
     }
 
-    public void SwitchState(GameBaseState state)
+    public void SwitchState(GameBaseState state, bool doExit = true)
     {
-        //_currentState.ExitState(this);
+        if(doExit) _currentState.ExitState(this);
         _currentState = state;
         _currentState.EnterState(this);
     }
     
     #region TEMP
 
-    public void SwitchToMenu()
+    public void StateMenu()
     {
-        _currentState.ExitState(this);
-        SwitchState(_gameLevelState);
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameLevelState);
     }
+
+    public void StateSetup()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameSetupState);
+    }
+    public void StateAction(){
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameActionState);
+    }
+
+    public void StateWin()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameWinState);
+    }
+
+    public void StateDefeat()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameDefeatStateState);
+    }
+    
     
     #endregion
 }

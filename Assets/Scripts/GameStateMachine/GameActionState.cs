@@ -4,7 +4,7 @@ public class GameActionState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
-        //GameManager.Instance.Board.StartEndAction();
+        ListAction.Instance.StartListActionCoroutine();
     }
 
     public override void UpdateState(GameStateManager manager)
@@ -19,11 +19,11 @@ public class GameActionState : GameBaseState
         if (instance.MonsterScore >= 
             instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxScore)
         {
-            manager.SwitchState(manager.GameWinState);
+            manager.SwitchState(manager.GameWinState, false);
         }
         else
         {
-            manager.SwitchState(manager.GameDefeatStateState);
+            manager.SwitchState(manager.GameDefeatStateState, false);
         }
     }
 }

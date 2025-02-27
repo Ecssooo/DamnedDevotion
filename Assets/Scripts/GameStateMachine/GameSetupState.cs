@@ -6,6 +6,7 @@ public class GameSetupState : GameBaseState
     {
         GameManager.Instance.ActionCount.InitActionPoint(GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxActionCount);
         GameManager.Instance.ActionCount.DisplayActionPoint();
+        LevelManager.Instance.LoadLevel();
     }
 
     public override void UpdateState(GameStateManager manager)
@@ -14,7 +15,6 @@ public class GameSetupState : GameBaseState
         {
             manager.SwitchState(manager.GameActionState);
         }
-        //Debug.Log(GameManager.Instance.ActionCount.ActionPoints);
     }
 
     public override void ExitState(GameStateManager manager)

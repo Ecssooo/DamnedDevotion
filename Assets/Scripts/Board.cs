@@ -187,6 +187,7 @@ public class Board : MonoBehaviour
     /// <param name="level">Level to setup</param>
     public IEnumerator SetLevel(Level level)
     {
+        GameManager.Instance.GameState = GameState.Busy;
         InitSlotTab();
         ResetBoard();
         for (int i = 0; i < 3; i++)
@@ -206,6 +207,8 @@ public class Board : MonoBehaviour
             }
         }
         SetCollider();
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.GameState = GameState.Playable;
     }
     
     public void EditorSetLevel(Level level)
@@ -391,6 +394,7 @@ public class Board : MonoBehaviour
             SetSlots(card);
         } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
         {
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
