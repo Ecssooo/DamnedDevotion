@@ -81,6 +81,7 @@ public class LevelManager : MonoBehaviour
     {
         _canva.SetActive(false);
         _board.SetActive(true);
+        GetComponent<TutoPop>().PopUp();
         StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
 
         EffectList.MoveCard = false;
