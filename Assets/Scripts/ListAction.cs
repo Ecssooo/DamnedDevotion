@@ -39,15 +39,32 @@ public class ListAction : MonoBehaviour
 
     public IEnumerator StartListAction()
     {
-        undoButton.SetActive(false);
+        GameManager.Instance.GameState = GameState.Busy;
         foreach (var action in _listActions)
         {
             EffectActions.Instance.DoEffect(action);
             yield return new WaitForSeconds(1f);
+            if (action._card.CardType == CardType.MINIMONSTER)
+            {
+                GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
+            }
+            if (action._card2 != null)
+            {
+                if(action._card2.CardType == CardType.MINIMONSTER)
+                {
+                    GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
+                }
+            }
         }
         GameManager.Instance.Board.StartEndAction();
-        yield return new WaitForSeconds(1);
+        GameManager.Instance.GameState = GameState.Playable;
         undoButton.SetActive(true);
+        //yield return new WaitForSeconds(1);
+        //foreach (var card in _board)
+        //{
+        //    if (card != null) card.DoEndOfTurnActions();
+        //}
+        //GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameWinState);
     }
 
     public void AddAction(Action action)
@@ -140,49 +157,54 @@ public class ListAction : MonoBehaviour
 
 
         HasAppliedEffect = false;
-        if (!GameManager.Instance.ActionCount.ActionRemaining())
-        {
-            StartCoroutine(StartListAction());
-        }
+        // if (!GameManager.Instance.ActionCount.ActionRemaining())
+        // {
+        //     StartCoroutine(StartListAction());
+        // }
     }
     public void RemoveLastAction()
     {
-        if (_listActions.Count == 0) return;
-        //Remove icon from last action
-        GameObject SlotToRemove = null;
-        GameObject SlotToRemove2 = null;
-        foreach (var LastSlot in _listActions[^1]._card.ActionSlots)
+        if(GameManager.Instance.GameState == GameState.Playable)
         {
-            if (LastSlot.childCount > 0)
-            {
-                SlotToRemove = LastSlot.GetChild(0).gameObject;
-            }
-        }
-
-        if (_listActions[^1]._card2 != null)
-        {
-            foreach (var LastSlot in _listActions[^1]._card2.ActionSlots)
+            if (_listActions.Count == 0) return;
+            //Remove icon from last action
+            GameObject SlotToRemove = null;
+            GameObject SlotToRemove2 = null;
+            foreach (var LastSlot in _listActions[^1]._card.ActionSlots)
             {
                 if (LastSlot.childCount > 0)
                 {
-                    SlotToRemove2 = LastSlot.GetChild(0).gameObject;
+                    SlotToRemove = LastSlot.GetChild(0).gameObject;
                 }
             }
+
+            if (_listActions[^1]._card2 != null)
+            {
+                foreach (var LastSlot in _listActions[^1]._card2.ActionSlots)
+                {
+                    if (LastSlot.childCount > 0)
+                    {
+                        SlotToRemove2 = LastSlot.GetChild(0).gameObject;
+                    }
+                }
+            }
+
+
+
+            Destroy(SlotToRemove.gameObject);
+            if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
+            SlotToRemove = null;
+            SlotToRemove2 = null;
+
+            _listActions.RemoveAt(_listActions.Count - 1);
+            GameManager.Instance.ActionCount.Increment(1);
         }
-
-
-
-        Destroy(SlotToRemove.gameObject);
-        if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
-        SlotToRemove = null;
-        SlotToRemove2 = null;
-
-        _listActions.RemoveAt(_listActions.Count - 1);
-        GameManager.Instance.ActionCount.Increment(1);
     }
 
     public void ClearListAction()
     {
         _listActions.Clear();
     }
+
+    public void StartListActionCoroutine() { StartCoroutine(StartListAction()); }
 }
