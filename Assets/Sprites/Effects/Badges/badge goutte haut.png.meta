@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      badge goutte haut_0: -7840754659115167563
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

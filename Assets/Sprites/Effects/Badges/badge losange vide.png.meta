@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      badge losange vide_0: 2456455243816019677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
