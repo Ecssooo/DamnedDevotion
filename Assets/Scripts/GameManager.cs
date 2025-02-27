@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -50,6 +52,43 @@ public class GameManager : MonoBehaviour
     private int _monsterScore;
     public int MonsterScore { get => _monsterScore; set => _monsterScore = value; }
 
+
+    [SerializeField] private List<GameObject> _effectBG = new List<GameObject>();
+
+    private GameState _gameState;
+    public GameState GameState { get => _gameState; set => _gameState = value; }
+    
+    private void Update()
+    {
+        UpdateEffectUI();
+    }
+
+    private void UpdateEffectUI()
+    {
+        switch (_effect)
+        {
+            case(Effects.MOVE): 
+                _effectBG[0].SetActive(true);
+                _effectBG[1].SetActive(false);
+                _effectBG[2].SetActive(false);
+                break;
+            case(Effects.SWAP): 
+                _effectBG[0].SetActive(false);
+                _effectBG[1].SetActive(true);
+                _effectBG[2].SetActive(false);
+                break;
+            case(Effects.INVOKE): 
+                _effectBG[0].SetActive(false);
+                _effectBG[1].SetActive(false);
+                _effectBG[2].SetActive(true);
+                break;
+            case(Effects.NONE): 
+                _effectBG[0].SetActive(false);
+                _effectBG[1].SetActive(false);
+                _effectBG[2].SetActive(false);
+                break;
+        }  
+    }
 
     // [SerializeField] private TextMeshProUGUI levelCountText;
     // [SerializeField] private TextMeshProUGUI ActionCountText;

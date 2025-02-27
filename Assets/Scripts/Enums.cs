@@ -25,3 +25,9 @@ public enum Effects
     SWAP,
     INVOKE
 }
+
+public enum GameState
+{
+    Playable,
+    Busy
+}

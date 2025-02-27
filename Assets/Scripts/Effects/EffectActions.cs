@@ -51,11 +51,17 @@ public class EffectActions : MonoBehaviour
                 //Debug.Log("Swapping Cards");
                 //GameManager.Instance.ActionCount.Decrement(1);
                 break;
-            case Effects.INVOKE:
-                Invocation invocation = FindObjectOfType<Invocation>();
-                //invocation?.PlaceCardAtMousePosition();
-                break;
         }
+        if (action._card.CardType == CardType.MINIMONSTER)
+        {
+            StartCoroutine(DestroyCard(action._card));
+        }
+    }
+
+    private IEnumerator DestroyCard(Card card)
+    {
+        yield return new WaitForSeconds(.3f);
+        Destroy(card.gameObject);
     }
 
     public IEnumerator MoveCardCoroutine(System.Action<Direction> callback)
