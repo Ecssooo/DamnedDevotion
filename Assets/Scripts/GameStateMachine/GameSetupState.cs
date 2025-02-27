@@ -14,7 +14,7 @@ public class GameSetupState : GameBaseState
     {
         if (!GameManager.Instance.ActionCount.ActionRemaining())
         {
-            manager.SwitchState(manager.GameActionState);
+            manager.SwitchState(manager.GameActionState, true);
         }
     }
 

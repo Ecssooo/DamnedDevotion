@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
     #region UI
 
     [SerializeField] private GameObject _canva;
-    [SerializeField] private GameObject _board;
+    [SerializeField] private GameObject _game;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private TextMeshProUGUI TXT_number;
@@ -80,8 +80,8 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         _canva.SetActive(false);
-        _board.SetActive(true);
-        GetComponent<TutoPop>().PopUp();
+        _game.SetActive(true);
+        //GetComponent<TutoPop>().PopUp();
         StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
 
         EffectList.MoveCard = false;
@@ -94,7 +94,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadMenu()
     {
-        _board.SetActive(false);
+        _game.SetActive(false);
         GameManager.Instance.Board.ResetBoard();
         _defeatScreen.SetActive(false);
         _winScreen.SetActive(false);
@@ -123,11 +123,11 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         #if UNITY_EDITOR
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SaveSystem.Save(0);
-            Debug.Log("Saved");
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    SaveSystem.Save(0);
+        //    Debug.Log("Saved");
+        //}
         #endif
     }
     
