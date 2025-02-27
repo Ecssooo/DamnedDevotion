@@ -9,8 +9,10 @@ public class ListAction : MonoBehaviour
     [SerializeField] private GameObject _invocationEffectPrefab;
     private bool HasAppliedEffect = false;
 
-    [SerializeField] private GameObject undoButton;
-
+    [SerializeField] private float _moveEffectDuration;
+    [SerializeField] private float _swapEffectDuration;
+    [SerializeField] private float _invokeEffectDuration;
+    
     #region Instance
 
     private static ListAction _instance;
@@ -43,7 +45,19 @@ public class ListAction : MonoBehaviour
         foreach (var action in _listActions)
         {
             EffectActions.Instance.DoEffect(action);
-            yield return new WaitForSeconds(1f);
+            switch (action._effect)
+            {
+                case(Effects.MOVE):
+                    yield return new WaitForSeconds(_moveEffectDuration);
+                    break;
+                case(Effects.SWAP) :
+                    yield return new WaitForSeconds(_swapEffectDuration);
+                    break;
+                case(Effects.INVOKE):
+                    yield return new WaitForSeconds(_invokeEffectDuration);
+                    break;
+            }
+            
             if (action._card.CardType == CardType.MINIMONSTER)
             {
                 GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
@@ -58,7 +72,7 @@ public class ListAction : MonoBehaviour
         }
         GameManager.Instance.Board.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;
-        undoButton.SetActive(true);
+        // undoButton.SetActive(true);
         //yield return new WaitForSeconds(1);
         //foreach (var card in _board)
         //{

@@ -22,7 +22,8 @@ public class Board : MonoBehaviour
     //Get
     public Card[,] CardList => _board;
     //public Transform[,] SlotsTab => _slotsTab;
-    
+
+    [SerializeField] private float _switchDelay;
     
     #region Clear
     
@@ -172,12 +173,19 @@ public class Board : MonoBehaviour
     public void SetKnightDirection(Card card)
     {
         if (card == null) return;
+        // switch (card.AttackDirection)
+        // {
+        //     case(Direction.UP): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up; break;
+        //     case(Direction.RIGHT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right; break;
+        //     case(Direction.DOWN): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down; break;
+        //     case(Direction.LEFT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left; break;
+        // }  
         switch (card.AttackDirection)
         {
-            case(Direction.UP): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up; break;
-            case(Direction.RIGHT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right; break;
-            case(Direction.DOWN): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down; break;
-            case(Direction.LEFT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left; break;
+            case(Direction.UP): card.Animator.SetBool("Up", true); break;
+            case(Direction.RIGHT): card.Animator.SetBool("Right", true); break;
+            case(Direction.DOWN): card.Animator.SetBool("Down", true); break;
+            case(Direction.LEFT): card.Animator.SetBool("Left", true); break;
         }
     }
 
@@ -429,7 +437,7 @@ public class Board : MonoBehaviour
             c2.Animator.SetTrigger("Swap");
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_switchDelay);
         
         SetSlots(c1);
         SetSlots(c2);

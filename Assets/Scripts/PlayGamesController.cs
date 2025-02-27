@@ -7,13 +7,13 @@ public class PlayGamesController : MonoBehaviour
 {
     [SerializeField] private GameObject obj;
     [SerializeField] private GameObject obj2;
-    [SerializeField] private TextMeshProUGUI text;
-    [SerializeField] private TextMeshProUGUI debugText; // Champ pour afficher les messages de débogage
+    // [SerializeField] private TextMeshProUGUI text;
+    // [SerializeField] private TextMeshProUGUI debugText; // Champ pour afficher les messages de débogage
 
     void Start()
     {
         PlayGamesPlatform.Activate();
-        PlayGamesPlatform.Instance.Authenticate(x => debugText.text = x.ToString());
+        //PlayGamesPlatform.Instance.Authenticate(x => debugText.text = x.ToString());
         //PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
     }
 
@@ -21,23 +21,23 @@ public class PlayGamesController : MonoBehaviour
     {
         if (status == SignInStatus.Success)
         {
-            text.text = PlayGamesPlatform.Instance.GetUserId();
-            debugText.text = "Connexion réussie : " + PlayGamesPlatform.Instance.GetUserId();
+            //text.text = PlayGamesPlatform.Instance.GetUserId();
+            //debugText.text = "Connexion réussie : " + PlayGamesPlatform.Instance.GetUserId();
         }
         else
         {
-            text.text = "Non connecté";
-            debugText.text = "Échec de la connexion : " + status.ToString();
+            //text.text = "Non connecté";
+            //debugText.text = "Échec de la connexion : " + status.ToString();
             switch (status)
             {
                 case SignInStatus.InternalError:
-                    debugText.text += "\nErreur interne lors de la connexion.";
+                    //debugText.text += "\nErreur interne lors de la connexion.";
                     break;
                 case SignInStatus.Canceled:
-                    debugText.text += "\nConnexion annulée par l'utilisateur.";
+                    //debugText.text += "\nConnexion annulée par l'utilisateur.";
                     break;
                 default:
-                    debugText.text += "\nStatut de connexion inconnu.";
+                    //debugText.text += "\nStatut de connexion inconnu.";
                     break;
             }
         }
@@ -71,7 +71,7 @@ public class PlayGamesController : MonoBehaviour
         {
             if (success)
             {
-                debugText.text = "Achievement débloqué !";
+                //debugText.text = "Achievement débloqué !";
                 GameObject objet = Instantiate(obj2);
                 objet.transform.position = new Vector3(0, 0, 0);
             }
@@ -79,7 +79,7 @@ public class PlayGamesController : MonoBehaviour
             {
                 GameObject objet = Instantiate(obj);
                 objet.transform.position = new Vector3(1, 0, 0);
-                debugText.text = "Échec du déblocage";
+                //debugText.text = "Échec du déblocage";
             }
         });
     }

@@ -13,12 +13,12 @@ public class InvocationPower : MonoBehaviour
         scriptToActivate.Board = GameManager.Instance.Board;
     }
 
-    void OnMouseDown()
-    {
-        if (scriptToActivate != null)
-        {
-            scriptToActivate.enabled = !scriptToActivate.enabled;
-        }
-        StartCoroutine(scriptToActivate.InvokeMiniMonster());
-    }
+    // void OnMouseDown()
+    // {
+    //     if (scriptToActivate != null)
+    //     {
+    //         scriptToActivate.enabled = !scriptToActivate.enabled;
+    //     }
+    //     StartCoroutine(scriptToActivate.InvokeMiniMonster());
+    // }
 }
