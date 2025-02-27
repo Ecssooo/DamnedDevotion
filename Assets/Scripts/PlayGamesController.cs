@@ -13,7 +13,8 @@ public class PlayGamesController : MonoBehaviour
     void Start()
     {
         PlayGamesPlatform.Activate();
-        PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
+        PlayGamesPlatform.Instance.Authenticate(x => debugText.text = x.ToString());
+        //PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
     }
 
     internal void ProcessAuthentication(SignInStatus status)
@@ -65,7 +66,7 @@ public class PlayGamesController : MonoBehaviour
     public void UnlockAchievement(string achievementID)
     {
         GameObject objet = Instantiate(obj);
-        objet.transform.position = new Vector3(0, 0, 0);
+        objet.transform.position = new Vector3(-8, 0, 0);
         PlayGamesPlatform.Instance.ReportProgress(achievementID, 100.0f, success =>
         {
             if (success)
