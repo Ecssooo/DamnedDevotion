@@ -22,7 +22,8 @@ public class Board : MonoBehaviour
     //Get
     public Card[,] CardList => _board;
     //public Transform[,] SlotsTab => _slotsTab;
-    
+
+    [SerializeField] private float _switchDelay;
     
     #region Clear
     
@@ -436,7 +437,7 @@ public class Board : MonoBehaviour
             c2.Animator.SetTrigger("Swap");
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_switchDelay);
         
         SetSlots(c1);
         SetSlots(c2);

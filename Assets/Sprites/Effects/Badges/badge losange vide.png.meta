@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: c8e79d17718e2924a8565e3698bc862b
+guid: 12c56804c5ad84e4fb9b4c9620cf491b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5707181566623900549
-    second: soundLogo_0
-  - first:
-      213: -973719021491101656
-    second: soundLogo_1
-  - first:
-      213: 1262414152123007481
-    second: soundLogo_2
-  - first:
-      213: 2264981019055342810
-    second: soundLogo_3
+      213: 2456455243816019677
+    second: badge losange vide_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: soundLogo_0
+      name: badge losange vide_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 84
-        width: 292
-        height: 344
+        y: 0
+        width: 99
+        height: 98
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 583664b956bf33f40800000000000000
-      internalID: 5707181566623900549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soundLogo_1
-      rect:
-        serializedVersion: 2
-        x: 312
-        y: 193
-        width: 63
-        height: 131
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8206bfc75b7ac72f0800000000000000
-      internalID: -973719021491101656
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soundLogo_2
-      rect:
-        serializedVersion: 2
-        x: 359
-        y: 147
-        width: 81
-        height: 222
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9f1c7b89bfef48110800000000000000
-      internalID: 1262414152123007481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: soundLogo_3
-      rect:
-        serializedVersion: 2
-        x: 411
-        y: 94
-        width: 101
-        height: 327
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ad4cbc78c34de6f10800000000000000
-      internalID: 2264981019055342810
+      spriteID: dd6ac468705171220800000000000000
+      internalID: 2456455243816019677
       vertices: []
       indices: 
       edges: []
@@ -213,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -222,11 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      soundLogo_0: 5707181566623900549
-      soundLogo_1: -973719021491101656
-      soundLogo_2: 1262414152123007481
-      soundLogo_3: 2264981019055342810
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

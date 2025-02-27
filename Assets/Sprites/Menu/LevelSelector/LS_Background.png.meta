@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 593095071bc9bcf459f1cd1d6e701b48
+guid: e767e1cb0d39405428f933f0d6debc10
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2818779455249430411
-    second: pv oeil_0
-  - first:
-      213: 1739989974507553533
-    second: pv oeil_1
+      213: -4251269465031441686
+    second: menu_du_niveau fond_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pv oeil_0
+      name: menu_du_niveau fond_0
       rect:
         serializedVersion: 2
-        x: 456
-        y: 58
-        width: 170
-        height: 161
+        x: 0
+        y: 0
+        width: 1080
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57840bd150fa1e8d0800000000000000
-      internalID: -2818779455249430411
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: pv oeil_1
-      rect:
-        serializedVersion: 2
-        x: 625
-        y: 104
-        width: 9
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: df28347b9afa52810800000000000000
-      internalID: 1739989974507553533
+      spriteID: ae2065c12f47005c0800000000000000
+      internalID: -4251269465031441686
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      pv oeil_0: -2818779455249430411
-      pv oeil_1: 1739989974507553533
+      menu_du_niveau fond_0: -4251269465031441686
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
