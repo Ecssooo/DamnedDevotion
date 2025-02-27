@@ -9,9 +9,13 @@ public class Effect : MonoBehaviour
     [SerializeField] private Effects _effect;
     public Effects Effet { get => _effect; }
 
-    [Header("Effect Settings")]
+    [Header("Effect Settings")] 
     [SerializeField] private float _effectDuration = 1f;
-
+    public float EffectDuration
+    {
+        get => _effectDuration;
+    }
+    
     private void OnMouseDown()
     {
         GameManager.Instance.Effect = this.Effet;

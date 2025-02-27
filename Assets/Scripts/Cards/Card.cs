@@ -132,7 +132,7 @@ public class Card : MonoBehaviour
                                 GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
                                     .maxScore;
     }
-
+    
     public void AddAction(Action action)
     {
             
