@@ -585,7 +585,11 @@ MonoBehaviour:
   _foodValue: 0
   _positionOnBoard: {x: 0, y: 0}
   _monsterScoreTXT: {fileID: 3882220337150420791}
-  _actionSlots: []
+  _actionSlots:
+  - {fileID: 5484124250848230664}
+  - {fileID: 6925896655201897190}
+  - {fileID: 3422754793765669237}
+  - {fileID: 7210097376848262152}
   _animator: {fileID: 0}
 --- !u!1 &9105932857564115880
 GameObject:

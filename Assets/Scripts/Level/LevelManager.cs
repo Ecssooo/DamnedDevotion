@@ -45,7 +45,7 @@ public class LevelManager : MonoBehaviour
 
     public void InitLevel(int value)
     {
-        if (value > 0) SaveSystem.InitSave();
+        if (value < 0) SaveSystem.InitSave();
         
         _currentLevel = value; 
         UpdateUI();
@@ -88,7 +88,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Effect = Effects.NONE;
 
         ListAction.Instance.ListActions.Clear();
-        GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
+        // GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
     }
 
     public void LoadMenu()

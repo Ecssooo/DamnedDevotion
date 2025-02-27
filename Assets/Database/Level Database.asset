@@ -327,8 +327,8 @@ MonoBehaviour:
     - cardType: 0
       direction: 0
       positionOnBoard: {x: 1, y: 0}
-    - cardType: 0
-      direction: 3
+    - cardType: 6
+      direction: 0
       positionOnBoard: {x: 1, y: 1}
     - cardType: 0
       direction: 2
@@ -515,7 +515,7 @@ MonoBehaviour:
     - cardType: 1
       direction: 2
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 7
+    maxActionCount: 8
     maxScore: 2
     effects: 010000
   - level: 12
@@ -721,7 +721,7 @@ MonoBehaviour:
       direction: 4
       positionOnBoard: {x: 3, y: 2}
     maxActionCount: 3
-    maxScore: 1
+    maxScore: 3
     effects: 000100
   - level: 17
     CardsList:
@@ -761,7 +761,7 @@ MonoBehaviour:
     - cardType: 2
       direction: 2
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 4
+    maxActionCount: 3
     maxScore: 3
     effects: 000100
   - level: 18
@@ -925,7 +925,7 @@ MonoBehaviour:
     - cardType: 6
       direction: 2
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 3
+    maxActionCount: 5
     maxScore: 2
     effects: 010100
   - level: 22
@@ -1007,7 +1007,7 @@ MonoBehaviour:
     - cardType: 2
       direction: 3
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 5
+    maxActionCount: 4
     maxScore: 3
     effects: 010100
   - level: 24

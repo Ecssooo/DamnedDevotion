@@ -36,10 +36,10 @@ public class Invocation : MonoBehaviour
                         board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;
-                        if (!GameManager.Instance.ActionCount.ActionRemaining())
-                        {
-                            StartCoroutine(ListAction.Instance.StartListAction());
-                        }
+                        // if (!GameManager.Instance.ActionCount.ActionRemaining())
+                        // {
+                        //     StartCoroutine(ListAction.Instance.StartListAction());
+                        // }
                     }
                 }
             }
