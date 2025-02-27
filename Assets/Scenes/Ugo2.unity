@@ -827,8 +827,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5705bad4ea10a82468d9324ba8bb8908, type: 2}
-  m_sharedMaterial: {fileID: 5060183450341932829, guid: 5705bad4ea10a82468d9324ba8bb8908, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1222,6 +1222,7 @@ MonoBehaviour:
   _levelDatabase: {fileID: 11400000, guid: 0804e4c0a5f404e49a339bbe37bc8fac, type: 2}
   _listAction: {fileID: 1665998619}
   _actionCount: {fileID: 738047271}
+  _effectBG: []
 --- !u!4 &738047273
 Transform:
   m_ObjectHideFlags: 0
