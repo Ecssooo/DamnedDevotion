@@ -1,0 +1,806 @@
+fileFormatVersion: 2
+guid: 98342dcde1672cf489fa6d4b4ff78312
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3733861888103202023
+    second: UI_Background placement carte grille_0
+  - first:
+      213: 4421324848111319406
+    second: UI_Background placement carte grille_1
+  - first:
+      213: 7080045790263954135
+    second: UI_Background placement carte grille_2
+  - first:
+      213: 6416812782376933196
+    second: UI_Background placement carte grille_3
+  - first:
+      213: -1815535538136206173
+    second: UI_Background placement carte grille_4
+  - first:
+      213: -7935713648893621857
+    second: UI_Background placement carte grille_5
+  - first:
+      213: 8845193058688505405
+    second: UI_Background placement carte grille_6
+  - first:
+      213: -4472737955228935550
+    second: UI_Background placement carte grille_7
+  - first:
+      213: -7503785317413669251
+    second: UI_Background placement carte grille_8
+  - first:
+      213: 7612289047579875303
+    second: UI_Background placement carte grille_9
+  - first:
+      213: 5195791940009220990
+    second: UI_Background placement carte grille_10
+  - first:
+      213: 8426355932709357891
+    second: UI_Background placement carte grille_11
+  - first:
+      213: -2060077069784260264
+    second: UI_Background placement carte grille_12
+  - first:
+      213: -7093873853033857853
+    second: UI_Background placement carte grille_13
+  - first:
+      213: -8437585794255021500
+    second: UI_Background placement carte grille_14
+  - first:
+      213: -1174122790429591730
+    second: UI_Background placement carte grille_15
+  - first:
+      213: 1802483206187270164
+    second: UI_Background placement carte grille_16
+  - first:
+      213: -1231799902959939940
+    second: UI_Background placement carte grille_17
+  - first:
+      213: 9067331322448150630
+    second: UI_Background placement carte grille_18
+  - first:
+      213: 3135535869253852786
+    second: UI_Background placement carte grille_19
+  - first:
+      213: 162092009280116891
+    second: UI_Background placement carte grille_20
+  - first:
+      213: 8748932881276745923
+    second: UI_Background placement carte grille_21
+  - first:
+      213: -3369721198555125912
+    second: UI_Background placement carte grille_22
+  - first:
+      213: 8442601713372278994
+    second: UI_Background placement carte grille_23
+  - first:
+      213: 2661427245156700939
+    second: UI_Background placement carte grille_24
+  - first:
+      213: 7951799737910445578
+    second: UI_Background placement carte grille_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1080
+        height: 1920
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9134d374568ae2cc0800000000000000
+      internalID: -3733861888103202023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_1
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1417
+        width: 7
+        height: 273
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6978403683bb5d30800000000000000
+      internalID: 4421324848111319406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_2
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 1377
+        width: 270
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dace227220614260800000000000000
+      internalID: 7080045790263954135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_3
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 1377
+        width: 298
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4753c35a391d0950800000000000000
+      internalID: 6416812782376933196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_4
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1382
+        width: 7
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a43b441c0cedc6e0800000000000000
+      internalID: -1815535538136206173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_5
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 1377
+        width: 124
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f990a764b7eaed190800000000000000
+      internalID: -7935713648893621857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_6
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 1377
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3611e8193070ca70800000000000000
+      internalID: 8845193058688505405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_7
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 1377
+        width: 125
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28a1c2df684ade1c0800000000000000
+      internalID: -4472737955228935550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_8
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 1031
+        width: 12
+        height: 335
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7634c4b2033dd790800000000000000
+      internalID: -7503785317413669251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_9
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1365
+        width: 8
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e75890ae8844a960800000000000000
+      internalID: 7612289047579875303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_10
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 1329
+        width: 7
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7b561fad392b1840800000000000000
+      internalID: 5195791940009220990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_11
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 741
+        width: 14
+        height: 301
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3498528731e60f470800000000000000
+      internalID: 8426355932709357891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_12
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 1042
+        width: 9
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 851e49dd1d22963e0800000000000000
+      internalID: -2060077069784260264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 1032
+        width: 207
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cc3c7cc05f7d8d90800000000000000
+      internalID: -7093873853033857853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_14
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 1032
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44a1c83ac6ca7ea80800000000000000
+      internalID: -8437585794255021500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_15
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 1032
+        width: 68
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e47f0c9fa8da4bfe0800000000000000
+      internalID: -1174122790429591730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_16
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 1032
+        width: 294
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41046621de4b30910800000000000000
+      internalID: 1802483206187270164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_17
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 1032
+        width: 47
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9e46bdb384c7eee0800000000000000
+      internalID: -1231799902959939940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_18
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1032
+        width: 229
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6608b470cc1a5dd70800000000000000
+      internalID: 9067331322448150630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_19
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 727
+        width: 8
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e1f53a249a38b20800000000000000
+      internalID: 3135535869253852786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_20
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 688
+        width: 282
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b98121ad2dddf3200800000000000000
+      internalID: 162092009280116891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_21
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 680
+        width: 8
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c83c380a147a6970800000000000000
+      internalID: 8748932881276745923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_22
+      rect:
+        serializedVersion: 2
+        x: 396
+        y: 463
+        width: 539
+        height: 263
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 867a4086c685c31d0800000000000000
+      internalID: -3369721198555125912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_23
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 688
+        width: 24
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d0b8a907852a2570800000000000000
+      internalID: 8442601713372278994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_24
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 388
+        width: 8
+        height: 289
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b039c178af94fe420800000000000000
+      internalID: 2661427245156700939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_Background placement carte grille_25
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 385
+        width: 7
+        height: 81
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a06423f2bb77a5e60800000000000000
+      internalID: 7951799737910445578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      UI_Background placement carte grille_0: -3733861888103202023
+      UI_Background placement carte grille_1: 4421324848111319406
+      UI_Background placement carte grille_10: 5195791940009220990
+      UI_Background placement carte grille_11: 8426355932709357891
+      UI_Background placement carte grille_12: -2060077069784260264
+      UI_Background placement carte grille_13: -7093873853033857853
+      UI_Background placement carte grille_14: -8437585794255021500
+      UI_Background placement carte grille_15: -1174122790429591730
+      UI_Background placement carte grille_16: 1802483206187270164
+      UI_Background placement carte grille_17: -1231799902959939940
+      UI_Background placement carte grille_18: 9067331322448150630
+      UI_Background placement carte grille_19: 3135535869253852786
+      UI_Background placement carte grille_2: 7080045790263954135
+      UI_Background placement carte grille_20: 162092009280116891
+      UI_Background placement carte grille_21: 8748932881276745923
+      UI_Background placement carte grille_22: -3369721198555125912
+      UI_Background placement carte grille_23: 8442601713372278994
+      UI_Background placement carte grille_24: 2661427245156700939
+      UI_Background placement carte grille_25: 7951799737910445578
+      UI_Background placement carte grille_3: 6416812782376933196
+      UI_Background placement carte grille_4: -1815535538136206173
+      UI_Background placement carte grille_5: -7935713648893621857
+      UI_Background placement carte grille_6: 8845193058688505405
+      UI_Background placement carte grille_7: -4472737955228935550
+      UI_Background placement carte grille_8: -7503785317413669251
+      UI_Background placement carte grille_9: 7612289047579875303
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
