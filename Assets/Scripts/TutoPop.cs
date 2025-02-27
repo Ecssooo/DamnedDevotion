@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class TutoPop : MonoBehaviour
 {
-    LevelManager LevelManager;
-
     [SerializeField] private GameObject Tuto1;
     [SerializeField] private GameObject Tuto2;
     [SerializeField] private GameObject Tuto3;
@@ -15,25 +13,25 @@ public class TutoPop : MonoBehaviour
         Tuto3.SetActive(false);
     }
 
-    void PopUp()
+    public void PopUp()
     {
         int currentLevel = LevelManager.Instance.CurrentLevel;
 
-        if ( currentLevel == 1)
+        if ( currentLevel == 0) // Premier niveau avec déplacement
         {
             Tuto1.SetActive(true);
         }
-        else if (currentLevel == 2)
+        else if (currentLevel == 15) // Premier niveau avec swap
         {
             Tuto2.SetActive(true);
         }
-        else if (currentLevel == 3)
+        else if (currentLevel == 24) // Premier niveau avec invocation
         {
             Tuto3.SetActive(true);
         }
     }
 
-    void CloseTuto()
+    public void CloseTuto()
     {
         Tuto1.SetActive(false);
         Tuto2.SetActive(false);
