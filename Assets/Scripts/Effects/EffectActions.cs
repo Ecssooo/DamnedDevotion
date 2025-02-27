@@ -52,6 +52,16 @@ public class EffectActions : MonoBehaviour
                 //GameManager.Instance.ActionCount.Decrement(1);
                 break;
         }
+        if (action._card.CardType == CardType.MINIMONSTER)
+        {
+            StartCoroutine(DestroyCard(action._card));
+        }
+    }
+
+    private IEnumerator DestroyCard(Card card)
+    {
+        yield return new WaitForSeconds(.3f);
+        Destroy(card.gameObject);
     }
 
     public IEnumerator MoveCardCoroutine(System.Action<Direction> callback)

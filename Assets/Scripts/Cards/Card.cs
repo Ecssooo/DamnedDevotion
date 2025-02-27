@@ -58,7 +58,6 @@ public class Card : MonoBehaviour
     
     private void OnMouseDown()
     {
-
         switch (GameManager.Instance.Effect)
         {
             case Effects.NONE:
@@ -97,6 +96,7 @@ public class Card : MonoBehaviour
     }
     public void DoEndOfTurnActions() // To use at end of turn to make Knights attack
     {
+
         switch(CardType)
         {
             case CardType.HUMAN:

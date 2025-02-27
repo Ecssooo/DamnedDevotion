@@ -1,0 +1,1 @@
+C:\Users\jacqu\Documents\unity\ProjetMobile\ProjetMobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\l336w334\obj\arm64-v8a

@@ -72,6 +72,7 @@ public class ListAction : MonoBehaviour
         }
         GameManager.Instance.Board.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;
+        undoButton.SetActive(true);
         //yield return new WaitForSeconds(1);
         //foreach (var card in _board)
         //{

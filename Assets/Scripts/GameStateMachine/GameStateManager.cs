@@ -69,7 +69,7 @@ public class GameStateManager : MonoBehaviour
     public void StateSetup()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameSetupState);
+            SwitchState(_gameSetupState, true);
     }
     public void StateAction(){
         if(GameManager.Instance.GameState == GameState.Playable)

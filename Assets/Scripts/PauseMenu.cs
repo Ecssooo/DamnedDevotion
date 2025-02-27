@@ -4,6 +4,11 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
 
+    [SerializeField] private GameObject _canva;
+    [SerializeField] private GameObject _board;
+    [SerializeField] private GameObject _defeatScreen;
+    [SerializeField] private GameObject _winScreen;
+
     public void TogglePauseMenu()
     {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
@@ -12,4 +17,8 @@ public class PauseMenu : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
+    public void ReturnMenu()
+    {
+        LevelManager.Instance.LoadMenu();
+    }
 }
