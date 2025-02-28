@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ListAction : MonoBehaviour
 {
-    [SerializeField] private GameObject _moveEffectPrefab;
+    [SerializeField] private GameObject _moveEffectLeftPrefab;
+    [SerializeField] private GameObject _moveEffectRightPrefab;
+    [SerializeField] private GameObject _moveEffectUpPrefab;
+    [SerializeField] private GameObject _moveEffectDownPrefab;
     [SerializeField] private GameObject _switchEffectPrefab;
-    [SerializeField] private GameObject _invocationEffectPrefab;
     private bool HasAppliedEffect = false;
 
     [SerializeField] private float _moveEffectDuration;
@@ -110,7 +112,24 @@ public class ListAction : MonoBehaviour
                 switch (action._effect)
                 {
                     case Effects.MOVE:
-                        GameObject newMoveAction = Instantiate(_moveEffectPrefab, slot);
+                        GameObject newMoveAction = new GameObject();
+                        switch (action._direction)
+                        {
+                            case Direction.UP:
+                                newMoveAction = Instantiate(_moveEffectUpPrefab, slot);
+                                break;
+                            case Direction.DOWN:
+                                newMoveAction = Instantiate(_moveEffectDownPrefab, slot);
+                                break;
+                            case Direction.LEFT:
+                                newMoveAction = Instantiate(_moveEffectLeftPrefab, slot);
+                                break;
+                            case Direction.RIGHT:
+                                newMoveAction = Instantiate(_moveEffectRightPrefab, slot);
+                                break;
+                        }
+
+                        //Deactivate the effect and collider
                         var moveEffect = newMoveAction.GetComponent<Effect>();
                         if (moveEffect != null)
                         {
@@ -121,6 +140,8 @@ public class ListAction : MonoBehaviour
                         {
                             moveCollider.enabled = false;
                         }
+
+
                         newMoveAction.transform.localScale = Vector3.one / 3;
                         newMoveAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);

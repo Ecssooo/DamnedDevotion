@@ -64,20 +64,20 @@ public class PlayGamesController : MonoBehaviour
     // Debloquer un achievement
     public void UnlockAchievement(string achievementID)
     {
-        GameObject objet = Instantiate(obj);
-        objet.transform.position = new Vector3(-8, 0, 0);
+        //GameObject objet = Instantiate(obj);
+        //objet.transform.position = new Vector3(-8, 0, 0);
         PlayGamesPlatform.Instance.ReportProgress(achievementID, 100.0f, success =>
         {
             if (success)
             {
                 //debugText.text = "Achievement débloqué !";
-                GameObject objet = Instantiate(obj2);
-                objet.transform.position = new Vector3(0, 0, 0);
+                //GameObject objet = Instantiate(obj2);
+                //objet.transform.position = new Vector3(0, 0, 0);
             }
             else 
             {
-                GameObject objet = Instantiate(obj);
-                objet.transform.position = new Vector3(1, 0, 0);
+                //GameObject objet = Instantiate(obj);
+                //objet.transform.position = new Vector3(1, 0, 0);
                 //debugText.text = "Échec du déblocage";
             }
         });
@@ -96,6 +96,7 @@ public class PlayGamesController : MonoBehaviour
 
     public void ShowAchievements()
     {
-        Social.ShowAchievementsUI();
+        //Debug.Log("ShowAchievements");
+        PlayGamesPlatform.Instance.ShowAchievementsUI();
     }
 }

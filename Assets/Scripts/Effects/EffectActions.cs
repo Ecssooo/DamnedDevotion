@@ -29,7 +29,6 @@ public class EffectActions : MonoBehaviour
 
     public void DoEffect(Action action)
     {
-        //Debug.Log("Instance effect : " + GameManager.Instance.Effect);
         if (GameManager.Instance.Effect == Effects.NONE /*|| GameStateManager.Instance.CurrentState.GetType() != GameStateManager.Instance.GameSetupState.GetType()*/)
         {
             Debug.Log("GameStateError");
@@ -51,11 +50,7 @@ public class EffectActions : MonoBehaviour
                 //Debug.Log("Swapping Cards");
                 //GameManager.Instance.ActionCount.Decrement(1);
                 break;
-        }
-        if (action._card.CardType == CardType.MINIMONSTER)
-        {
-            StartCoroutine(DestroyCard(action._card));
-        }
+        }        
     }
 
     private IEnumerator DestroyCard(Card card)
