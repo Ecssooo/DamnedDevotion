@@ -361,25 +361,9 @@ PrefabInstance:
       value: 18.2
       objectReference: {fileID: 0}
     - target: {fileID: 6411515814939311779, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6411515814939311779, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 738047274}
-    - target: {fileID: 6411515814939311779, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowAchievements
-      objectReference: {fileID: 0}
-    - target: {fileID: 6411515814939311779, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayGamesController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6411515814939311779, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6519196483679693573, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_IsActive
       value: 0

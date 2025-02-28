@@ -1,5 +1,6 @@
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
+using TMPro;
 using UnityEngine;
 
 public class PlayGamesController : MonoBehaviour
@@ -7,12 +8,12 @@ public class PlayGamesController : MonoBehaviour
     [SerializeField] private GameObject obj;
     [SerializeField] private GameObject obj2;
     // [SerializeField] private TextMeshProUGUI text;
-    private string debugText; // Champ pour afficher les messages de débogage
+    // [SerializeField] private TextMeshProUGUI debugText; // Champ pour afficher les messages de débogage
 
     void Start()
     {
         PlayGamesPlatform.Activate();
-        PlayGamesPlatform.Instance.Authenticate(x => debugText = x.ToString());
+        //PlayGamesPlatform.Instance.Authenticate(x => debugText.text = x.ToString());
         //PlayGamesPlatform.Instance.ManuallyAuthenticate(ProcessAuthentication);
     }
 
