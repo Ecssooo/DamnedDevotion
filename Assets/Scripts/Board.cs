@@ -189,6 +189,11 @@ public class Board : MonoBehaviour
         }
     }
 
+    public void SetTuto(Level level)
+    {
+        if (level.tutoPrefab != null) Instantiate(level.tutoPrefab);
+    }
+    
     /// <summary>
     /// Setup card on board
     /// </summary>
@@ -215,6 +220,7 @@ public class Board : MonoBehaviour
             }
         }
         SetCollider();
+        SetTuto(level);
         yield return new WaitForSeconds(0.5f);
         GameManager.Instance.GameState = GameState.Playable;
     }
