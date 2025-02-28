@@ -308,6 +308,12 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2116388973}
+    - target: {fileID: 3799548105291342363, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
+      propertyPath: m_text
+      value: 'Log-in
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 4355452283519768029, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1120
