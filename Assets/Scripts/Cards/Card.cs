@@ -157,6 +157,12 @@ public class Card : MonoBehaviour
             color.a = .8f;
             _darkenedEffect.color = color;
         }
+        else if (GameManager.Instance.Effect == Effects.INVOKE)
+        {
+            Color color = _darkenedEffect.color;
+            color.a = .8f;
+            _darkenedEffect.color = color;
+        }
         else
         {
             Color color = _darkenedEffect.color;

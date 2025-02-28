@@ -202,7 +202,15 @@ public class ListAction : MonoBehaviour
         if (GameManager.Instance.GameState != GameState.Playable) return;
         if (GameManager.Instance.GameState == GameState.Playable)
         {
+            //if (ListAction)
+            {
+                
+            }
+
+
             if (_listActions.Count == 0) return;
+
+
             //Remove icon from last action
             GameObject SlotToRemove = null;
             GameObject SlotToRemove2 = null;
@@ -231,6 +239,11 @@ public class ListAction : MonoBehaviour
             if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
             SlotToRemove = null;
             SlotToRemove2 = null;
+
+            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER)
+            {
+                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
+            }
 
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);

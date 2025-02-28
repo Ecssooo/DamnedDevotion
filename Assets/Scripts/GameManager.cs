@@ -57,7 +57,10 @@ public class GameManager : MonoBehaviour
 
     private GameState _gameState;
     public GameState GameState { get => _gameState; set => _gameState = value; }
-    
+
+    private List<Card> _miniMonsterCards = new List<Card>();
+    public List<Card> MiniMonsterCards { get => _miniMonsterCards; set => _miniMonsterCards = value; }
+
     private void Update()
     {
         UpdateEffectUI();
