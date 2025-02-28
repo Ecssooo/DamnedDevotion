@@ -25,7 +25,8 @@ public class LevelManager : MonoBehaviour
 
     #region UpdateLevel
     private int _currentLevel;
-    public int CurrentLevel { get => _currentLevel;}
+
+    public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
 
     public void IncreaseLevel()
     {
@@ -81,6 +82,8 @@ public class LevelManager : MonoBehaviour
     {
         _canva.SetActive(false);
         _game.SetActive(true);
+        _winScreen.SetActive(false);
+        _defeatScreen.SetActive(false);
         //GetComponent<TutoPop>().PopUp();
         StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
 

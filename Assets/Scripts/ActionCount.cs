@@ -35,6 +35,6 @@ public class ActionCount : MonoBehaviour
 
     public void DisplayActionPoint()
     {
-        actionPointText.text = "Action Point :" + action;
+        actionPointText.text = action.ToString();
     }
 }
