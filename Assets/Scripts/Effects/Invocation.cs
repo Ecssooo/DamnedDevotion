@@ -10,6 +10,7 @@ public class Invocation : MonoBehaviour
 
     public IEnumerator InvokeMiniMonster()
     {
+        GameManager.Instance.Effect = Effects.INVOKE;
         yield return new WaitForSeconds(.3f);
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         PlaceCardAtMousePosition();
