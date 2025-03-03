@@ -13,8 +13,8 @@ public class GameWinState : GameBaseState
             LevelManager.Instance.CurrentLevel + 1 > SaveSystem.Load())
         {
             SaveSystem.Save(LevelManager.Instance.CurrentLevel + 1);
-            LevelManager.Instance.CurrentLevel++;
         }
+        LevelManager.Instance.CurrentLevel++;
     }
 
     public override void UpdateState(GameStateManager manager)
