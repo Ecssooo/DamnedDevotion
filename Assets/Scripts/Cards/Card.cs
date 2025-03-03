@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -121,7 +122,7 @@ public class Card : MonoBehaviour
             case CardType.KNIGHTSWORD:
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
                 if (target != null)
-                    target.OnDie();
+                    StartCoroutine(target.OnDie());
                 break;
             case CardType.KNIGHTSHIELD:
                 break;
@@ -134,10 +135,12 @@ public class Card : MonoBehaviour
         }
     }
 
-    public void OnDie()
+    public IEnumerator OnDie()
     {
         if (this._cardType == CardType.HUMAN)
         {
+            _animator.SetTrigger("Hit");
+            yield return new WaitForSeconds(0.5f); 
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
         }

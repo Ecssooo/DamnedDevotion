@@ -404,6 +404,8 @@ public class Board : MonoBehaviour
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
             yield return new WaitForSeconds(1);
+            card.Animator.SetTrigger("Burn");
+            yield return new WaitForSeconds(0.3f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         }
@@ -447,6 +449,8 @@ public class Board : MonoBehaviour
         {
             if(card != null) card.DoEndOfTurnActions();
         }
+
+        yield return new WaitForSeconds(1f);
         GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance);
 
     }
