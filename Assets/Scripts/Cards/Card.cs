@@ -206,11 +206,8 @@ public class Card : MonoBehaviour
         }
         else
         {
-            _darkenedEffect.gameObject.SetActive(false);
-
-            // Color color = _darkenedEffect.color;
-            // color.a = 0f;
-            // _darkenedEffect.color = color;
+            if(_cardType == CardType.KNIGHTSWORD) _animator.SetBool("Dark", false);
+            else _darkenedEffect.gameObject.SetActive(false);
         }
     }
 }

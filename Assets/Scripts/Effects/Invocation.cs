@@ -40,6 +40,7 @@ public class Invocation : MonoBehaviour
                         board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;
+                        GameManager.Instance.Effect = Effects.NONE;
                     }
                 }
             }
