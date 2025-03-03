@@ -62,12 +62,16 @@ public class ListAction : MonoBehaviour
             
             if (action._card.CardType == CardType.MINIMONSTER)
             {
+                action._card.Animator.SetTrigger("Burn");
+                yield return new WaitForSeconds(0.3f);
                 GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
             }
             if (action._card2 != null)
             {
                 if(action._card2.CardType == CardType.MINIMONSTER)
                 {
+                    action._card2.Animator.SetTrigger("Burn");
+                    yield return new WaitForSeconds(0.3f);
                     GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
                 }
             }

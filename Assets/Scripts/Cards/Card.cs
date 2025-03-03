@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -20,7 +17,8 @@ public class Card : MonoBehaviour
         get { return _cardType; }
     }
 
-    [Tooltip("None if anything other than KnightSword")] [SerializeField]
+    [Tooltip("None if anything other than KnightSword")]
+    [SerializeField]
     private Direction _direction;
 
     public Direction Direction
@@ -123,6 +121,7 @@ public class Card : MonoBehaviour
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
                 if (target != null)
                     StartCoroutine(target.OnDie());
+                else AudioManager.Instance.PlaySFX("swordSlash");
                 break;
             case CardType.KNIGHTSHIELD:
                 break;
@@ -140,9 +139,30 @@ public class Card : MonoBehaviour
         if (this._cardType == CardType.HUMAN)
         {
             _animator.SetTrigger("Hit");
-            yield return new WaitForSeconds(0.5f); 
+            AudioManager.Instance.PlaySFX("swordHit");
+            yield return new WaitForSeconds(0.5f);
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
+            AudioManager.Instance.PlaySFX("death");
+        }
+        else if (this._cardType == CardType.KNIGHTSHIELD)
+        {
+            _animator.SetTrigger("Hit");
+            AudioManager.Instance.PlaySFX("swordClang");
+            yield return new WaitForSeconds(0.5f);
+        }
+        else if (this._cardType == CardType.MONSTER)
+        {
+            _animator.SetTrigger("Hit");
+            AudioManager.Instance.PlaySFX("swordHit");
+            yield return new WaitForSeconds(0.5f);
+            GameManager.Instance.MonsterScore = 0;
+            GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatStateState);
+            GameManager.Instance.Board.ClearSlot(this);
+        }
+        else if (this._cardType == CardType.NONE)
+        {
+            AudioManager.Instance.PlaySFX("swordSlash");
         }
     }
 
@@ -209,7 +229,7 @@ public class Card : MonoBehaviour
         }
         else
         {
-            if(_cardType == CardType.KNIGHTSWORD) _animator.SetBool("Dark", false);
+            if (_cardType == CardType.KNIGHTSWORD) _animator.SetBool("Dark", false);
             else _darkenedEffect.gameObject.SetActive(false);
         }
     }

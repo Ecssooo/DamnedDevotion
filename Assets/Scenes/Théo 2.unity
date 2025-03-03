@@ -1374,106 +1374,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.size
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: bac9bc4b62ab1874db000a3ac04d28b0, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[0].name
-      value: button
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 85d1bd4e7506ce04782466725bef8866, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[1].name
-      value: mixing
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5bf70511c3fa72a40b426f0c8a140101, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[2].name
-      value: swipe
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[3].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 3bdf099beb102ff41ba83ee3d81ad4bc, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[3].name
-      value: death
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 91e71baafc6628340b2efa688a887561, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[4].name
-      value: lose
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[5].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6a25cacabbfb70946b12e233124192ba, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[5].name
-      value: slider
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[6].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: de27aebb850cf1d4dbbdf252e672a6bf, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[6].name
-      value: swordClang
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 385c699c7959c6c448a5ee0cac4ebb37, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[7].name
-      value: swordSlash
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6bca0dbdcfb3a6f4f84aa4f62e8bdfbd, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[8].name
-      value: swoprdHit
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[9].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 133ef17c7d77be94597bb14b3c40f187, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[9].name
-      value: teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 133ef17c7d77be94597bb14b3c40f187, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[10].name
-      value: teleport
-      objectReference: {fileID: 0}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[11].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0a5236d019fb30e42aab67bcc13fc75b, type: 3}
-    - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
-      propertyPath: sfxSounds.Array.data[11].name
-      value: win
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2634,7 +2534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa79de940e0cb048ac69e0f05b08cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canva: {fileID: 2078908013}
+  _levelSelectorScreen: {fileID: 2078908013}
   _game: {fileID: 1303993699}
   _defeatScreen: {fileID: 1566182805}
   _winScreen: {fileID: 1502523287}

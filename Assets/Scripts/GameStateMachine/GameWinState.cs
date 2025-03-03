@@ -4,6 +4,7 @@ public class GameWinState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
+        AudioManager.Instance.PlaySFX("win");
         LevelManager.Instance.LoadWinMenu();
         GameManager.Instance.MonsterScore = 0;
         GameManager.Instance.Effect = Effects.NONE;
