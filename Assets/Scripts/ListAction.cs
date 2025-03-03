@@ -74,13 +74,6 @@ public class ListAction : MonoBehaviour
         }
         GameManager.Instance.Board.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;
-        // undoButton.SetActive(true);
-        //yield return new WaitForSeconds(1);
-        //foreach (var card in _board)
-        //{
-        //    if (card != null) card.DoEndOfTurnActions();
-        //}
-        //GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameWinState);
     }
 
     public void AddAction(Action action)
@@ -192,21 +185,12 @@ public class ListAction : MonoBehaviour
 
 
         HasAppliedEffect = false;
-        // if (!GameManager.Instance.ActionCount.ActionRemaining())
-        // {
-        //     StartCoroutine(StartListAction());
-        // }
     }
     public void RemoveLastAction()
     {
         if (GameManager.Instance.GameState != GameState.Playable) return;
         if (GameManager.Instance.GameState == GameState.Playable)
         {
-            //if (ListAction)
-            {
-                
-            }
-
 
             if (_listActions.Count == 0) return;
 

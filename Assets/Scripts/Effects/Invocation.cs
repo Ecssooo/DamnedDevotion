@@ -40,17 +40,12 @@ public class Invocation : MonoBehaviour
                         board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;
-                        // if (!GameManager.Instance.ActionCount.ActionRemaining())
-                        // {
-                        //     StartCoroutine(ListAction.Instance.StartListAction());
-                        // }
                     }
                 }
             }
         }
     }
-
-
+    
     private Vector2 GetMousePosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);

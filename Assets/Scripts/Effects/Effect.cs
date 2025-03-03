@@ -18,42 +18,44 @@ public class Effect : MonoBehaviour
     
     private void OnMouseDown()
     {
-        GameManager.Instance.Effect = this.Effet;
-        //if (GameManager.Instance.Effect != Effects.NONE) GameManager.Instance.Effect = Effects.NONE;
-        switch (GameManager.Instance.Effect)
+        if (GameManager.Instance.GameState == GameState.Playable)
         {
-            case Effects.MOVE:
-                if (!EffectList.MoveCard)
-                {
-                    EffectList.MoveCard = true;
+            GameManager.Instance.Effect = this.Effet;
+            switch (GameManager.Instance.Effect)
+            {
+                case Effects.MOVE:
+                    if (!EffectList.MoveCard)
+                    {
+                        EffectList.MoveCard = true;
+                        EffectList.SwapCard = false;
+                        EffectList.InvokeCard = false;
+                        GameManager.Instance.Effect = Effects.MOVE;
+                        return;
+                    }
+                    EffectList.MoveCard = false;
                     EffectList.SwapCard = false;
                     EffectList.InvokeCard = false;
-                    GameManager.Instance.Effect = Effects.MOVE;
-                    return;
-                }
-                EffectList.MoveCard = false;
-                EffectList.SwapCard = false;
-                EffectList.InvokeCard = false;
-                GameManager.Instance.Effect = Effects.NONE;
-                break;
-            case Effects.SWAP:
-                if (!EffectList.SwapCard)
-                {
-                    EffectActions.Instance._swapFirstCard = null;
-                    EffectActions.Instance._swapSecondCard = null;
-                    EffectList.SwapCard = true;
+                    GameManager.Instance.Effect = Effects.NONE;
+                    break;
+                case Effects.SWAP:
+                    if (!EffectList.SwapCard)
+                    {
+                        EffectActions.Instance._swapFirstCard = null;
+                        EffectActions.Instance._swapSecondCard = null;
+                        EffectList.SwapCard = true;
+                        EffectList.MoveCard = false;
+                        EffectList.InvokeCard = false;
+                        GameManager.Instance.Effect = Effects.SWAP;
+                        return;
+                    }
+                    EffectList.SwapCard = false;
                     EffectList.MoveCard = false;
                     EffectList.InvokeCard = false;
-                    GameManager.Instance.Effect = Effects.SWAP;
-                    return;
-                }
-                EffectList.SwapCard = false;
-                EffectList.MoveCard = false;
-                EffectList.InvokeCard = false;
-                GameManager.Instance.Effect = Effects.NONE;
-                break;
-            case Effects.NONE:
-                break;
+                    GameManager.Instance.Effect = Effects.NONE;
+                    break;
+                case Effects.NONE:
+                    break;
+            }
         }
     }
 

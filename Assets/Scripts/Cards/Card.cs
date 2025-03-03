@@ -13,20 +13,23 @@ public class Card : MonoBehaviour
 
     [SerializeField] private bool _canMove;
     [SerializeField] private bool _canSwap;
+
     public CardType CardType
     {
         get { return _cardType; }
-    }   
+    }
 
-    [Tooltip("None if anything other than KnightSword")]
-    [SerializeField] private Direction _direction;
+    [Tooltip("None if anything other than KnightSword")] [SerializeField]
+    private Direction _direction;
+
     public Direction Direction
     {
         get => _direction;
         set => _direction = value;
     }
-    
+
     [SerializeField] private Direction _attackDirection;
+
     public Direction AttackDirection
     {
         get => _attackDirection;
@@ -34,12 +37,14 @@ public class Card : MonoBehaviour
     }
 
     [SerializeField] private int _foodValue;
+
     public int FoodValue
     {
         get => _foodValue;
     }
 
     [SerializeField] private Vector2Int _positionOnBoard;
+
     public Vector2Int PositionOnBoard
     {
         get { return _positionOnBoard; }
@@ -50,6 +55,7 @@ public class Card : MonoBehaviour
 
 
     [SerializeField] private List<Transform> _actionSlots = new List<Transform>();
+
     public List<Transform> ActionSlots
     {
         get { return _actionSlots; }
@@ -57,8 +63,12 @@ public class Card : MonoBehaviour
     }
 
     [SerializeField] private Animator _animator;
-    public Animator Animator { get { return _animator; } }
-    
+
+    public Animator Animator
+    {
+        get { return _animator; }
+    }
+
     private void OnMouseDown()
     {
         switch (GameManager.Instance.Effect)
@@ -74,7 +84,8 @@ public class Card : MonoBehaviour
                 }));
                 break;
             case Effects.SWAP:
-                Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)).GetComponent<Card>();
+                Card card = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition))
+                    .GetComponent<Card>();
                 if (card == null) return;
                 if (EffectActions.Instance._swapFirstCard == null)
                 {
@@ -84,7 +95,8 @@ public class Card : MonoBehaviour
                 {
                     if (EffectActions.Instance._swapFirstCard == card) return;
                     EffectActions.Instance._swapSecondCard = card;
-                    Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard, EffectActions.Instance._swapSecondCard);
+                    Action switchAction = EffectActions.Instance.CreateAction(EffectActions.Instance._swapFirstCard,
+                        EffectActions.Instance._swapSecondCard);
 
                     ListAction.Instance.AddAction(switchAction);
 
@@ -92,21 +104,23 @@ public class Card : MonoBehaviour
                     EffectActions.Instance._swapFirstCard = null;
                     EffectActions.Instance._swapSecondCard = null;
                 }
+
                 break;
         }
 
         Collider2D effectClicked = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
     }
+
     public void DoEndOfTurnActions() // To use at end of turn to make Knights attack
     {
 
-        switch(CardType)
+        switch (CardType)
         {
             case CardType.HUMAN:
                 break;
             case CardType.KNIGHTSWORD:
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
-                if(target != null)
+                if (target != null)
                     target.OnDie();
                 break;
             case CardType.KNIGHTSHIELD:
@@ -135,33 +149,42 @@ public class Card : MonoBehaviour
                                 GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
                                     .maxScore;
     }
-    
+
     public void AddAction(Action action)
     {
-            
+
     }
 
     private void Update()
     {
         if (_cardType == CardType.MONSTER) ShowMonsterScore();
 
-        if (GameManager.Instance.Effect == Effects.MOVE && !_canMove)
+        if (GameManager.Instance.GameState == GameState.Playable )
         {
-            Color color = _darkenedEffect.color;
-            color.a = .8f;
-            _darkenedEffect.color = color;
-        }
-        else if (GameManager.Instance.Effect == Effects.SWAP && !_canSwap)
-        {
-            Color color = _darkenedEffect.color;
-            color.a = .8f;
-            _darkenedEffect.color = color;
-        }
-        else if (GameManager.Instance.Effect == Effects.INVOKE)
-        {
-            Color color = _darkenedEffect.color;
-            color.a = .8f;
-            _darkenedEffect.color = color;
+            if (GameManager.Instance.Effect == Effects.MOVE && !_canMove)
+            {
+                Color color = _darkenedEffect.color;
+                color.a = .8f;
+                _darkenedEffect.color = color;
+            }
+            else if (GameManager.Instance.Effect == Effects.SWAP && !_canSwap)
+            {
+                Color color = _darkenedEffect.color;
+                color.a = .8f;
+                _darkenedEffect.color = color;
+            }
+            else if (GameManager.Instance.Effect == Effects.INVOKE)
+            {
+                Color color = _darkenedEffect.color;
+                color.a = .8f;
+                _darkenedEffect.color = color;
+            }
+            else
+            {
+                Color color = _darkenedEffect.color;
+                color.a = 0f;
+                _darkenedEffect.color = color;
+            }
         }
         else
         {
