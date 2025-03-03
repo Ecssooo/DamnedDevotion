@@ -407,6 +407,7 @@ public class Board : MonoBehaviour
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
             AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(1);
+            AudioManager.Instance.PlaySFX("death");
             card.Animator.SetTrigger("Burn");
             yield return new WaitForSeconds(0.4f);
             GameManager.Instance.MonsterScore += card.FoodValue;
