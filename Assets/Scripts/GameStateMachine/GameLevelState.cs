@@ -18,6 +18,6 @@ public class GameLevelState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        AudioManager.Instance.musicSource.Stop();
+        AudioManager.Instance.PlayMusic("Level");
     }
 }
