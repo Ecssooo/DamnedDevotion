@@ -17,11 +17,10 @@ public class Board : MonoBehaviour
     private GameObject[] _effectGO = new GameObject[3];
     private Card[,] _board = new Card[4, 3];
     private Transform[,] _slotsTab = new Transform[4, 3];
-    public Transform[,] SlotsTab => _slotsTab;
 
     //Get
     public Card[,] CardList => _board;
-    //public Transform[,] SlotsTab => _slotsTab;
+    public Transform[,] SlotsTab => _slotsTab;
 
     [SerializeField] private float _switchDelay;
     
@@ -170,17 +169,9 @@ public class Board : MonoBehaviour
         }
     }
     
-    //Delete comment to activate in SetLevel();
     public void SetKnightDirection(Card card)
     {
         if (card == null) return;
-        // switch (card.AttackDirection)
-        // {
-        //     case(Direction.UP): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up; break;
-        //     case(Direction.RIGHT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right; break;
-        //     case(Direction.DOWN): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down; break;
-        //     case(Direction.LEFT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left; break;
-        // }  
         switch (card.AttackDirection)
         {
             case(Direction.UP): card.Animator.SetBool("Up", true); break;
@@ -416,6 +407,8 @@ public class Board : MonoBehaviour
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
             AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(1);
+            card.Animator.SetTrigger("Burn");
+            yield return new WaitForSeconds(0.4f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         }
@@ -461,6 +454,8 @@ public class Board : MonoBehaviour
         {
             if(card != null) card.DoEndOfTurnActions();
         }
+
+        yield return new WaitForSeconds(1f);
         GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance);
 
     }

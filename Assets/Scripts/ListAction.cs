@@ -62,25 +62,22 @@ public class ListAction : MonoBehaviour
             
             if (action._card.CardType == CardType.MINIMONSTER)
             {
+                action._card.Animator.SetTrigger("Burn");
+                yield return new WaitForSeconds(0.3f);
                 GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
             }
             if (action._card2 != null)
             {
                 if(action._card2.CardType == CardType.MINIMONSTER)
                 {
+                    action._card2.Animator.SetTrigger("Burn");
+                    yield return new WaitForSeconds(0.3f);
                     GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
                 }
             }
         }
         GameManager.Instance.Board.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;
-        // undoButton.SetActive(true);
-        //yield return new WaitForSeconds(1);
-        //foreach (var card in _board)
-        //{
-        //    if (card != null) card.DoEndOfTurnActions();
-        //}
-        //GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameWinState);
     }
 
     public void AddAction(Action action)
@@ -192,17 +189,16 @@ public class ListAction : MonoBehaviour
 
 
         HasAppliedEffect = false;
-        // if (!GameManager.Instance.ActionCount.ActionRemaining())
-        // {
-        //     StartCoroutine(StartListAction());
-        // }
     }
     public void RemoveLastAction()
     {
         if (GameManager.Instance.GameState != GameState.Playable) return;
         if (GameManager.Instance.GameState == GameState.Playable)
         {
+
             if (_listActions.Count == 0) return;
+
+
             //Remove icon from last action
             GameObject SlotToRemove = null;
             GameObject SlotToRemove2 = null;
@@ -231,6 +227,11 @@ public class ListAction : MonoBehaviour
             if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
             SlotToRemove = null;
             SlotToRemove2 = null;
+
+            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER)
+            {
+                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
+            }
 
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);

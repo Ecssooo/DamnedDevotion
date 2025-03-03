@@ -34,20 +34,19 @@ public class Invocation : MonoBehaviour
                     {
                         Card newCard = Instantiate(miniMonsterPrefab);
                         newCard.PositionOnBoard = boardPosition;
+                        Action action = EffectActions.Instance.CreateAction(newCard);
+                        action._effect = Effects.INVOKE;
+                        ListAction.Instance.AddAction(action);
                         board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;
-                        // if (!GameManager.Instance.ActionCount.ActionRemaining())
-                        // {
-                        //     StartCoroutine(ListAction.Instance.StartListAction());
-                        // }
+                        GameManager.Instance.Effect = Effects.NONE;
                     }
                 }
             }
         }
     }
-
-
+    
     private Vector2 GetMousePosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -23,10 +23,10 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
-    #region UpdateLevel
     private int _currentLevel;
-
     public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
+
+    #region UpdateLevel
 
     public void IncreaseLevel()
     {
@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
     
     #region UI
 
-    [SerializeField] private GameObject _canva;
+    [FormerlySerializedAs("_canva")] [SerializeField] private GameObject _levelSelectorScreen;
     [SerializeField] private GameObject _game;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
@@ -74,34 +74,13 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    #endregion
-
-    #region Game
-    
-    public void LoadLevel()
-    {
-        _canva.SetActive(false);
-        _game.SetActive(true);
-        _winScreen.SetActive(false);
-        _defeatScreen.SetActive(false);
-        //GetComponent<TutoPop>().PopUp();
-        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
-
-        EffectList.MoveCard = false;
-        EffectList.SwapCard = false;
-        GameManager.Instance.Effect = Effects.NONE;
-
-        ListAction.Instance.ListActions.Clear();
-        // GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
-    }
-
     public void LoadMenu()
     {
         _game.SetActive(false);
         GameManager.Instance.Board.ResetBoard();
         _defeatScreen.SetActive(false);
         _winScreen.SetActive(false);
-        _canva.SetActive(true);
+        _levelSelectorScreen.SetActive(true);
     }
     
     public void LoadDefeatMenu()
@@ -114,6 +93,28 @@ public class LevelManager : MonoBehaviour
         _winScreen.SetActive(true);
     }
 
+    
+    #endregion
+
+    #region Game
+    
+    public void LoadLevel()
+    {
+        _levelSelectorScreen.SetActive(false);
+        _game.SetActive(true);
+        _winScreen.SetActive(false);
+        _defeatScreen.SetActive(false);
+        //GetComponent<TutoPop>().PopUp();
+        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
+
+        EffectList.MoveCard = false;
+        EffectList.SwapCard = false;
+        GameManager.Instance.Effect = Effects.NONE;
+
+        ListAction.Instance.ListActions.Clear();
+    }
+
+   
     #endregion
 
     private void Start()
