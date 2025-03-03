@@ -1464,7 +1464,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 6bca0dbdcfb3a6f4f84aa4f62e8bdfbd, type: 3}
     - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
       propertyPath: sfxSounds.Array.data[10].name
-      value: swoprdHit
+      value: swordHit
       objectReference: {fileID: 0}
     - target: {fileID: 3224965619464050558, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
       propertyPath: sfxSounds.Array.data[11].clip

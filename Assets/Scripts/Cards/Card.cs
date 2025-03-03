@@ -126,6 +126,7 @@ public class Card : MonoBehaviour
         {
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
+            AudioManager.Instance.PlaySFX("death");
         }
     }
 

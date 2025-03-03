@@ -122,6 +122,7 @@ public class Board : MonoBehaviour
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
             if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, _distrubDuration);
+            AudioManager.Instance.PlaySFX("mixing");
             yield return new WaitForSeconds( _distrubDuration);
             card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
             card.transform.localPosition = new Vector3(0, 0, 0);
@@ -404,6 +405,7 @@ public class Board : MonoBehaviour
             card.PositionOnBoard = newPos;
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(1);
             SetSlots(card);
         } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
@@ -412,6 +414,7 @@ public class Board : MonoBehaviour
             card.PositionOnBoard = newPos;
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(1);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
@@ -442,6 +445,8 @@ public class Board : MonoBehaviour
         {
             c2.Animator.SetTrigger("Swap");
         }
+        AudioManager.Instance.PlaySFX("teleport");
+
 
         yield return new WaitForSeconds(_switchDelay);
         
