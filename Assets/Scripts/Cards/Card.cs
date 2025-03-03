@@ -143,6 +143,17 @@ public class Card : MonoBehaviour
             yield return new WaitForSeconds(0.5f); 
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
+        }else if (this._cardType == CardType.KNIGHTSHIELD)
+        {
+            _animator.SetTrigger("Hit");
+            yield return new WaitForSeconds(0.5f);
+        }else if (this._cardType == CardType.MONSTER)
+        {
+            _animator.SetTrigger("Hit");
+            yield return new WaitForSeconds(0.5f);
+            GameManager.Instance.MonsterScore = 0;
+            GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatStateState);
+            GameManager.Instance.Board.ClearSlot(this);
         }
     }
 

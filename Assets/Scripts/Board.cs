@@ -405,7 +405,7 @@ public class Board : MonoBehaviour
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
             yield return new WaitForSeconds(1);
             card.Animator.SetTrigger("Burn");
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.4f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         }
