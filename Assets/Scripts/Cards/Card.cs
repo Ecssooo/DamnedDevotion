@@ -9,7 +9,10 @@ public class Card : MonoBehaviour
 {
     [SerializeField] CardType _cardType;
 
+    [SerializeField] SpriteRenderer _darkenedEffect;
 
+    [SerializeField] private bool _canMove;
+    [SerializeField] private bool _canSwap;
     public CardType CardType
     {
         get { return _cardType; }
@@ -140,6 +143,31 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
-        if(_cardType == CardType.MONSTER) ShowMonsterScore();
+        if (_cardType == CardType.MONSTER) ShowMonsterScore();
+
+        if (GameManager.Instance.Effect == Effects.MOVE && !_canMove)
+        {
+            Color color = _darkenedEffect.color;
+            color.a = .8f;
+            _darkenedEffect.color = color;
+        }
+        else if (GameManager.Instance.Effect == Effects.SWAP && !_canSwap)
+        {
+            Color color = _darkenedEffect.color;
+            color.a = .8f;
+            _darkenedEffect.color = color;
+        }
+        else if (GameManager.Instance.Effect == Effects.INVOKE)
+        {
+            Color color = _darkenedEffect.color;
+            color.a = .8f;
+            _darkenedEffect.color = color;
+        }
+        else
+        {
+            Color color = _darkenedEffect.color;
+            color.a = 0f;
+            _darkenedEffect.color = color;
+        }
     }
 }

@@ -309,6 +309,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2116388973}
     - target: {fileID: 4355452283519768029, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4355452283519768029, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -1120
       objectReference: {fileID: 0}
@@ -322,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4689956119302375937, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4803477995488852753, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1506,7 +1510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1468957970619702903, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1961650675695739400, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_LocalScale.x
@@ -1632,6 +1636,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _moveEffectUpPrefab
+      value: 
+      objectReference: {fileID: 3397480255077798932, guid: ce2fb9fd97a6ff1479830564b3fd478e, type: 3}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _moveEffectDownPrefab
+      value: 
+      objectReference: {fileID: 5143623934888691480, guid: c23885d2c3552a249b813f0b96022ff4, type: 3}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _moveEffectLeftPrefab
+      value: 
+      objectReference: {fileID: 3920515511878968011, guid: 2949eae2701fd3145aa8d675f513f89d, type: 3}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _moveEffectRightPrefab
+      value: 
+      objectReference: {fileID: 4339741286009496054, guid: b5fa9939a9f11fa44b1b8481838279eb, type: 3}
     - target: {fileID: 6507033020494174080, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_Sprite
       value: 
