@@ -1781,6 +1781,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3397480255077798932, guid: ce2fb9fd97a6ff1479830564b3fd478e, type: 3}
     - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _switchEffectPrefab
+      value: 
+      objectReference: {fileID: 5143623934888691480, guid: 4efbf48809ffe1a40885b07fc0a0a0a1, type: 3}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: _moveEffectDownPrefab
       value: 
       objectReference: {fileID: 5143623934888691480, guid: c23885d2c3552a249b813f0b96022ff4, type: 3}
@@ -2016,7 +2020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa79de940e0cb048ac69e0f05b08cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canva: {fileID: 2078908013}
+  _levelSelectorScreen: {fileID: 2078908013}
   _game: {fileID: 1303993699}
   _defeatScreen: {fileID: 1566182805}
   _winScreen: {fileID: 1502523287}
