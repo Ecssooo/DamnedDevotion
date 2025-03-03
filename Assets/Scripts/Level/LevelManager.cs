@@ -61,6 +61,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private TextMeshProUGUI TXT_number;
     [SerializeField] private GameObject _locker;
+
+    [SerializeField] private GameObject _moveLS;
+    [SerializeField] private GameObject _swapLS;
+    [SerializeField] private GameObject _invokeLS;
+    
+    
     void UpdateUI()
     {
         TXT_number.text = (_currentLevel+1).ToString();
@@ -71,6 +77,24 @@ public class LevelManager : MonoBehaviour
         else
         {
             _locker.SetActive(false);
+        }
+
+        _moveLS.SetActive(false);
+        _swapLS.SetActive(false);
+        _invokeLS.SetActive(false);
+        
+        Level level = GameManager.Instance.LevelDatabase.levelList[_currentLevel];
+        for (int i = 0; i < level.effects.Length; i++)
+        {
+            if (level.effects[i])
+            {
+                switch (i)
+                {
+                    case(0): _moveLS.SetActive(true); break;
+                    case(1): _swapLS.SetActive(true); break;
+                    case(2): _invokeLS.SetActive(true); break;
+                }
+            }
         }
     }
 
@@ -104,7 +128,6 @@ public class LevelManager : MonoBehaviour
         _game.SetActive(true);
         _winScreen.SetActive(false);
         _defeatScreen.SetActive(false);
-        //GetComponent<TutoPop>().PopUp();
         StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
 
         EffectList.MoveCard = false;
