@@ -159,38 +159,58 @@ public class Card : MonoBehaviour
     {
         if (_cardType == CardType.MONSTER) ShowMonsterScore();
 
-        if (GameManager.Instance.GameState == GameState.Playable )
+        if (GameManager.Instance.GameState == GameState.Playable)
         {
-            if (GameManager.Instance.Effect == Effects.MOVE && !_canMove)
+            if (_cardType == CardType.KNIGHTSWORD)
             {
-                Color color = _darkenedEffect.color;
-                color.a = .8f;
-                _darkenedEffect.color = color;
-            }
-            else if (GameManager.Instance.Effect == Effects.SWAP && !_canSwap)
-            {
-                Color color = _darkenedEffect.color;
-                color.a = .8f;
-                _darkenedEffect.color = color;
-            }
-            else if (GameManager.Instance.Effect == Effects.INVOKE)
-            {
-                Color color = _darkenedEffect.color;
-                color.a = .8f;
-                _darkenedEffect.color = color;
+                if (GameManager.Instance.Effect == Effects.INVOKE)
+                {
+                    _animator.SetBool("Dark", true);
+                }
+                else
+                {
+                    _animator.SetBool("Dark", false);
+                }
             }
             else
             {
-                Color color = _darkenedEffect.color;
-                color.a = 0f;
-                _darkenedEffect.color = color;
+                if (GameManager.Instance.Effect == Effects.MOVE && !_canMove)
+                {
+                    _darkenedEffect.gameObject.SetActive(true);
+                    // Color color = _darkenedEffect.color;
+                    // color.a = .8f;
+                    // _darkenedEffect.color = color;
+                }
+                else if (GameManager.Instance.Effect == Effects.SWAP && !_canSwap)
+                {
+                    _darkenedEffect.gameObject.SetActive(true);
+                    // Color color = _darkenedEffect.color;
+                    // color.a = .8f;
+                    // _darkenedEffect.color = color;
+                }
+                else if (GameManager.Instance.Effect == Effects.INVOKE)
+                {
+                    _darkenedEffect.gameObject.SetActive(true);
+                    // Color color = _darkenedEffect.color;
+                    // color.a = .8f;
+                    // _darkenedEffect.color = color;
+                }
+                else
+                {
+                    _darkenedEffect.gameObject.SetActive(false);
+                    // Color color = _darkenedEffect.color;
+                    // color.a = 0f;
+                    // _darkenedEffect.color = color;
+                }
             }
         }
         else
         {
-            Color color = _darkenedEffect.color;
-            color.a = 0f;
-            _darkenedEffect.color = color;
+            _darkenedEffect.gameObject.SetActive(false);
+
+            // Color color = _darkenedEffect.color;
+            // color.a = 0f;
+            // _darkenedEffect.color = color;
         }
     }
 }
