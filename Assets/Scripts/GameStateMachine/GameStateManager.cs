@@ -101,6 +101,26 @@ public class GameStateManager : MonoBehaviour
             SwitchState(_gameStartState);
     }
 
+    public void StatePause()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gamePauseState, true, true);
+    }
+
+    public void StateSetupAnyGameState()
+    {
+        SwitchState(_gameSetupState);
+    }
+
+    public void StateLevelAnyGameState()
+    {
+        SwitchState(_gameLevelState);
+    }
+
+    public void StateStartAnyGameState()
+    {
+        SwitchState(_gameStartState);
+    }
     public void SetWaitForAction(bool value)
     {
         waitForAction = value;

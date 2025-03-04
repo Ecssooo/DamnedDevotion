@@ -57,6 +57,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private GameObject _mainScreen;
     [SerializeField] private GameObject _game;
+    [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private GameObject _endScreen;
@@ -113,12 +114,14 @@ public class LevelManager : MonoBehaviour
         _winScreen.SetActive(false);
         _endScreen.SetActive(false);
         _mainScreen.SetActive(false);
+        _pauseScreen.SetActive(false);
         _levelSelectorScreen.SetActive(true);
     }
     
     public void LoadDefeatMenu()
     {
         _defeatScreen.SetActive(true);
+        _pauseScreen.SetActive(false);
     }
     
     public void LoadWinMenu()
@@ -126,16 +129,19 @@ public class LevelManager : MonoBehaviour
         if (LevelManager.Instance.CurrentLevel == GameManager.Instance.LevelDatabase.levelList.Count-1)
         {
             _endScreen.SetActive(true);
+            _pauseScreen.SetActive(false);
         }
         else
         {
+            _pauseScreen.SetActive(false);
             _winScreen.SetActive(true);
         }
     }
-
+    
     public void LoadMainScreen()
     {
         _mainScreen.SetActive(true);
+        _pauseScreen.SetActive(false);
         _game.SetActive(false);
         _levelSelectorScreen.SetActive(false);
         _winScreen.SetActive(false);
