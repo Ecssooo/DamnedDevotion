@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 3cc5efd581045c940819ed971bde8a46
+guid: c64f4f1720bf88c408d67c3a2e7b6961
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1396737972704612273
-    second: son icone_0
+      213: -4751370709998995272
+    second: bouton_sfx_0
   - first:
-      213: 2838724226606822318
-    second: son icone_1
+      213: -2746097665427021268
+    second: bouton_sfx_1
   - first:
-      213: 5508215543086116021
-    second: son icone_2
+      213: -2319372460814516434
+    second: bouton_sfx_2
   - first:
-      213: -25629996532685810
-    second: son icone_3
+      213: 5795673028967044467
+    second: bouton_sfx_3
   - first:
-      213: 5348603395347477475
-    second: son icone_4
+      213: -618916844169225496
+    second: bouton_sfx_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -125,13 +125,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: son icone_0
+      name: bouton_sfx_0
       rect:
         serializedVersion: 2
-        x: 88
-        y: 159
-        width: 12
-        height: 39
+        x: 51
+        y: 122
+        width: 150
+        height: 157
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1bf8b5339c5326310800000000000000
-      internalID: 1396737972704612273
+      spriteID: 8b8705a538dbf0eb0800000000000000
+      internalID: -4751370709998995272
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: son icone_1
+      name: bouton_sfx_1
       rect:
         serializedVersion: 2
-        x: 117
-        y: 161
-        width: 14
-        height: 38
+        x: 266
+        y: 254
+        width: 6
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ea3f136d4ac256720800000000000000
-      internalID: 2838724226606822318
+      spriteID: c2261b509b6e3e9d0800000000000000
+      internalID: -2746097665427021268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: son icone_2
+      name: bouton_sfx_2
       rect:
         serializedVersion: 2
-        x: 145
-        y: 156
-        width: 35
-        height: 31
+        x: 271
+        y: 134
+        width: 44
+        height: 136
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bceee74adc117c40800000000000000
-      internalID: 5508215543086116021
+      spriteID: e2fb353190fefcfd0800000000000000
+      internalID: -2319372460814516434
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: son icone_3
+      name: bouton_sfx_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 11
-        height: 14
+        x: 313
+        y: 105
+        width: 50
+        height: 190
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,20 +206,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e04231967a1f4aff0800000000000000
-      internalID: -25629996532685810
+      spriteID: 37594edb9ed5e6050800000000000000
+      internalID: 5795673028967044467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: son icone_4
+      name: bouton_sfx_4
       rect:
         serializedVersion: 2
-        x: 5
-        y: 0
-        width: 155
-        height: 154
+        x: 222
+        y: 160
+        width: 50
+        height: 82
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e37220337e0a3a40800000000000000
-      internalID: 5348603395347477475
+      spriteID: 8ea99cdc86a2967f0800000000000000
+      internalID: -618916844169225496
       vertices: []
       indices: 
       edges: []
@@ -248,11 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      son icone_0: 1396737972704612273
-      son icone_1: 2838724226606822318
-      son icone_2: 5508215543086116021
-      son icone_3: -25629996532685810
-      son icone_4: 5348603395347477475
+      bouton_sfx_0: -4751370709998995272
+      bouton_sfx_1: -2746097665427021268
+      bouton_sfx_2: -2319372460814516434
+      bouton_sfx_3: 5795673028967044467
+      bouton_sfx_4: -618916844169225496
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
