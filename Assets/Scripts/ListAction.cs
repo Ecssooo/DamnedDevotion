@@ -66,9 +66,9 @@ public class ListAction : MonoBehaviour
             
             if (action._card.CardType == CardType.MINIMONSTER)
             {
-                action._card.Animator.SetTrigger("Burn");
                 yield return new WaitForSeconds(0.3f);
-                GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
+                // action._card.Animator.SetTrigger("Burn");
+                // GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
             }
             if (action._card2 != null)
             {
@@ -211,7 +211,7 @@ public class ListAction : MonoBehaviour
             if (_listActions.Count == 0) return;
 
             Debug.Log(_listActions[^1]._card.CardType);
-            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER)
+            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER && _listActions[^1]._effect == Effects.INVOKE)
             {
                 Debug.Log("suppressing minimonster");
                 GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);

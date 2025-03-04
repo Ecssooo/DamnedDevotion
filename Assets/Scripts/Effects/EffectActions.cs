@@ -51,12 +51,7 @@ public class EffectActions : MonoBehaviour
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBQ");
                 break;
             case Effects.INVOKE:
-                if (_board.SlotEmpty(action._position))
-                {
-                    
-                }
-
-                break;
+                return;
         }        
     }
 
