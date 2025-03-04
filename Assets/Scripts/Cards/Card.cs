@@ -119,9 +119,11 @@ public class Card : MonoBehaviour
                 break;
             case CardType.KNIGHTSWORD:
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
-                if(target.CardType == CardType.MINIMONSTER) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCg");
                 if (target != null)
+                {
+                    if (target.CardType == CardType.MINIMONSTER) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCg");
                     StartCoroutine(target.OnDie());
+                }
                 else AudioManager.Instance.PlaySFX("swordSlash");
                 break;
             case CardType.KNIGHTSHIELD:

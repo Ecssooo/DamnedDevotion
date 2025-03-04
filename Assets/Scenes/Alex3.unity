@@ -1573,6 +1573,10 @@ PrefabInstance:
       propertyPath: sfxSounds.Array.data[3].clip
       value: 
       objectReference: {fileID: 8300000, guid: 0288a730e3263424b96e9e6fe399092a, type: 3}
+    - target: {fileID: 4629897467247121288, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2243,7 +2247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1468957970619702903, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1548848483165806770, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_Color.a
@@ -2666,8 +2670,83 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 561899973752328150, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1870163464}
   m_SourcePrefab: {fileID: 100100000, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+--- !u!1 &1870163460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 561899973752328150, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+  m_PrefabInstance: {fileID: 1799804009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1870163462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 623457439796797363, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+  m_PrefabInstance: {fileID: 1799804009}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870163460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1870163464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870163460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1870163462}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 700553473}
+        m_TargetAssemblyTypeName: ListAction, Assembly-CSharp
+        m_MethodName: RemoveLastAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2071330368
 PrefabInstance:
   m_ObjectHideFlags: 0
