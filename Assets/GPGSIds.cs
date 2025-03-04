@@ -24,7 +24,21 @@
 
 public static class GPGSIds
 {
-        public const string achievement_test = "CgkImLeVnfkcEAIQAQ"; // <GPGSID>
+        public const string achievement_necessary_sacrifice = "CgkImLeVnfkcEAIQCg"; // <GPGSID>
+        public const string achievement_oneway_ticket = "CgkImLeVnfkcEAIQBw"; // <GPGSID>
+        public const string achievement_instant_fugue = "CgkImLeVnfkcEAIQBQ"; // <GPGSID>
+        public const string achievement_too_easy = "CgkImLeVnfkcEAIQCA"; // <GPGSID>
+        public const string achievement_professional_occultist = "CgkImLeVnfkcEAIQDQ"; // <GPGSID>
+        public const string achievement_demonic_bishop = "CgkImLeVnfkcEAIQCw"; // <GPGSID>
+        public const string achievement_clang = "CgkImLeVnfkcEAIQDg"; // <GPGSID>
+        public const string achievement_appetizing = "CgkImLeVnfkcEAIQCQ"; // <GPGSID>
+        public const string achievement_demonic_ordination = "CgkImLeVnfkcEAIQAg"; // <GPGSID>
+        public const string achievement_in_the_name_of_the_lord = "CgkImLeVnfkcEAIQDw"; // <GPGSID>
+        public const string achievement_junior = "CgkImLeVnfkcEAIQBg"; // <GPGSID>
+        public const string achievement_satanist_baptism = "CgkImLeVnfkcEAIQAQ"; // <GPGSID>
+        public const string achievement_first_step = "CgkImLeVnfkcEAIQBA"; // <GPGSID>
+        public const string achievement_infernal_confirmation = "CgkImLeVnfkcEAIQAw"; // <GPGSID>
+        public const string achievement_occult_addict = "CgkImLeVnfkcEAIQDA"; // <GPGSID>
 
 }
 

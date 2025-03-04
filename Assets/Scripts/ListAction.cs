@@ -64,10 +64,10 @@ public class ListAction : MonoBehaviour
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBw");
 
             
-            if (action._card.CardType == CardType.MINIMONSTER)
+            if (action._effect != Effects.INVOKE && action._card.CardType == CardType.MINIMONSTER)
             {
                 action._card.Animator.SetTrigger("Burn");
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.4f);
                 GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
             }
             if (action._card2 != null)
@@ -75,7 +75,7 @@ public class ListAction : MonoBehaviour
                 if(action._card2.CardType == CardType.MINIMONSTER)
                 {
                     action._card2.Animator.SetTrigger("Burn");
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(0.4f);
                     GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
                 }
             }
@@ -102,7 +102,13 @@ public class ListAction : MonoBehaviour
                     action._card2.CompareTag("Cauldron"))
                     return;
                 break;
+            case Effects.INVOKE:
+                _listActions.Add(action);
+                return;
+            
+            
         }
+
 
         // Add action to Card 
 
@@ -176,6 +182,8 @@ public class ListAction : MonoBehaviour
 
             }
         }
+
+        
         if (action._card2 != null)
         {
             HasAppliedEffect = false;
@@ -200,6 +208,15 @@ public class ListAction : MonoBehaviour
             GameStateManager.Instance.SetWaitForAction(false);
             if (_listActions.Count == 0) return;
 
+            Debug.Log(_listActions[^1]._card.CardType);
+            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER && _listActions[^1]._effect == Effects.INVOKE)
+            {
+                Debug.Log("suppressing minimonster");
+                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
+                _listActions.RemoveAt(_listActions.Count - 1);
+                GameManager.Instance.ActionCount.Increment(1);
+                return;
+            }
 
             //Remove icon from last action
             GameObject SlotToRemove = null;
@@ -229,11 +246,7 @@ public class ListAction : MonoBehaviour
             if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
             SlotToRemove = null;
             SlotToRemove2 = null;
-
-            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER)
-            {
-                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
-            }
+            
 
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);
