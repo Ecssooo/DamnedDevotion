@@ -121,6 +121,14 @@ public class LevelManager : MonoBehaviour
         _winScreen.SetActive(true);
     }
 
+    public void LoadMainScreen()
+    {
+        _mainScreen.SetActive(true);
+        _game.SetActive(false);
+        _levelSelectorScreen.SetActive(false);
+        _winScreen.SetActive(false);
+        _defeatScreen.SetActive(false);
+    }
     
     #endregion
 

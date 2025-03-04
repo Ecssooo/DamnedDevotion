@@ -91,7 +91,12 @@ public class GameStateManager : MonoBehaviour
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameDefeatStateState);
     }
-    
+
+    public void StateStart()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameStartState);
+    }
     
     #endregion
 }
