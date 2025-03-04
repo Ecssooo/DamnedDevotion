@@ -23,9 +23,10 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
-    #region UpdateLevel
     private int _currentLevel;
-    public int CurrentLevel { get => _currentLevel;}
+    public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
+
+    #region UpdateLevel
 
     public void IncreaseLevel()
     {
@@ -54,12 +55,26 @@ public class LevelManager : MonoBehaviour
     
     #region UI
 
-    [SerializeField] private GameObject _canva;
+    [SerializeField] private GameObject _mainScreen;
     [SerializeField] private GameObject _game;
+    [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
+    [SerializeField] private GameObject _endScreen;
+
+    [Header("Game")] 
+    [SerializeField] private GameObject _popUp;
+    
+    [Header("Level Selector")]
+    [SerializeField] private GameObject _levelSelectorScreen;
     [SerializeField] private TextMeshProUGUI TXT_number;
     [SerializeField] private GameObject _locker;
+    
+    [SerializeField] private GameObject _moveLS;
+    [SerializeField] private GameObject _swapLS;
+    [SerializeField] private GameObject _invokeLS;
+    
+    
     void UpdateUI()
     {
         TXT_number.text = (_currentLevel+1).ToString();
@@ -71,25 +86,24 @@ public class LevelManager : MonoBehaviour
         {
             _locker.SetActive(false);
         }
-    }
 
-    #endregion
-
-    #region Game
-    
-    public void LoadLevel()
-    {
-        _canva.SetActive(false);
-        _game.SetActive(true);
-        //GetComponent<TutoPop>().PopUp();
-        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
-
-        EffectList.MoveCard = false;
-        EffectList.SwapCard = false;
-        GameManager.Instance.Effect = Effects.NONE;
-
-        ListAction.Instance.ListActions.Clear();
-        // GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameSetupState);
+        _moveLS.SetActive(false);
+        _swapLS.SetActive(false);
+        _invokeLS.SetActive(false);
+        
+        Level level = GameManager.Instance.LevelDatabase.levelList[_currentLevel];
+        for (int i = 0; i < level.effects.Length; i++)
+        {
+            if (level.effects[i])
+            {
+                switch (i)
+                {
+                    case(0): _moveLS.SetActive(true); break;
+                    case(1): _swapLS.SetActive(true); break;
+                    case(2): _invokeLS.SetActive(true); break;
+                }
+            }
+        }
     }
 
     public void LoadMenu()
@@ -98,19 +112,66 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Board.ResetBoard();
         _defeatScreen.SetActive(false);
         _winScreen.SetActive(false);
-        _canva.SetActive(true);
+        _endScreen.SetActive(false);
+        _mainScreen.SetActive(false);
+        _pauseScreen.SetActive(false);
+        _levelSelectorScreen.SetActive(true);
     }
     
     public void LoadDefeatMenu()
     {
         _defeatScreen.SetActive(true);
+        _pauseScreen.SetActive(false);
     }
     
     public void LoadWinMenu()
     {
-        _winScreen.SetActive(true);
+        if (LevelManager.Instance.CurrentLevel == GameManager.Instance.LevelDatabase.levelList.Count-1)
+        {
+            _endScreen.SetActive(true);
+            _pauseScreen.SetActive(false);
+        }
+        else
+        {
+            _pauseScreen.SetActive(false);
+            _winScreen.SetActive(true);
+        }
+    }
+    
+    public void LoadMainScreen()
+    {
+        _mainScreen.SetActive(true);
+        _pauseScreen.SetActive(false);
+        _game.SetActive(false);
+        _levelSelectorScreen.SetActive(false);
+        _winScreen.SetActive(false);
+        _defeatScreen.SetActive(false);
+    }
+    
+    #endregion
+
+    #region Game
+    
+    public void LoadLevel()
+    {
+        _levelSelectorScreen.SetActive(false);
+        _game.SetActive(true);
+        _winScreen.SetActive(false);
+        _defeatScreen.SetActive(false);
+        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
+
+        EffectList.MoveCard = false;
+        EffectList.SwapCard = false;
+        GameManager.Instance.Effect = Effects.NONE;
+
+        ListAction.Instance.ListActions.Clear();
     }
 
+    public void LoadPopUp()
+    {
+        _popUp.SetActive(true);
+    }
+   
     #endregion
 
     private void Start()
@@ -123,11 +184,11 @@ public class LevelManager : MonoBehaviour
     private void Update()
     {
         #if UNITY_EDITOR
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    SaveSystem.Save(0);
-        //    Debug.Log("Saved");
-        //}
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SaveSystem.Save(0);
+            Debug.Log("Saved");
+        }
         #endif
     }
     

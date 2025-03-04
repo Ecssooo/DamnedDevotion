@@ -181,8 +181,28 @@ MonoBehaviour:
   - name: Menu
     clip: {fileID: 8300000, guid: 16ea1d38183d67b4592fc9e3da46c492, type: 3}
   sfxSounds:
-  - name: Test
-    clip: {fileID: 8300000, guid: ab3655f05e5ecea4686bcad6084b3466, type: 3}
+  - name: button
+    clip: {fileID: 8300000, guid: bac9bc4b62ab1874db000a3ac04d28b0, type: 3}
+  - name: lose
+    clip: {fileID: 8300000, guid: 91e71baafc6628340b2efa688a887561, type: 3}
+  - name: win
+    clip: {fileID: 8300000, guid: 0a5236d019fb30e42aab67bcc13fc75b, type: 3}
+  - name: mixing
+    clip: {fileID: 8300000, guid: 85d1bd4e7506ce04782466725bef8866, type: 3}
+  - name: swipe
+    clip: {fileID: 8300000, guid: 5bf70511c3fa72a40b426f0c8a140101, type: 3}
+  - name: death
+    clip: {fileID: 8300000, guid: 3bdf099beb102ff41ba83ee3d81ad4bc, type: 3}
+  - name: slider
+    clip: {fileID: 8300000, guid: 6a25cacabbfb70946b12e233124192ba, type: 3}
+  - name: teleport
+    clip: {fileID: 8300000, guid: 133ef17c7d77be94597bb14b3c40f187, type: 3}
+  - name: swordClang
+    clip: {fileID: 8300000, guid: de27aebb850cf1d4dbbdf252e672a6bf, type: 3}
+  - name: swordSlash
+    clip: {fileID: 8300000, guid: 385c699c7959c6c448a5ee0cac4ebb37, type: 3}
+  - name: swordHit
+    clip: {fileID: 8300000, guid: 6bca0dbdcfb3a6f4f84aa4f62e8bdfbd, type: 3}
   musicSource: {fileID: 4629897467247121288}
   sfxSource: {fileID: 972266880803044415}
 --- !u!1 &5559275950998179640

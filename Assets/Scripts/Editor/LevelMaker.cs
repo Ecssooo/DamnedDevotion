@@ -39,6 +39,8 @@ public class LevelMaker : EditorWindow
     private bool _moveEnabled;
     private bool _switchEnabled;
     private bool _invocEnabled;
+
+    private GameObject _tutoPrefab;
     
     
     [MenuItem("Tools/LevelMaker")]
@@ -123,6 +125,8 @@ public class LevelMaker : EditorWindow
             ResetBoard();
         }
 
+        _tutoPrefab = EditorGUILayout.ObjectField("Tuto", _tutoPrefab, typeof(GameObject), true) as GameObject;
+        
         EditorGUILayout.EndScrollView();
     }
 
@@ -174,7 +178,7 @@ public class LevelMaker : EditorWindow
 
         bool[] effect = new[] { _moveEnabled, _switchEnabled, _invocEnabled };
         
-        Level newLevel = new Level(levelId, newCardList, maxAction, maxScore, effect);
+        Level newLevel = new Level(levelId, newCardList, maxAction, maxScore, effect, _tutoPrefab);
         _levelDatabase.levelList.Add(newLevel);
     }
 

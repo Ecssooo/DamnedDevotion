@@ -5,6 +5,12 @@ public class UIController : MonoBehaviour
 {
     public Slider _musicSlider, _sfxSlider;
 
+    private void Start()
+    {
+        _musicSlider.value = 0.5f;
+        _sfxSlider.value = 0.5f;
+    }
+
     public void ToggleMusic()
     {
         AudioManager.Instance.ToggleMusic();
@@ -23,5 +29,6 @@ public class UIController : MonoBehaviour
     public void SFXVolume()
     {
         AudioManager.Instance.SFXVolume(_sfxSlider.value);
+        AudioManager.Instance.PlaySFX("slider");
     }
 }

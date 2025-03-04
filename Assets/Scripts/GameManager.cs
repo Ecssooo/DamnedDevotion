@@ -57,9 +57,16 @@ public class GameManager : MonoBehaviour
 
     private GameState _gameState;
     public GameState GameState { get => _gameState; set => _gameState = value; }
+
+    private List<Card> _miniMonsterCards = new List<Card>();
+    public List<Card> MiniMonsterCards { get => _miniMonsterCards; set => _miniMonsterCards = value; }
+
+    private int humanKill;
+    public int HumanKill { get => humanKill; set => humanKill = value; }
     
     private void Update()
     {
+        if (GameState == GameState.Busy) Effect = Effects.NONE;
         UpdateEffectUI();
     }
 
@@ -87,47 +94,8 @@ public class GameManager : MonoBehaviour
                 _effectBG[1].SetActive(false);
                 _effectBG[2].SetActive(false);
                 break;
-        }  
-    }
+        }
 
-    // [SerializeField] private TextMeshProUGUI levelCountText;
-    // [SerializeField] private TextMeshProUGUI ActionCountText;
-    //
-    // private int actionCount;
-    //
-    // private int mogscore;
-    //
-    // private Vector2 cardposition;
-    //
-    // private bool Win = false;
-    //
-    // void Start()
-    // {
-    //     UpdateLevelCountText();
-    // }
-    //
-    // void Update()
-    // {
-    //
-    // }
-    //
-    // private void UpdateLevelCountText()
-    // {
-    //     // Level level = new Level(new List<Card>());
-    //     if (Win==true)
-    //     {
-    //         //level.level++;
-    //     }
-    //     if (levelCountText != null)
-    //     {
-    //         // levelCountText.text = "Level: " + level.level;
-    //     }
-    // }
-    //
-    // private void Reset()
-    // {
-    //     // Level level = new Level(new List<Card>());
-    //     // actionCount = level.maxActionCount;
-    //     // mogscore = level.maxScore;
-    // }
+        if (humanKill >= 20) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDw");
+    }
 }

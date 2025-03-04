@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class ListAction : MonoBehaviour
 {
-    [SerializeField] private GameObject _moveEffectPrefab;
+    [SerializeField] private GameObject _moveEffectLeftPrefab;
+    [SerializeField] private GameObject _moveEffectRightPrefab;
+    [SerializeField] private GameObject _moveEffectUpPrefab;
+    [SerializeField] private GameObject _moveEffectDownPrefab;
     [SerializeField] private GameObject _switchEffectPrefab;
-    [SerializeField] private GameObject _invocationEffectPrefab;
     private bool HasAppliedEffect = false;
 
     [SerializeField] private float _moveEffectDuration;
@@ -58,27 +60,28 @@ public class ListAction : MonoBehaviour
                     break;
             }
             
-            if (action._card.CardType == CardType.MINIMONSTER)
+            if(action._effect == Effects.SWAP && (action._card.CardType == CardType.MINIMONSTER || action._card2.CardType == CardType.MINIMONSTER))
+                PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBw");
+
+            
+            if (action._effect != Effects.INVOKE && action._card.CardType == CardType.MINIMONSTER)
             {
+                action._card.Animator.SetTrigger("Burn");
+                yield return new WaitForSeconds(0.4f);
                 GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
             }
             if (action._card2 != null)
             {
                 if(action._card2.CardType == CardType.MINIMONSTER)
                 {
+                    action._card2.Animator.SetTrigger("Burn");
+                    yield return new WaitForSeconds(0.4f);
                     GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
                 }
             }
         }
         GameManager.Instance.Board.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;
-        // undoButton.SetActive(true);
-        //yield return new WaitForSeconds(1);
-        //foreach (var card in _board)
-        //{
-        //    if (card != null) card.DoEndOfTurnActions();
-        //}
-        //GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameWinState);
     }
 
     public void AddAction(Action action)
@@ -99,7 +102,13 @@ public class ListAction : MonoBehaviour
                     action._card2.CompareTag("Cauldron"))
                     return;
                 break;
+            case Effects.INVOKE:
+                _listActions.Add(action);
+                return;
+            
+            
         }
+
 
         // Add action to Card 
 
@@ -110,7 +119,24 @@ public class ListAction : MonoBehaviour
                 switch (action._effect)
                 {
                     case Effects.MOVE:
-                        GameObject newMoveAction = Instantiate(_moveEffectPrefab, slot);
+                        GameObject newMoveAction = new GameObject();
+                        switch (action._direction)
+                        {
+                            case Direction.UP:
+                                newMoveAction = Instantiate(_moveEffectUpPrefab, slot);
+                                break;
+                            case Direction.DOWN:
+                                newMoveAction = Instantiate(_moveEffectDownPrefab, slot);
+                                break;
+                            case Direction.LEFT:
+                                newMoveAction = Instantiate(_moveEffectLeftPrefab, slot);
+                                break;
+                            case Direction.RIGHT:
+                                newMoveAction = Instantiate(_moveEffectRightPrefab, slot);
+                                break;
+                        }
+
+                        //Deactivate the effect and collider
                         var moveEffect = newMoveAction.GetComponent<Effect>();
                         if (moveEffect != null)
                         {
@@ -121,6 +147,8 @@ public class ListAction : MonoBehaviour
                         {
                             moveCollider.enabled = false;
                         }
+
+
                         newMoveAction.transform.localScale = Vector3.one / 3;
                         newMoveAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);
@@ -154,6 +182,8 @@ public class ListAction : MonoBehaviour
 
             }
         }
+
+        
         if (action._card2 != null)
         {
             HasAppliedEffect = false;
@@ -168,19 +198,26 @@ public class ListAction : MonoBehaviour
                 }
             }
         }
-
-
         HasAppliedEffect = false;
-        // if (!GameManager.Instance.ActionCount.ActionRemaining())
-        // {
-        //     StartCoroutine(StartListAction());
-        // }
     }
     public void RemoveLastAction()
     {
-        if(GameManager.Instance.GameState == GameState.Playable)
+        if (GameManager.Instance.GameState != GameState.Playable) return;
+        if (GameManager.Instance.GameState == GameState.Playable)
         {
+            GameStateManager.Instance.SetWaitForAction(false);
             if (_listActions.Count == 0) return;
+
+            Debug.Log(_listActions[^1]._card.CardType);
+            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER && _listActions[^1]._effect == Effects.INVOKE)
+            {
+                Debug.Log("suppressing minimonster");
+                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
+                _listActions.RemoveAt(_listActions.Count - 1);
+                GameManager.Instance.ActionCount.Increment(1);
+                return;
+            }
+
             //Remove icon from last action
             GameObject SlotToRemove = null;
             GameObject SlotToRemove2 = null;
@@ -209,6 +246,7 @@ public class ListAction : MonoBehaviour
             if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
             SlotToRemove = null;
             SlotToRemove2 = null;
+            
 
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);

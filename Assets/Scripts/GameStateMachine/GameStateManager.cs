@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    
     #region Instance
     private static GameStateManager _instance;
 
@@ -29,7 +30,8 @@ public class GameStateManager : MonoBehaviour
     private GameActionState _gameActionState = new();
     private GameDefeatState _gameDefeatStateState = new();
     private GameWinState _gameWinState = new();
-
+    private GamePauseState _gamePauseState = new();
+    private GameStartState _gameStartState = new();
 
 
     public GameBaseState CurrentState => _currentState;
@@ -38,11 +40,16 @@ public class GameStateManager : MonoBehaviour
     public GameActionState GameActionState => _gameActionState;
     public GameDefeatState GameDefeatStateState => _gameDefeatStateState;
     public GameWinState GameWinState => _gameWinState;
+    public GamePauseState GamePauseState => _gamePauseState;
 
+    public GameStartState GameStartState => _gameStartState;
 
+    private bool waitForAction;
+    public bool WaitForAction { get => waitForAction; }
+    
     private void Start()
     {
-        _currentState = _gameLevelState;
+        _currentState = _gameStartState;
         _currentState.EnterState(this);
     }
 
@@ -51,12 +58,12 @@ public class GameStateManager : MonoBehaviour
         _currentState.UpdateState(this);
     }
 
-    public void SwitchState(GameBaseState state, bool doExit = true)
+    public void SwitchState(GameBaseState state, bool doExit = true, bool doEnter = true)
     {
         if(doExit) _currentState.ExitState(this);
         _currentState = state;
-        _currentState.EnterState(this);
-    }
+        if(doEnter)_currentState.EnterState(this);
+    } 
     
     #region TEMP
 
@@ -66,10 +73,10 @@ public class GameStateManager : MonoBehaviour
             SwitchState(_gameLevelState);
     }
 
-    public void StateSetup()
+    public void StateSetup(bool doEnter)
     {
         if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameSetupState, true);
+            SwitchState(_gameSetupState, true, doEnter);
     }
     public void StateAction(){
         if(GameManager.Instance.GameState == GameState.Playable)
@@ -87,7 +94,36 @@ public class GameStateManager : MonoBehaviour
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameDefeatStateState);
     }
-    
-    
+
+    public void StateStart()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameStartState);
+    }
+
+    public void StatePause()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gamePauseState, true, true);
+    }
+
+    public void StateSetupAnyGameState(bool doEnter)
+    {
+        SwitchState(_gameSetupState, true, doEnter);
+    }
+
+    public void StateLevelAnyGameState()
+    {
+        SwitchState(_gameLevelState);
+    }
+
+    public void StateStartAnyGameState()
+    {
+        SwitchState(_gameStartState);
+    }
+    public void SetWaitForAction(bool value)
+    {
+        waitForAction = value;
+    }
     #endregion
 }
