@@ -409,6 +409,8 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(1);
             AudioManager.Instance.PlaySFX("death");
             card.Animator.SetTrigger("Burn");
+            PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCQ");
+
             yield return new WaitForSeconds(0.4f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);

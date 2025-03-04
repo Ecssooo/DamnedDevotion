@@ -60,6 +60,10 @@ public class ListAction : MonoBehaviour
                     break;
             }
             
+            if(action._effect == Effects.SWAP && (action._card.CardType == CardType.MINIMONSTER || action._card2.CardType == CardType.MINIMONSTER))
+                PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBw");
+
+            
             if (action._card.CardType == CardType.MINIMONSTER)
             {
                 action._card.Animator.SetTrigger("Burn");

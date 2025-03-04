@@ -4,6 +4,8 @@ public class GameSetupState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
+        if(LevelManager.Instance.CurrentLevel == 25) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCw");
+
         GameManager.Instance.ActionCount.InitActionPoint(GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxActionCount);
         GameManager.Instance.ActionCount.DisplayActionPoint();
         LevelManager.Instance.LoadLevel();

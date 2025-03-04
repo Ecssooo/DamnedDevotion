@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    
     #region Instance
     private static GameStateManager _instance;
 
@@ -29,7 +30,8 @@ public class GameStateManager : MonoBehaviour
     private GameActionState _gameActionState = new();
     private GameDefeatState _gameDefeatStateState = new();
     private GameWinState _gameWinState = new();
-
+    private GamePauseState _gamePauseState = new();
+    private GameStartState _gameStartState = new();
 
 
     public GameBaseState CurrentState => _currentState;
@@ -38,11 +40,13 @@ public class GameStateManager : MonoBehaviour
     public GameActionState GameActionState => _gameActionState;
     public GameDefeatState GameDefeatStateState => _gameDefeatStateState;
     public GameWinState GameWinState => _gameWinState;
+    public GamePauseState GamePauseState => _gamePauseState;
 
+    public GameStartState GameStartState => _gameStartState;
 
     private void Start()
     {
-        _currentState = _gameLevelState;
+        _currentState = _gameStartState;
         _currentState.EnterState(this);
     }
 

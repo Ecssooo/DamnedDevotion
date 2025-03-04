@@ -43,10 +43,12 @@ public class EffectActions : MonoBehaviour
                 if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster") || action._card.CompareTag("ShieldedKnight")) return;
                 Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
                 StartCoroutine(GameManager.Instance.Board.MoveCard(action._card, newPos));
+                PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBA");
                 break;
             case Effects.SWAP:
                 if (action._card2 == null) return;
                 StartCoroutine(GameManager.Instance.Board.SwitchCard(action._card, action._card2));
+                PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBQ");
                 break;
             case Effects.INVOKE:
                 if (_board.SlotEmpty(action._position))

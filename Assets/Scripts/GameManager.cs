@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
     private List<Card> _miniMonsterCards = new List<Card>();
     public List<Card> MiniMonsterCards { get => _miniMonsterCards; set => _miniMonsterCards = value; }
 
+    private int humanKill;
+    public int HumanKill { get => humanKill; set => humanKill = value; }
+    
     private void Update()
     {
         if (GameState == GameState.Busy) Effect = Effects.NONE;
@@ -91,6 +94,8 @@ public class GameManager : MonoBehaviour
                 _effectBG[1].SetActive(false);
                 _effectBG[2].SetActive(false);
                 break;
-        }  
+        }
+
+        if (humanKill >= 20) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDw");
     }
 }
