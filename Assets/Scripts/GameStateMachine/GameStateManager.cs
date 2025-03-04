@@ -107,9 +107,9 @@ public class GameStateManager : MonoBehaviour
             SwitchState(_gamePauseState, true, true);
     }
 
-    public void StateSetupAnyGameState()
+    public void StateSetupAnyGameState(bool doEnter)
     {
-        SwitchState(_gameSetupState);
+        SwitchState(_gameSetupState, true, doEnter);
     }
 
     public void StateLevelAnyGameState()
