@@ -119,6 +119,7 @@ public class Card : MonoBehaviour
                 break;
             case CardType.KNIGHTSWORD:
                 Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
+                if(target.CardType == CardType.MINIMONSTER) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCg");
                 if (target != null)
                     StartCoroutine(target.OnDie());
                 else AudioManager.Instance.PlaySFX("swordSlash");
@@ -143,6 +144,7 @@ public class Card : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
+            GameManager.Instance.HumanKill++;
             AudioManager.Instance.PlaySFX("death");
         }
         else if (this._cardType == CardType.KNIGHTSHIELD)
@@ -150,6 +152,8 @@ public class Card : MonoBehaviour
             _animator.SetTrigger("Hit");
             AudioManager.Instance.PlaySFX("swordClang");
             yield return new WaitForSeconds(0.5f);
+            PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDg");
+
         }
         else if (this._cardType == CardType.MONSTER)
         {

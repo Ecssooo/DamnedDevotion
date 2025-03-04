@@ -41,6 +41,7 @@ public class Invocation : MonoBehaviour
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;
                         GameManager.Instance.Effect = Effects.NONE;
+                        PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBg");
                     }
                 }
             }
