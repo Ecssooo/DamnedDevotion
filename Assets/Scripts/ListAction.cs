@@ -64,18 +64,18 @@ public class ListAction : MonoBehaviour
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBw");
 
             
-            if (action._card.CardType == CardType.MINIMONSTER)
+            if (action._effect != Effects.INVOKE && action._card.CardType == CardType.MINIMONSTER)
             {
-                yield return new WaitForSeconds(0.3f);
-                // action._card.Animator.SetTrigger("Burn");
-                // GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
+                action._card.Animator.SetTrigger("Burn");
+                yield return new WaitForSeconds(0.4f);
+                GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
             }
             if (action._card2 != null)
             {
                 if(action._card2.CardType == CardType.MINIMONSTER)
                 {
                     action._card2.Animator.SetTrigger("Burn");
-                    yield return new WaitForSeconds(0.3f);
+                    yield return new WaitForSeconds(0.4f);
                     GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
                 }
             }
