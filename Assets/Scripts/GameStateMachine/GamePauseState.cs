@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GamePauseSate : GameBaseState
+public class GamePauseState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {

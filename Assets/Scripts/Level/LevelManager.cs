@@ -55,13 +55,16 @@ public class LevelManager : MonoBehaviour
     
     #region UI
 
-    [FormerlySerializedAs("_canva")] [SerializeField] private GameObject _levelSelectorScreen;
+    [SerializeField] private GameObject _mainScreen;
     [SerializeField] private GameObject _game;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
+    
+    [Header("Level Selector")]
+    [SerializeField] private GameObject _levelSelectorScreen;
     [SerializeField] private TextMeshProUGUI TXT_number;
     [SerializeField] private GameObject _locker;
-
+    
     [SerializeField] private GameObject _moveLS;
     [SerializeField] private GameObject _swapLS;
     [SerializeField] private GameObject _invokeLS;
@@ -104,6 +107,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Board.ResetBoard();
         _defeatScreen.SetActive(false);
         _winScreen.SetActive(false);
+        _mainScreen.SetActive(false);
         _levelSelectorScreen.SetActive(true);
     }
     
