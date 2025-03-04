@@ -2576,15 +2576,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 252592131319648078, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2638468893046561905, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3169549288888676692, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4082674827062431527, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_Pivot.x
@@ -2672,11 +2672,15 @@ PrefabInstance:
       objectReference: {fileID: 1705998748}
     - target: {fileID: 6869828360174907135, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8813544158007137886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_Name
       value: PauseMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813544158007137886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
