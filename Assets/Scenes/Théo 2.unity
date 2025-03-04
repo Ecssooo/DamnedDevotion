@@ -2674,6 +2674,62 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4130258065314253201, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7862361978505641886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4130258065314253201, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905483417808990958, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8813544158007137886, guid: 7fef38ee4d6eef54f93fdc765424d27a, type: 3}
       propertyPath: m_Name
       value: PauseMenu
