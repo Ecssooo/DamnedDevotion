@@ -59,6 +59,10 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _game;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
+    [SerializeField] private GameObject _endScreen;
+
+    [Header("Game")] 
+    [SerializeField] private GameObject _popUp;
     
     [Header("Level Selector")]
     [SerializeField] private GameObject _levelSelectorScreen;
@@ -107,6 +111,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Board.ResetBoard();
         _defeatScreen.SetActive(false);
         _winScreen.SetActive(false);
+        _endScreen.SetActive(false);
         _mainScreen.SetActive(false);
         _levelSelectorScreen.SetActive(true);
     }
@@ -118,7 +123,14 @@ public class LevelManager : MonoBehaviour
     
     public void LoadWinMenu()
     {
-        _winScreen.SetActive(true);
+        if (LevelManager.Instance.CurrentLevel == GameManager.Instance.LevelDatabase.levelList.Count-1)
+        {
+            _endScreen.SetActive(true);
+        }
+        else
+        {
+            _winScreen.SetActive(true);
+        }
     }
 
     public void LoadMainScreen()
@@ -149,6 +161,10 @@ public class LevelManager : MonoBehaviour
         ListAction.Instance.ListActions.Clear();
     }
 
+    public void LoadPopUp()
+    {
+        _popUp.SetActive(true);
+    }
    
     #endregion
 

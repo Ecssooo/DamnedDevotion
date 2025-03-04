@@ -15,7 +15,8 @@ public class GameSetupState : GameBaseState
     {
         if (!GameManager.Instance.ActionCount.ActionRemaining())
         {
-            manager.SwitchState(manager.GameActionState, true);
+            // manager.SwitchState(manager.GameActionState, true);
+            LevelManager.Instance.LoadPopUp();
         }
     }
 
