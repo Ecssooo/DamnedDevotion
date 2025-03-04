@@ -98,7 +98,13 @@ public class ListAction : MonoBehaviour
                     action._card2.CompareTag("Cauldron"))
                     return;
                 break;
+            case Effects.INVOKE:
+                _listActions.Add(action);
+                return;
+            
+            
         }
+
 
         // Add action to Card 
 
@@ -172,6 +178,8 @@ public class ListAction : MonoBehaviour
 
             }
         }
+
+        
         if (action._card2 != null)
         {
             HasAppliedEffect = false;
@@ -198,6 +206,15 @@ public class ListAction : MonoBehaviour
 
             if (_listActions.Count == 0) return;
 
+            Debug.Log(_listActions[^1]._card.CardType);
+            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER)
+            {
+                Debug.Log("suppressing minimonster");
+                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
+                _listActions.RemoveAt(_listActions.Count - 1);
+                GameManager.Instance.ActionCount.Increment(1);
+                return;
+            }
 
             //Remove icon from last action
             GameObject SlotToRemove = null;
@@ -227,11 +244,7 @@ public class ListAction : MonoBehaviour
             if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);
             SlotToRemove = null;
             SlotToRemove2 = null;
-
-            if (_listActions[^1]._card.CardType == CardType.MINIMONSTER)
-            {
-                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
-            }
+            
 
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);

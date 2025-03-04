@@ -16,6 +16,12 @@ public class Invocation : MonoBehaviour
         PlaceCardAtMousePosition();
     }
 
+    public void AddInvokeAction()
+    {
+        GameManager.Instance.Effect = Effects.INVOKE;
+        //EffectActions.Instance.CreateAction(miniMonsterPrefab, )
+    }
+    
     public void PlaceCardAtMousePosition()
     {
         Vector2 mousePosition = GetMousePosition();
@@ -30,13 +36,16 @@ public class Invocation : MonoBehaviour
                 if (board.SlotsTab[i, j] == hitCollider.transform)
                 {
                     Vector2Int boardPosition = new Vector2Int(i, j);
+                    
+                    
                     if (board.SlotEmpty(boardPosition))
                     {
                         Card newCard = Instantiate(miniMonsterPrefab);
                         newCard.PositionOnBoard = boardPosition;
-                        Action action = EffectActions.Instance.CreateAction(newCard);
-                        action._effect = Effects.INVOKE;
-                        ListAction.Instance.AddAction(action);
+                        Action invokeAction = EffectActions.Instance.CreateAction(newCard, boardPosition);
+                        invokeAction._effect = Effects.INVOKE;
+                        ListAction.Instance.AddAction(invokeAction);
+                        Debug.Log(ListAction.Instance.ListActions.Count);
                         board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;

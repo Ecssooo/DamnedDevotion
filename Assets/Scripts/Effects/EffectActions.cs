@@ -5,7 +5,6 @@ using UnityEngine;
 public class EffectActions : MonoBehaviour
 {
     private static EffectActions _instance;
-
     public static EffectActions Instance { get => _instance; }
 
     public void Awake()
@@ -20,6 +19,9 @@ public class EffectActions : MonoBehaviour
         }
     }
 
+    private Board _board;
+    public Board Board { get => _board; set => _board = value; }
+    
     private Vector2 _firstMousePos;
     private Vector2 _lastMousePos;
     private Direction _moveCardDir;
@@ -45,6 +47,13 @@ public class EffectActions : MonoBehaviour
             case Effects.SWAP:
                 if (action._card2 == null) return;
                 StartCoroutine(GameManager.Instance.Board.SwitchCard(action._card, action._card2));
+                break;
+            case Effects.INVOKE:
+                if (_board.SlotEmpty(action._position))
+                {
+                    
+                }
+
                 break;
         }        
     }
@@ -95,6 +104,16 @@ public class EffectActions : MonoBehaviour
         action._card2 = card2;
         action._effect = GameManager.Instance.Effect;
         action._direction = card.Direction;
+        return action;
+    }
+
+    public Action CreateAction(Card card, Vector2Int position)
+    {
+        Action action = new Action();
+        action._card = card;
+        action._effect = GameManager.Instance.Effect;
+        action._direction = card.Direction;
+        action._position = position;
         return action;
     }
 }
