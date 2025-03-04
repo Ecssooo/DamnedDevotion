@@ -44,6 +44,9 @@ public class GameStateManager : MonoBehaviour
 
     public GameStartState GameStartState => _gameStartState;
 
+    private bool waitForAction;
+    public bool WaitForAction { get => waitForAction; }
+    
     private void Start()
     {
         _currentState = _gameStartState;
@@ -55,12 +58,12 @@ public class GameStateManager : MonoBehaviour
         _currentState.UpdateState(this);
     }
 
-    public void SwitchState(GameBaseState state, bool doExit = true)
+    public void SwitchState(GameBaseState state, bool doExit = true, bool doEnter = true)
     {
         if(doExit) _currentState.ExitState(this);
         _currentState = state;
-        _currentState.EnterState(this);
-    }
+        if(doEnter)_currentState.EnterState(this);
+    } 
     
     #region TEMP
 
@@ -70,10 +73,10 @@ public class GameStateManager : MonoBehaviour
             SwitchState(_gameLevelState);
     }
 
-    public void StateSetup()
+    public void StateSetup(bool doEnter)
     {
         if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameSetupState, true);
+            SwitchState(_gameSetupState, true, doEnter);
     }
     public void StateAction(){
         if(GameManager.Instance.GameState == GameState.Playable)
@@ -97,6 +100,10 @@ public class GameStateManager : MonoBehaviour
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameStartState);
     }
-    
+
+    public void SetWaitForAction(bool value)
+    {
+        waitForAction = value;
+    }
     #endregion
 }

@@ -190,8 +190,6 @@ public class ListAction : MonoBehaviour
                 }
             }
         }
-
-
         HasAppliedEffect = false;
     }
     public void RemoveLastAction()
@@ -199,7 +197,7 @@ public class ListAction : MonoBehaviour
         if (GameManager.Instance.GameState != GameState.Playable) return;
         if (GameManager.Instance.GameState == GameState.Playable)
         {
-
+            GameStateManager.Instance.SetWaitForAction(false);
             if (_listActions.Count == 0) return;
 
 

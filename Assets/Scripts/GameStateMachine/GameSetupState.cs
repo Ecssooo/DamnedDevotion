@@ -13,7 +13,7 @@ public class GameSetupState : GameBaseState
 
     public override void UpdateState(GameStateManager manager)
     {
-        if (!GameManager.Instance.ActionCount.ActionRemaining())
+        if (!GameManager.Instance.ActionCount.ActionRemaining() && !manager.WaitForAction)
         {
             // manager.SwitchState(manager.GameActionState, true);
             LevelManager.Instance.LoadPopUp();
