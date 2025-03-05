@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -51,44 +55,55 @@ public class GameManager : MonoBehaviour
     public int MonsterScore { get => _monsterScore; set => _monsterScore = value; }
 
 
-    // [SerializeField] private TextMeshProUGUI levelCountText;
-    // [SerializeField] private TextMeshProUGUI ActionCountText;
-    //
-    // private int actionCount;
-    //
-    // private int mogscore;
-    //
-    // private Vector2 cardposition;
-    //
-    // private bool Win = false;
-    //
-    // void Start()
-    // {
-    //     UpdateLevelCountText();
-    // }
-    //
-    // void Update()
-    // {
-    //
-    // }
-    //
-    // private void UpdateLevelCountText()
-    // {
-    //     // Level level = new Level(new List<Card>());
-    //     if (Win==true)
-    //     {
-    //         //level.level++;
-    //     }
-    //     if (levelCountText != null)
-    //     {
-    //         // levelCountText.text = "Level: " + level.level;
-    //     }
-    // }
-    //
-    // private void Reset()
-    // {
-    //     // Level level = new Level(new List<Card>());
-    //     // actionCount = level.maxActionCount;
-    //     // mogscore = level.maxScore;
-    // }
+    [SerializeField] private List<GameObject> _effectBG = new List<GameObject>();
+
+    private GameState _gameState;
+    public GameState GameState { get => _gameState; set => _gameState = value; }
+
+    private List<Card> _miniMonsterCards = new List<Card>();
+    public List<Card> MiniMonsterCards { get => _miniMonsterCards; set => _miniMonsterCards = value; }
+
+    private int humanKill;
+    public int HumanKill { get => humanKill; set => humanKill = value; }
+
+    [SerializeField] private Button _buttonReady;
+    public Button ButtonReady
+    {
+        get => _buttonReady;
+    }
+    
+    private void Update()
+    {
+        if (GameState == GameState.Busy) Effect = Effects.NONE;
+        UpdateEffectUI();
+    }
+
+    private void UpdateEffectUI()
+    {
+        switch (_effect)
+        {
+            case(Effects.MOVE): 
+                _effectBG[0].SetActive(true);
+                _effectBG[1].SetActive(false);
+                _effectBG[2].SetActive(false);
+                break;
+            case(Effects.SWAP): 
+                _effectBG[0].SetActive(false);
+                _effectBG[1].SetActive(true);
+                _effectBG[2].SetActive(false);
+                break;
+            case(Effects.INVOKE): 
+                _effectBG[0].SetActive(false);
+                _effectBG[1].SetActive(false);
+                _effectBG[2].SetActive(true);
+                break;
+            case(Effects.NONE): 
+                _effectBG[0].SetActive(false);
+                _effectBG[1].SetActive(false);
+                _effectBG[2].SetActive(false);
+                break;
+        }
+
+        if (humanKill >= 20) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDw");
+    }
 }

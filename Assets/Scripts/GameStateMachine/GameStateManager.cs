@@ -1,8 +1,10 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
+    
     #region Instance
     private static GameStateManager _instance;
 
@@ -29,7 +31,8 @@ public class GameStateManager : MonoBehaviour
     private GameActionState _gameActionState = new();
     private GameDefeatState _gameDefeatStateState = new();
     private GameWinState _gameWinState = new();
-
+    private GamePauseState _gamePauseState = new();
+    private GameStartState _gameStartState = new();
 
 
     public GameBaseState CurrentState => _currentState;
@@ -38,34 +41,96 @@ public class GameStateManager : MonoBehaviour
     public GameActionState GameActionState => _gameActionState;
     public GameDefeatState GameDefeatStateState => _gameDefeatStateState;
     public GameWinState GameWinState => _gameWinState;
+    public GamePauseState GamePauseState => _gamePauseState;
 
+    public GameStartState GameStartState => _gameStartState;
 
+    private bool waitForAction;
+    public bool WaitForAction { get => waitForAction; }
+    
     private void Start()
     {
-        _currentState = _gameLevelState;
+        _currentState = _gameStartState;
         _currentState.EnterState(this);
     }
 
     private void Update()
     {
         _currentState.UpdateState(this);
-        // Debug.Log(_currentState.GetType());  
     }
 
-    public void SwitchState(GameBaseState state)
+    public void SwitchState(GameBaseState state, bool doExit = true, bool doEnter = true)
     {
-        //_currentState.ExitState(this);
+        if(doExit) _currentState.ExitState(this);
         _currentState = state;
-        _currentState.EnterState(this);
-    }
+        if(doEnter)_currentState.EnterState(this);
+    } 
     
     #region TEMP
 
-    public void SwitchToMenu()
+    public void StateMenu()
     {
-        _currentState.ExitState(this);
-        SwitchState(_gameLevelState);
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameLevelState);
+    }
+
+    public void StateSetup(bool doEnter)
+    {
+        StartCoroutine(CoroutineStateSetup(doEnter));
+    }
+    public void StateAction(){
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameActionState);
+    }
+
+    public void StateWin()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameWinState);
+    }
+
+    public void StateDefeat()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameDefeatStateState);
+    }
+
+    public void StateStart()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameStartState);
+    }
+
+    public void StatePause()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gamePauseState, true, true);
+    }
+
+    public void StateSetupAnyGameState(bool doEnter)
+    {
+        SwitchState(_gameSetupState, true, doEnter);
+    }
+
+    public IEnumerator CoroutineStateSetup(bool doEnter)
+    {
+        yield return new WaitForSeconds(0.05f);  
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameSetupState, true, doEnter);
     }
     
+    public void StateLevelAnyGameState()
+    {
+        SwitchState(_gameLevelState);
+    }
+
+    public void StateStartAnyGameState()
+    {
+        SwitchState(_gameStartState);
+    }
+    public void SetWaitForAction(bool value)
+    {
+        waitForAction = value;
+    }
     #endregion
 }

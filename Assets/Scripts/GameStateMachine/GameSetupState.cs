@@ -4,21 +4,24 @@ public class GameSetupState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
+        if(LevelManager.Instance.CurrentLevel == 25) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCw");
+        GameManager.Instance.MonsterScore = 0;
         GameManager.Instance.ActionCount.InitActionPoint(GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxActionCount);
         GameManager.Instance.ActionCount.DisplayActionPoint();
+        LevelManager.Instance.LoadLevel();
     }
 
     public override void UpdateState(GameStateManager manager)
     {
-        if (!GameManager.Instance.ActionCount.ActionRemaining())
+        if (!GameManager.Instance.ActionCount.ActionRemaining() && !manager.WaitForAction)
         {
-            manager.SwitchState(manager.GameActionState);
+            // manager.SwitchState(manager.GameActionState, true);
+            LevelManager.Instance.LoadPopUp();
         }
-        //Debug.Log(GameManager.Instance.ActionCount.ActionPoints);
     }
 
     public override void ExitState(GameStateManager manager)
     {
-        //
+        
     }
 }

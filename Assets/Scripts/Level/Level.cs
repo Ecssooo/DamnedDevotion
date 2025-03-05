@@ -18,13 +18,15 @@ public class Level
     public int maxActionCount;
     public int maxScore;
     public bool[] effects;
-
-    public Level(int _levelindex,List<CardParams> cardsList, int _maxAction, int _maxScore, bool[] _effects)
+    public GameObject tutoPrefab;
+    
+    public Level(int _levelindex,List<CardParams> cardsList, int _maxAction, int _maxScore, bool[] _effects, GameObject _tutoPrefab = null)
     {
         level = _levelindex;
         CardsList = cardsList;
         maxActionCount = _maxAction;
         maxScore = _maxScore;
         effects = _effects;
+        tutoPrefab = _tutoPrefab;
     }
 }

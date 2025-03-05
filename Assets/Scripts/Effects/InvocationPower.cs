@@ -19,6 +19,15 @@ public class InvocationPower : MonoBehaviour
         {
             scriptToActivate.enabled = !scriptToActivate.enabled;
         }
-        StartCoroutine(scriptToActivate.InvokeMiniMonster());
+        if (GameManager.Instance.Effect == Effects.INVOKE)
+        {
+            GameManager.Instance.Effect = Effects.NONE;
+        }
+        else
+        {
+            StartCoroutine(scriptToActivate.InvokeMiniMonster());
+        }
+
+        
     }
 }

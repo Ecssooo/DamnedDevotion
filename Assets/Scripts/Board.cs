@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class Board : MonoBehaviour
 {
@@ -17,12 +19,12 @@ public class Board : MonoBehaviour
     private GameObject[] _effectGO = new GameObject[3];
     private Card[,] _board = new Card[4, 3];
     private Transform[,] _slotsTab = new Transform[4, 3];
-    public Transform[,] SlotsTab => _slotsTab;
 
     //Get
     public Card[,] CardList => _board;
-    //public Transform[,] SlotsTab => _slotsTab;
-    
+    public Transform[,] SlotsTab => _slotsTab;
+
+    [SerializeField] private float _switchDelay;
     
     #region Clear
     
@@ -121,6 +123,7 @@ public class Board : MonoBehaviour
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
             if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, _distrubDuration);
+            AudioManager.Instance.PlaySFX("mixing");
             yield return new WaitForSeconds( _distrubDuration);
             card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
             card.transform.localPosition = new Vector3(0, 0, 0);
@@ -168,25 +171,31 @@ public class Board : MonoBehaviour
         }
     }
     
-    //Delete comment to activate in SetLevel();
     public void SetKnightDirection(Card card)
     {
         if (card == null) return;
         switch (card.AttackDirection)
         {
-            case(Direction.UP): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Up; break;
-            case(Direction.RIGHT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Right; break;
-            case(Direction.DOWN): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Down; break;
-            case(Direction.LEFT): card.GetComponentInChildren<SpriteRenderer>().sprite = _levelDatabase.KS_Left; break;
+            case(Direction.UP): card.Animator.SetBool("Up", true); break;
+            case(Direction.RIGHT): card.Animator.SetBool("Right", true); break;
+            case(Direction.DOWN): card.Animator.SetBool("Down", true); break;
+            case(Direction.LEFT): card.Animator.SetBool("Left", true); break;
         }
     }
 
+    public void SetTuto(Level level)
+    {
+        if (level.tutoPrefab != null) Instantiate(level.tutoPrefab);
+    }
+
+    [SerializeField] private TextMeshProUGUI _levelNumberTXT;
     /// <summary>
     /// Setup card on board
     /// </summary>
     /// <param name="level">Level to setup</param>
     public IEnumerator SetLevel(Level level)
     {
+        GameManager.Instance.GameState = GameState.Busy;
         InitSlotTab();
         ResetBoard();
         for (int i = 0; i < 3; i++)
@@ -196,6 +205,8 @@ public class Board : MonoBehaviour
                 SetEffect(i);
             }
         }
+
+        _levelNumberTXT.text = "Level   " + (level.level + 1).ToString();
         
         foreach (var card in level.CardsList)
         {
@@ -206,6 +217,9 @@ public class Board : MonoBehaviour
             }
         }
         SetCollider();
+        SetTuto(level);
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.GameState = GameState.Playable;
     }
     
     public void EditorSetLevel(Level level)
@@ -387,14 +401,22 @@ public class Board : MonoBehaviour
             card.PositionOnBoard = newPos;
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(1);
             SetSlots(card);
         } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
         {
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(1);
+            AudioManager.Instance.PlaySFX("death");
+            card.Animator.SetTrigger("Burn");
+            PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCQ");
+
+            yield return new WaitForSeconds(0.5f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         }
@@ -424,8 +446,10 @@ public class Board : MonoBehaviour
         {
             c2.Animator.SetTrigger("Swap");
         }
+        AudioManager.Instance.PlaySFX("teleport");
 
-        yield return new WaitForSeconds(1f);
+
+        yield return new WaitForSeconds(_switchDelay);
         
         SetSlots(c1);
         SetSlots(c2);
@@ -433,12 +457,15 @@ public class Board : MonoBehaviour
 
     public IEnumerator DoAllEndAction()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         foreach (var card in _board)
         {
             if(card != null) card.DoEndOfTurnActions();
         }
+
+        yield return new WaitForSeconds(0.5f);
         GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance);
+
     }
 
     public void StartEndAction()

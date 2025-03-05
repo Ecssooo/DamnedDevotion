@@ -7,6 +7,7 @@ public class GameLevelState : GameBaseState
     {
         LevelManager.Instance.InitLevel(SaveSystem.Load());
         LevelManager.Instance.LoadMenu();
+        
     }
 
     public override void UpdateState(GameStateManager manager)
@@ -16,6 +17,6 @@ public class GameLevelState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        //
+        AudioManager.Instance.PlayMusic("Level");
     }
 }
