@@ -141,6 +141,7 @@ public class Card : MonoBehaviour
     {
         if (this._cardType == CardType.HUMAN)
         {
+            _animator.SetBool("Die", true);
             _animator.SetTrigger("Hit");
             AudioManager.Instance.PlaySFX("swordHit");
             yield return new WaitForSeconds(0.5f);

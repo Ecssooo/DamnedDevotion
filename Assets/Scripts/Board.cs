@@ -393,7 +393,6 @@ public class Board : MonoBehaviour
     {
         InitSlotTab();
 
-        // If knight moving into Cauldron
         Card cardOnTarget = _board[newPos.x, newPos.y];
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
@@ -419,6 +418,10 @@ public class Board : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
+        } else
+        {
+            card.Animator.SetBool("Die" , false);
+            card.Animator.SetTrigger("Hit");
         }
     }
 
