@@ -466,7 +466,7 @@ public class Board : MonoBehaviour
             if(card != null) card.DoEndOfTurnActions();
         }
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance);
 
     }
