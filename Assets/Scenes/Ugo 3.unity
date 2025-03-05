@@ -1562,7 +1562,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7315868618927782398, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_Transition
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7315868618927782398, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
       propertyPath: m_Interactable
@@ -5297,7 +5297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1711828399
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6007,6 +6007,10 @@ PrefabInstance:
       propertyPath: _switchEffectPrefab
       value: 
       objectReference: {fileID: 5143623934888691480, guid: 4efbf48809ffe1a40885b07fc0a0a0a1, type: 3}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _invokeEffectDuration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: _moveEffectDownPrefab
       value: 

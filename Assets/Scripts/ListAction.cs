@@ -66,6 +66,7 @@ public class ListAction : MonoBehaviour
             
             if (action._effect != Effects.INVOKE && action._card.CardType == CardType.MINIMONSTER)
             {
+                yield return new WaitForSeconds(0.4f);
                 action._card.Animator.SetTrigger("Burn");
                 yield return new WaitForSeconds(0.4f);
                 GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
