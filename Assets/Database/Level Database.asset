@@ -277,7 +277,7 @@ MonoBehaviour:
     maxActionCount: 5
     maxScore: 2
     effects: 010000
-    tutoPrefab: {fileID: 0}
+    tutoPrefab: {fileID: 4644985376741260757, guid: a4272f57e7f318d4d84b3b41edf5cdd3, type: 3}
   - level: 6
     CardsList:
     - cardType: 0
