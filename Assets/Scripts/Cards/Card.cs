@@ -169,6 +169,12 @@ public class Card : MonoBehaviour
         else if (this._cardType == CardType.NONE)
         {
             AudioManager.Instance.PlaySFX("swordSlash");
+        }else if (this._cardType == CardType.MINIMONSTER)
+        {
+            _animator.SetTrigger("Hit");
+            yield return new WaitForSeconds(0.5f);
+            GameManager.Instance.Board.ClearSlot(this);
+
         }
     }
 
