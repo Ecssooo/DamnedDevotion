@@ -697,7 +697,7 @@ MonoBehaviour:
     maxActionCount: 1
     maxScore: 1
     effects: 000100
-    tutoPrefab: {fileID: 0}
+    tutoPrefab: {fileID: 4644985376741260757, guid: dcda08173dc516a4a81815e6c93f5fdf, type: 3}
   - level: 16
     CardsList:
     - cardType: 3
@@ -739,7 +739,7 @@ MonoBehaviour:
     maxActionCount: 3
     maxScore: 3
     effects: 000100
-    tutoPrefab: {fileID: 0}
+    tutoPrefab: {fileID: 4644985376741260757, guid: 290155c41453a184eba59b7299fb9293, type: 3}
   - level: 17
     CardsList:
     - cardType: 0
@@ -907,7 +907,7 @@ MonoBehaviour:
     maxActionCount: 3
     maxScore: 3
     effects: 010100
-    tutoPrefab: {fileID: 0}
+    tutoPrefab: {fileID: 4644985376741260757, guid: 290155c41453a184eba59b7299fb9293, type: 3}
   - level: 21
     CardsList:
     - cardType: 2
@@ -1000,7 +1000,7 @@ MonoBehaviour:
     - cardType: 6
       direction: 4
       positionOnBoard: {x: 0, y: 1}
-    - cardType: 1
+    - cardType: 0
       direction: 2
       positionOnBoard: {x: 0, y: 2}
     - cardType: 0
@@ -1009,7 +1009,7 @@ MonoBehaviour:
     - cardType: 1
       direction: 3
       positionOnBoard: {x: 1, y: 1}
-    - cardType: 0
+    - cardType: 1
       direction: 2
       positionOnBoard: {x: 1, y: 2}
     - cardType: 0
@@ -1075,7 +1075,7 @@ MonoBehaviour:
     maxActionCount: 2
     maxScore: 1
     effects: 000101
-    tutoPrefab: {fileID: 0}
+    tutoPrefab: {fileID: 4644985376741260757, guid: 40954962b930cca4493064da5f770637, type: 3}
   - level: 25
     CardsList:
     - cardType: 0
