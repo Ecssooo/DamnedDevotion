@@ -60,7 +60,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _pauseScreen;
     [SerializeField] private GameObject _defeatScreen;
     [SerializeField] private GameObject _winScreen;
-    [SerializeField] private GameObject _endScreen;
+    // [SerializeField] private GameObject _endScreen;
 
     [Header("Game")] 
     [SerializeField] private GameObject _popUp;
@@ -112,7 +112,7 @@ public class LevelManager : MonoBehaviour
         GameManager.Instance.Board.ResetBoard();
         _defeatScreen.SetActive(false);
         _winScreen.SetActive(false);
-        _endScreen.SetActive(false);
+        // _endScreen.SetActive(false);
         _mainScreen.SetActive(false);
         _pauseScreen.SetActive(false);
         _levelSelectorScreen.SetActive(true);
@@ -123,16 +123,19 @@ public class LevelManager : MonoBehaviour
         _defeatScreen.SetActive(true);
         _pauseScreen.SetActive(false);
     }
-    
+
+    [SerializeField] private GameObject _nextButton;
     public void LoadWinMenu()
     {
         if (LevelManager.Instance.CurrentLevel == GameManager.Instance.LevelDatabase.levelList.Count-1)
         {
-            _endScreen.SetActive(true);
+            _nextButton.SetActive(false);
             _pauseScreen.SetActive(false);
+            _winScreen.SetActive(true);
         }
         else
         {
+            _nextButton.SetActive(true);
             _pauseScreen.SetActive(false);
             _winScreen.SetActive(true);
         }
