@@ -17,6 +17,6 @@ public class GameDefeatState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        GameManager.Instance.CoroutineApplyFonduNoir();
+        GameManager.Instance.StartTransition("In");
     }
 }

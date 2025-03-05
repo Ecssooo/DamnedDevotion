@@ -9,7 +9,7 @@ public class GameSetupState : GameBaseState
         GameManager.Instance.ActionCount.InitActionPoint(GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxActionCount);
         GameManager.Instance.ActionCount.DisplayActionPoint();
         LevelManager.Instance.LoadLevel();
-        GameManager.Instance.CoroutineRemoveFonduNoir();
+        GameManager.Instance.StartTransition("Out");
     }
 
     public override void UpdateState(GameStateManager manager)
@@ -23,6 +23,6 @@ public class GameSetupState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        
+        GameStateManager.Instance.SetWaitForAction(true);
     }
 }
