@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 37fc4153e908f9345826e6f8922bc588
+guid: 73d9cf263b74bd1479875940fac6e2e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1479009296530262577
-    second: menu deco ui_0
-  - first:
-      213: 2182920227722890147
-    second: menu deco ui_1
-  - first:
-      213: -5216678253173384368
-    second: menu deco ui_2
+      213: 4719321133002105428
+    second: icone appli_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,57 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu deco ui_0
+      name: icone appli_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 49
-        width: 7021
-        height: 1059
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 13acf2b7e1f768410800000000000000
-      internalID: 1479009296530262577
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menu deco ui_1
-      rect:
-        serializedVersion: 2
-        x: 5999
-        y: 41
-        width: 11
-        height: 6
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3ab007aa16a4b4e10800000000000000
-      internalID: 2182920227722890147
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: menu deco ui_2
-      rect:
-        serializedVersion: 2
-        x: 1312
         y: 0
-        width: 35
-        height: 26
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 05b581494c2aa97b0800000000000000
-      internalID: -5216678253173384368
+      spriteID: 452a59101956e7140800000000000000
+      internalID: 4719321133002105428
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      menu deco ui_0: 1479009296530262577
-      menu deco ui_1: 2182920227722890147
-      menu deco ui_2: -5216678253173384368
+      icone appli_0: 4719321133002105428
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

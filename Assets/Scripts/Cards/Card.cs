@@ -169,13 +169,19 @@ public class Card : MonoBehaviour
         else if (this._cardType == CardType.NONE)
         {
             AudioManager.Instance.PlaySFX("swordSlash");
+        }else if (this._cardType == CardType.MINIMONSTER)
+        {
+            _animator.SetTrigger("Hit");
+            yield return new WaitForSeconds(0.5f);
+            GameManager.Instance.Board.ClearSlot(this);
+
         }
     }
 
     public void ShowMonsterScore()
     {
         if(LevelManager.Instance.CurrentLevel >= GameManager.Instance.LevelDatabase.levelList.Count) return;
-        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + " / " +
+        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + "/" +
                                 GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
                                     .maxScore;
     }

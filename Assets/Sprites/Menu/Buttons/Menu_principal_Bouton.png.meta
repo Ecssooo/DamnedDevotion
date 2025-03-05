@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 171510bdee95fb940987e4f457b6c45b
+guid: c3a02cf7c400fa74dbbc87e3c4637d2d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3812023133859095478
-    second: menu parchemin_0
+      213: 8024230631046904674
+    second: Menu_principal_Bouton_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 0.001
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: menu parchemin_0
+      name: Menu_principal_Bouton_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 18
-        width: 800
-        height: 216
+        y: 0
+        width: 746
+        height: 219
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b32e31e7d607e430800000000000000
-      internalID: 3812023133859095478
+      spriteID: 26bfb57ae3bcb5f60800000000000000
+      internalID: 8024230631046904674
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      menu parchemin_0: 3812023133859095478
+      Menu_principal_Bouton_0: 8024230631046904674
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -75,8 +76,7 @@ public class GameStateManager : MonoBehaviour
 
     public void StateSetup(bool doEnter)
     {
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameSetupState, true, doEnter);
+        StartCoroutine(CoroutineStateSetup(doEnter));
     }
     public void StateAction(){
         if(GameManager.Instance.GameState == GameState.Playable)
@@ -112,6 +112,13 @@ public class GameStateManager : MonoBehaviour
         SwitchState(_gameSetupState, true, doEnter);
     }
 
+    public IEnumerator CoroutineStateSetup(bool doEnter)
+    {
+        yield return new WaitForSeconds(0.05f);  
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameSetupState, true, doEnter);
+    }
+    
     public void StateLevelAnyGameState()
     {
         SwitchState(_gameLevelState);
