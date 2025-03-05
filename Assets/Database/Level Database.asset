@@ -1114,7 +1114,7 @@ MonoBehaviour:
     - cardType: 4
       direction: 3
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 4
+    maxActionCount: 3
     maxScore: 2
     effects: 000101
     tutoPrefab: {fileID: 0}
