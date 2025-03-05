@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -63,6 +65,12 @@ public class GameManager : MonoBehaviour
 
     private int humanKill;
     public int HumanKill { get => humanKill; set => humanKill = value; }
+
+    [SerializeField] private Button _buttonReady;
+    public Button ButtonReady
+    {
+        get => _buttonReady;
+    }
     
     private void Update()
     {
