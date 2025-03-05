@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class Board : MonoBehaviour
 {
@@ -185,7 +187,8 @@ public class Board : MonoBehaviour
     {
         if (level.tutoPrefab != null) Instantiate(level.tutoPrefab);
     }
-    
+
+    [SerializeField] private TextMeshProUGUI _levelNumberTXT;
     /// <summary>
     /// Setup card on board
     /// </summary>
@@ -202,6 +205,8 @@ public class Board : MonoBehaviour
                 SetEffect(i);
             }
         }
+
+        _levelNumberTXT.text = "Level   " + (level.level + 1).ToString();
         
         foreach (var card in level.CardsList)
         {
@@ -411,7 +416,7 @@ public class Board : MonoBehaviour
             card.Animator.SetTrigger("Burn");
             PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCQ");
 
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.5f);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         }
@@ -452,13 +457,13 @@ public class Board : MonoBehaviour
 
     public IEnumerator DoAllEndAction()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         foreach (var card in _board)
         {
             if(card != null) card.DoEndOfTurnActions();
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance);
 
     }

@@ -1,6 +1,8 @@
 using NUnit.Framework;
+using TMPro;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TutoLevel1 : TutoLevelBase
 {
@@ -35,12 +37,20 @@ public class TutoLevel1 : TutoLevelBase
                 {
                     scene2.SetActive(false);
                     scene3.SetActive(true);
+                    GameManager.Instance.ButtonReady.interactable = false;
+                    Color color = GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color;
+                    color.a = 0.5f;
+                    GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color = color;
                     action = 2;
                 }
                 break;
             case(2):
                 if (GameStateManager.Instance.WaitForAction)
                 {
+                    GameManager.Instance.ButtonReady.interactable = true;
+                    Color color = GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color;
+                    color.a = 1f;
+                    GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color = color;
                     GameManager.Instance.Effect = Effects.NONE;
                     scene3.SetActive(false);
                     scene4.SetActive(true);

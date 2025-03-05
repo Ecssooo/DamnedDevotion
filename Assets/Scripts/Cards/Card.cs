@@ -175,7 +175,7 @@ public class Card : MonoBehaviour
     public void ShowMonsterScore()
     {
         if(LevelManager.Instance.CurrentLevel >= GameManager.Instance.LevelDatabase.levelList.Count) return;
-        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + " / " +
+        _monsterScoreTXT.text = GameManager.Instance.MonsterScore.ToString() + "/" +
                                 GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
                                     .maxScore;
     }

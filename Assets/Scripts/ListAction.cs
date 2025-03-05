@@ -119,7 +119,7 @@ public class ListAction : MonoBehaviour
                 switch (action._effect)
                 {
                     case Effects.MOVE:
-                        GameObject newMoveAction = new GameObject();
+                        GameObject newMoveAction = null;
                         switch (action._direction)
                         {
                             case Direction.UP:
