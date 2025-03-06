@@ -282,6 +282,10 @@ public class ListAction : MonoBehaviour
                     HasSecondCardFreeToken = true;
             }
         }
+        else
+        {
+            HasSecondCardFreeToken = true;
+        }
 
         if (HasFirstCardFreeToken && HasSecondCardFreeToken)
             return true;
