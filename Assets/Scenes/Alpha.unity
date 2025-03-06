@@ -7368,7 +7368,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181475240720057708, guid: 244d63ab1df5bd84d93e54b39c0057de, type: 3}
       propertyPath: m_text
-      value: Achievement
+      value: Achievements
       objectReference: {fileID: 0}
     - target: {fileID: 2181475240720057708, guid: 244d63ab1df5bd84d93e54b39c0057de, type: 3}
       propertyPath: m_fontSize
