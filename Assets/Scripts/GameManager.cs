@@ -109,43 +109,4 @@ public class GameManager : MonoBehaviour
 
         if (humanKill >= 20) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDw");
     }
-    
-    private IEnumerator ApplyFonduNoir()
-    {
-        // float a = 0;
-        // for (int  i = 0;  i < 256;  i++)
-        // {
-        //     a++;
-        //     sprite.color = new Color(0, 0, 0, a);
-        // }
-        while (true){
-            if (_sprite.color.a >= 255) yield break;
-            Color color = _sprite.color;
-            color.a += Time.deltaTime;
-            _sprite.color = color;
-            yield return new WaitForFixedUpdate();
-        }
-    }
-
-    private IEnumerator RemoveFonduNoir()
-    {
-        while (true)
-        {
-            if (_sprite.color.a <= 0) yield break;
-            Color color = _sprite.color;
-            color.a -= Time.deltaTime;
-            _sprite.color = color;
-            yield return new WaitForSeconds(1);
-        }
-    }
-
-    public void CoroutineApplyFonduNoir()
-    {
-        StartCoroutine(ApplyFonduNoir());
-    }
-
-    public void CoroutineRemoveFonduNoir()
-    {
-        StartCoroutine(RemoveFonduNoir());
-    }
 }
