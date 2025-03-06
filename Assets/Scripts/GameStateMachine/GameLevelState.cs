@@ -7,7 +7,6 @@ public class GameLevelState : GameBaseState
     {
         LevelManager.Instance.InitLevel(SaveSystem.Load());
         LevelManager.Instance.LoadMenu();
-        GameManager.Instance.StartTransition("Out");
     }
 
     public override void UpdateState(GameStateManager manager)
