@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -70,8 +71,10 @@ public class GameManager : MonoBehaviour
     public Button ButtonReady
     {
         get => _buttonReady;
+        
     }
     
+    [SerializeField] private SpriteRenderer _sprite;
     private void Update()
     {
         if (GameState == GameState.Busy) Effect = Effects.NONE;

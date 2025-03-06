@@ -16,6 +16,6 @@ public class GameStartState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        //
+
     }
 }
