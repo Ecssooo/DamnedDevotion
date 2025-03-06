@@ -144,7 +144,7 @@ public class Card : MonoBehaviour
             _animator.SetBool("Die", true);
             _animator.SetTrigger("Hit");
             AudioManager.Instance.PlaySFX("swordHit");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
             GameManager.Instance.HumanKill++;

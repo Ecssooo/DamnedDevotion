@@ -5802,7 +5802,7 @@ PrefabInstance:
       objectReference: {fileID: 1705998748}
     - target: {fileID: 10772944555731064, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_SortingOrder
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 312565332317665184, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: m_LocalScale.x
