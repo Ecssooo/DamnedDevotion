@@ -10,10 +10,13 @@ public class ListAction : MonoBehaviour
     [SerializeField] private GameObject _moveEffectDownPrefab;
     [SerializeField] private GameObject _switchEffectPrefab;
     private bool HasAppliedEffect = false;
+    private bool hasAppliedFirstCard = false;
 
     [SerializeField] private float _moveEffectDuration;
     [SerializeField] private float _swapEffectDuration;
     [SerializeField] private float _invokeEffectDuration;
+
+    private bool ActivatedFirstSwapToken = false;
     
     #region Instance
 
@@ -119,6 +122,30 @@ public class ListAction : MonoBehaviour
             {
                 switch (action._effect)
                 {
+                    case Effects.SWAP:
+                        GameObject newSwapAction = Instantiate(_switchEffectPrefab, slot);
+                        hasAppliedFirstCard = true;
+                        var swapEffect = newSwapAction.GetComponent<Effect>();
+                        if (swapEffect != null)
+                        {
+                            swapEffect.enabled = false;
+                        }
+                        var swapCollider = newSwapAction.GetComponent<CircleCollider2D>();
+                        if (swapCollider != null)
+                        {
+                            swapCollider.enabled = false;
+                        }
+                        var switchPower = newSwapAction.GetComponent<SwitchPower>();
+                        if (switchPower != null)
+                        {
+                            switchPower.enabled = false;
+                        }
+                        newSwapAction.transform.localScale = Vector3.one / 3;
+                        newSwapAction.transform.localPosition = Vector3.zero;
+                        _listActions.Add(action);
+                        GameManager.Instance.ActionCount.Decrement(1);
+                        HasAppliedEffect = true;
+                        break;
                     case Effects.MOVE:
                         GameObject newMoveAction = null;
                         switch (action._direction)
@@ -156,36 +183,13 @@ public class ListAction : MonoBehaviour
                         GameManager.Instance.ActionCount.Decrement(1);
                         HasAppliedEffect = true;
                         break;
-                    case Effects.SWAP:
-                        GameObject newSwapAction = Instantiate(_switchEffectPrefab, slot);
-                        var swapEffect = newSwapAction.GetComponent<Effect>();
-                        if (swapEffect != null)
-                        {
-                            swapEffect.enabled = false;
-                        }
-                        var swapCollider = newSwapAction.GetComponent<CircleCollider2D>();
-                        if (swapCollider != null)
-                        {
-                            swapCollider.enabled = false;
-                        }
-                        var switchPower = newSwapAction.GetComponent<SwitchPower>();
-                        if (switchPower != null)
-                        {
-                            switchPower.enabled = false;
-                        }
-                        newSwapAction.transform.localScale = Vector3.one / 3;
-                        newSwapAction.transform.localPosition = Vector3.zero;
-                        _listActions.Add(action);
-                        GameManager.Instance.ActionCount.Decrement(1);
-                        HasAppliedEffect = true;
-                        break;
                 }
 
             }
         }
 
         
-        if (action._card2 != null)
+        if (action._card2 != null && hasAppliedFirstCard)
         {
             HasAppliedEffect = false;
             foreach (var slot in action._card2.ActionSlots)
@@ -200,6 +204,7 @@ public class ListAction : MonoBehaviour
             }
         }
         HasAppliedEffect = false;
+        hasAppliedFirstCard = false;
     }
     public void RemoveLastAction()
     {
