@@ -22,6 +22,6 @@ public class GameSetupState : GameBaseState
 
     public override void ExitState(GameStateManager manager)
     {
-        GameStateManager.Instance.SetWaitForAction(true);
+        
     }
 }

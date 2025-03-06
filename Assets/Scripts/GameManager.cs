@@ -74,12 +74,7 @@ public class GameManager : MonoBehaviour
         
     }
     
-    [SerializeField] private Animator _transition;
-
-    private Coroutine applyCoroutine;
-    private Coroutine removeCoroutine;
-    
-    
+    [SerializeField] private SpriteRenderer _sprite;
     private void Update()
     {
         if (GameState == GameState.Busy) Effect = Effects.NONE;
@@ -114,32 +109,4 @@ public class GameManager : MonoBehaviour
 
         if (humanKill >= 20) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDw");
     }
-    //         Color color = _sprite.color;
-    //         color.a += Time.deltaTime;
-    //         _sprite.color = color;
-    //         yield return new WaitForFixedUpdate();
-    //     }
-    // }
-    //
-    // private IEnumerator RemoveFonduNoir()
-    // {
-    //     while (true)
-    //     {
-    //         if (_sprite.color.a <= 0) StopCoroutine(removeCoroutine);
-    //         Color color = _sprite.color;
-    //         color.a -= Time.deltaTime;
-    //         _sprite.color = color;
-    //         yield return new WaitForFixedUpdate();
-    //     }
-    // }
-    //
-    // public void CoroutineApplyFonduNoir()
-    // {
-    //     applyCoroutine = StartCoroutine(ApplyFonduNoir());
-    // }
-    //
-    // public void CoroutineRemoveFonduNoir()
-    // {
-    //     removeCoroutine = StartCoroutine(RemoveFonduNoir());
-    // }
 }

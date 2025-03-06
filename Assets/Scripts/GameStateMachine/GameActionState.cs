@@ -5,7 +5,6 @@ public class GameActionState : GameBaseState
     public override void EnterState(GameStateManager manager)
     {
         ListAction.Instance.StartListActionCoroutine();
-        GameStateManager.Instance.SetWaitForAction(true);
         int move = 0;
         int swap = 0;
         int invoke = 0;
@@ -35,11 +34,11 @@ public class GameActionState : GameBaseState
         if (instance.MonsterScore >= 
             instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel].maxScore)
         {
-            manager.CoroutineSwitchState(manager.GameWinState, false, true, 0f);
+            manager.SwitchState(manager.GameWinState, false);
         }
         else
         {
-            manager.CoroutineSwitchState(manager.GameDefeatStateState, false, true, 0f);
+            manager.SwitchState(manager.GameDefeatStateState, false);
         }
     }
 }

@@ -17,6 +17,9 @@ public class ListAction : MonoBehaviour
     [SerializeField] private float _invokeEffectDuration;
 
     private bool ActivatedFirstSwapToken = false;
+
+    private bool HasFirstCardFreeToken = true;
+    private bool HasSecondCardFreeToken = true;
     
     #region Instance
 
@@ -91,6 +94,7 @@ public class ListAction : MonoBehaviour
     public void AddAction(Action action)
     {
         if (!GameManager.Instance.ActionCount.ActionRemaining()) return;
+        if (!CanBothCardReceiveTokens(action)) return;
         // Conditions to prevent adding action due to card type
 
         switch (action._effect)
@@ -259,6 +263,36 @@ public class ListAction : MonoBehaviour
         }
     }
 
+    private bool CanBothCardReceiveTokens(Action action)
+    {
+        HasFirstCardFreeToken = false;
+        HasSecondCardFreeToken = false;
+        foreach (var slot in action._card.ActionSlots)
+        {
+            if (slot.childCount == 0 && !HasFirstCardFreeToken)
+            {
+                HasFirstCardFreeToken = true;
+            }
+        }
+        if (action._card2 != null)
+        {
+            foreach (var slot in action._card2.ActionSlots)
+            {
+                if (slot.childCount == 0 && !HasSecondCardFreeToken)
+                    HasSecondCardFreeToken = true;
+            }
+        }
+        else
+        {
+            HasSecondCardFreeToken = true;
+        }
+
+        if (HasFirstCardFreeToken && HasSecondCardFreeToken)
+            return true;
+
+        return false;
+    }
+    
     public void ClearListAction()
     {
         _listActions.Clear();
