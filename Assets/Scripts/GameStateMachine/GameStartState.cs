@@ -8,7 +8,6 @@ public class GameStartState : GameBaseState
         AudioManager.Instance.musicSource.Stop();
         AudioManager.Instance.PlayMusic("Menu");
         GameManager.Instance.GameState = GameState.Playable;
-        GameManager.Instance.StartTransition("Out");
     }
 
     public override void UpdateState(GameStateManager manager)
