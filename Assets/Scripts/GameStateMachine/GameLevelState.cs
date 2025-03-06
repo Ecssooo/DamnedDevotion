@@ -7,6 +7,7 @@ public class GameLevelState : GameBaseState
     {
         LevelManager.Instance.InitLevel(SaveSystem.Load());
         LevelManager.Instance.LoadMenu();
+        manager.SetInteratable(true);
         GameManager.Instance.StartTransition("Out");
     }
 

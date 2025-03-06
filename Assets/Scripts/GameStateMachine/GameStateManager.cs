@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameStateManager : MonoBehaviour
 {
@@ -48,6 +49,8 @@ public class GameStateManager : MonoBehaviour
     private bool waitForAction;
     public bool WaitForAction { get => waitForAction; }
     
+    [SerializeField] private Button _levelButton;
+    
     private void Start()
     {
         _currentState = _gameStartState;
@@ -65,7 +68,12 @@ public class GameStateManager : MonoBehaviour
         yield return new WaitForSeconds(exitTime);
         _currentState = state;
         if(doEnter)_currentState.EnterState(this);
-    } 
+    }
+
+    public void SetInteratable(bool value)
+    {
+        _levelButton.interactable = value;;
+    }
     
     #region TEMP
 
