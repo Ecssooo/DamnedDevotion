@@ -13,6 +13,15 @@ public class GameManager : MonoBehaviour
         get => _effect;
         set => _effect = value;
     }
+
+    private bool _hasUsedUndo = true;
+
+    public bool HasUsedUndo
+    {
+        get => _hasUsedUndo;
+        set => _hasUsedUndo = value;
+    }
+    
     #region Instance
 
     private static GameManager _instance;

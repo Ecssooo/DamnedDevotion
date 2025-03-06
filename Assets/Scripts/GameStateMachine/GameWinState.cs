@@ -5,6 +5,7 @@ public class GameWinState : GameBaseState
     public override void EnterState(GameStateManager manager)
     {
         AudioManager.Instance.PlaySFX("win");
+        if (!GameManager.Instance.HasUsedUndo) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCA");
         LevelManager.Instance.LoadWinMenu();
         GameManager.Instance.MonsterScore = 0;
         GameManager.Instance.Effect = Effects.NONE;

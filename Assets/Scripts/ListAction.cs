@@ -257,7 +257,7 @@ public class ListAction : MonoBehaviour
             SlotToRemove = null;
             SlotToRemove2 = null;
             
-
+            GameManager.Instance.HasUsedUndo = true;
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);
         }
