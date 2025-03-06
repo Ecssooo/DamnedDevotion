@@ -114,18 +114,6 @@ public class GameManager : MonoBehaviour
 
         if (humanKill >= 20) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDw");
     }
-
-
-    public void StartTransition(string trigger)
-    {
-        _transition.SetTrigger(trigger);
-    }
-    
-    
-    // private IEnumerator ApplyFonduNoir()
-    // {
-    //     while (true){
-    //         if (_sprite.color.a >= 2) StopCoroutine(applyCoroutine);
     //         Color color = _sprite.color;
     //         color.a += Time.deltaTime;
     //         _sprite.color = color;
