@@ -460,7 +460,7 @@ public class Board : MonoBehaviour
 
     public IEnumerator DoAllEndAction()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
         foreach (var card in _board)
         {
             if(card != null) card.DoEndOfTurnActions();
