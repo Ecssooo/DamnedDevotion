@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 0
-    path: Assets/Scenes/Ugo2.unity
+    path: Assets/Scenes/Ugo 2.unity
     guid: d23331d68b5b93149af6b9df201f6019
   - enabled: 0
     path: Assets/Scenes/GD.unity

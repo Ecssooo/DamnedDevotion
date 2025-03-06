@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -53.990192, y: 63.71531}
-  m_SizeDelta: {x: 822.1804, y: 285.7307}
+  m_AnchoredPosition: {x: -33, y: 77}
+  m_SizeDelta: {x: 891.2294, y: 248.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &762407068504869844
 CanvasRenderer:
@@ -65,8 +65,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Servant! \nThe time has come to punish these knights! \nForce them to
-    throw themselves into my cauldron. "
+  m_text: "Servant! \nBy the way, you can exchange anything. \nAh! Except for my
+    cauldron, which shouldn't be damaged! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f65bc78daf00ed34a9973b023cfc0ec0, type: 2}
   m_sharedMaterial: {fileID: -2749750738235894159, guid: f65bc78daf00ed34a9973b023cfc0ec0, type: 2}
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4279901216
-  m_fontColor: {r: 0.1254902, g: 0.10980392, b: 0.101960786, a: 1}
+  m_fontColor: {r: 0.12452829, g: 0.10840252, b: 0.10220718, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 38
+  m_fontSizeBase: 38
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 35.54132, y: 14.964539, z: -95.47052, w: 18.706055}
+  m_margin: {x: 35.54132, y: 14.964539, z: 32.277588, w: 18.706055}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -303,8 +303,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -152, y: -175}
-  m_SizeDelta: {x: 280.9, y: 331.4}
+  m_AnchoredPosition: {x: -205, y: -99}
+  m_SizeDelta: {x: 260, y: 260}
   m_Pivot: {x: 0.61320853, y: 0.42662153}
 --- !u!222 &2101328826943863479
 CanvasRenderer:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -6151400297984090259, guid: 2913efc9e0e075045b8169c9f9c8b437, type: 3}
+  m_Sprite: {fileID: 96849156963751439, guid: 9669136403683b449aa5fbe63a81c014, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 2569134922059166542}
   - component: {fileID: 1593447766997447339}
   m_Layer: 5
-  m_Name: TutoCauldron
+  m_Name: TutoTP 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,8 +483,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: 69}
-  m_SizeDelta: {x: 1395.0371, y: 828.9494}
+  m_AnchoredPosition: {x: -11.017, y: 61.4}
+  m_SizeDelta: {x: 1395.037, y: 828}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4152500102487614661
 CanvasRenderer:

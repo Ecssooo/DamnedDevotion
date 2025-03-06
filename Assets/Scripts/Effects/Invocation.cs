@@ -45,7 +45,7 @@ public class Invocation : MonoBehaviour
                         Action invokeAction = EffectActions.Instance.CreateAction(newCard, boardPosition);
                         invokeAction._effect = Effects.INVOKE;
                         ListAction.Instance.AddAction(invokeAction);
-                        Debug.Log(ListAction.Instance.ListActions.Count);
+
                         board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.GetComponent<Invocation>().enabled = false;
