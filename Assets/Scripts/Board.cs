@@ -463,7 +463,9 @@ public class Board : MonoBehaviour
         yield return new WaitForSeconds(0.7f);
         foreach (var card in _board)
         {
-            if(card != null) card.DoEndOfTurnActions();
+            StartCoroutine(DoEndAction(card));
+            yield return new WaitForSeconds(0.1f);
+            // if(card != null) card.DoEndOfTurnActions();
         }
 
         yield return new WaitForSeconds(1f);
@@ -476,12 +478,25 @@ public class Board : MonoBehaviour
         StartCoroutine(DoAllEndAction());
     }
 
+    private IEnumerator DoEndAction(Card card)
+    {
+        if (card == null) yield break;
+        if (card.CardType == CardType.KNIGHTSWORD)
+        {
+            Card target = GameManager.Instance.Board.GetCardClose(card.PositionOnBoard, card.AttackDirection);
+            if (target != null)
+            {
+                if (target.CardType == CardType.MINIMONSTER) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCg");
+                StartCoroutine(target.OnDie());
+            }
+            else AudioManager.Instance.PlaySFX("swordSlash");
+        }
+    }
 
     private void Start()
     {
         InitSlotTab();
     }
-    
     #endregion
     
     

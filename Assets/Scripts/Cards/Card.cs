@@ -147,6 +147,7 @@ public class Card : MonoBehaviour
             yield return new WaitForSeconds(0.7f);
             GameManager.Instance.Board.ClearSlot(this);
             GameManager.Instance.MonsterScore += _foodValue;
+            this._foodValue = 0;
             GameManager.Instance.HumanKill++;
             AudioManager.Instance.PlaySFX("death");
         }
