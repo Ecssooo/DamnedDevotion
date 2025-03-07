@@ -6117,6 +6117,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4839134495024035616, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _switchDelay
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4839134495024035616, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: _levelNumberTXT
       value: 
       objectReference: {fileID: 1979727097}
@@ -6289,13 +6293,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _moveEffectDuration
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: _moveEffectUpPrefab
       value: 
       objectReference: {fileID: 3397480255077798932, guid: ce2fb9fd97a6ff1479830564b3fd478e, type: 3}
     - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _swapEffectDuration
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: _switchEffectPrefab
       value: 
       objectReference: {fileID: 5143623934888691480, guid: 4efbf48809ffe1a40885b07fc0a0a0a1, type: 3}
+    - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
+      propertyPath: _invokeEffectDuration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6049714607042495067, guid: 6bf47c69d7334be4e9fdd705fa97d657, type: 3}
       propertyPath: _moveEffectDownPrefab
       value: 
