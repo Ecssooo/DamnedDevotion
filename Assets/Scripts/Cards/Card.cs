@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -139,43 +140,40 @@ public class Card : MonoBehaviour
 
     public IEnumerator OnDie()
     {
-        if (this._cardType == CardType.HUMAN)
+        switch (this._cardType)
         {
-            _animator.SetBool("Die", true);
-            _animator.SetTrigger("Hit");
-            AudioManager.Instance.PlaySFX("swordHit");
-            yield return new WaitForSeconds(0.7f);
-            GameManager.Instance.Board.ClearSlot(this);
-            GameManager.Instance.MonsterScore += _foodValue;
-            GameManager.Instance.HumanKill++;
-            AudioManager.Instance.PlaySFX("death");
-        }
-        else if (this._cardType == CardType.KNIGHTSHIELD)
-        {
-            _animator.SetTrigger("Hit");
-            AudioManager.Instance.PlaySFX("swordClang");
-            yield return new WaitForSeconds(0.5f);
-            PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDg");
-
-        }
-        else if (this._cardType == CardType.MONSTER)
-        {
-            _animator.SetTrigger("Hit");
-            AudioManager.Instance.PlaySFX("swordHit");
-            yield return new WaitForSeconds(0.5f);
-            GameManager.Instance.MonsterScore = 0;
-            GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatStateState);
-            GameManager.Instance.Board.ClearSlot(this);
-        }
-        else if (this._cardType == CardType.NONE)
-        {
-            AudioManager.Instance.PlaySFX("swordSlash");
-        }else if (this._cardType == CardType.MINIMONSTER)
-        {
-            _animator.SetTrigger("Hit");
-            yield return new WaitForSeconds(0.5f);
-            GameManager.Instance.Board.ClearSlot(this);
-
+            case(CardType.HUMAN):
+                _animator.SetBool("Die", true);
+                _animator.SetTrigger("Hit");
+                AudioManager.Instance.PlaySFX("swordHit");
+                yield return new WaitForSeconds(0.7f);
+                GameManager.Instance.Board.ClearSlot(this);
+                GameManager.Instance.MonsterScore += _foodValue;
+                GameManager.Instance.HumanKill++;
+                AudioManager.Instance.PlaySFX("death");
+                break;
+            case(CardType.KNIGHTSHIELD):
+                _animator.SetTrigger("Hit");
+                AudioManager.Instance.PlaySFX("swordClang");
+                yield return new WaitForSeconds(0.5f);
+                PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDg");
+                break;
+            case(CardType.MONSTER):
+                _animator.SetTrigger("Hit");
+                AudioManager.Instance.PlaySFX("swordHit");
+                yield return new WaitForSeconds(0.5f);
+                GameManager.Instance.MonsterScore = 0;
+                GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatStateState);
+                GameManager.Instance.Board.ClearSlot(this);
+                break;
+            case(CardType.MINIMONSTER):
+                _animator.SetTrigger("Hit");
+                yield return new WaitForSeconds(0.5f);
+                GameManager.Instance.Board.ClearSlot(this);
+                break;
+            case(CardType.NONE):
+                AudioManager.Instance.PlaySFX("swordSlash");
+                break;
         }
     }
 
@@ -186,60 +184,47 @@ public class Card : MonoBehaviour
                                 GameManager.Instance.LevelDatabase.levelList[LevelManager.Instance.CurrentLevel]
                                     .maxScore;
     }
-
-    public void AddAction(Action action)
+    
+    private void LockCard()
     {
-
+        if (_cardType == CardType.KNIGHTSWORD)
+        {
+            if (GameManager.Instance.Effect == Effects.INVOKE)
+            {
+                _animator.SetBool("Dark", true);
+            }
+            else
+            {
+                _animator.SetBool("Dark", false);
+            }
+        }
+        else
+        {
+            switch (GameManager.Instance.Effect)
+            {
+                case(Effects.MOVE):
+                    if(!_canMove) _darkenedEffect.gameObject.SetActive(true);
+                    break;
+                case(Effects.SWAP):
+                    if(!_canSwap) _darkenedEffect.gameObject.SetActive(true);
+                    break;
+                case(Effects.INVOKE):
+                    _darkenedEffect.gameObject.SetActive(true);
+                    break;
+                case(Effects.NONE):
+                    _darkenedEffect.gameObject.SetActive(false);
+                    break;
+            }
+        }
     }
-
+    
     private void Update()
     {
         if (_cardType == CardType.MONSTER) ShowMonsterScore();
 
         if (GameManager.Instance.GameState == GameState.Playable)
         {
-            if (_cardType == CardType.KNIGHTSWORD)
-            {
-                if (GameManager.Instance.Effect == Effects.INVOKE)
-                {
-                    _animator.SetBool("Dark", true);
-                }
-                else
-                {
-                    _animator.SetBool("Dark", false);
-                }
-            }
-            else
-            {
-                if (GameManager.Instance.Effect == Effects.MOVE && !_canMove)
-                {
-                    _darkenedEffect.gameObject.SetActive(true);
-                    // Color color = _darkenedEffect.color;
-                    // color.a = .8f;
-                    // _darkenedEffect.color = color;
-                }
-                else if (GameManager.Instance.Effect == Effects.SWAP && !_canSwap)
-                {
-                    _darkenedEffect.gameObject.SetActive(true);
-                    // Color color = _darkenedEffect.color;
-                    // color.a = .8f;
-                    // _darkenedEffect.color = color;
-                }
-                else if (GameManager.Instance.Effect == Effects.INVOKE)
-                {
-                    _darkenedEffect.gameObject.SetActive(true);
-                    // Color color = _darkenedEffect.color;
-                    // color.a = .8f;
-                    // _darkenedEffect.color = color;
-                }
-                else
-                {
-                    _darkenedEffect.gameObject.SetActive(false);
-                    // Color color = _darkenedEffect.color;
-                    // color.a = 0f;
-                    // _darkenedEffect.color = color;
-                }
-            }
+            LockCard();
         }
         else
         {

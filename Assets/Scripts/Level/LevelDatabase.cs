@@ -4,6 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Level Database", menuName = "Databases/Level Database")]
 public class LevelDatabase : ScriptableObject
 {
+    
+    [Header("Card Prefabs")]
     public  GameObject humanPrefab;
     public  GameObject knightSwordPrefab;
     public  GameObject knightShieldPrefab;
@@ -11,18 +13,14 @@ public class LevelDatabase : ScriptableObject
     public  GameObject miniMonsterPrefab;
     public  GameObject cauldronPrefab;
 
+    [Header("Effect Prefabs")]
     public GameObject moveEffectPrefab;
     public GameObject switchEffectPrefab;
     public GameObject invocationEffectPrefab;
-
-    public Sprite KS_Up;
-    public Sprite KS_Right;
-    public Sprite KS_Down;
-    public Sprite KS_Left;
     
+    [Header("Levels list")]
     public List<Level> levelList = new ();
-
-
+    
     public GameObject GetPrefab(CardType type)
     {
         switch (type)
@@ -35,7 +33,18 @@ public class LevelDatabase : ScriptableObject
             case(CardType.MINIMONSTER): return miniMonsterPrefab;
             case(CardType.CAULDRON): return cauldronPrefab;
         }
+        return null;
+    }
 
+    public GameObject GetPrefab(Effects type)
+    {
+        switch (type)
+        {
+            case(Effects.NONE): return null;
+            case(Effects.MOVE): return moveEffectPrefab;
+            case(Effects.SWAP): return switchEffectPrefab;
+            case(Effects.INVOKE): return invocationEffectPrefab;
+        }
         return null;
     }
 }

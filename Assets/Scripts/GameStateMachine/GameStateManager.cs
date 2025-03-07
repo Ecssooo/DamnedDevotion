@@ -27,26 +27,30 @@ public class GameStateManager : MonoBehaviour
     private GameBaseState _currentState;
     
     private GameSetupState _gameSetupState = new();
-    private GameLevelState _gameLevelState = new();
+    private GameLevelSelectState _gameLevelSelectState = new();
     private GameActionState _gameActionState = new();
     private GameDefeatState _gameDefeatStateState = new();
     private GameWinState _gameWinState = new();
     private GamePauseState _gamePauseState = new();
     private GameStartState _gameStartState = new();
 
-
+    #region Getter
+    
     public GameBaseState CurrentState => _currentState;
     public GameSetupState GameSetupState => _gameSetupState;
-    public GameLevelState GameLevelState => _gameLevelState;
+    public GameLevelSelectState GameLevelSelectState => _gameLevelSelectState;
     public GameActionState GameActionState => _gameActionState;
     public GameDefeatState GameDefeatStateState => _gameDefeatStateState;
     public GameWinState GameWinState => _gameWinState;
     public GamePauseState GamePauseState => _gamePauseState;
-
     public GameStartState GameStartState => _gameStartState;
 
+    #endregion
+    
     private bool waitForAction;
     public bool WaitForAction { get => waitForAction; }
+    
+    
     
     private void Start()
     {
@@ -66,23 +70,69 @@ public class GameStateManager : MonoBehaviour
         if(doEnter)_currentState.EnterState(this);
     } 
     
-    #region TEMP
+    #region Premade Change State
 
-    public void StateMenu()
+    #region Start State
+    
+    public void StateStart()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameLevelState);
+            SwitchState(_gameStartState);
     }
-
-    public void StateSetup(bool doEnter)
+    
+    public void StateStartAnyGameState()
     {
-        StartCoroutine(CoroutineStateSetup(doEnter));
+        SwitchState(_gameStartState);
     }
+    
+    #endregion 
+    
+    #region Game State
+    
+    
+    public void StateSetup() {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameSetupState);
+    }
+    
+    public void StateSetupAnyGameState(bool doEnter)
+    {
+        SwitchState(_gameSetupState, true, doEnter);
+    }
+    
     public void StateAction(){
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameActionState);
     }
+    
+    public void StatePause()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gamePauseState, true, true);
+    }
 
+    
+    #endregion
+    
+    #region Level Selector State
+    
+    public void StateMenu()
+    {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameLevelSelectState);
+    }
+    
+    public void StateLevelAnyGameState()
+    {
+        SwitchState(_gameLevelSelectState);
+    }
+
+    
+    
+    #endregion
+
+    #region Win/Defeat State
+    
     public void StateWin()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
@@ -94,40 +144,9 @@ public class GameStateManager : MonoBehaviour
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameDefeatStateState);
     }
-
-    public void StateStart()
-    {
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameStartState);
-    }
-
-    public void StatePause()
-    {
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gamePauseState, true, true);
-    }
-
-    public void StateSetupAnyGameState(bool doEnter)
-    {
-        SwitchState(_gameSetupState, true, doEnter);
-    }
-
-    public IEnumerator CoroutineStateSetup(bool doEnter)
-    {
-        yield return new WaitForSeconds(0.05f);  
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameSetupState, true, doEnter);
-    }
     
-    public void StateLevelAnyGameState()
-    {
-        SwitchState(_gameLevelState);
-    }
-
-    public void StateStartAnyGameState()
-    {
-        SwitchState(_gameStartState);
-    }
+    #endregion
+    
     public void SetWaitForAction(bool value)
     {
         waitForAction = value;

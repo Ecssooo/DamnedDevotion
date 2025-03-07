@@ -4,7 +4,10 @@ public class GameStartState : GameBaseState
 {
     public override void EnterState(GameStateManager manager)
     {
-        LevelManager.Instance.LoadMainScreen();
+        //Screen
+        ScreenController.Instance.LoadScreen(MainScreenActive.Start);
+        
+        //Audio
         AudioManager.Instance.musicSource.Stop();
         AudioManager.Instance.PlayMusic("Menu");
     }
