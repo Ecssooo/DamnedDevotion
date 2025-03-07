@@ -78,14 +78,14 @@ public class LevelManager : MonoBehaviour
     void UpdateUI()
     {
         TXT_number.text = (_currentLevel+1).ToString();
-        if (_currentLevel > SaveSystem.Load())
-        {
-            _locker.SetActive(true);
-        }
-        else
-        {
-            _locker.SetActive(false);
-        }
+        // if (_currentLevel > SaveSystem.Load())
+        // {
+        //     _locker.SetActive(true);
+        // }
+        // else
+        // {
+        //     _locker.SetActive(false);
+        // }
 
         _moveLS.SetActive(false);
         _swapLS.SetActive(false);
