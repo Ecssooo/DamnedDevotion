@@ -83,7 +83,7 @@ public class ScreenController : MonoBehaviour
         _currentMainScreenActive = screen;
         
         GO_currentMainScreenActive = Instantiate(GetPrefab(screen), _parents);
-        GO_currentMainScreenActive.GetComponent<SetScreen>().OnLoad();
+        if(GO_currentMainScreenActive.TryGetComponent<SetScreen>(out SetScreen setter)) { setter.OnLoad(); }
     }
 
     public void LoadScreen(SecondScreenActive screen)
@@ -92,12 +92,14 @@ public class ScreenController : MonoBehaviour
         _currentSecondScreenActive = screen;
 
         GO_currentSecondScreenActive = Instantiate(GetPrefab(screen), _parents);
-        GO_currentSecondScreenActive.GetComponent<SetScreen>().OnLoad();
+        if(GO_currentSecondScreenActive.TryGetComponent<SetScreen>(out SetScreen setter)) {setter.OnLoad();} 
     }
 
     public void UnloadMainScreen() { if(GO_currentMainScreenActive != null) Destroy(GO_currentSecondScreenActive); }
     public void UnloadSecondScreen() { if(GO_currentSecondScreenActive != null) Destroy(GO_currentSecondScreenActive); }
+
 }
+
 
 
 
