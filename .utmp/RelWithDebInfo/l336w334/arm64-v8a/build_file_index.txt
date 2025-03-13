@@ -1,0 +1,3 @@
+C:\Users\jacqu\Documents\unity\ProjetMobile\ProjetMobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\jacqu\Documents\unity\ProjetMobile\ProjetMobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\FramePacing\CMakeLists.txt
+C:\Users\jacqu\Documents\unity\ProjetMobile\ProjetMobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

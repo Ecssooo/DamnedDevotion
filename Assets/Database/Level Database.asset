@@ -1,0 +1,1288 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 158b66ff77a735f4a9e3de43d5a2c413, type: 3}
+  m_Name: Level Database
+  m_EditorClassIdentifier: 
+  humanPrefab: {fileID: 8533776778481682274, guid: 7cf094f32fa88664e81280208e2b0e1b, type: 3}
+  knightSwordPrefab: {fileID: 8533776778481682274, guid: ec30b15408166e74fa25a2321eac74d0, type: 3}
+  knightShieldPrefab: {fileID: 8533776778481682274, guid: 097c59346fc9e124f8ee66f1e5231fa1, type: 3}
+  monsterPrefab: {fileID: 8533776778481682274, guid: 6d894f43e23333f40ae772cb82ab4ecd, type: 3}
+  miniMonsterPrefab: {fileID: 8533776778481682274, guid: 940e2c85e02cfed4c85bedb69cc8f63b, type: 3}
+  cauldronPrefab: {fileID: 8533776778481682274, guid: b15cf18034d308a4da7e85a5a2a1146e, type: 3}
+  moveEffectPrefab: {fileID: 4160450261228661187, guid: 0aca2db9d56479e4b94cfeabaebfc7e4, type: 3}
+  switchEffectPrefab: {fileID: 3019628475793264510, guid: 55cf335972d127049b62f0194abf6014, type: 3}
+  invocationEffectPrefab: {fileID: 4788566775805037204, guid: 719287549cdcff2449df3df2cc6aabd0, type: 3}
+  KS_Up: {fileID: 112904679716814205, guid: 10d6cf9cfaf793d48b8c5b4a177ac1f3, type: 3}
+  KS_Right: {fileID: -2256058089129968650, guid: dc6e128c53edb9b4aafc1abe3d696984, type: 3}
+  KS_Down: {fileID: -76958968252227180, guid: 4992fcd08b0bf814387ddc4b2773f355, type: 3}
+  KS_Left: {fileID: 1674648721382843015, guid: 935ad33ac214d3949bb07d6bec2e1920, type: 3}
+  levelList:
+  - level: 0
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 1
+    maxScore: 1
+    effects: 010000
+    tutoPrefab: {fileID: 5390361741047864824, guid: 738205e8879adaa4fb60a5e0149b150e, type: 3}
+  - level: 1
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 2
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 1
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 3
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 1
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 4
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 6
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 5
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 6
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 4644985376741260757, guid: a4272f57e7f318d4d84b3b41edf5cdd3, type: 3}
+  - level: 6
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 6
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 8
+    maxScore: 3
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 7
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 6
+      direction: 0
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 6
+    maxScore: 4
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 8
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 9
+    CardsList:
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 6
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 10
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 11
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 8
+    maxScore: 2
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 12
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 8
+    maxScore: 3
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 13
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 3
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 8
+    maxScore: 1
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 14
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 3
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 6
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 9
+    maxScore: 3
+    effects: 010000
+    tutoPrefab: {fileID: 0}
+  - level: 15
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 1
+    maxScore: 1
+    effects: 000100
+    tutoPrefab: {fileID: 4644985376741260757, guid: dcda08173dc516a4a81815e6c93f5fdf, type: 3}
+  - level: 16
+    CardsList:
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 3
+    effects: 000100
+    tutoPrefab: {fileID: 0}
+  - level: 17
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 3
+    effects: 000100
+    tutoPrefab: {fileID: 0}
+  - level: 18
+    CardsList:
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 010100
+    tutoPrefab: {fileID: 0}
+  - level: 19
+    CardsList:
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 3
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 010100
+    tutoPrefab: {fileID: 4644985376741260757, guid: 290155c41453a184eba59b7299fb9293, type: 3}
+  - level: 20
+    CardsList:
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 3
+    effects: 010100
+    tutoPrefab: {fileID: 4644985376741260757, guid: 290155c41453a184eba59b7299fb9293, type: 3}
+  - level: 21
+    CardsList:
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 6
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 2
+    effects: 010100
+    tutoPrefab: {fileID: 0}
+  - level: 22
+    CardsList:
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 3
+    effects: 010100
+    tutoPrefab: {fileID: 0}
+  - level: 23
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 3
+    effects: 010100
+    tutoPrefab: {fileID: 0}
+  - level: 24
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 4
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 2
+    maxScore: 1
+    effects: 000101
+    tutoPrefab: {fileID: 4644985376741260757, guid: 40954962b930cca4493064da5f770637, type: 3}
+  - level: 25
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 3
+    maxScore: 2
+    effects: 000101
+    tutoPrefab: {fileID: 0}
+  - level: 26
+    CardsList:
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 1
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 1
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 0
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 4
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 5
+    maxScore: 3
+    effects: 000101
+    tutoPrefab: {fileID: 0}
+  - level: 27
+    CardsList:
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 3
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 3
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 1
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 3
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 4
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 1
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 3
+    effects: 010101
+    tutoPrefab: {fileID: 0}
+  - level: 28
+    CardsList:
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 4
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 3
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 1
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 0
+      direction: 1
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 4
+    maxScore: 2
+    effects: 010101
+    tutoPrefab: {fileID: 0}
+  - level: 29
+    CardsList:
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 0, y: 0}
+    - cardType: 6
+      direction: 4
+      positionOnBoard: {x: 0, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 0, y: 2}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 0}
+    - cardType: 0
+      direction: 2
+      positionOnBoard: {x: 1, y: 1}
+    - cardType: 4
+      direction: 0
+      positionOnBoard: {x: 1, y: 2}
+    - cardType: 2
+      direction: 3
+      positionOnBoard: {x: 2, y: 0}
+    - cardType: 1
+      direction: 1
+      positionOnBoard: {x: 2, y: 1}
+    - cardType: 0
+      direction: 3
+      positionOnBoard: {x: 2, y: 2}
+    - cardType: 0
+      direction: 4
+      positionOnBoard: {x: 3, y: 0}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 1}
+    - cardType: 2
+      direction: 2
+      positionOnBoard: {x: 3, y: 2}
+    maxActionCount: 7
+    maxScore: 3
+    effects: 010101
+    tutoPrefab: {fileID: 0}

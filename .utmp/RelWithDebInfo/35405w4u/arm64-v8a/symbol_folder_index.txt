@@ -1,0 +1,1 @@
+C:\Users\alexa\Game\ProjetMobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\35405w4u\obj\arm64-v8a
