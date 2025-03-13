@@ -26,42 +26,51 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+
+    [SerializeField] private LevelDatabase _levelDatabase;
+    
+    [SerializeField] private TimerList _timerList;
+
+    [SerializeField] private ActionCount _actionCount;
+
+    //Private field
+    private Board _board;
+    private int humanKill;
+    private int _monsterScore;
+    private GameState _gameState;
+    private Effects _effect;
+    
+    #region Getter / Setter
+    
+    //SF field
+    public LevelDatabase LevelDatabase {get => _levelDatabase; }
+    public TimerList TimerList { get => _timerList; }
+    public ActionCount ActionCount { get => _actionCount; }
+
+    
+    //Private field
+    public Board Board { get => _board; set => _board = value; }
+    public int HumanKill { get => humanKill; set => humanKill = value; }
+    public int MonsterScore { get => _monsterScore; set => _monsterScore = value; }
+    public GameState GameState { get => _gameState; set => _gameState = value; }
+    public Effects Effect { get => _effect; set => _effect = value; }
+    
+    #endregion
+
+    [Header("TEMP")]
+    [SerializeField] private Button _buttonReady;
+    public Button ButtonReady { get => _buttonReady; }
+    
+    
+    
+    
     private void Start()
     {
         EffectList.Effects = Effects.NONE;
         EffectList.MoveCard = false;
         EffectList.SwapCard = false;
-
     }
 
-    [SerializeField] private Board _board;
-    public Board Board { get => _board; set => _board = value; }
-
-    [SerializeField] private LevelDatabase _levelDatabase;
-    public LevelDatabase LevelDatabase {get => _levelDatabase; }
-
-    [SerializeField] private Effects _effect;
-    public Effects Effect { get => _effect; set => _effect = value; }
-    
-    [SerializeField] private ActionCount _actionCount;
-    public ActionCount ActionCount { get => _actionCount; }
-
-    private int _monsterScore;
-    public int MonsterScore { get => _monsterScore; set => _monsterScore = value; }
-    
-
-    private GameState _gameState;
-    public GameState GameState { get => _gameState; set => _gameState = value; }
-
-    private List<Card> _miniMonsterCards = new List<Card>();
-    public List<Card> MiniMonsterCards { get => _miniMonsterCards; set => _miniMonsterCards = value; }
-
-    private int humanKill;
-    public int HumanKill { get => humanKill; set => humanKill = value; }
-
-    [SerializeField] private Button _buttonReady;
-    public Button ButtonReady { get => _buttonReady; }
-    
     private void Update()
     {
         if (GameState == GameState.Busy) Effect = Effects.NONE;

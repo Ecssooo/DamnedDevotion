@@ -275,6 +275,7 @@ MonoBehaviour:
   _levelDatabase: {fileID: 11400000, guid: 0804e4c0a5f404e49a339bbe37bc8fac, type: 2}
   _effect: 0
   _actionCount: {fileID: 738047271}
+  _timerList: {fileID: 11400000, guid: ce61a8aa17fd2d74c8bf4b7e2244ecf7, type: 2}
   _buttonReady: {fileID: 0}
 --- !u!4 &738047273
 Transform:

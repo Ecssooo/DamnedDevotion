@@ -25,8 +25,6 @@ public class Board : MonoBehaviour
     //Get
     public Card[,] CardList => _board;
     public Transform[,] SlotsTab => _slotsTab;
-
-    [SerializeField] private float _switchDelay;
     
     #region Clear
     
@@ -428,23 +426,23 @@ public class Board : MonoBehaviour
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
             DOTween.Init();
-            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, GameManager.Instance.TimerList.MovementAnimationDuration);
             AudioManager.Instance.PlaySFX("swipe");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementAnimationDuration + Time.deltaTime);
             SetSlots(card);
         } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
             DOTween.Init();
-            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, 1);
+            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, GameManager.Instance.TimerList.MovementAnimationDuration);
             AudioManager.Instance.PlaySFX("swipe");
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementAnimationDuration + Time.deltaTime);
             AudioManager.Instance.PlaySFX("death");
             card.Animator.SetTrigger("Burn");
             PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCQ");
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(GameManager.Instance.TimerList.CauldronWait);
             GameManager.Instance.MonsterScore += card.FoodValue;
             Destroy(card.gameObject);
         } else
@@ -481,7 +479,7 @@ public class Board : MonoBehaviour
         AudioManager.Instance.PlaySFX("teleport");
 
 
-        yield return new WaitForSeconds(_switchDelay);
+        yield return new WaitForSeconds(GameManager.Instance.TimerList.SwapDelay);
         
         SetSlots(c1);
         SetSlots(c2);
@@ -489,13 +487,13 @@ public class Board : MonoBehaviour
 
     public IEnumerator DoAllEndAction()
     {
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(GameManager.Instance.TimerList.BeforeEndActionWait); 
         foreach (var card in _board)
         {
             if(card != null) card.DoEndOfTurnActions();
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(GameManager.Instance.TimerList.AfterEndActionWait);
         StartCoroutine(GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance));
     }
 

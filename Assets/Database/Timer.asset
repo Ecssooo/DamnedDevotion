@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5767bc57c2989684d9a3f46bff9b971b, type: 3}
+  m_Name: Timer
+  m_EditorClassIdentifier: 
+  _movementAnimationDuration: 0.2
+  _swapDelay: 1.1
+  _movementWait: 0.4
+  _swapWait: 1.5
+  _invokeWait: 0
+  _cauldronWait: 0.35
+  _endActionWait: 1.25
+  _beforeEndActionWait: 1.25
+  _afterEndActionWait: 1.25

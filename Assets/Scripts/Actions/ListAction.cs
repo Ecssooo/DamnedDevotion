@@ -12,10 +12,6 @@ public class ListAction : MonoBehaviour
     private bool HasAppliedEffect = false;
     private bool hasAppliedFirstCard = false;
 
-    [SerializeField] private float _moveEffectDuration;
-    [SerializeField] private float _swapEffectDuration;
-    [SerializeField] private float _invokeEffectDuration;
-
     private bool ActivatedFirstSwapToken = false;
 
     private bool HasFirstCardFreeToken = true;
@@ -56,13 +52,13 @@ public class ListAction : MonoBehaviour
             switch (action._effect)
             {
                 case(Effects.MOVE):
-                    yield return new WaitForSeconds(_moveEffectDuration);
+                    yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementWait);
                     break;
                 case(Effects.SWAP) :
-                    yield return new WaitForSeconds(_swapEffectDuration);
+                    yield return new WaitForSeconds(GameManager.Instance.TimerList.SwapWait);
                     break;
                 case(Effects.INVOKE):
-                    yield return new WaitForSeconds(_invokeEffectDuration);
+                    yield return new WaitForSeconds(GameManager.Instance.TimerList.InvokeWait);
                     break;
             }
             
