@@ -43,13 +43,13 @@ public class EffectActions : MonoBehaviour
         {
             case Effects.MOVE:
                 if (action._card.CardType == CardType.CAULDRON || action._card.CardType == CardType.MONSTER || action._card.CardType == CardType.KNIGHTSHIELD) return false;
-                Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
-                StartCoroutine(GameManager.Instance.Board.MoveCard(action._card, newPos, b => { actionDone = b;} ));
+                Vector2Int newPos = GameManager.Instance.BoardController.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
+                StartCoroutine(GameManager.Instance.BoardController.MoveCard(action._card, newPos, b => { actionDone = b;} ));
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBA");
                 break;
             case Effects.SWAP:
                 if (action._card2 == null) return false;
-                StartCoroutine(GameManager.Instance.Board.SwitchCard(action._card, action._card2, b => { actionDone = b;}));
+                StartCoroutine(GameManager.Instance.BoardController.SwitchCard(action._card, action._card2, b => { actionDone = b;}));
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBQ");
                 break;
             case Effects.INVOKE:

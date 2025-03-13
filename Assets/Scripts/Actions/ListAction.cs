@@ -75,7 +75,7 @@ public class ListAction : MonoBehaviour
                     yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
                     action._card.Animator.SetTrigger("Burn");
                     yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
-                    GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
+                    GameManager.Instance.BoardController.ClearSlot(action._card.PositionOnBoard);
                 }
 
                 if (action._card2 != null)
@@ -84,14 +84,14 @@ public class ListAction : MonoBehaviour
                     {
                         action._card2.Animator.SetTrigger("Burn");
                         yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
-                        GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
+                        GameManager.Instance.BoardController.ClearSlot(action._card2.PositionOnBoard);
                     }
                 }
             }
 
             yield return new WaitForSeconds(GameManager.Instance.TimerList.ImpossibleActionWait);
         }
-        GameManager.Instance.Board.StartEndAction();
+        GameManager.Instance.BoardController.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;
     }
 
@@ -224,9 +224,10 @@ public class ListAction : MonoBehaviour
             if (_listActions[^1]._card.CardType == CardType.MINIMONSTER && _listActions[^1]._effect == Effects.INVOKE)
             {
                 Debug.Log("suppressing minimonster");
-                GameManager.Instance.Board.ClearSlot(_listActions[^1]._card.PositionOnBoard);
+                GameManager.Instance.BoardController.ClearSlot(_listActions[^1]._card.PositionOnBoard);
                 _listActions.RemoveAt(_listActions.Count - 1);
                 GameManager.Instance.ActionCount.Increment(1);
+                GameStateManager.Instance.WaitForAction = false;
                 return;
             }
 
@@ -260,6 +261,7 @@ public class ListAction : MonoBehaviour
 
             _listActions.RemoveAt(_listActions.Count - 1);
             GameManager.Instance.ActionCount.Increment(1);
+            GameStateManager.Instance.WaitForAction = false;
         }
     }
 

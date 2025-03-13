@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ActionCount _actionCount;
 
     //Private field
-    private Board _board;
+    private BoardController _boardController;
     private int humanKill;
     private int _monsterScore;
     private GameState _gameState;
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     
     //Private field
-    public Board Board { get => _board; set => _board = value; }
+    public BoardController BoardController { get => _boardController; set => _boardController = value; }
     public int HumanKill { get => humanKill; set => humanKill = value; }
     public int MonsterScore { get => _monsterScore; set => _monsterScore = value; }
     public GameState GameState { get => _gameState; set => _gameState = value; }
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
 
     [Header("TEMP")]
     [SerializeField] private Button _buttonReady;
-    public Button ButtonReady { get => _buttonReady; }
+    public Button ButtonReady { get => _buttonReady; set => _buttonReady = value; }
     
     private void Update()
     {

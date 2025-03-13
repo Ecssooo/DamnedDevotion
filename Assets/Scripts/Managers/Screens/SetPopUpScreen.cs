@@ -5,7 +5,7 @@ public class SetPopUpScreen : SetScreen
 {
     [SerializeField] private GameObject BTN_back;
     [SerializeField] private GameObject BTN_Yes;
-
+    
     [SerializeField] private Canvas _canvas;
     
     
@@ -20,6 +20,8 @@ public class SetPopUpScreen : SetScreen
         var btn_Yes = BTN_Yes.GetComponent<Button>();
         btn_Yes.onClick.AddListener((() => {GameStateManager.Instance.StateAction();}));
         btn_Yes.onClick.AddListener((() => {Debug.Log("Click");}));
-        btn_Back.onClick.AddListener(()=>{ScreenController.Instance.UnloadSecondScreen();});
+        btn_Yes.onClick.AddListener(()=>{ScreenController.Instance.UnloadSecondScreen();});
+
+        GameManager.Instance.ButtonReady = btn_Yes;
     }
 }

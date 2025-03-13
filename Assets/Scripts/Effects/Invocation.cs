@@ -31,12 +31,12 @@ public class Invocation : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                if (GameManager.Instance.Board.SlotsTab[i, j] == hitCollider.transform)
+                if (GameManager.Instance.BoardController.Board[i, j].Slot == hitCollider.transform)
                 {
                     Vector2Int boardPosition = new Vector2Int(i, j);
                     
                     
-                    if (GameManager.Instance.Board.SlotEmpty(boardPosition))
+                    if (GameManager.Instance.BoardController.SlotEmpty(boardPosition))
                     {
                         Card newCard = Instantiate(miniMonsterPrefab);
                         newCard.PositionOnBoard = boardPosition;
@@ -44,7 +44,7 @@ public class Invocation : MonoBehaviour
                         invokeAction._effect = Effects.INVOKE;
                         ListAction.Instance.AddAction(invokeAction);
 
-                        GameManager.Instance.Board.SetSlots(newCard);
+                        GameManager.Instance.BoardController.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
                         this.enabled = false;
                         GameManager.Instance.Effect = Effects.NONE;

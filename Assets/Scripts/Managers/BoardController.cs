@@ -1,12 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
-public class Board : MonoBehaviour
+public struct Slots
+{
+    public Card Card;
+    public Transform Slot;
+}
+
+
+public class BoardController : MonoBehaviour
 {
     [SerializeField] private List<Transform> _slots = new List<Transform>();
     [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
@@ -19,12 +24,15 @@ public class Board : MonoBehaviour
     
     //Private field
     private GameObject[] _effectGO = new GameObject[3];
-    private Card[,] _board = new Card[4, 3];
-    private Transform[,] _slotsTab = new Transform[4, 3];
+    //private Card[,] _board = new Card[4, 3];
+    //private Transform[,] _slotsTab = new Transform[4, 3];
 
+    private Slots[,] _board = new Slots[4, 3];
+    
     //Get
-    public Card[,] CardList => _board;
-    public Transform[,] SlotsTab => _slotsTab;
+    //public Card[,] CardList => _board;
+    public Slots[,] Board => _board;
+    //public Transform[,] SlotsTab => _slotsTab;
     
     #region Clear
     
@@ -32,9 +40,9 @@ public class Board : MonoBehaviour
     public void ClearSlot(Card card)
     {
         InitSlotTab();  
-        if (_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].childCount > 0)
-            DestroyImmediate(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].GetChild(0).gameObject);
-        _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
+        if (_board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot.childCount > 0)
+            DestroyImmediate(_board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot.GetChild(0).gameObject);
+        _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Card = null;
     }
 
     public void ClearSlot(Vector2Int position)
@@ -42,9 +50,9 @@ public class Board : MonoBehaviour
         InitSlotTab();  
         if (PositionInBounds(position))
         {
-            if (_slotsTab[position.x, position.y].childCount > 0)
-                DestroyImmediate(_slotsTab[position.x, position.y].GetChild(0).gameObject);
-            _board[position.x, position.y] = null;
+            if (_board[position.x, position.y].Slot.childCount > 0)
+                DestroyImmediate(_board[position.x, position.y].Slot.GetChild(0).gameObject);
+            _board[position.x, position.y].Card = null;
         }
     }
     
@@ -91,11 +99,11 @@ public class Board : MonoBehaviour
     {
         int index = 0;
 
-        for (int i = 0; i < _slotsTab.GetLength(0); i++)
+        for (int i = 0; i < _board.GetLength(0); i++)
         {
-            for (int j = 0; j < _slotsTab.GetLength(1); j++)
+            for (int j = 0; j < _board.GetLength(1); j++)
             {
-                _slotsTab[i, j] = _slots[index];
+                _board[i, j].Slot = _slots[index];
                 index++;
             }
         }
@@ -120,12 +128,12 @@ public class Board : MonoBehaviour
         card.AttackDirection = cardParams.direction;
         if (PositionInBounds(card.PositionOnBoard))
         {
-            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Card = card;
             if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
-            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, _distrubDuration);
+            card.transform.DOMove(_board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot.position, _distrubDuration);
             AudioManager.Instance.PlaySFX("mixing");
             yield return new WaitForSeconds( _distrubDuration);
-            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            card.transform.parent = _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot;
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
@@ -134,8 +142,8 @@ public class Board : MonoBehaviour
     {
         if (PositionInBounds(card.PositionOnBoard))
         {
-            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
-            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Card = card;
+            card.transform.parent = _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot;
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
@@ -154,9 +162,9 @@ public class Board : MonoBehaviour
         card.AttackDirection = cardParams.direction;
         if (PositionInBounds(card.PositionOnBoard))
         {
-            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = card;
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Card = card;
             if(card.CardType == CardType.KNIGHTSWORD) SetKnightDirection(card);
-            card.transform.parent = _slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y];
+            card.transform.parent = _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot;
             card.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
@@ -246,17 +254,17 @@ public class Board : MonoBehaviour
 
     public void SetCollider()
     {
-        for (int i = 0; i < _slotsTab.GetLength(0); i++)
+        for (int i = 0; i < _board.GetLength(0); i++)
         {
-            for (int j = 0; j < _slotsTab.GetLength(1); j++)
+            for (int j = 0; j < _board.GetLength(1); j++)
             {
                 if (!SlotEmpty(new(i, j)))
                 {
-                    _slotsTab[i, j].GetComponent<BoxCollider2D>().enabled = false;
+                    _board[i, j].Slot.GetComponent<BoxCollider2D>().enabled = false;
                 }
                 else
                 {
-                    _slotsTab[i, j].GetComponent<BoxCollider2D>().enabled = true;
+                    _board[i, j].Slot.GetComponent<BoxCollider2D>().enabled = true;
                 }
             }
         }
@@ -321,28 +329,28 @@ public class Board : MonoBehaviour
             case (Direction.RIGHT):
                 if (PositionInBounds(position + new Vector2Int(0, 1)))
                 {
-                    card = _board[position.x + 0, position.y + 1];
+                    card = _board[position.x + 0, position.y + 1].Card;
                 }
 
                 break;
             case (Direction.LEFT):
                 if (PositionInBounds(position + new Vector2Int(0, -1)))
                 {
-                    card = _board[position.x, position.y - 1];
+                    card = _board[position.x, position.y - 1].Card;
                 }
 
                 break;
             case (Direction.UP):
                 if (PositionInBounds(position + new Vector2Int(-1, 0)))
                 {
-                    card = _board[position.x - 1, position.y];
+                    card = _board[position.x - 1, position.y].Card;
                 }
 
                 break;
             case (Direction.DOWN):
                 if (PositionInBounds(position + new Vector2Int(1, 0)))
                 {
-                    card = _board[position.x + 1, position.y];
+                    card = _board[position.x + 1, position.y].Card;
                 }
 
                 break;
@@ -359,7 +367,7 @@ public class Board : MonoBehaviour
     public bool SlotEmpty(Vector2Int newPos)
     {
         InitSlotTab();
-        return _board[newPos.x, newPos.y] == null;
+        return _board[newPos.x, newPos.y].Card == null;
     }
 
     /// <summary>
@@ -420,13 +428,13 @@ public class Board : MonoBehaviour
     {
         InitSlotTab();
 
-        Card cardOnTarget = _board[newPos.x, newPos.y];
+        Card cardOnTarget = _board[newPos.x, newPos.y].Card;
         if (PositionInBounds(newPos) && SlotEmpty(newPos))
         {
-            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Card = null;
             card.PositionOnBoard = newPos;
             DOTween.Init();
-            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, GameManager.Instance.TimerList.MovementAnimationDuration);
+            card.transform.DOMove(_board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot.position, GameManager.Instance.TimerList.MovementAnimationDuration);
             AudioManager.Instance.PlaySFX("swipe");
             callback(true);
             yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementAnimationDuration + Time.deltaTime);
@@ -434,10 +442,10 @@ public class Board : MonoBehaviour
         } 
         else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
         {
-            _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
+            _board[card.PositionOnBoard.x, card.PositionOnBoard.y].Card = null;
             card.PositionOnBoard = newPos;
             DOTween.Init();
-            card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, GameManager.Instance.TimerList.MovementAnimationDuration);
+            card.transform.DOMove(_board[card.PositionOnBoard.x, card.PositionOnBoard.y].Slot.position, GameManager.Instance.TimerList.MovementAnimationDuration);
             AudioManager.Instance.PlaySFX("swipe");
             yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementAnimationDuration + Time.deltaTime);
             AudioManager.Instance.PlaySFX("death");
@@ -473,8 +481,8 @@ public class Board : MonoBehaviour
         Vector2Int temp = c1.PositionOnBoard;
         c1.PositionOnBoard = c2.PositionOnBoard;
         c2.PositionOnBoard = temp;
-        _board[c1.PositionOnBoard.x, c1.PositionOnBoard.y] = null;
-        _board[c2.PositionOnBoard.x, c2.PositionOnBoard.y] = null;
+        _board[c1.PositionOnBoard.x, c1.PositionOnBoard.y].Card = null;
+        _board[c2.PositionOnBoard.x, c2.PositionOnBoard.y].Card = null;
 
         if (c1.Animator != null)
         {
@@ -496,9 +504,9 @@ public class Board : MonoBehaviour
     public IEnumerator DoAllEndAction()
     {
         yield return new WaitForSeconds(GameManager.Instance.TimerList.BeforeEndActionWait); 
-        foreach (var card in _board)
+        foreach (var slot in _board)
         {
-            if(card != null) card.DoEndOfTurnActions();
+            if(slot.Card != null) slot.Card.DoEndOfTurnActions();
         }
 
         yield return new WaitForSeconds(GameManager.Instance.TimerList.AfterEndActionWait);

@@ -1,3 +1,4 @@
+using System.Collections;
 using NUnit.Framework;
 using TMPro;
 using Unity.VisualScripting.Dependencies.NCalc;
@@ -15,7 +16,14 @@ public class TutoLevel1 : TutoLevelBase
     [SerializeField] private GameObject scene5;
     [SerializeField] private GameObject scene6;
     
-    public override void DoTuto()
+    private Coroutine _coroutine;
+    
+    public void Update()
+    {
+        if(_coroutine == null) _coroutine = StartCoroutine(DoTuto());
+    }
+    
+    public override IEnumerator DoTuto()
     {
         switch (action)
         {
@@ -32,28 +40,32 @@ public class TutoLevel1 : TutoLevelBase
                 }
                 break;
             case(1):
-                if (ListAction.Instance.ListActions.Count <= 0) return;
+                if (ListAction.Instance.ListActions.Count <= 0) break;
                 if(ListAction.Instance.ListActions[0]._card.CardType == CardType.KNIGHTSWORD)
                 {
                     scene2.SetActive(false);
                     scene3.SetActive(true);
-                    GameManager.Instance.ButtonReady.interactable = false;
-                    Color color = GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color;
-                    color.a = 0.5f;
-                    GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color = color;
                     action = 2;
+                    yield return new WaitForSeconds(0.01f);
+                    if(GameManager.Instance.ButtonReady != null)
+                    {
+                        GameManager.Instance.ButtonReady.interactable = false;
+                        Color color = GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color;
+                        color.a = 0.5f;
+                        GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color = color;
+                    }
                 }
                 break;
             case(2):
-                if (GameStateManager.Instance.WaitForAction)
+                if (ScreenController.Instance.CurrentSecondScreenActive == SecondScreenActive.None)
                 {
+                    scene3.SetActive(false);
+                    scene4.SetActive(true);
                     GameManager.Instance.ButtonReady.interactable = true;
                     Color color = GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color;
                     color.a = 1f;
                     GameManager.Instance.ButtonReady.GetComponent<UnityEngine.UI.Image>().color = color;
                     GameManager.Instance.Effect = Effects.NONE;
-                    scene3.SetActive(false);
-                    scene4.SetActive(true);
                     action = 3;
                 }
                 break;
@@ -74,13 +86,17 @@ public class TutoLevel1 : TutoLevelBase
                 }
                 break;
             case(5):
-                if (ListAction.Instance.ListActions.Count <= 0) return;
+                if (ListAction.Instance.ListActions.Count <= 0) break;
                 if (ListAction.Instance.ListActions[0]._card.CardType == CardType.KNIGHTSWORD)
                 {
                     scene6.SetActive(false);
                     action = 7;
                 }
                 break;
+            case(7):
+                Destroy(this.gameObject);
+                break;
         }
+        _coroutine = null;
     }
 }

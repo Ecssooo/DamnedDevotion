@@ -52,6 +52,9 @@ public class ScreenController : MonoBehaviour
     [SerializeField] private GameObject _optionsScreen;
     
     private MainScreenActive _currentMainScreenActive;
+
+
+
     private SecondScreenActive _currentSecondScreenActive;
 
     private GameObject GO_currentMainScreenActive;
@@ -61,7 +64,8 @@ public class ScreenController : MonoBehaviour
     private Coroutine _secondCoroutine;
     
     #region Getter
-
+    public MainScreenActive CurrentMainScreenActive => _currentMainScreenActive;
+    public SecondScreenActive CurrentSecondScreenActive => _currentSecondScreenActive;
     public GameObject GO_CurrentMainScreenActive { get => GO_currentMainScreenActive; }
     public GameObject GO_CurrentSecondScreenActive { get => GO_currentSecondScreenActive; }
     
@@ -130,16 +134,28 @@ public class ScreenController : MonoBehaviour
         _secondCoroutine = null;
     }
 
-    
+
     /// <summary>
     ///  Supprime l'ecran principal actuellement charge
     /// </summary>
-    public void UnloadMainScreen() { if(GO_currentMainScreenActive != null) Destroy(GO_currentSecondScreenActive); }
+    public void UnloadMainScreen()
+    {
+        if (GO_currentMainScreenActive != null)
+        {
+            Destroy(GO_currentMainScreenActive);
+        }
+    }
     
     /// <summary>
     /// Supprime l'ecran secondaire actuellement charge
     /// </summary>
-    public void UnloadSecondScreen() { if(GO_currentSecondScreenActive != null) Destroy(GO_currentSecondScreenActive); }
+    public void UnloadSecondScreen() {
+        if (GO_currentSecondScreenActive != null)
+        {
+            Destroy(GO_currentSecondScreenActive);
+            _currentSecondScreenActive = SecondScreenActive.None;
+        } 
+    }
 
     
     /// <summary>

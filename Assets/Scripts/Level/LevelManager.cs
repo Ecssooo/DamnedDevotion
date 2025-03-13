@@ -121,7 +121,7 @@ public class LevelManager : MonoBehaviour
     
     public void LoadLevel()
     {
-        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
+        StartCoroutine(GameManager.Instance.BoardController.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
         
         GameManager.Instance.Effect = Effects.NONE;
 

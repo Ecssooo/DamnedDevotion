@@ -86,7 +86,7 @@ public class Card : MonoBehaviour
             case CardType.HUMAN:
                 break;
             case CardType.KNIGHTSWORD:
-                Card target = GameManager.Instance.Board.GetCardClose(this.PositionOnBoard, this._attackDirection);
+                Card target = GameManager.Instance.BoardController.GetCardClose(this.PositionOnBoard, this._attackDirection);
                 if (target != null)
                 {
                     if (target.CardType == CardType.MINIMONSTER) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCg");
@@ -114,7 +114,7 @@ public class Card : MonoBehaviour
                 _animator.SetTrigger("Hit");
                 AudioManager.Instance.PlaySFX("swordHit");
                 yield return new WaitForSeconds(GameManager.Instance.TimerList.HitAniamtionDuration);
-                GameManager.Instance.Board.ClearSlot(this);
+                GameManager.Instance.BoardController.ClearSlot(this);
                 GameManager.Instance.MonsterScore += _foodValue;
                 GameManager.Instance.HumanKill++;
                 AudioManager.Instance.PlaySFX("death");
@@ -131,12 +131,12 @@ public class Card : MonoBehaviour
                 yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
                 GameManager.Instance.MonsterScore = 0;
                 GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatState);
-                GameManager.Instance.Board.ClearSlot(this);
+                GameManager.Instance.BoardController.ClearSlot(this);
                 break;
             case(CardType.MINIMONSTER):
                 _animator.SetTrigger("Hit");
                 yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
-                GameManager.Instance.Board.ClearSlot(this);
+                GameManager.Instance.BoardController.ClearSlot(this);
                 break;
             case(CardType.NONE):
                 AudioManager.Instance.PlaySFX("swordSlash");

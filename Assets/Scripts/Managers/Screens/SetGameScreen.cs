@@ -1,10 +1,11 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class SetGameScreen : SetScreen
 {
-    [SerializeField] private Board _board;
+    [FormerlySerializedAs("_board")] [SerializeField] private BoardController boardController;
     [SerializeField] private TextMeshProUGUI _actionPointTxt;
     [SerializeField] private Canvas _canvas;
     [SerializeField] private GameObject BTN_Pause;
@@ -12,7 +13,7 @@ public class SetGameScreen : SetScreen
     public override void OnLoad()
     {
         _canvas.worldCamera = Camera.main;
-        GameManager.Instance.Board = _board;
+        GameManager.Instance.BoardController = boardController;
         GameManager.Instance.ActionCount.ActionPointText = _actionPointTxt;
 
         var btn_Pause = BTN_Pause.GetComponent<Button>();
