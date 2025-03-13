@@ -12,7 +12,7 @@ public class ListAction : MonoBehaviour
     private bool HasAppliedEffect = false;
     private bool hasAppliedFirstCard = false;
 
-    private bool ActivatedFirstSwapToken = false;
+    // private bool ActivatedFirstSwapToken = false;
 
     private bool HasFirstCardFreeToken = true;
     private bool HasSecondCardFreeToken = true;
@@ -45,43 +45,51 @@ public class ListAction : MonoBehaviour
 
     public IEnumerator StartListAction()
     {
+        bool actionDone = true;
         GameManager.Instance.GameState = GameState.Busy;
         foreach (var action in _listActions)
         {
-            EffectActions.Instance.DoEffect(action);
-            switch (action._effect)
+            actionDone = EffectActions.Instance.DoEffect(action);
+            if (actionDone)
             {
-                case(Effects.MOVE):
-                    yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementWait);
-                    break;
-                case(Effects.SWAP) :
-                    yield return new WaitForSeconds(GameManager.Instance.TimerList.SwapWait);
-                    break;
-                case(Effects.INVOKE):
-                    yield return new WaitForSeconds(GameManager.Instance.TimerList.InvokeWait);
-                    break;
-            }
-            
-            if(action._effect == Effects.SWAP && (action._card.CardType == CardType.MINIMONSTER || action._card2.CardType == CardType.MINIMONSTER))
-                PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBw");
-
-            
-            if (action._effect != Effects.INVOKE && action._card.CardType == CardType.MINIMONSTER)
-            {
-                yield return new WaitForSeconds(0.4f);
-                action._card.Animator.SetTrigger("Burn");
-                yield return new WaitForSeconds(0.4f);
-                GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
-            }
-            if (action._card2 != null)
-            {
-                if(action._card2.CardType == CardType.MINIMONSTER)
+                switch (action._effect)
                 {
-                    action._card2.Animator.SetTrigger("Burn");
-                    yield return new WaitForSeconds(0.4f);
-                    GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
+                    case (Effects.MOVE):
+                        yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementWait);
+                        break;
+                    case (Effects.SWAP):
+                        yield return new WaitForSeconds(GameManager.Instance.TimerList.SwapWait);
+                        break;
+                    case (Effects.INVOKE):
+                        yield return new WaitForSeconds(GameManager.Instance.TimerList.InvokeWait);
+                        break;
+                }
+
+                if (action._effect == Effects.SWAP && (action._card.CardType == CardType.MINIMONSTER ||
+                                                       action._card2.CardType == CardType.MINIMONSTER))
+                    PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBw");
+
+
+                if (action._effect != Effects.INVOKE && action._card.CardType == CardType.MINIMONSTER)
+                {
+                    yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
+                    action._card.Animator.SetTrigger("Burn");
+                    yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
+                    GameManager.Instance.Board.ClearSlot(action._card.PositionOnBoard);
+                }
+
+                if (action._card2 != null)
+                {
+                    if (action._card2.CardType == CardType.MINIMONSTER)
+                    {
+                        action._card2.Animator.SetTrigger("Burn");
+                        yield return new WaitForSeconds(GameManager.Instance.TimerList.BurnAnimationDuration);
+                        GameManager.Instance.Board.ClearSlot(action._card2.PositionOnBoard);
+                    }
                 }
             }
+
+            yield return new WaitForSeconds(GameManager.Instance.TimerList.ImpossibleActionWait);
         }
         GameManager.Instance.Board.StartEndAction();
         GameManager.Instance.GameState = GameState.Playable;

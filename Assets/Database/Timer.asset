@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5767bc57c2989684d9a3f46bff9b971b, type: 3}
   m_Name: Timer
   m_EditorClassIdentifier: 
-  _movementAnimationDuration: 0.2
+  _movementAnimationDuration: 1
+  _burnAnimationDuration: 0.5
+  _hitAnimationDuration: 0.5
   _swapDelay: 1.1
-  _movementWait: 0.4
+  _movementWait: 1
   _swapWait: 1.5
   _invokeWait: 0
   _cauldronWait: 0.35
-  _endActionWait: 1.25
-  _beforeEndActionWait: 1.25
-  _afterEndActionWait: 1.25
+  _impossibleActionWait: 0.5
+  _endActionWait: 0.2
+  _beforeEndActionWait: 1
+  _afterEndActionWait: 1

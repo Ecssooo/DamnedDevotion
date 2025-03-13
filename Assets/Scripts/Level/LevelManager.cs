@@ -37,9 +37,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject _moveParent;
     [SerializeField] private GameObject _swapParent;
     [SerializeField] private GameObject _invokeParent;
-
-    [SerializeField] private GameObject _nextButton;
-    
     
     #region Getters
     
@@ -125,9 +122,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
-
-        EffectList.MoveCard = false;
-        EffectList.SwapCard = false;
+        
         GameManager.Instance.Effect = Effects.NONE;
 
         ListAction.Instance.ListActions.Clear();

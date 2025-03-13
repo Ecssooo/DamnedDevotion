@@ -528,19 +528,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 75389642449124105}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4170780448346390685}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: ToggleMusic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3931772503621902835
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,19 +798,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1412881507943360503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4170780448346390685}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: ToggleSFX
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6267619831777177575
 GameObject:
   m_ObjectHideFlags: 0
@@ -1121,7 +1097,6 @@ GameObject:
   - component: {fileID: 6159703503869615061}
   - component: {fileID: 7491601328416468328}
   - component: {fileID: 6738891483099043355}
-  - component: {fileID: 4170780448346390685}
   - component: {fileID: 7173258333155450450}
   m_Layer: 5
   m_Name: OptionsScreen
@@ -1222,18 +1197,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4170780448346390685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8863074019400179538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0054b780bfd98724b96c2a9187213d16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7173258333155450450
 MonoBehaviour:
   m_ObjectHideFlags: 0

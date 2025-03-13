@@ -13,7 +13,7 @@ public class SetGameScreen : SetScreen
     {
         _canvas.worldCamera = Camera.main;
         GameManager.Instance.Board = _board;
-        GameManager.Instance.ActionCount.actionPointText = _actionPointTxt;
+        GameManager.Instance.ActionCount.ActionPointText = _actionPointTxt;
 
         var btn_Pause = BTN_Pause.GetComponent<Button>();
         btn_Pause.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});

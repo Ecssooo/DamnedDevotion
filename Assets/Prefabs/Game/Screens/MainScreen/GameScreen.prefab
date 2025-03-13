@@ -349,7 +349,6 @@ MonoBehaviour:
   - {fileID: 7682149079033362551}
   _handTransform: {fileID: 1517112489840092911}
   _distrubDuration: 0.4
-  _switchDelay: 1
   _levelNumberTXT: {fileID: 2711892107974792599}
 --- !u!114 &1639105380783475498
 MonoBehaviour:
@@ -368,9 +367,6 @@ MonoBehaviour:
   _moveEffectUpPrefab: {fileID: 3397480255077798932, guid: ce2fb9fd97a6ff1479830564b3fd478e, type: 3}
   _moveEffectDownPrefab: {fileID: 5143623934888691480, guid: c23885d2c3552a249b813f0b96022ff4, type: 3}
   _switchEffectPrefab: {fileID: 5143623934888691480, guid: 4efbf48809ffe1a40885b07fc0a0a0a1, type: 3}
-  _moveEffectDuration: 1
-  _swapEffectDuration: 1.25
-  _invokeEffectDuration: 1
 --- !u!1 &1562478021936087194
 GameObject:
   m_ObjectHideFlags: 0

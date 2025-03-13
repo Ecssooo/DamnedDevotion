@@ -61,16 +61,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Button _buttonReady;
     public Button ButtonReady { get => _buttonReady; }
     
-    
-    
-    
-    private void Start()
-    {
-        EffectList.Effects = Effects.NONE;
-        EffectList.MoveCard = false;
-        EffectList.SwapCard = false;
-    }
-
     private void Update()
     {
         if (GameState == GameState.Busy) Effect = Effects.NONE;

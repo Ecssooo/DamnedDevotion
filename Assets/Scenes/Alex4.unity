@@ -210,8 +210,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d32f74e226e1d142850ce644dfc753c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _swapFirstCard: {fileID: 0}
-  _swapSecondCard: {fileID: 0}
 --- !u!4 &438496567
 Transform:
   m_ObjectHideFlags: 0
@@ -221,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 438496565}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.40759382, y: 0.3094437, z: -0.013125428}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,7 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f558cdb39ad584da189ed36acd0fd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionPointText: {fileID: 0}
 --- !u!114 &738047272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,11 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f14b19641d71bc4dbf0a314de2beeb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 0}
   _levelDatabase: {fileID: 11400000, guid: 0804e4c0a5f404e49a339bbe37bc8fac, type: 2}
-  _effect: 0
-  _actionCount: {fileID: 738047271}
   _timerList: {fileID: 11400000, guid: ce61a8aa17fd2d74c8bf4b7e2244ecf7, type: 2}
+  _actionCount: {fileID: 738047271}
   _buttonReady: {fileID: 0}
 --- !u!4 &738047273
 Transform:
@@ -304,8 +299,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0badaf782b20644fb0c45a6484cabd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 3019628475793264510, guid: 55cf335972d127049b62f0194abf6014, type: 3}
-  obj2: {fileID: 4160450261228661187, guid: 0aca2db9d56479e4b94cfeabaebfc7e4, type: 3}
 --- !u!1 &1046988103
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 1046988103}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.24425915, y: 0.9290152, z: -0.0745801}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -470,15 +463,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1955960594833929285, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.940974
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1955960594833929285, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2746158
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1955960594833929285, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.049485095
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1955960594833929285, guid: 682d732b77d4bc640a10d214459407d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -750,7 +743,7 @@ Transform:
   m_GameObject: {fileID: 1953136908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13149884, y: -0.03588881, z: 0.0078240745}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -813,7 +806,6 @@ MonoBehaviour:
   _moveParent: {fileID: 0}
   _swapParent: {fileID: 0}
   _invokeParent: {fileID: 0}
-  _nextButton: {fileID: 0}
 --- !u!4 &2116388974
 Transform:
   m_ObjectHideFlags: 0
@@ -822,7 +814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116388972}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -844,5 +836,5 @@ SceneRoots:
   - {fileID: 438496567}
   - {fileID: 1953136909}
   - {fileID: 165152411}
-  - {fileID: 1330304716}
   - {fileID: 1136123824}
+  - {fileID: 1330304716}

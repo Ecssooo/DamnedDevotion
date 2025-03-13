@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayGamesController : MonoBehaviour
 {
     
-    [SerializeField] private GameObject obj;
-    [SerializeField] private GameObject obj2;
+    // [SerializeField] private GameObject obj;
+    // [SerializeField] private GameObject obj2;
     // [SerializeField] private TextMeshProUGUI text;
     private string debugText; // Champ pour afficher les messages de d�bogage
 

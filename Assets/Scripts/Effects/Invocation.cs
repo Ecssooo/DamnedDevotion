@@ -4,8 +4,6 @@ using UnityEngine;
 public class Invocation : MonoBehaviour
 {
     [SerializeField] private Card miniMonsterPrefab;
-    private Board board;
-    public Board Board { get => board; set => board = value; }
 
 
     public IEnumerator InvokeMiniMonster()
@@ -33,12 +31,12 @@ public class Invocation : MonoBehaviour
         {
             for (int j = 0; j < 3; j++)
             {
-                if (board.SlotsTab[i, j] == hitCollider.transform)
+                if (GameManager.Instance.Board.SlotsTab[i, j] == hitCollider.transform)
                 {
                     Vector2Int boardPosition = new Vector2Int(i, j);
                     
                     
-                    if (board.SlotEmpty(boardPosition))
+                    if (GameManager.Instance.Board.SlotEmpty(boardPosition))
                     {
                         Card newCard = Instantiate(miniMonsterPrefab);
                         newCard.PositionOnBoard = boardPosition;
@@ -46,9 +44,9 @@ public class Invocation : MonoBehaviour
                         invokeAction._effect = Effects.INVOKE;
                         ListAction.Instance.AddAction(invokeAction);
 
-                        board.SetSlots(newCard);
+                        GameManager.Instance.Board.SetSlots(newCard);
                         GameManager.Instance.ActionCount.Decrement(1);
-                        this.GetComponent<Invocation>().enabled = false;
+                        this.enabled = false;
                         GameManager.Instance.Effect = Effects.NONE;
                         PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBg");
                     }

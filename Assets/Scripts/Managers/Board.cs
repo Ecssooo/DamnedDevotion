@@ -416,7 +416,7 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="card"></param>
     /// <param name="newPos"></param>
-    public IEnumerator MoveCard(Card card, Vector2Int newPos)
+    public IEnumerator MoveCard(Card card, Vector2Int newPos, System.Action<bool> callback)
     {
         InitSlotTab();
 
@@ -428,9 +428,11 @@ public class Board : MonoBehaviour
             DOTween.Init();
             card.transform.DOMove(_slotsTab[card.PositionOnBoard.x, card.PositionOnBoard.y].position, GameManager.Instance.TimerList.MovementAnimationDuration);
             AudioManager.Instance.PlaySFX("swipe");
+            callback(true);
             yield return new WaitForSeconds(GameManager.Instance.TimerList.MovementAnimationDuration + Time.deltaTime);
             SetSlots(card);
-        } else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
+        } 
+        else if (card.CardType == CardType.KNIGHTSWORD && cardOnTarget.CardType == CardType.CAULDRON)
         {
             _board[card.PositionOnBoard.x, card.PositionOnBoard.y] = null;
             card.PositionOnBoard = newPos;
@@ -441,6 +443,7 @@ public class Board : MonoBehaviour
             AudioManager.Instance.PlaySFX("death");
             card.Animator.SetTrigger("Burn");
             PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCQ");
+            callback(true);
 
             yield return new WaitForSeconds(GameManager.Instance.TimerList.CauldronWait);
             GameManager.Instance.MonsterScore += card.FoodValue;
@@ -449,6 +452,7 @@ public class Board : MonoBehaviour
         {
             card.Animator.SetBool("Die" , false);
             card.Animator.SetTrigger("Hit");
+            callback(false);
         }
     }
 
@@ -457,11 +461,15 @@ public class Board : MonoBehaviour
     /// </summary>
     /// <param name="c1">First card</param>
     /// <param name="c2">Second card</param>
-    public IEnumerator SwitchCard(Card c1, Card c2)
+    public IEnumerator SwitchCard(Card c1, Card c2, System.Action<bool> callback)
     {
         InitSlotTab();
 
-        if (c1 == null || c2 == null) yield break;
+        if (c1 == null || c2 == null)
+        {
+            yield break;
+            callback(false);
+        }
         Vector2Int temp = c1.PositionOnBoard;
         c1.PositionOnBoard = c2.PositionOnBoard;
         c2.PositionOnBoard = temp;
@@ -478,7 +486,7 @@ public class Board : MonoBehaviour
         }
         AudioManager.Instance.PlaySFX("teleport");
 
-
+        callback(true);
         yield return new WaitForSeconds(GameManager.Instance.TimerList.SwapDelay);
         
         SetSlots(c1);

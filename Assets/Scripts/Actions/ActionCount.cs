@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ActionCount : MonoBehaviour
 {
@@ -7,7 +8,8 @@ public class ActionCount : MonoBehaviour
 
     public int ActionPoints { get => action; }
 
-    public TextMeshProUGUI actionPointText;
+    private TextMeshProUGUI _actionPointText;
+    public TextMeshProUGUI ActionPointText { get => _actionPointText; set => _actionPointText = value; }
 
 
     public void InitActionPoint(int max)
@@ -35,6 +37,6 @@ public class ActionCount : MonoBehaviour
 
     public void DisplayActionPoint()
     {
-        actionPointText.text = action.ToString();
+        ActionPointText.text = action.ToString();
     }
 }
