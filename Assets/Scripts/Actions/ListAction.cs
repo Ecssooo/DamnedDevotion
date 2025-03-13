@@ -11,9 +11,7 @@ public class ListAction : MonoBehaviour
     [SerializeField] private GameObject _switchEffectPrefab;
     private bool HasAppliedEffect = false;
     private bool hasAppliedFirstCard = false;
-
-    // private bool ActivatedFirstSwapToken = false;
-
+    
     private bool HasFirstCardFreeToken = true;
     private bool HasSecondCardFreeToken = true;
     
@@ -131,21 +129,6 @@ public class ListAction : MonoBehaviour
                     case Effects.SWAP:
                         GameObject newSwapAction = Instantiate(_switchEffectPrefab, slot);
                         hasAppliedFirstCard = true;
-                        var swapEffect = newSwapAction.GetComponent<Effect>();
-                        if (swapEffect != null)
-                        {
-                            swapEffect.enabled = false;
-                        }
-                        var swapCollider = newSwapAction.GetComponent<CircleCollider2D>();
-                        if (swapCollider != null)
-                        {
-                            swapCollider.enabled = false;
-                        }
-                        var switchPower = newSwapAction.GetComponent<SwitchPower>();
-                        if (switchPower != null)
-                        {
-                            switchPower.enabled = false;
-                        }
                         newSwapAction.transform.localScale = Vector3.one / 3;
                         newSwapAction.transform.localPosition = Vector3.zero;
                         _listActions.Add(action);
@@ -169,19 +152,6 @@ public class ListAction : MonoBehaviour
                                 newMoveAction = Instantiate(_moveEffectRightPrefab, slot);
                                 break;
                         }
-
-                        //Deactivate the effect and collider
-                        var moveEffect = newMoveAction.GetComponent<Effect>();
-                        if (moveEffect != null)
-                        {
-                            moveEffect.enabled = false;
-                        }
-                        var moveCollider = newMoveAction.GetComponent<CircleCollider2D>();
-                        if (moveCollider != null)
-                        {
-                            moveCollider.enabled = false;
-                        }
-
 
                         newMoveAction.transform.localScale = Vector3.one / 3;
                         newMoveAction.transform.localPosition = Vector3.zero;

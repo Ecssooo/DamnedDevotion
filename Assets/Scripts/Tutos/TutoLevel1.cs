@@ -1,9 +1,5 @@
 using System.Collections;
-using NUnit.Framework;
-using TMPro;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class TutoLevel1 : TutoLevelBase
 {
