@@ -9,16 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 0
-    path: Assets/Scenes/Ugo 2.unity
+    path: Assets/Scenes/UgoScenes/Ugo 2.unity
     guid: d23331d68b5b93149af6b9df201f6019
   - enabled: 0
-    path: Assets/Scenes/GD.unity
+    path: Assets/Scenes/GDScenes/GD.unity
     guid: df7c4145bd68fdd4eba9a7efa3a569c4
   - enabled: 0
-    path: Assets/Scenes/Alex3.unity
+    path: Assets/Scenes/AlexScenes/Alex3.unity
     guid: 03ec041ba318f684581487bd629bb701
   - enabled: 1
-    path: Assets/Scenes/Alpha.unity
+    path: Assets/Scenes/Global/Alpha.unity
     guid: f2ffaf2dc4d74744b9d63d2d4b585e0d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
