@@ -17,7 +17,7 @@ public class SetOptionsScreen : SetScreen
         btn_Music.onClick.AddListener(() => { AudioManager.Instance.ToggleMusic(); });
         
         var btn_SFX = BTN_SFX.GetComponent<Button>();
-        btn_Music.onClick.AddListener(() => { AudioManager.Instance.ToggleSFX(); });
+        btn_SFX.onClick.AddListener(() => { AudioManager.Instance.ToggleSFX(); });
         
         var btn_Back = BTN_Back.GetComponent<Button>();
         btn_Back.onClick.AddListener(() => { ScreenController.Instance.UnloadSecondScreen(); });

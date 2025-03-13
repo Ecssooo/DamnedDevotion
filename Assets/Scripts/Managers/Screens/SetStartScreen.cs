@@ -30,11 +30,11 @@ public class SetStartScreen : SetScreen
 
         var btn_Options = BTN_Options.GetComponent<Button>();
         btn_Options.onClick.AddListener(() => { AudioManager.Instance.PlaySFX("button"); });
-        btn_Options.onClick.AddListener(() => { ScreenController.Instance.LoadScreen(SecondScreenActive.Options);});
+        btn_Options.onClick.AddListener(() => { ScreenController.Instance.CoroutineLoadScreen(SecondScreenActive.Options);});
 
         var btn_Credits = BTN_Credit.GetComponent<Button>();
         btn_Credits.onClick.AddListener(() => { AudioManager.Instance.PlaySFX("button"); });
-        btn_Credits.onClick.AddListener (() => { ScreenController.Instance.LoadScreen(SecondScreenActive.Credits); });
+        btn_Credits.onClick.AddListener (() => { ScreenController.Instance.CoroutineLoadScreen(SecondScreenActive.Credits); });
 
         var btn_Login = BTN_Login.GetComponent<Button>();
         btn_Login.onClick.AddListener(() => { AudioManager.Instance.PlaySFX("button"); });

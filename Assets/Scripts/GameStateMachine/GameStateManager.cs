@@ -55,7 +55,7 @@ public class GameStateManager : MonoBehaviour
     private void Start()
     {
         _currentState = _gameStartState;
-        _currentState.EnterState(this);
+        StartCoroutine(_currentState.EnterState(this));
     }
 
     private void Update()
@@ -65,9 +65,9 @@ public class GameStateManager : MonoBehaviour
 
     public void SwitchState(GameBaseState state, bool doExit = true, bool doEnter = true)
     {
-        if(doExit) _currentState.ExitState(this);
+        if (doExit) StartCoroutine(_currentState.ExitState(this));
         _currentState = state;
-        if(doEnter)_currentState.EnterState(this);
+        if(doEnter) StartCoroutine (_currentState.EnterState(this));
     } 
     
     #region Premade Change State

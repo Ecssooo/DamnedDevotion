@@ -1,12 +1,14 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GamePauseState : GameBaseState
 {
-    public override void EnterState(GameStateManager manager)
+    public override IEnumerator EnterState(GameStateManager manager)
     {
         GameManager.Instance.GameState = GameState.Busy;
-        
-        ScreenController.Instance.LoadScreen(SecondScreenActive.Pause);
+        yield return new WaitForNextFrameUnit();
+        ScreenController.Instance.CoroutineLoadScreen(SecondScreenActive.Pause);
     }
 
     public override void UpdateState(GameStateManager manager)
@@ -14,9 +16,10 @@ public class GamePauseState : GameBaseState
         //
     }
 
-    public override void ExitState(GameStateManager manager)
+    public override IEnumerator ExitState(GameStateManager manager)
     {
         GameManager.Instance.GameState = GameState.Playable;
         ScreenController.Instance.UnloadSecondScreen();
+        yield return new WaitForNextFrameUnit();
     }
 }

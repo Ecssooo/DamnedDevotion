@@ -1,8 +1,10 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameActionState : GameBaseState
 {
-    public override void EnterState(GameStateManager manager)
+    public override IEnumerator EnterState(GameStateManager manager)
     {
 
         //Achievement
@@ -21,7 +23,7 @@ public class GameActionState : GameBaseState
         
         if(move >= 3 || swap >= 3 || invoke >= 3) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDA");
         if(move >= 5 || swap >= 5 || invoke >= 5) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQDQ");
-        
+        yield return new WaitForNextFrameUnit();
         
         //Action
         ListAction.Instance.StartListActionCoroutine();
@@ -33,7 +35,7 @@ public class GameActionState : GameBaseState
         //
     }
 
-    public override void ExitState(GameStateManager manager)
+    public override IEnumerator ExitState(GameStateManager manager)
     {
         GameManager instance = GameManager.Instance;
         
@@ -46,5 +48,6 @@ public class GameActionState : GameBaseState
         {
             manager.SwitchState(manager.GameDefeatStateState, false);
         }
+        yield return null;
     }
 }

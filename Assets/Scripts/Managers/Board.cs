@@ -199,7 +199,7 @@ public class Board : MonoBehaviour
     {
         GameManager.Instance.GameState = GameState.Busy;
         InitSlotTab();
-        ResetBoard();
+        // ResetBoard();
         for (int i = 0; i < 3; i++)
         {
             if (level.effects[i])
@@ -496,8 +496,7 @@ public class Board : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-        GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance);
-
+        StartCoroutine(GameStateManager.Instance.CurrentState.ExitState(GameStateManager.Instance));
     }
 
     public void StartEndAction()

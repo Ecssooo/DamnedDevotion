@@ -1,11 +1,17 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class GameLevelSelectState : GameBaseState
 {
-    public override void EnterState(GameStateManager manager)
+    public override IEnumerator EnterState(GameStateManager manager)
     {
-        ScreenController.Instance.LoadScreen(MainScreenActive.LevelSelect);
+        ScreenController.Instance.UnloadSecondScreen();
+        ScreenController.Instance.CoroutineLoadScreen(MainScreenActive.LevelSelect);
+        
+        yield return new WaitForNextFrameUnit();
+        
         LevelManager.Instance.InitLevel(SaveSystem.Load());
 
         LevelManager.Instance.UpdateLocker();
@@ -17,8 +23,9 @@ public class GameLevelSelectState : GameBaseState
         //
     }
 
-    public override void ExitState(GameStateManager manager)
+    public override IEnumerator ExitState(GameStateManager manager)
     {
         AudioManager.Instance.PlayMusic("Level");
+        yield return new WaitForNextFrameUnit();
     }
 }

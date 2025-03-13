@@ -1,8 +1,10 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameWinState : GameBaseState
 {
-    public override void EnterState(GameStateManager manager)
+    public override IEnumerator EnterState(GameStateManager manager)
     {
         //Achievement
         if (LevelManager.Instance.CurrentLevel == 0) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQAQ");
@@ -13,8 +15,8 @@ public class GameWinState : GameBaseState
         AudioManager.Instance.PlaySFX("win");
         
         //LevelManager.Instance.LoadWinMenu();
-        ScreenController.Instance.LoadScreen(SecondScreenActive.Win);
-        
+        ScreenController.Instance.CoroutineLoadScreen(SecondScreenActive.Win);
+        yield return null;
         //Reset level
         GameManager.Instance.MonsterScore = 0;
         GameManager.Instance.Effect = Effects.NONE;
@@ -33,8 +35,8 @@ public class GameWinState : GameBaseState
         //
     }
 
-    public override void ExitState(GameStateManager manager)
+    public override IEnumerator ExitState(GameStateManager manager)
     {
-
+        yield return new WaitForNextFrameUnit();
     }
 }

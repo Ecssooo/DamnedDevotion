@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class SetLevelSelectScreen : SetScreen
 {
+    [Header("Canva")]
+    [SerializeField] private Canvas _canvas;
+    
+    
     [Header("Button")]
     [SerializeField] private GameObject BTN_LoadLevel;
     [SerializeField] private GameObject BTN_NextLevel;
@@ -21,6 +25,7 @@ public class SetLevelSelectScreen : SetScreen
 
     public override void OnLoad()
     {
+        _canvas.worldCamera = Camera.main;
         
         //Buttons
         var btn_LoadLevel = BTN_LoadLevel.GetComponent<Button>();

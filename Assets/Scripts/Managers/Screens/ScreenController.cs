@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScreenController : MonoBehaviour
@@ -42,6 +44,9 @@ public class ScreenController : MonoBehaviour
 
     private GameObject GO_currentMainScreenActive;
     private GameObject GO_currentSecondScreenActive;
+
+    private Coroutine _mainCoroutine;
+    private Coroutine _secondCoroutine;
     
     #region Getter
 
@@ -77,27 +82,46 @@ public class ScreenController : MonoBehaviour
         return null;
     }
 
-    public void LoadScreen(MainScreenActive screen)
+    public IEnumerator LoadScreen(MainScreenActive screen)
     {
         if(GO_currentMainScreenActive != null) Destroy(GO_currentMainScreenActive);
         _currentMainScreenActive = screen;
+
+        yield return new WaitForNextFrameUnit();
         
         GO_currentMainScreenActive = Instantiate(GetPrefab(screen), _parents);
         if(GO_currentMainScreenActive.TryGetComponent<SetScreen>(out SetScreen setter)) { setter.OnLoad(); }
+
+        _mainCoroutine = null;
     }
 
-    public void LoadScreen(SecondScreenActive screen)
+    public IEnumerator LoadScreen(SecondScreenActive screen)
     {
         if(GO_currentSecondScreenActive != null) Destroy(GO_currentSecondScreenActive);
         _currentSecondScreenActive = screen;
-
+        
+        yield return new WaitForNextFrameUnit();
+        
         GO_currentSecondScreenActive = Instantiate(GetPrefab(screen), _parents);
-        if(GO_currentSecondScreenActive.TryGetComponent<SetScreen>(out SetScreen setter)) {setter.OnLoad();} 
+        if(GO_currentSecondScreenActive.TryGetComponent<SetScreen>(out SetScreen setter)) {setter.OnLoad();}
+        
+        _secondCoroutine = null;
     }
 
     public void UnloadMainScreen() { if(GO_currentMainScreenActive != null) Destroy(GO_currentSecondScreenActive); }
     public void UnloadSecondScreen() { if(GO_currentSecondScreenActive != null) Destroy(GO_currentSecondScreenActive); }
 
+
+    public void CoroutineLoadScreen(MainScreenActive screen)
+    {
+        if (_mainCoroutine == null) _mainCoroutine = StartCoroutine(LoadScreen(screen)); 
+        
+    }
+    public void CoroutineLoadScreen(SecondScreenActive screen)
+    { 
+        if (_secondCoroutine == null) _secondCoroutine = StartCoroutine(LoadScreen(screen)); 
+    } 
+    
 }
 
 

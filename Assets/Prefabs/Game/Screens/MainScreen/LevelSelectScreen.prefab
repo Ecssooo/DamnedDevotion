@@ -914,6 +914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c82566d708852474896e2b2e21105e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canvas: {fileID: 8028940637963024662}
   BTN_LoadLevel: {fileID: 9008794985915166343}
   BTN_NextLevel: {fileID: 3023359559820609084}
   BTN_PreviousLevel: {fileID: 497517287107384047}

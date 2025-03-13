@@ -1504,6 +1504,7 @@ MonoBehaviour:
   _board: {fileID: 460402790384696913}
   _actionPointTxt: {fileID: 3493592445828608401}
   _canvas: {fileID: 5002908914411938057}
+  BTN_Pause: {fileID: 7650799552500263690}
 --- !u!1 &5959084552269356078
 GameObject:
   m_ObjectHideFlags: 0
