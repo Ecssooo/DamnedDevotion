@@ -104,21 +104,19 @@ public class ListAction : MonoBehaviour
         switch (action._effect)
         {
             case Effects.MOVE:
-                if (action._card.CompareTag("Cauldron") ||
-                    action._card.CompareTag("Monster") ||
-                    action._card.CompareTag("ShieldedKnight"))
+                if (action._card.CardType == CardType.CAULDRON ||
+                    action._card.CardType == CardType.MONSTER ||
+                    action._card.CardType == CardType.KNIGHTSHIELD)
                     return;
                 break;
             case Effects.SWAP:
-                if (action._card.CompareTag("Cauldron") ||
-                    action._card2.CompareTag("Cauldron"))
+                if (action._card.CardType == CardType.CAULDRON ||
+                    action._card2.CardType == CardType.CAULDRON)
                     return;
                 break;
             case Effects.INVOKE:
                 _listActions.Add(action);
                 return;
-            
-            
         }
 
 
