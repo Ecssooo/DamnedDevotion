@@ -16,11 +16,11 @@ MonoBehaviour:
   _burnAnimationDuration: 0.5
   _hitAnimationDuration: 0.5
   _swapDelay: 1.1
-  _movementWait: 1
-  _swapWait: 1.5
+  _movementWait: 0.75
+  _swapWait: 1.4
   _invokeWait: 0
-  _cauldronWait: 0.35
-  _impossibleActionWait: 0.5
+  _cauldronWait: 0.5
+  _impossibleActionWait: 0.4
   _endActionWait: 0.2
-  _beforeEndActionWait: 1
+  _beforeEndActionWait: 0.5
   _afterEndActionWait: 1

@@ -18,6 +18,6 @@ public class SetGameScreen : SetScreen
 
         var btn_Pause = BTN_Pause.GetComponent<Button>();
         btn_Pause.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});
-        btn_Pause.onClick.AddListener(() => { GameStateManager.Instance.SwitchState(GameStateManager.Instance.GamePauseState) ;});
+        btn_Pause.onClick.AddListener(() => { GameStateManager.Instance.StatePause(); });
     }
 }
