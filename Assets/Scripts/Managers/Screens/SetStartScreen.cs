@@ -22,7 +22,7 @@ public class SetStartScreen : SetScreen
         
         var btn_Play = BTN_Play.GetComponent<Button>();
         btn_Play.onClick.AddListener(() => { AudioManager.Instance.PlaySFX("button"); });
-        btn_Play.onClick.AddListener(() => { GameStateManager.Instance.StateMenu(); });
+        btn_Play.onClick.AddListener(() => { GameStateManager.Instance.StateLevelSelector(); });
 
         var btn_Achievements = BTN_Achievements.GetComponent<Button>();
         btn_Achievements.onClick.AddListener(() => { AudioManager.Instance.PlaySFX("button"); });

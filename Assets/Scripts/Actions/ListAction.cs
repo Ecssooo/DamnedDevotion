@@ -215,7 +215,7 @@ public class ListAction : MonoBehaviour
         if (GameManager.Instance.GameState != GameState.Playable) return;
         if (GameManager.Instance.GameState == GameState.Playable)
         {
-            GameStateManager.Instance.SetWaitForAction(false);
+            GameStateManager.Instance.WaitForAction = true;
             if (_listActions.Count == 0) return;
 
             Debug.Log(_listActions[^1]._card.CardType);
@@ -249,8 +249,6 @@ public class ListAction : MonoBehaviour
                     }
                 }
             }
-
-
 
             Destroy(SlotToRemove.gameObject);
             if (SlotToRemove2 != null) Destroy(SlotToRemove2.gameObject);

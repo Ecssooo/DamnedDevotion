@@ -163,7 +163,7 @@ public class Card : MonoBehaviour
                 AudioManager.Instance.PlaySFX("swordHit");
                 yield return new WaitForSeconds(0.5f);
                 GameManager.Instance.MonsterScore = 0;
-                GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatStateState);
+                GameStateManager.Instance.SwitchState(GameStateManager.Instance.GameDefeatState);
                 GameManager.Instance.Board.ClearSlot(this);
                 break;
             case(CardType.MINIMONSTER):

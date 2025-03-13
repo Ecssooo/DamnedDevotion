@@ -29,7 +29,7 @@ public class GameStateManager : MonoBehaviour
     private GameSetupState _gameSetupState = new();
     private GameLevelSelectState _gameLevelSelectState = new();
     private GameActionState _gameActionState = new();
-    private GameDefeatState _gameDefeatStateState = new();
+    private GameDefeatState _gameDefeatState = new();
     private GameWinState _gameWinState = new();
     private GamePauseState _gamePauseState = new();
     private GameStartState _gameStartState = new();
@@ -40,15 +40,15 @@ public class GameStateManager : MonoBehaviour
     public GameSetupState GameSetupState => _gameSetupState;
     public GameLevelSelectState GameLevelSelectState => _gameLevelSelectState;
     public GameActionState GameActionState => _gameActionState;
-    public GameDefeatState GameDefeatStateState => _gameDefeatStateState;
+    public GameDefeatState GameDefeatState => _gameDefeatState;
     public GameWinState GameWinState => _gameWinState;
     public GamePauseState GamePauseState => _gamePauseState;
     public GameStartState GameStartState => _gameStartState;
 
     #endregion
     
-    private bool waitForAction;
-    public bool WaitForAction { get => waitForAction; }
+    private bool _waitForAction;
+    public bool WaitForAction { get => _waitForAction; set => _waitForAction = value; }
     
     
     
@@ -89,43 +89,40 @@ public class GameStateManager : MonoBehaviour
     
     #region Game State
     
-    
+    //Player choose actions
     public void StateSetup() {
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameSetupState);
     }
+    public void StateSetupAnyGameState(bool doEnter){ SwitchState(_gameSetupState, true, doEnter); }
     
-    public void StateSetupAnyGameState(bool doEnter)
-    {
-        SwitchState(_gameSetupState, true, doEnter);
-    }
-    
+    //Game do all actions
     public void StateAction(){
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameActionState);
     }
+    public void StateActionAnyGameState() { SwitchState(_gameActionState); }
     
+    //Pause screen
     public void StatePause()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gamePauseState, true, true);
     }
+    public void StatePauseAnyGameState() { SwitchState(_gamePauseState); }
 
     
     #endregion
     
     #region Level Selector State
     
-    public void StateMenu()
+    public void StateLevelSelector()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameLevelSelectState);
     }
     
-    public void StateLevelAnyGameState()
-    {
-        SwitchState(_gameLevelSelectState);
-    }
+    public void StateLevelSelectorAnyGameState() { SwitchState(_gameLevelSelectState); }
 
     
     
@@ -133,23 +130,23 @@ public class GameStateManager : MonoBehaviour
 
     #region Win/Defeat State
     
+    // Level win after action phase
     public void StateWin()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameWinState);
     }
-
+    public void StateWinAnyGameState() => SwitchState(_gameWinState);
+    
+    
+    // Level defeat after action phase
     public void StateDefeat()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameDefeatStateState);
+            SwitchState(_gameDefeatState);
     }
+    public void StateDefeatAnyGameState() => SwitchState(_gameDefeatState);
     
     #endregion
-    
-    public void SetWaitForAction(bool value)
-    {
-        waitForAction = value;
-    }
     #endregion
 }

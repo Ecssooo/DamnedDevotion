@@ -46,7 +46,7 @@ public class GameActionState : GameBaseState
         }
         else
         {
-            manager.SwitchState(manager.GameDefeatStateState, false);
+            manager.SwitchState(manager.GameDefeatState, false);
         }
         yield return null;
     }

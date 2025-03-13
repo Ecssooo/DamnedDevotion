@@ -18,7 +18,7 @@ public class SetDefeatScreen : SetScreen
             
             var btn_Back = BTN_Back.GetComponent<Button>();
             btn_Back.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});
-            btn_Back.onClick.AddListener(() => { GameStateManager.Instance.StateMenu(); });
+            btn_Back.onClick.AddListener(() => { GameStateManager.Instance.StateLevelSelector(); });
             
         }
 }

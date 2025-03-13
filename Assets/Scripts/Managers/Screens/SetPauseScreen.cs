@@ -27,7 +27,7 @@ public class SetPauseScreen : SetScreen
         
         var btn_LevelSelector = BTN_LevelSelector.GetComponent<Button>();
         btn_LevelSelector.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});
-        btn_LevelSelector.onClick.AddListener(() => {GameStateManager.Instance.StateLevelAnyGameState();});
+        btn_LevelSelector.onClick.AddListener(() => {GameStateManager.Instance.StateLevelSelectorAnyGameState();});
         
         var btn_MainMenu = BTN_MainMenu.GetComponent<Button>();
         btn_MainMenu.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});

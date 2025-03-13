@@ -9,7 +9,7 @@ public class GameSetupState : GameBaseState
         //Achievement
         if(LevelManager.Instance.CurrentLevel == 25) PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQCw");
         
-        manager.SetWaitForAction(true);
+        manager.WaitForAction = true;
         
         ScreenController.Instance.UnloadSecondScreen();
         ScreenController.Instance.CoroutineLoadScreen(MainScreenActive.Board);
@@ -24,7 +24,7 @@ public class GameSetupState : GameBaseState
         
         
         LevelManager.Instance.LoadLevel();
-        manager.SetWaitForAction(false);
+        manager.WaitForAction = false;
     }
 
     public override void UpdateState(GameStateManager manager)
@@ -33,7 +33,7 @@ public class GameSetupState : GameBaseState
         {
             // LevelManager.Instance.LoadPopUp();
             ScreenController.Instance.CoroutineLoadScreen(SecondScreenActive.PopUp);
-            GameStateManager.Instance.SetWaitForAction(true);
+            manager.WaitForAction = true;
         }
     }
 
