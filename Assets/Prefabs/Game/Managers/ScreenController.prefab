@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7386081442673995890
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2009359847848422109}
+  - component: {fileID: 6277053137329986467}
+  m_Layer: 0
+  m_Name: ScreenController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2009359847848422109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386081442673995890}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6277053137329986467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7386081442673995890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea5bb709b9f65644a1aff67a8b8c596, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parents: {fileID: 0}
+  _mainScreen: {fileID: 8249439350950949953, guid: 5d55fe3001f9066418c0fe6689340005, type: 3}
+  _levelSelectorScreen: {fileID: 4689956119302375937, guid: a30e10b4f27d8844f83c458140118e45, type: 3}
+  _gameScreen: {fileID: 5848324016225474310, guid: b5cec5ae46f34004591acd79fb663ab8, type: 3}
+  _pauseScreen: {fileID: 8305741491037038318, guid: 2eaf854be7dc70a4e96692bf893cba84, type: 3}
+  _winScreen: {fileID: 5493024364478258199, guid: 27f483196a79b9942a63a76b3bff4d83, type: 3}
+  _defeatScreen: {fileID: 8915608671384458457, guid: 99cd4fe1a3ea8674c959758dae7446f4, type: 3}
+  _PopUpScreen: {fileID: 3040846108618453039, guid: 0c6c9e88b4b61ca42a2183f5a90b2458, type: 3}
+  _CreditScreen: {fileID: 6542861449539701690, guid: 4009f78329e1a274db219d358d46badc, type: 3}
+  _optionsScreen: {fileID: 8863074019400179538, guid: 20282fec0bd8cd24288b333520b4a83c, type: 3}
