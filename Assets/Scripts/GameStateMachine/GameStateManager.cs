@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -27,31 +25,35 @@ public class GameStateManager : MonoBehaviour
     private GameBaseState _currentState;
     
     private GameSetupState _gameSetupState = new();
-    private GameLevelState _gameLevelState = new();
+    private GameLevelSelectState _gameLevelSelectState = new();
     private GameActionState _gameActionState = new();
-    private GameDefeatState _gameDefeatStateState = new();
+    private GameDefeatState _gameDefeatState = new();
     private GameWinState _gameWinState = new();
     private GamePauseState _gamePauseState = new();
     private GameStartState _gameStartState = new();
 
-
+    #region Getter
+    
     public GameBaseState CurrentState => _currentState;
     public GameSetupState GameSetupState => _gameSetupState;
-    public GameLevelState GameLevelState => _gameLevelState;
+    public GameLevelSelectState GameLevelSelectState => _gameLevelSelectState;
     public GameActionState GameActionState => _gameActionState;
-    public GameDefeatState GameDefeatStateState => _gameDefeatStateState;
+    public GameDefeatState GameDefeatState => _gameDefeatState;
     public GameWinState GameWinState => _gameWinState;
     public GamePauseState GamePauseState => _gamePauseState;
-
     public GameStartState GameStartState => _gameStartState;
 
-    private bool waitForAction;
-    public bool WaitForAction { get => waitForAction; }
+    #endregion
+    
+    private bool _waitForAction;
+    public bool WaitForAction { get => _waitForAction; set => _waitForAction = value; }
+    
+    
     
     private void Start()
     {
         _currentState = _gameStartState;
-        _currentState.EnterState(this);
+        StartCoroutine(_currentState.EnterState(this));
     }
 
     private void Update()
@@ -61,76 +63,88 @@ public class GameStateManager : MonoBehaviour
 
     public void SwitchState(GameBaseState state, bool doExit = true, bool doEnter = true)
     {
-        if(doExit) _currentState.ExitState(this);
+        if (doExit) StartCoroutine(_currentState.ExitState(this));
         _currentState = state;
-        if(doEnter)_currentState.EnterState(this);
+        if(doEnter) StartCoroutine (_currentState.EnterState(this));
     } 
     
-    #region TEMP
+    #region Premade Change State
 
-    public void StateMenu()
-    {
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameLevelState);
-    }
-
-    public void StateSetup(bool doEnter)
-    {
-        StartCoroutine(CoroutineStateSetup(doEnter));
-    }
-    public void StateAction(){
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameActionState);
-    }
-
-    public void StateWin()
-    {
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameWinState);
-    }
-
-    public void StateDefeat()
-    {
-        if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameDefeatStateState);
-    }
-
+    #region Start State
+    
     public void StateStart()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameStartState);
     }
-
+    
+    public void StateStartAnyGameState()
+    {
+        SwitchState(_gameStartState);
+    }
+    
+    #endregion 
+    
+    #region Game State
+    
+    //Player choose actions
+    public void StateSetup() {
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameSetupState);
+    }
+    public void StateSetupAnyGameState(bool doEnter){ SwitchState(_gameSetupState, true, doEnter); }
+    
+    //Game do all actions
+    public void StateAction(){
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameActionState);
+    }
+    public void StateActionAnyGameState() { SwitchState(_gameActionState); }
+    
+    //Pause screen
     public void StatePause()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gamePauseState, true, true);
     }
+    public void StatePauseAnyGameState() { SwitchState(_gamePauseState); }
 
-    public void StateSetupAnyGameState(bool doEnter)
+    
+    #endregion
+    
+    #region Level Selector State
+    
+    public void StateLevelSelector()
     {
-        SwitchState(_gameSetupState, true, doEnter);
-    }
-
-    public IEnumerator CoroutineStateSetup(bool doEnter)
-    {
-        yield return new WaitForSeconds(0.05f);  
         if(GameManager.Instance.GameState == GameState.Playable)
-            SwitchState(_gameSetupState, true, doEnter);
+            SwitchState(_gameLevelSelectState);
     }
     
-    public void StateLevelAnyGameState()
-    {
-        SwitchState(_gameLevelState);
-    }
+    public void StateLevelSelectorAnyGameState() { SwitchState(_gameLevelSelectState); }
 
-    public void StateStartAnyGameState()
+    
+    
+    #endregion
+
+    #region Win/Defeat State
+    
+    // Level win after action phase
+    public void StateWin()
     {
-        SwitchState(_gameStartState);
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameWinState);
     }
-    public void SetWaitForAction(bool value)
+    public void StateWinAnyGameState() => SwitchState(_gameWinState);
+    
+    
+    // Level defeat after action phase
+    public void StateDefeat()
     {
-        waitForAction = value;
+        if(GameManager.Instance.GameState == GameState.Playable)
+            SwitchState(_gameDefeatState);
     }
+    public void StateDefeatAnyGameState() => SwitchState(_gameDefeatState);
+    
+    #endregion
     #endregion
 }

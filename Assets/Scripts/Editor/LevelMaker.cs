@@ -6,7 +6,7 @@ using UnityEditor;
 
 public class LevelMaker : EditorWindow
 {
-    private Board board;
+    private BoardController _boardController;
     private LevelDatabase _levelDatabase;
 
     private int levelId;
@@ -55,7 +55,7 @@ public class LevelMaker : EditorWindow
         GUILayout.Label("LevelMaker", EditorStyles.boldLabel);
 
         //Setup
-        board = EditorGUILayout.ObjectField("Board", board, typeof(Board), true) as Board;
+        _boardController = EditorGUILayout.ObjectField("Board", _boardController, typeof(BoardController), true) as BoardController;
         _levelDatabase =
             EditorGUILayout.ObjectField("Level Database", _levelDatabase, typeof(LevelDatabase), true) as LevelDatabase;
         //Level info
@@ -135,8 +135,8 @@ public class LevelMaker : EditorWindow
     /// </summary>
     void ApplyLevel()
     {
-        board.ResetBoard();
-        board.InitSlotTab();
+        _boardController.ResetBoard();
+        _boardController.InitSlotTab();
         int index = 0;
         foreach (var perso in persos)
         {
@@ -151,7 +151,7 @@ public class LevelMaker : EditorWindow
         card.cardType = cardParams.type;
         card.positionOnBoard = positionSlot[index];
         card.direction = cardParams.axis;
-        board.EditorSetSlots(card);
+        _boardController.EditorSetSlots(card);
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public class LevelMaker : EditorWindow
         ResetBoard();
         try
         {
-            board.EditorSetLevel(_levelDatabase.levelList[levelToLoad]);
+            _boardController.EditorSetLevel(_levelDatabase.levelList[levelToLoad]);
         }
         catch (ArgumentOutOfRangeException ex)
         {
@@ -214,7 +214,7 @@ public class LevelMaker : EditorWindow
     /// </summary>
     void ResetBoard()
     {
-        board.ResetBoard();
+        _boardController.ResetBoard();
         for (int i = 0; i < persos.Length; i++)
         {
             persos[i].type = CardType.NONE;

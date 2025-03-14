@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectActions : MonoBehaviour
 {
+    #region Instance
     private static EffectActions _instance;
     public static EffectActions Instance { get => _instance; }
 
@@ -17,42 +17,43 @@ public class EffectActions : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        DontDestroyOnLoad(this);
     }
-
-    private Board _board;
-    public Board Board { get => _board; set => _board = value; }
     
+    #endregion
     private Vector2 _firstMousePos;
     private Vector2 _lastMousePos;
     private Direction _moveCardDir;
 
-    public Card _swapFirstCard;
-    public Card _swapSecondCard;
+    private Card _swapFirstCard;
+    private Card _swapSecondCard;
+    
+    
+    
+    public Card SwapFirstCard { get => _swapFirstCard; set => _swapFirstCard = value; }
+    public Card SwapSecondCard{ get => _swapSecondCard; set => _swapSecondCard = value; }
 
-    public void DoEffect(Action action)
+    public bool DoEffect(Action action)
     {
-        // if (GameManager.Instance.Effect == Effects.NONE /*|| GameStateManager.Instance.CurrentState.GetType() != GameStateManager.Instance.GameSetupState.GetType()*/)
-        // {
-        //     Debug.Log("GameStateError");
-        //     return;
-        // }
-        if (action._card == null) return;
+        bool actionDone = false;
+        if (action._card == null) return false;
         switch (action._effect)
         {
             case Effects.MOVE:
-                if (action._card.CompareTag("Cauldron") || action._card.CompareTag("Monster") || action._card.CompareTag("ShieldedKnight")) return;
-                Vector2Int newPos = GameManager.Instance.Board.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
-                StartCoroutine(GameManager.Instance.Board.MoveCard(action._card, newPos));
+                if (action._card.CardType == CardType.CAULDRON || action._card.CardType == CardType.MONSTER || action._card.CardType == CardType.KNIGHTSHIELD) return false;
+                Vector2Int newPos = GameManager.Instance.BoardController.GetPositionNextTo(action._card.PositionOnBoard, action._direction);
+                StartCoroutine(GameManager.Instance.BoardController.MoveCard(action._card, newPos, b => { actionDone = b;} ));
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBA");
                 break;
             case Effects.SWAP:
-                if (action._card2 == null) return;
-                StartCoroutine(GameManager.Instance.Board.SwitchCard(action._card, action._card2));
+                if (action._card2 == null) return false;
+                StartCoroutine(GameManager.Instance.BoardController.SwitchCard(action._card, action._card2, b => { actionDone = b;}));
                 PlayGamesController.Instance.UnlockAchievement("CgkImLeVnfkcEAIQBQ");
                 break;
             case Effects.INVOKE:
-                return;
-        }        
+                return false;
+        }
+        return actionDone;
     }
 
     private IEnumerator DestroyCard(Card card)

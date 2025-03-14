@@ -31,3 +31,21 @@ public enum GameState
     Playable,
     Busy
 }
+
+public enum MainScreenActive
+{
+    Start,
+    LevelSelect,
+    Board,
+}
+
+public enum SecondScreenActive
+{
+    None,
+    PopUp,
+    Pause,
+    Win,
+    Defeat,
+    Options,
+    Credits,
+} 

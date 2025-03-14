@@ -1,10 +1,14 @@
-using UnityEngine;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class GameStartState : GameBaseState
 {
-    public override void EnterState(GameStateManager manager)
+    public override IEnumerator EnterState(GameStateManager manager)
     {
-        LevelManager.Instance.LoadMainScreen();
+        //Screen
+        ScreenController.Instance.CoroutineLoadScreen(MainScreenActive.Start);
+        yield return new WaitForNextFrameUnit();
+        //Audio
         AudioManager.Instance.musicSource.Stop();
         AudioManager.Instance.PlayMusic("Menu");
     }
@@ -14,8 +18,8 @@ public class GameStartState : GameBaseState
         //
     }
 
-    public override void ExitState(GameStateManager manager)
+    public override IEnumerator ExitState(GameStateManager manager)
     {
-
+        yield return new WaitForNextFrameUnit();
     }
 }

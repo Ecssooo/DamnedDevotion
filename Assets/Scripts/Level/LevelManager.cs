@@ -1,7 +1,5 @@
-using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class LevelManager : MonoBehaviour
 {
@@ -25,7 +23,31 @@ public class LevelManager : MonoBehaviour
 
     private int _currentLevel;
     public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
+    
+    [Header("Game")] 
+    [SerializeField] private GameObject _popUp;
+    
+    [Header("Level Selector")]
+    [SerializeField] private TextMeshProUGUI _number;
+    [SerializeField] private GameObject _locker;
+    
+    [Header("Effect parents")]
+    [SerializeField] private GameObject _moveParent;
+    [SerializeField] private GameObject _swapParent;
+    [SerializeField] private GameObject _invokeParent;
+    
+    #region Getters
+    
+    public TextMeshProUGUI Number { get => _number; set => _number = value; }
+    public GameObject Locker { get => _locker; set => _locker = value;}
+    public GameObject MoveParent { get => _moveParent; set => _moveParent = value; }
 
+    public GameObject SwapParent { get => _swapParent; set => _swapParent = value; }
+
+    public GameObject InvokeParent { get => _invokeParent; set => _invokeParent = value; }
+    
+    #endregion
+    
     #region UpdateLevel
 
     public void IncreaseLevel()
@@ -33,15 +55,17 @@ public class LevelManager : MonoBehaviour
         _currentLevel++;
         if (_currentLevel > GameManager.Instance.LevelDatabase.levelList.Count - 1)
             _currentLevel = GameManager.Instance.LevelDatabase.levelList.Count - 1;
-        UpdateUI();
+        UpdateLocker();
+        UpdateEffectIcons();
     }
 
     public void DecreaseLevel()
     { 
         _currentLevel--; 
         if (_currentLevel < 0)
-            _currentLevel = 0;
-        UpdateUI();
+            _currentLevel = 0; 
+        UpdateLocker();
+        UpdateEffectIcons();
     }
 
     public void InitLevel(int value)
@@ -49,35 +73,14 @@ public class LevelManager : MonoBehaviour
         if (value < 0) SaveSystem.InitSave();
         
         _currentLevel = value; 
-        UpdateUI();
     }
     #endregion
     
     #region UI
 
-    [SerializeField] private GameObject _mainScreen;
-    [SerializeField] private GameObject _game;
-    [SerializeField] private GameObject _pauseScreen;
-    [SerializeField] private GameObject _defeatScreen;
-    [SerializeField] private GameObject _winScreen;
-    // [SerializeField] private GameObject _endScreen;
-
-    [Header("Game")] 
-    [SerializeField] private GameObject _popUp;
-    
-    [Header("Level Selector")]
-    [SerializeField] private GameObject _levelSelectorScreen;
-    [SerializeField] private TextMeshProUGUI TXT_number;
-    [SerializeField] private GameObject _locker;
-    
-    [SerializeField] private GameObject _moveLS;
-    [SerializeField] private GameObject _swapLS;
-    [SerializeField] private GameObject _invokeLS;
-    
-    
-    void UpdateUI()
+    public void UpdateLocker()
     {
-        TXT_number.text = (_currentLevel+1).ToString();
+        _number.text = (_currentLevel+1).ToString();
         if (_currentLevel > SaveSystem.Load())
         {
             _locker.SetActive(true);
@@ -86,10 +89,13 @@ public class LevelManager : MonoBehaviour
         {
             _locker.SetActive(false);
         }
-
-        _moveLS.SetActive(false);
-        _swapLS.SetActive(false);
-        _invokeLS.SetActive(false);
+    }
+    
+    public void  UpdateEffectIcons()
+    {
+        _moveParent.SetActive(false);
+        _swapParent.SetActive(false);
+        _invokeParent.SetActive(false);
         
         Level level = GameManager.Instance.LevelDatabase.levelList[_currentLevel];
         for (int i = 0; i < level.effects.Length; i++)
@@ -98,58 +104,14 @@ public class LevelManager : MonoBehaviour
             {
                 switch (i)
                 {
-                    case(0): _moveLS.SetActive(true); break;
-                    case(1): _swapLS.SetActive(true); break;
-                    case(2): _invokeLS.SetActive(true); break;
+                    case(0): _moveParent.SetActive(true); break;
+                    case(1): _swapParent.SetActive(true); break;
+                    case(2): _invokeParent.SetActive(true); break;
                 }
             }
         }
     }
-
-    public void LoadMenu()
-    {
-        _game.SetActive(false);
-        GameManager.Instance.Board.ResetBoard();
-        _defeatScreen.SetActive(false);
-        _winScreen.SetActive(false);
-        // _endScreen.SetActive(false);
-        _mainScreen.SetActive(false);
-        _pauseScreen.SetActive(false);
-        _levelSelectorScreen.SetActive(true);
-    }
     
-    public void LoadDefeatMenu()
-    {
-        _defeatScreen.SetActive(true);
-        _pauseScreen.SetActive(false);
-    }
-
-    [SerializeField] private GameObject _nextButton;
-    public void LoadWinMenu()
-    {
-        if (LevelManager.Instance.CurrentLevel == GameManager.Instance.LevelDatabase.levelList.Count-1)
-        {
-            _nextButton.SetActive(false);
-            _pauseScreen.SetActive(false);
-            _winScreen.SetActive(true);
-        }
-        else
-        {
-            _nextButton.SetActive(true);
-            _pauseScreen.SetActive(false);
-            _winScreen.SetActive(true);
-        }
-    }
-    
-    public void LoadMainScreen()
-    {
-        _mainScreen.SetActive(true);
-        _pauseScreen.SetActive(false);
-        _game.SetActive(false);
-        _levelSelectorScreen.SetActive(false);
-        _winScreen.SetActive(false);
-        _defeatScreen.SetActive(false);
-    }
     
     #endregion
 
@@ -157,43 +119,29 @@ public class LevelManager : MonoBehaviour
     
     public void LoadLevel()
     {
-        _levelSelectorScreen.SetActive(false);
-        _game.SetActive(true);
-        _winScreen.SetActive(false);
-        _defeatScreen.SetActive(false);
-        StartCoroutine(GameManager.Instance.Board.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
-
-        EffectList.MoveCard = false;
-        EffectList.SwapCard = false;
+        StartCoroutine(GameManager.Instance.BoardController.SetLevel(GameManager.Instance.LevelDatabase.levelList[_currentLevel]));
+        
         GameManager.Instance.Effect = Effects.NONE;
 
         ListAction.Instance.ListActions.Clear();
     }
 
-    public void LoadPopUp()
-    {
-        _popUp.SetActive(true);
-    }
-   
     #endregion
 
     private void Start()
     {
         SaveSystem.InitSave();
         InitLevel(SaveSystem.Load());
-        UpdateUI();
     }
 
+#if UNITY_EDITOR
     private void Update()
     {
-        #if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.P))
         {
             SaveSystem.Save(0);
             Debug.Log("Saved");
         }
-        #endif
     }
-    
-
+#endif
 }
