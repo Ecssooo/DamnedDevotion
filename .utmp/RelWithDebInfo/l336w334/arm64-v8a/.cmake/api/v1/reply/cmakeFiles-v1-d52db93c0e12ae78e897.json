@@ -824,17 +824,6 @@
 		{
 			"isExternal" : true,
 			"path" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/.utmp/RelWithDebInfo/l336w334/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/game-activity/game-activityConfig.cmake"
-		},
-		{
-			"path" : "FramePacing/CMakeLists.txt"
-		},
-		{
-			"isExternal" : true,
-			"path" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/.utmp/RelWithDebInfo/l336w334/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/games-frame-pacing/games-frame-pacingConfigVersion.cmake"
-		},
-		{
-			"isExternal" : true,
-			"path" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/.utmp/RelWithDebInfo/l336w334/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/games-frame-pacing/games-frame-pacingConfig.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

@@ -831,7 +831,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "3"
+			"value" : "2"
 		},
 		{
 			"name" : "CMAKE_OBJCOPY",
@@ -1324,66 +1324,6 @@
 			],
 			"type" : "STATIC",
 			"value" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/GameActivity"
-		},
-		{
-			"name" : "games-frame-pacing_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "The directory containing a CMake configuration file for games-frame-pacing."
-				}
-			],
-			"type" : "PATH",
-			"value" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/.utmp/RelWithDebInfo/l336w334/prefab/arm64-v8a/prefab/lib/aarch64-linux-android/cmake/games-frame-pacing"
-		},
-		{
-			"name" : "swappywrapper_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/.utmp/RelWithDebInfo/l336w334/arm64-v8a/FramePacing"
-		},
-		{
-			"name" : "swappywrapper_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "OFF"
-		},
-		{
-			"name" : "swappywrapper_LIB_DEPENDS",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Dependencies for the target"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "general;android;general;games-frame-pacing::swappy_static;general;log;"
-		},
-		{
-			"name" : "swappywrapper_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "C:/Users/jacqu/Documents/unity/ProjetMobile/ProjetMobile/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp/FramePacing"
 		}
 	],
 	"kind" : "cache",
