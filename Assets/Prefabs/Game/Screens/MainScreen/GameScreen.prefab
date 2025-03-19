@@ -1497,7 +1497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8c77c57265e184487a30c46a5987e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _board: {fileID: 460402790384696913}
+  boardController: {fileID: 460402790384696913}
   _actionPointTxt: {fileID: 3493592445828608401}
   _canvas: {fileID: 5002908914411938057}
   BTN_Pause: {fileID: 7650799552500263690}
