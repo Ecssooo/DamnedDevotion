@@ -75,15 +75,11 @@ public class GameStateManager : MonoBehaviour
     public void StateStart()
     {
         if(GameManager.Instance.GameState == GameState.Playable)
-        {
-            if(GameManager.Instance.TutoParent.childCount != 0)Destroy(GameManager.Instance.TutoParent.GetChild(0).gameObject);
             SwitchState(_gameStartState);
-        }
     }
     
     public void StateStartAnyGameState()
     {
-        if(GameManager.Instance.TutoParent.childCount != 0)Destroy(GameManager.Instance.TutoParent.GetChild(0).gameObject);
         SwitchState(_gameStartState);
     }
     
@@ -120,18 +116,11 @@ public class GameStateManager : MonoBehaviour
     
     public void StateLevelSelector()
     {
-        if (GameManager.Instance.GameState == GameState.Playable)
-        {
-            if(GameManager.Instance.TutoParent.childCount != 0)Destroy(GameManager.Instance.TutoParent.GetChild(0).gameObject);
+        if(GameManager.Instance.GameState == GameState.Playable)
             SwitchState(_gameLevelSelectState);
-        }
     }
-
-    public void StateLevelSelectorAnyGameState()
-    {
-        if(GameManager.Instance.TutoParent.childCount != 0)Destroy(GameManager.Instance.TutoParent.GetChild(0).gameObject);
-        SwitchState(_gameLevelSelectState);
-    }
+    
+    public void StateLevelSelectorAnyGameState() { SwitchState(_gameLevelSelectState); }
 
     
     

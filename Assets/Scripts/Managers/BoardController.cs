@@ -17,8 +17,7 @@ public class BoardController : MonoBehaviour
     [SerializeField] private List<Transform> _effectSlots = new List<Transform>();
     [SerializeField] private LevelDatabase _levelDatabase;
     [SerializeField] private List<GameObject> _effectBG = new List<GameObject>();
-    
-    
+
     [Header("Distribution")]
     [SerializeField] private Transform _handTransform;
     [SerializeField] private float _distrubDuration;
@@ -83,8 +82,6 @@ public class BoardController : MonoBehaviour
                 ClearSlot(card.GetComponentInChildren<Card>());
             }
         }
-
-        Destroy(GameManager.Instance.TutoParent.GetChild(0));
         
         ClearEffect();
     }
@@ -196,7 +193,7 @@ public class BoardController : MonoBehaviour
 
     public void SetTuto(Level level)
     {
-        if (level.tutoPrefab != null) Instantiate(level.tutoPrefab, GameManager.Instance.TutoParent);
+        if (level.tutoPrefab != null) Instantiate(level.tutoPrefab);
     }
 
     [SerializeField] private TextMeshProUGUI _levelNumberTXT;

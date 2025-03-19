@@ -184,7 +184,7 @@ public class ListAction : MonoBehaviour
     }
     public void RemoveLastAction()
     {
-        if (GameManager.Instance.GameState != GameState.Playable || ScreenController.Instance.CurrentSecondScreenActive == SecondScreenActive.PopUp) return;
+        if (GameManager.Instance.GameState != GameState.Playable) return;
         if (GameManager.Instance.GameState == GameState.Playable)
         {
             GameStateManager.Instance.WaitForAction = true;

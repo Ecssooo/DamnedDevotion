@@ -714,17 +714,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cardType: 4
-  _foodValue: 0
+  _darkenedEffect: {fileID: 4930346172781545422}
   _canMove: 0
   _canSwap: 1
-  _animator: {fileID: 6675603951906090365}
+  _direction: 0
+  _attackDirection: 0
+  _foodValue: 0
+  _positionOnBoard: {x: 0, y: 0}
+  _monsterScoreTXT: {fileID: 3882220337150420791}
   _actionSlots:
   - {fileID: 5484124250848230664}
   - {fileID: 6925896655201897190}
   - {fileID: 3422754793765669237}
   - {fileID: 7210097376848262152}
-  _darkenedEffect: {fileID: 4930346172781545422}
-  _monsterScoreTXT: {fileID: 3882220337150420791}
+  _animator: {fileID: 6675603951906090365}
 --- !u!1 &9105932857564115880
 GameObject:
   m_ObjectHideFlags: 0

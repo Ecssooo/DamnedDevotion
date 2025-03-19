@@ -21,6 +21,10 @@ MonoBehaviour:
   moveEffectPrefab: {fileID: 4160450261228661187, guid: 0aca2db9d56479e4b94cfeabaebfc7e4, type: 3}
   switchEffectPrefab: {fileID: 3019628475793264510, guid: 55cf335972d127049b62f0194abf6014, type: 3}
   invocationEffectPrefab: {fileID: 4788566775805037204, guid: 719287549cdcff2449df3df2cc6aabd0, type: 3}
+  KS_Up: {fileID: 112904679716814205, guid: 10d6cf9cfaf793d48b8c5b4a177ac1f3, type: 3}
+  KS_Right: {fileID: -2256058089129968650, guid: dc6e128c53edb9b4aafc1abe3d696984, type: 3}
+  KS_Down: {fileID: -76958968252227180, guid: 4992fcd08b0bf814387ddc4b2773f355, type: 3}
+  KS_Left: {fileID: 1674648721382843015, guid: 935ad33ac214d3949bb07d6bec2e1920, type: 3}
   levelList:
   - level: 0
     CardsList:
@@ -816,7 +820,7 @@ MonoBehaviour:
     - cardType: 1
       direction: 2
       positionOnBoard: {x: 3, y: 2}
-    maxActionCount: 2
+    maxActionCount: 3
     maxScore: 2
     effects: 010100
     tutoPrefab: {fileID: 0}
