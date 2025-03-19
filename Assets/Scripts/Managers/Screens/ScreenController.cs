@@ -107,7 +107,7 @@ public class ScreenController : MonoBehaviour
     {
         if(GO_currentMainScreenActive != null) Destroy(GO_currentMainScreenActive);
         _currentMainScreenActive = screen;
-
+        if(GameManager.Instance.TutoParent.childCount != 0) Destroy(GameManager.Instance.TutoParent.GetChild(0).gameObject);
         yield return new WaitForNextFrameUnit();
         
         GO_currentMainScreenActive = Instantiate(GetPrefab(screen), _parents);
@@ -123,6 +123,8 @@ public class ScreenController : MonoBehaviour
     /// <returns></returns>
     public IEnumerator LoadScreen(SecondScreenActive screen)
     {
+        if (screen == SecondScreenActive.Pause && CurrentSecondScreenActive == SecondScreenActive.PopUp) yield break;
+        
         if(GO_currentSecondScreenActive != null) Destroy(GO_currentSecondScreenActive);
         _currentSecondScreenActive = screen;
         

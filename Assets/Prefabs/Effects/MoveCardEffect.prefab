@@ -138,4 +138,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _effect: 1
-  _effectDuration: 1
+  _invocationScript: {fileID: 0}

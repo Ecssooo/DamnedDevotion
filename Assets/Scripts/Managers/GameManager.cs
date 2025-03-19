@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private ActionCount _actionCount;
 
+    [SerializeField] private Transform _tutoParent;
+
+
+
     //Private field
     private BoardController _boardController;
     private int humanKill;
@@ -42,8 +46,8 @@ public class GameManager : MonoBehaviour
     public LevelDatabase LevelDatabase {get => _levelDatabase; }
     public TimerList TimerList { get => _timerList; }
     public ActionCount ActionCount { get => _actionCount; }
+    public Transform TutoParent { get => _tutoParent; }
 
-    
     //Private field
     public BoardController BoardController { get => _boardController; set => _boardController = value; }
     public int HumanKill { get => humanKill; set => humanKill = value; }
