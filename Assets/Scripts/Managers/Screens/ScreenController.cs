@@ -108,7 +108,7 @@ public class ScreenController : MonoBehaviour
         if(GO_currentMainScreenActive != null) Destroy(GO_currentMainScreenActive);
         _currentMainScreenActive = screen;
         if(GameManager.Instance.TutoParent.childCount != 0) Destroy(GameManager.Instance.TutoParent.GetChild(0).gameObject);
-        yield return new WaitForNextFrameUnit();
+        yield return new WaitForNextFrameUnit();    
         
         GO_currentMainScreenActive = Instantiate(GetPrefab(screen), _parents);
         if(GO_currentMainScreenActive.TryGetComponent<SetScreen>(out SetScreen setter)) { setter.OnLoad(); }

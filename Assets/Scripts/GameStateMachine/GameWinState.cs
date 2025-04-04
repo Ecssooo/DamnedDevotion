@@ -19,6 +19,15 @@ public class GameWinState : GameBaseState
         //Reset level
         GameManager.Instance.MonsterScore = 0;
         GameManager.Instance.Effect = Effects.NONE;
+
+        if (LevelManager.Instance.CurrentLevel >= 29)
+        {
+            GameManager.Instance.NextButton.SetActive(false);
+        }
+        else
+        {
+            GameManager.Instance.NextButton.SetActive(true);
+        }
         
         //Save
         if (LevelManager.Instance.CurrentLevel < GameManager.Instance.LevelDatabase.levelList.Count - 1 &&
