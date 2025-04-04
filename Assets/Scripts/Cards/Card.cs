@@ -162,8 +162,14 @@ public class Card : MonoBehaviour
         {
             switch (GameManager.Instance.Effect)
             {
-                case(Effects.MOVE): if(!_canMove) _darkenedEffect.gameObject.SetActive(true); break;
-                case(Effects.SWAP): if(!_canSwap) _darkenedEffect.gameObject.SetActive(true); break;
+                case(Effects.MOVE):
+                    if (!_canMove) _darkenedEffect.gameObject.SetActive(true);
+                    else _darkenedEffect.gameObject.SetActive(false);
+                    break;
+                case(Effects.SWAP):
+                    if(!_canSwap) _darkenedEffect.gameObject.SetActive(true);
+                    else _darkenedEffect.gameObject.SetActive(false);
+                    break;
                 case(Effects.INVOKE): _darkenedEffect.gameObject.SetActive(true); break;
                 case(Effects.NONE): _darkenedEffect.gameObject.SetActive(false); break;
             }

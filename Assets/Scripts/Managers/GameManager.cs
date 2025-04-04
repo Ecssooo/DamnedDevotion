@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Transform _tutoParent;
 
-
+    [SerializeField] private GameObject _nextButton;
 
     //Private field
     private BoardController _boardController;
@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public TimerList TimerList { get => _timerList; }
     public ActionCount ActionCount { get => _actionCount; }
     public Transform TutoParent { get => _tutoParent; }
+    public GameObject NextButton { get => _nextButton; set => _nextButton = value; }
 
     //Private field
     public BoardController BoardController { get => _boardController; set => _boardController = value; }

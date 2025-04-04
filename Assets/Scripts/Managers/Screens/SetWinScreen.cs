@@ -15,6 +15,8 @@ public class SetWinScreen : SetScreen
         var btn_Next = BTN_Next.GetComponent<Button>();
         btn_Next.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});
         btn_Next.onClick.AddListener(() => { GameStateManager.Instance.StateSetupAnyGameState(true); });
+        GameManager.Instance.NextButton = BTN_Next;
+        
         
         var btn_Back = BTN_Back.GetComponent<Button>();
         btn_Back.onClick.AddListener(() => {AudioManager.Instance.PlaySFX("button");});
