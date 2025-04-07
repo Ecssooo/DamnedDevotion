@@ -509,7 +509,8 @@ public class BoardController : MonoBehaviour
         yield return new WaitForSeconds(GameManager.Instance.TimerList.BeforeEndActionWait); 
         foreach (var slot in _board)
         {
-            if(slot.Card != null) slot.Card.DoEndOfTurnActions();
+            if (slot.Card != null) slot.Card.DoEndOfTurnActions();
+            yield return new WaitForSeconds(GameManager.Instance.TimerList.EndActionWait);
         }
 
         yield return new WaitForSeconds(GameManager.Instance.TimerList.AfterEndActionWait);
